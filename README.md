@@ -55,3 +55,6 @@ node_modules/bootstrap/dist/css/bootstrap.css in the projects->architect->build-
 node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->scripts array,
 node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->scripts array,
 ```
+
+## git help
+- To verify a branch command is ```git branch```
