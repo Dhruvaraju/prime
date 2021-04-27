@@ -56,5 +56,5 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->scripts array,
 ```
 
-## note
+
 - package.json is most special file .
