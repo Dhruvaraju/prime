@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { IpoComponent } from './ipo/ipo.component';
 import { BuynsellComponent } from './buynsell/buynsell.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductShopComponent } from './product-shop/product-shop.component';
     RegisterComponent,
     IpoComponent,
     BuynsellComponent,
-    ProductShopComponent
+    ProductShopComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
