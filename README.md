@@ -55,7 +55,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - `npm install bootstrap` to add boot strap to project
 - `npm install jquery` to install jquery to project.
 
-Add th below entries to angular.json
+Add the below entries to angular.json
 
 ```
 node_modules/bootstrap/dist/css/bootstrap.css in the projects->architect->build->styles array,
@@ -85,4 +85,6 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 
 ## git stash clear
 - To delete the stashes available in stash list
-- It is non recovarable command
+- It is a non recoverable command
+  
+
