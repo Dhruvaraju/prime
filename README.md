@@ -12,6 +12,7 @@
   - [git stash list](#git-stash-list)
   - [git stash apply](#git-stash-apply)
   - [git stash clear](#git-stash-clear)
+  - [git fetch --all](#git-fetch---all)
 
 # Prime
 
@@ -77,7 +78,7 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 
 ## git stash list
 
-- To see all the stashs available
+- To see all the stashes available
 
 ## git stash apply
 - To get the stash back
@@ -87,4 +88,6 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 - To delete the stashes available in stash list
 - It is a non recoverable command
   
+## git fetch --all
+- To track the remote branches
 
