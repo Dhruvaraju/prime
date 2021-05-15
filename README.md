@@ -91,3 +91,5 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 ## git fetch --all
 - To track the remote branches
 
+> Test to initiate a build
+
