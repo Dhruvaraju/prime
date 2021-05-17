@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BuynsellComponent } from './buynsell/buynsell.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { IpoComponent } from './ipo/ipo.component';
 import { LoginComponent } from './login/login.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,6 +12,7 @@ import {SellComponent} from './buynsell/sell/sell.component';
 import { IpoComponent } from './ipo/ipo.component';
 
 const routes: Routes = [
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'buysell', component: BuynsellComponent },
