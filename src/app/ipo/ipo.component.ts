@@ -10,8 +10,6 @@ jj="";
 f=true;
   constructor() { 
   }
-  
-    
   ngOnInit(): void {
   }
 createserver()

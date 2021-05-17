@@ -1,23 +1,23 @@
-<div class="container">
-    <label for="cpyname">Company Name:</label><br>
+<div class="container ">
+    <label for="cpyname" class="font-weight-bold">Company Name:</label><br>
     <input type="text" id="cpyname" name="cpyname"/><br>
-    <label for="mvalue">Total Market Value:</label><br>
+    <label for="mvalue" class="font-weight-bold">Total Market Value:</label><br>
     <input type="text" id="mvalue" name="mvalue"/><br>
-    <label for="percent">Choose your percentage:</label><br>
-    <input list="percent">
+    <label for="percent" class="font-weight-bold">Choose your percentage:</label><br>
+    <input list="percent" name="percent"/>
     <datalist id="percent">
-    <option value="5%">
-    <option value="10%">
-    <option value="15%">
-    <option value="20%">
-    <option value="25%">
-    <option value="30%">
-     <option value="35%">
-    <option value="40%">
-    <option value="45%">
-    <option value="49%">
+        <option value="0%">0%</option>
+        <option value="5%">5%</option>
+        <option value="10%">10%</option>
+        <option value="15%">15%</option>
+        <option value="20%">20%</option>
+        <option value="25%">25%</option>
+        <option value="30%">30%</option>
+        <option value="35%">35%</option>
+        <option value="40%">40%</option>
+        <option value="45%">45%</option>
+        <option value="49%">49%</option>
     </datalist><br><br>
     <button type="button" class="btn btn-primary" (click)="createserver()" [disabled]="!f">Submit</button>
     <p>{{jj}}</p>
-    
     </div>
