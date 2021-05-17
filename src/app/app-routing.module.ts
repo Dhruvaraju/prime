@@ -8,6 +8,7 @@ import { ProductShopComponent } from './product-shop/product-shop.component';
 import { RegisterComponent } from './register/register.component';
 import {BuyComponent} from './buynsell/buy/buy.component';
 import {SellComponent} from './buynsell/sell/sell.component';
+import { IpoComponent } from './ipo/ipo.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,8 +16,9 @@ const routes: Routes = [
   { path: 'buysell', component: BuynsellComponent },
   { path: 'shop', component: ProductShopComponent },
   { path: 'home', component: HomepageComponent },
-  { path: 'buy', component: BuyComponent},
-  { path: 'sell', component: SellComponent}
+  { path: 'ipo', component: IpoComponent },
+  { path: 'buy', component: BuyComponent },
+  { path: 'sell', component: SellComponent }
 ];
 
 @NgModule({
