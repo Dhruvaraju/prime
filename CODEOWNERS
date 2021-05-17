@@ -1,0 +1,9 @@
+# this is a comment
+# code owners can be added for a file or folder.
+
+/src/app/login            @KarthikaNK @dhruvaraju
+/src/app/register         @KarthikaNK @dhruvaraju
+/src/app/homepage         @dhruvaraju
+/src/app/ipo              @dhruvaraju @deepika
+/src/app/buynsell         @dhruvaraju @angeleenajohn
+/src/app/product-shop     @dhruvaraju @deepikaakshaya
