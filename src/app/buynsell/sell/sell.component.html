@@ -1,3 +1,47 @@
 <div class="container">
-    <p>sell works!</p>
-</div>
+    <div class="d-flex justify-content-center">
+      <form style="width: 40%; text-align: left;">
+          <div class="form-group">
+              <select name="stocks" class="custom-select">
+                  <option selected>Select Stocks</option>
+                  <option value="TCS">TCS</option>
+                  <option value="TATA Motors">TATA Motors</option>
+                  <option value="SBIN">SBIN</option>
+              </select>
+          </div>
+          <div class="form-group row ">
+              <label for="qnt" class="col-sm-4 col-form-label">Quantity</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="qnt" />
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="ot" class="col-sm-4 col-form-label">Order Type</label>
+              <div class="col-sm-8">
+                  <select name="order" class="custom-select" id="ot">
+                      <option selected></option>
+                      <option value="market">Market Order</option>
+                      <option value="limit">Limit Order</option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="price" class="col-sm-4 col-form-label">Price</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="price" />
+              </div>
+          </div>
+          
+          <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-success" style="width: 9rem;">SELL</button>
+          </div>
+      </form>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
+        Go back
+      </button>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  
