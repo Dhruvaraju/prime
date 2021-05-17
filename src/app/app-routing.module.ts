@@ -9,7 +9,6 @@ import { ProductShopComponent } from './product-shop/product-shop.component';
 import { RegisterComponent } from './register/register.component';
 import {BuyComponent} from './buynsell/buy/buy.component';
 import {SellComponent} from './buynsell/sell/sell.component';
-import { IpoComponent } from './ipo/ipo.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
