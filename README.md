@@ -69,8 +69,12 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->scripts array,
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 This is finance product page
 =======
+=======
+
+>>>>>>> c79c9a325f1e0a54c82f38d9e7fd87ec15b3a830
 
 ## git help
 
@@ -105,4 +109,8 @@ This is finance product page
 - A continuos delivery is enabled with help of github actions
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
 
+<<<<<<< HEAD
 >>>>>>> main
+=======
+
+>>>>>>> c79c9a325f1e0a54c82f38d9e7fd87ec15b3a830
