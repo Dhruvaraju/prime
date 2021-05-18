@@ -110,7 +110,11 @@ This is finance product page
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> main
 =======
 
 >>>>>>> c79c9a325f1e0a54c82f38d9e7fd87ec15b3a830
+=======
+# Example for merge conflict
+>>>>>>> main

@@ -1,3 +1,73 @@
-<div class="container">
-  <p>register works!</p>
-</div>
+<h1>Welcome User</h1>
+<h2>Registration Form</h2>
+
+<form>
+    
+    <h4>Basic Details</h4>
+      <div class="row"> 
+          <div class="col-xs-4">
+        <label for="FirstName">FirstName</label>
+        <input type="text" name="FirstName" id="FirstName"><br><br>
+          </div> 
+          <div class="col-xs-4">
+        <label for="MiddleName">MiddleName</label>
+        <input type="text" name="MiddleName" id="MiddleName" style="display: inline;"><br><br>
+        </div>
+        
+        <div class="col-xs-4">
+        <label for="LastName">LastName</label>
+        <input type="text" name="LastName" id="LastName"><br><br>
+        </div>
+      </div>   
+      <div class="row">
+          <div class="col-xs-4">
+        <label for="Mobilenumber">Mobilenumber</label>
+        <input type="tel" name="Mobilenumber" id="Mobilenumber"><br><br>
+      </div>
+        <div class="col-xs-4">
+        <label for="email">Email id</label>
+        <input type="email" name="email" id="email"><br><br>
+        </div>
+        <div class="col-xs-4">
+        <label for="Pan">PAN </label>
+        <input type="text" name="Pan" id="Pan"><br><br>
+        </div>
+        </div>
+        <h4>Credentials</h4>
+        <div class="row"> 
+            <div class="col-xs-4">    
+        <label for="usrname">Create a username</label>
+        <input type="text" name="usrname" id="usrname"><br><br>
+            </div>
+            <div class="col-xs-4"> 
+        <label for="pswd">Create Password</label>
+        <input type="password" name="pswd" id="pswd"><br><br>
+        </div>
+        <div class="col-xs-4"> 
+        <label for="confirm">Confirm Password</label>
+        <input type="password" name="confirm" id="confirm"><br><br>
+            </div>
+        </div>
+        <h4>User Type</h4>
+        <div class="row">
+            <div class="col-xs-6">
+        <label for="type" >Type of User</label>
+
+            <select name="type" id="type" style="width: 15.5em;" >
+                <option value="Individual">Individual</option>
+                <option value="Institution">Institution</option>
+                <option value="Admin">Admin</option> 
+            </select><br><br>
+        </div>
+        <div class="col-xs-6">
+            <label for="institutionName">Institution Name</label>
+            <input type="text" name="institutionName" id="institutionName" value="
+            None">
+        </div>
+        </div>
+        
+        <br><br>
+        <div class="text-center">
+        <button class="btn btn-success btn-lg " style="padding: 6px 12px;" >Register</button>
+        </div>
+</form>
