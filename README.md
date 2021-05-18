@@ -1,6 +1,7 @@
 # Prime-banc
 [![Deploy to Firebase on merge](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml)
 
+- [Prime-banc](#prime-banc)
 - [Prime](#prime)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
