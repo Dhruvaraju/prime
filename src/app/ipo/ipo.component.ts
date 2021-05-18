@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ipo.component.css']
 })
 export class IpoComponent implements OnInit {
-
-  constructor() { }
-
+status="";
+hide=true;
+  constructor() { 
+  }
   ngOnInit(): void {
   }
-
+createserver()
+{
+  this.status="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
+  this.hide=false;
+}
 }
