@@ -1,10 +1,11 @@
-<div class="container ">
-    <label for="cpyname" class="font-weight-bold">Company Name:</label><br>
-    <input type="text" id="cpyname" name="cpyname"/><br>
+<div class="container form-group">
+    <h2 class="text-center font-italic">IPO Registration</h2>
+    <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
+    <input type="text" id="cpyname" name="cpyname" placeholder="eg: Prime Trade Company" class="form-control"/><br>
     <label for="mvalue" class="font-weight-bold">Total Market Value:</label><br>
-    <input type="text" id="mvalue" name="mvalue"/><br>
-    <label for="percent" class="font-weight-bold">Choose your percentage:</label><br>
-    <input list="percent" name="percent"/>
+    <input type="text" id="mvalue" name="mvalue" placeholder="Value" class="form-control"/><br>
+    <label for="percent" class="font-weight-bold">Choose Your Percentage:</label><br>
+    <input list="percent" name="percent" placeholder="Sell %" class="form-control">
     <datalist id="percent">
         <option value="0%">0%</option>
         <option value="5%">5%</option>
@@ -18,6 +19,6 @@
         <option value="45%">45%</option>
         <option value="49%">49%</option>
     </datalist><br><br>
-    <button type="button" class="btn btn-primary" (click)="createserver()" [disabled]="!f">Submit</button>
-    <p>{{jj}}</p>
+    <button type="button" class="btn btn-primary" (click)="createserver()" [disabled]="!hide">Submit</button>
+         <p>{{status}}</p>
     </div>
