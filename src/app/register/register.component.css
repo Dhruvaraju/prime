@@ -1,0 +1,22 @@
+ *{margin:0;
+    padding:0;
+} 
+
+h1,h2{
+    text-align: center;
+    padding-bottom: 0.5em;}
+h4{
+    padding-bottom: 0.5em;
+}
+
+input{
+        width:250px;
+        height: 30px;
+         margin-bottom: 2em; 
+        
+    }
+label{
+        margin-left: 2em; 
+        display: inline-block; 
+        width:150px;
+        font-size: large;}

@@ -18,7 +18,6 @@
   - [git stash clear](#git-stash-clear)
   - [git fetch --all](#git-fetch---all)
   - [App Hosting](#app-hosting)
-  - [Test](#test)
 
 # Prime
 
@@ -97,11 +96,9 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 ## git fetch --all
 - To track the remote branches
 
--To check working 
 ## App Hosting
 - At present app is hosted in firebase
 - A continuos delivery is enabled with help of github actions
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
 
-## Test
-- Testing 
+
