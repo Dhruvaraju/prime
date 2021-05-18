@@ -1,6 +1,7 @@
 # Prime-banc
 [![Deploy to Firebase on merge](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml)
 
+- [Prime-banc](#prime-banc)
 - [Prime](#prime)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
@@ -68,10 +69,6 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->scripts array,
 ```
 
-<<<<<<< HEAD
-
-- package.json is most special file .
-=======
 ## git help
 
 - To verify a branch command is `git branch`
@@ -105,4 +102,3 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 - A continuos delivery is enabled with help of github actions
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
 
->>>>>>> main
