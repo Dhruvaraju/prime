@@ -102,3 +102,4 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 - A continuos delivery is enabled with help of github actions
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
 
+# Example for merge conflict
