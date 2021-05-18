@@ -9,6 +9,8 @@ import { IpoComponent } from './ipo/ipo.component';
 import { BuynsellComponent } from './buynsell/buynsell.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { BuyComponent } from './buynsell/buy/buy.component';
+import { SellComponent } from './buynsell/sell/sell.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     IpoComponent,
     BuynsellComponent,
     ProductShopComponent,
-    HomepageComponent
+    HomepageComponent,
+    BuyComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,
