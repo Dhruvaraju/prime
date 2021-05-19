@@ -1,6 +1,6 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 0.5em;">
-    <a class="navbar-brand" href="#">Prime</a>
+    <a class="navbar-brand" routerLink="/home">Prime</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,6 +13,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/dashboard">User Name</a>
+    
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/ipo">IPO </a>
+        <a class="nav-item nav-link" routerLink="/buysell">Stock Buy and Sell</a>
+        <a class="nav-item nav-link" routerLink="/shop">Financial Products</a>
+      </div>
+    </div>
+    <span class="navbar-text">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+    </span>
   </nav>
 </div>
 <router-outlet></router-outlet>

@@ -7,8 +7,9 @@ import { IpoComponent } from './ipo/ipo.component';
 import { LoginComponent } from './login/login.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
 import { RegisterComponent } from './register/register.component';
-import {BuyComponent} from './buynsell/buy/buy.component';
-import {SellComponent} from './buynsell/sell/sell.component';
+import { BuyComponent } from './buynsell/buy/buy.component';
+import { SellComponent } from './buynsell/sell/sell.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'ipo', component: IpoComponent },
   { path: 'buy', component: BuyComponent },
-  { path: 'sell', component: SellComponent }
+  { path: 'sell', component: SellComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
