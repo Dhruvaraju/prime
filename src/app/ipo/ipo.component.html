@@ -1,6 +1,7 @@
-<form [formGroup]="registrationForm">
-<div class="container form-group">
-    <h2 class="text-center font-italic">IPO Registration</h2>
+<form [formGroup]="registrationForm" >
+  <div class="container form-group">
+    <div class="justify-content-center">
+    <h2 class="text-center font-italic">IPO REGISTRATION</h2><hr>
     <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
     <input type="text" id="cpyname" name="cpyname" 
     placeholder="eg: Prime Trade Company" class="form-control" 
@@ -11,10 +12,7 @@
         This field is required.
        </div>
        <div *ngIf="registrationForm.get('cpyname').errors.minlength">
-           Company Name cannot be more than 30 characters long.
-       </div>
-       <div *ngIf="registrationForm.get('cpyname').errors.minlength">
-         Company Name must be at least 2 characters long.
+           Company Name cannot be more than 30 characterslong and must be 2 characters long.
        </div>
      </div><br>
   
@@ -27,15 +25,17 @@
         This field is required.
        </div>
        </div><br>
+
     <label for="per" class="font-weight-bold">Choose Your Percentage:</label><br>
     <input list="per" name="per" placeholder="Sell %" class="form-control"
     formControlName="per"/>
-    <div *ngIf="registrationForm.get('per').invalid && (registrationForm.get('per').dirty || registrationForm.get('per').touched)"
+    <div *ngIf="registrationForm.get('per').invalid &&
+     (registrationForm.get('per').dirty || registrationForm.get('per').touched)"
        class="alert alert-danger">
        <div *ngIf="registrationForm.get('per').errors.required">
         This field is required.
        </div>
-       </div>
+    </div>
     <datalist id="per">
         <option value="0%">0%</option>
         <option value="5%">5%</option>
@@ -49,10 +49,10 @@
         <option value="45%">45%</option>
         <option value="49%">49%</option>
     </datalist><br><br>
-    <form>
-        <button type="button" name="but" class="btn btn-primary " 
-         (click)=" createserver()" >Submit</button> 
-         <p>{{status}}</p>
-        </form>
-    </div>
+    
+        <button type="button" class="btn btn-primary"[disabled]="!registrationForm.valid" (click)="Submit()">Submit</button> 
+         <p>{{state}}</p>
+    
+  </div>
+</div>
 </form>
