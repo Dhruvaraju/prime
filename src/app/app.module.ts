@@ -11,6 +11,7 @@ import { ProductShopComponent } from './product-shop/product-shop.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SellComponent } from './buynsell/sell/sell.component';
     ProductShopComponent,
     HomepageComponent,
     BuyComponent,
-    SellComponent
+    SellComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

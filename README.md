@@ -1,6 +1,8 @@
 # Prime-banc
+
 [![Deploy to Firebase on merge](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml)
 
+- [Prime-banc](#prime-banc)
 - [Prime](#prime)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
@@ -68,10 +70,6 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->scripts array,
 ```
 
-<<<<<<< HEAD
-
-- package.json is most special file .
-=======
 ## git help
 
 - To verify a branch command is `git branch`
@@ -80,7 +78,7 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 
 - To save the current version of your git project
 - command used to do it `git stash save <<stash-name>>`
-- example: ```git stash save customer```
+- example: `git stash save customer`
 
 > stashing is also known as dirty folders save
 
@@ -89,20 +87,21 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 - To see all the stashes available
 
 ## git stash apply
+
 - To get the stash back
-- example: ```git stash apply stash{0}``` 
+- example: `git stash apply stash{0}`
 
 ## git stash clear
+
 - To delete the stashes available in stash list
 - It is a non recoverable command
-  
+
 ## git fetch --all
+
 - To track the remote branches
 
-
 ## App Hosting
+
 - At present app is hosted in firebase
 - A continuos delivery is enabled with help of github actions
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
-
->>>>>>> main
