@@ -5,92 +5,95 @@
              style="width: 40%; 
              text-align: left;"
             (ngSubmit)="onSubmit()">
+        <!-- {{sellForm.value | json}} -->
             <div class="form-group">
                 <label for="stocks"></label>
                 <select 
                     name="stocks"
                     id="stocks"
                     formControlName="stocks" 
-                    [class.is-invalid]="sellForm.get('stocks').invalid &&
-                                        sellForm.get('stocks').touched"
+                    [class.is-invalid]="stocks.invalid && stocks.touched"
                     class="custom-select">
-                    <option value="TCS">TCS</option>
-                    <option value="TATA Motors">TATA Motors</option>
-                    <option value="SBIN">SBIN</option>
+                    <option value="" disabled>Select Stock</option>
+                    <option *ngFor= "let stock of selectStocks">{{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}</option>
                 </select>
                 <small 
-                    [class.d-none]="sellForm.get('stocks').valid || 
-                                    sellForm.get('stocks').untouched"
-                    class="text-danger"
-                >Please select a stock</small>
+                    [class.d-none]="stocks.valid || stocks.untouched"
+                    class="text-danger">
+                    Please select a stock
+                </small>
             </div>
             <div class="form-group row ">
-                <label for="quantity" class="col-sm-4 col-form-label">Quantity</label>
+                <label for="quantity" class="col-sm-4 col-form-label">
+                    Quantity
+                </label>
                 <div class="col-sm-8">
                     <input 
                         type="number" 
                         id="quantity" 
                         pattern="^[1-9]+[0-9]*$"
                         formControlName="quantity"
-                        [class.is-invalid]="sellForm.get('quantity').invalid &&
-                                            sellForm.get('quantity').touched"
+                        [class.is-invalid]="quantity.invalid && quantity.touched"
                         class="form-control" />
                     <small 
-                        [class.d-none]="sellForm.get('quantity').valid || 
-                                        sellForm.get('quantity').untouched"
-                        class="text-danger"
-                    >Quantity is required</small>
+                        [class.d-none]="quantity.valid || quantity.untouched"
+                        class="text-danger">
+                        Quantity is required
+                    </small>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="orderType" class="col-sm-4 col-form-label" #orderType>Order Type</label>
+                <label for="orderType" class="col-sm-4 col-form-label" >
+                    Order Type
+                </label>
                 <div class="col-sm-8">
                     <select 
                         name="order" 
                         id="orderType"
+                        (change)="onOrderTypeChange()"
                         formControlName="orderType"
-                        [class.is-invalid]="sellForm.get('orderType').invalid &&
-                                            sellForm.get('orderType').touched"
+                        [class.is-invalid]="orderType.invalid && orderType.touched"
                         class="custom-select">
+                        <option value=""disabled>Select Order Type</option>
                         <option value="market">Market Order</option>
                         <option value="limit" #limit>Limit Order</option>
                     </select>
                     <small 
-                        [class.d-none]="sellForm.get('orderType').valid || 
-                                        sellForm.get('orderType').untouched"
-                        class="text-danger"
-                    >Please select any order type</small>
+                        [class.d-none]="orderType.valid || orderType.untouched" 
+                        class="text-danger">
+                        Please select any order type
+                    </small>
                 </div>
             </div>
-            <div *ngIf="sellForm.get('orderType').value==limit; else elseblock">
-                <div class="form-group row">
-                    <label for="price" class="col-sm-4 col-form-label">Price</label>
-                    <div class="col-sm-8">
-                        <input 
-                            type="number" 
-                            id="price"
-                            pattern="^[1-9]+[0-9]+[0-9]*$"
-                            formControlName="price"
-                            [class.is-invalid]="sellForm.get('price').invalid &&
-                                                sellForm.get('price').touched"
-                            class="form-control"  />
-                        <small 
-                            [class.d-none]="sellForm.get('price').valid || 
-                                            sellForm.get('price').untouched"
-                            class="text-danger"
-                        >Price is required</small>
-                    </div> 
-                </div>
+            <div class="form-group row" *ngIf="enableSellPrice"> 
+                <label for="price" class="col-sm-4 col-form-label">
+                    Price
+                </label>
+                <div class="col-sm-8">
+                    <input 
+                        type="number" 
+                        id="price"
+                        pattern="^[1-9]+[0-9]+[0-9]*$"
+                        formControlName="price"
+                        [class.is-invalid]="price.invalid && price.touched"
+                        class="form-control"/>
+                    <small  
+                        [class.d-none]="price.valid || price.untouched"
+                        class="text-danger">
+                        Price is required
+                    </small>
+                </div> 
             </div>
-            <ng-template #elseblock></ng-template> 
             
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success" style="width: 9rem;">SELL</button>
+                <button type="submit" class="btn btn-success" style="width: 9rem;">
+                    SELL
+                </button>
             </div>
         </form>
     </div>
     <div class="d-flex justify-content-end">
-      <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
+      <button routerLink="/buysell" type="button" (click)="onSubmit()" class="btn btn-outline-dark">
         Go back
       </button>
     </div>

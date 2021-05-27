@@ -8,9 +8,9 @@ import { SellComponent } from './sell/sell.component';
   styleUrls: ['./buynsell.component.css']
 })
 export class BuynsellComponent implements OnInit {
-
+ 
   constructor() { }
-
+ 
   ngOnInit(): void {
   }
 

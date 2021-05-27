@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +14,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StructuralDirective } from './structural.directive';
+import { StocksService } from './services/stocks.service';
+
 
 
 @NgModule({
@@ -27,16 +29,17 @@ import { StructuralDirective } from './structural.directive';
     HomepageComponent,
     BuyComponent,
     SellComponent,
-    DashboardComponent,
-    StructuralDirective
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [StocksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
