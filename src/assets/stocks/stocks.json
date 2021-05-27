@@ -1,0 +1,6 @@
+[
+    { "ticker": "SIS", "name": "Stark Industries", "price": 370 },
+    { "ticker": "LCP", "name": "Lex Corp", "price": 450 },
+    { "ticker": "WIS", "name": "Wayne Industries", "price":4900 }
+
+]
