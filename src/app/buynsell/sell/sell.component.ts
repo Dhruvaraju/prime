@@ -45,7 +45,7 @@ export class SellComponent implements OnInit {
   }
 
   onOrderTypeChange() {
-    if(this.sellForm.get('orderType').value === "limit") {
+    if(this.sellForm.get('orderType').value == "limit") {
       this.enableSellPrice = true;
     }
     else {
