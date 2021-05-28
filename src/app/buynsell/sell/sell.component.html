@@ -1,47 +1,106 @@
 <div class="container">
-    <div class="d-flex justify-content-center">
-      <form style="width: 40%; text-align: left;">
-          <div class="form-group">
-              <select name="stocks" class="custom-select">
-                  <option selected>Select Stocks</option>
-                  <option value="TCS">TCS</option>
-                  <option value="TATA Motors">TATA Motors</option>
-                  <option value="SBIN">SBIN</option>
-              </select>
-          </div>
-          <div class="form-group row ">
-              <label for="qnt" class="col-sm-4 col-form-label">Quantity</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="qnt" />
-              </div>
-          </div>
-          <div class="form-group row">
-              <label for="ot" class="col-sm-4 col-form-label">Order Type</label>
-              <div class="col-sm-8">
-                  <select name="order" class="custom-select" id="ot">
-                      <option selected></option>
-                      <option value="market">Market Order</option>
-                      <option value="limit">Limit Order</option>
-                  </select>
-              </div>
-          </div>
-          <div class="form-group row">
-              <label for="price" class="col-sm-4 col-form-label">Price</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="price" />
-              </div>
-          </div>
-          
-          <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-success" style="width: 9rem;">SELL</button>
-          </div>
-      </form>
+    <div class="d-flex justify-content-center" 
+        style="margin-top: 5%; margin-bottom: 20%;">
+      <form 
+            [formGroup]="sellForm" 
+             style="width: 40%; 
+             text-align: left;"
+            (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="stocks"></label>
+                <select 
+                    name="stocks"
+                    id="stocks"
+                    formControlName="stocks" 
+                    [class.is-invalid]="stocks.invalid && stocks.touched"
+                    class="custom-select">
+                    <option value="select-stock" disabled>Select Stock</option>
+                    <option *ngFor= "let stock of selectStocks">{{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}</option>
+                </select>
+                <small 
+                    [class.d-none]="stocks.valid || stocks.untouched"
+                    class="text-danger">
+                    Please select a stock
+                </small>
+            </div>
+            <div class="form-group row ">
+                <label for="quantity" class="col-sm-4 col-form-label">
+                    Quantity
+                </label>
+                <div class="col-sm-8">
+                    <input 
+                        type="number" 
+                        id="quantity" 
+                        pattern="^[1-9]+[0-9]*$"
+                        formControlName="quantity"
+                        [class.is-invalid]="quantity.invalid && quantity.touched"
+                        class="form-control" />
+                    <small 
+                        [class.d-none]="quantity.valid || quantity.untouched"
+                        class="text-danger">
+                        Quantity is required
+                    </small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="orderType" class="col-sm-4 col-form-label" >
+                    Order Type
+                </label>
+                <div class="col-sm-8">
+                    <select 
+                        name="order" 
+                        id="orderType"
+                        (change)="onOrderTypeChange()"
+                        formControlName="orderType"
+                        [class.is-invalid]="orderType.invalid && orderType.touched"
+                        class="custom-select">
+                        <option value="select"disabled>Select Order Type</option>
+                        <option value="market">Market Order</option>
+                        <option value="limit" #limit>Limit Order</option>
+                    </select>
+                    <small 
+                        [class.d-none]="orderType.valid || orderType.untouched" 
+                        class="text-danger">
+                        Please select any order type
+                    </small>
+                </div>
+            </div>
+            <div class="form-group row" *ngIf="enableSellPrice"> 
+                <label for="price" class="col-sm-4 col-form-label">
+                    Price
+                </label>
+                <div class="col-sm-8">
+                    <input 
+                        type="number" 
+                        id="price"
+                        pattern="^[1-9]+[0-9]+[0-9]*$"
+                        formControlName="price"
+                        (keyup)="onPriceChange()"
+                        [class.is-invalid]="price.invalid && price.touched"
+                        class="form-control"/>
+                    <small  
+                        [class.d-none]="price.valid || price.untouched"
+                        class="text-danger">
+                        Price is required
+                    </small>
+                </div> 
+            </div>
+            <div class="alert alert-danger row" role="alert" *ngIf="priceErrorBanner">
+                Price is mandatory for Limit Order
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success" style="width: 9rem;">
+                    SELL
+                </button>
+            </div>
+        </form>
     </div>
     <div class="d-flex justify-content-end">
       <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
         Go back
       </button>
     </div>
-  </div>
-  <router-outlet></router-outlet>
+</div>
+<router-outlet></router-outlet>
   
