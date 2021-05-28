@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="d-flex justify-content-center" style="margin-top: 5%; margin-bottom: 20%;">
+    <div class="d-flex justify-content-center" 
+        style="margin-top: 5%; margin-bottom: 20%;">
       <form 
             [formGroup]="sellForm" 
              style="width: 40%; 
              text-align: left;"
             (ngSubmit)="onSubmit()">
-        <!-- {{sellForm.value | json}} -->
             <div class="form-group">
                 <label for="stocks"></label>
                 <select 
@@ -14,7 +14,7 @@
                     formControlName="stocks" 
                     [class.is-invalid]="stocks.invalid && stocks.touched"
                     class="custom-select">
-                    <option value="" disabled>Select Stock</option>
+                    <option value="select-stock" disabled>Select Stock</option>
                     <option *ngFor= "let stock of selectStocks">{{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}</option>
                 </select>
                 <small 
@@ -54,7 +54,7 @@
                         formControlName="orderType"
                         [class.is-invalid]="orderType.invalid && orderType.touched"
                         class="custom-select">
-                        <option value=""disabled>Select Order Type</option>
+                        <option value="select"disabled>Select Order Type</option>
                         <option value="market">Market Order</option>
                         <option value="limit" #limit>Limit Order</option>
                     </select>
@@ -75,6 +75,7 @@
                         id="price"
                         pattern="^[1-9]+[0-9]+[0-9]*$"
                         formControlName="price"
+                        (keyup)="onPriceChange()"
                         [class.is-invalid]="price.invalid && price.touched"
                         class="form-control"/>
                     <small  
@@ -83,6 +84,9 @@
                         Price is required
                     </small>
                 </div> 
+            </div>
+            <div class="alert alert-danger row" role="alert" *ngIf="priceErrorBanner">
+                Price is mandatory for Limit Order
             </div>
             
             <div class="d-flex justify-content-center">
@@ -93,7 +97,7 @@
         </form>
     </div>
     <div class="d-flex justify-content-end">
-      <button routerLink="/buysell" type="button" (click)="onSubmit()" class="btn btn-outline-dark">
+      <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
         Go back
       </button>
     </div>

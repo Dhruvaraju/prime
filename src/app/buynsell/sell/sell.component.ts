@@ -8,10 +8,9 @@ import { StocksService } from './../../services/stocks.service';
   styleUrls: ['./sell.component.css']
 })
 export class SellComponent implements OnInit {
-
-  submitted = false;
   public selectStocks = [];
   enableSellPrice: boolean = false;
+  priceErrorBanner: boolean = false; //Price Error Display Banner
   sellForm: FormGroup;
 
   get stocks() {
@@ -34,14 +33,14 @@ export class SellComponent implements OnInit {
 
   ngOnInit() {
     this.sellForm = this.fb.group({
-      stocks: ['', Validators.required ],
+      stocks: ["select-stock", Validators.required ],
       quantity: ['', Validators.required ],
-      orderType: ['', Validators.required ],
-      price: ['', Validators.required ]
+      orderType: ["select", Validators.required ],
+      price: ['']
     });
 
     this.stock.getStocks()
-      .subscribe(data => this.selectStocks = data);
+      .subscribe((data) => (this.selectStocks = data));
   }
 
   onOrderTypeChange() {
@@ -53,15 +52,23 @@ export class SellComponent implements OnInit {
     }
   }
 
+  onPriceChange() {
+    this.priceErrorBanner = false;
+  }
 
   onSubmit() {
-    this.submitted = true;
-    if (this.sellForm.valid) {
-      alert('Order Successful!');
+    if (
+      this.sellForm.get('orderType').value === 'limit' &&
+      this.sellForm.get('price').value === ''
+    ) {
+      this.priceErrorBanner = true;
+      return null;
     }
-    else{
+    if (this.sellForm.valid) {
+      alert('Product Added to your Portfolio!');
+    } else {
       alert('Error!Try Again');
     }
-   // console.log(this.sellForm);
+    this.sellForm.reset()
   }
 }
