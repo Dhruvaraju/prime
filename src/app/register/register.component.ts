@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     password:['',Validators.required],
     confirmpassword:['',Validators.required], 
     type:['',Validators.required],
-    organisation:['']
+    organisation:['None']
 
 
    },{validator:passwordValidator});
