@@ -1,21 +1,28 @@
-<div
-  class="container text-center border w-25 pb-3px"
-  style="background-color: lightblue"
->
-  <label for="type" style="font-weight: bold">Type of User</label><br />
-  <select name="type" id="type" style="width: 12em">
-    <option value="Individual">Individual</option>
-    <option value="Institution">Institution</option>
-    <option value="Admin">Admin</option></select
-  ><br /><br />
-  <label for="username" style="font-weight: bold">Username</label><br />
-  <input type="text" name="username" id="username" /><br /><br />
-  <label for="password" style="font-weight: bold">Password</label><br />
-  <input type="password" name="password" id="password" /><br /><br />
-  <button class="btn btn-success pb-3px">LOGIN</button>
+<div class="d-flex container justify-content-center align-items-center text-center">
+  <form [formGroup]="loginPage"> 
+ 
+    
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" id="username" class="form-control" formControlName="username">
+      
+    </div>
+    <div class="alert alert-danger" *ngIf="loginPage.get('username').invalid && loginPage.get('username').touched"><small >Username required</small></div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" id="password"  class="form-control" formControlName="password">
+    </div>
+  
+  <div class="alert alert-danger" *ngIf="loginPage.get('password').invalid && loginPage.get('password').touched"><small >Password required</small></div>
+    <div class="text-center">
+      <button class="btn btn-success pb-3px">LOGIN</button>
+    </div>
+  
+    <div class=" text-center">
+      <h3 >New User?</h3>
+      <button class="btn btn-success" routerLink="/register">REGISTER</button>
+    </div>
+  </form>
 </div>
-<br />
-<div class="text-center">
-  <h3>New User?</h3>
-  <button class="btn btn-success">REGISTER</button>
-</div>
+  
