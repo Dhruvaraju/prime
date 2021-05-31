@@ -1,68 +1,72 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 0.5em;">
-    <a class="navbar-brand" routerLink="/home">Prime</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-  </nav>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/dashboard">User Name</a>
-    
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/ipo">IPO </a>
-        <a class="nav-item nav-link" routerLink="/buysell">Stock Buy and Sell</a>
-        <a class="nav-item nav-link" routerLink="/shop">Financial Products</a>
-      </div>
+  <div
+    class="
+      d-flex
+      flex-column flex-md-row
+      align-items-center
+      p-3
+      px-md-4
+      mb-3
+      bg-white
+      border-bottom
+      shadow-sm
+    "
+  >
+    <h5 class="my-0 mr-md-auto font-weight-normal">Prime</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" routerLink="/ipo">IPO</a>
+      <a class="p-2 text-dark" routerLink="/buysell">Stock Trading</a>
+      <a class="p-2 text-dark" routerLink="/shop">Financial Products</a>
+    </nav>
+    <a class="btn btn-outline-primary" routerLink="/home">Home &raquo;</a>
+  </div>
+  <div class="navbar navbar-light bg-light" style="margin-bottom: 0.5em">
+    <a class="" routerLink="/dashboard"
+      ><img
+        src="https://raw.githubusercontent.com/Dhruvaraju/Open-Log/master/src/assets/user.svg"
+        alt="User: "
+      />
+      UserName
+    </a>
+    <div class="form-inline">
+      <a class="btn btn-outline-info btn-sm">Logout</a>
     </div>
-    <span class="navbar-text">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-    </span>
-  </nav>
+  </div>
 </div>
 <router-outlet></router-outlet>
 <div class="container">
-<footer class="pt-4 my-md-5 pt-md-5 border-top">
-  <div class="row">
-    <div class="col-12 col-md">
-      <p>Prime &copy; 2021</p>
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <p>Prime &copy; 2021</p>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">IPO Support</a></li>
+          <li><a class="text-muted" href="#">Buying Stocks</a></li>
+          <li><a class="text-muted" href="#">Selling Stocks</a></li>
+          <li><a class="text-muted" href="#">Wealth Management</a></li>
+          <li><a class="text-muted" href="#">Income planning</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Trading Support</a></li>
+          <li><a class="text-muted" href="#">Trading Account</a></li>
+          <li><a class="text-muted" href="#">Demat Account</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About Us</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-6 col-md">
-      <h5>Features</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">IPO Support</a></li>
-        <li><a class="text-muted" href="#">Buying Stocks</a></li>
-        <li><a class="text-muted" href="#">Selling Stocks</a></li>
-        <li><a class="text-muted" href="#">Wealth Management</a></li>
-        <li><a class="text-muted" href="#">Income planning</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Resources</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Trading Support</a></li>
-        <li><a class="text-muted" href="#">Trading Account</a></li>
-        <li><a class="text-muted" href="#">Demat Account</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>About Us</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Team</a></li>
-        <li><a class="text-muted" href="#">Locations</a></li>
-        <li><a class="text-muted" href="#">Privacy</a></li>
-        <li><a class="text-muted" href="#">Terms</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+  </footer>
 </div>
