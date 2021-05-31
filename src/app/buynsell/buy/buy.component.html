@@ -1,104 +1,116 @@
 <div class="container">
-  <div class="d-flex justify-content-center" 
-       style="margin-top: 5%; margin-bottom: 20%;">
-    <form 
-        [formGroup]="buyForm" 
-        style="width: 40%; 
-        text-align: left;"
-        (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="stocks"></label>
-            <select 
-                name="stocks"
-                id="stocks"
-                formControlName="stocks" 
-                [class.is-invalid]="stocks.invalid && stocks.touched"
-                class="custom-select">
-                <option value="select-stock" disabled>Select Stock</option>
-                <option *ngFor= "let stock of selectStocks">{{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}</option>
-            </select>
-            <small 
-                [class.d-none]="stocks.valid || stocks.untouched"
-                class="text-danger">
-                Please select a stock
-            </small>
-        </div>
-        <div class="form-group row ">
-            <label for="quantity" class="col-sm-4 col-form-label">
-                Quantity
-            </label>
-            <div class="col-sm-8">
-                <input 
-                    type="number" 
-                    id="quantity" 
-                    pattern="^[1-9]+[0-9]*$"
-                    formControlName="quantity"
-                    [class.is-invalid]="quantity.invalid && quantity.touched"
-                    class="form-control"/>
-                <small 
-                    [class.d-none]="quantity.valid || quantity.untouched"
-                    class="text-danger">
-                    Quantity is required
-                </small>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="orderType" class="col-sm-4 col-form-label">
-                Order Type
-            </label>
-            <div class="col-sm-8">
-                <select 
-                    name="order" 
-                    id="orderType"
-                    formControlName="orderType"
-                    (change)="onOrderTypeChange()"
-                    [class.is-invalid]="orderType.invalid && orderType.touched"
-                    class="custom-select">
-                    <option value="Select"disabled>Select Order Type</option>
-                    <option value="market">Market Order</option>
-                    <option value="limit" #limit>Limit Order</option>
-                </select>
-                <small 
-                    [class.d-none]="orderType.valid || orderType.untouched"
-                    class="text-danger">
-                    Please select any order type
-                </small>
-            </div>
-        </div>
-        <div class="form-group row" *ngIf="enableBillPrice"> 
-            <label for="price" class="col-sm-4 col-form-label">
-                 Price
-            </label>
-            <div class="col-sm-8">
-                <input
-                    type="number" 
-                    id="price"
-                    pattern="^[1-9]+[0-9]+[0-9]*$"
-                    formControlName="price"
-                    (keyup)="onPriceChange()"
-                    [class.is-invalid]="price.invalid && price.touched"
-                    class="form-control"/>
-                <small 
-                    [class.d-none]="price.valid || price.untouched"
-                    class="text-danger">
-                    Price is required
-                </small>
-            </div>     
-        </div> 
-        <small class="alert alert-danger row" role="alert" *ngIf="priceErrorBanner">
-            Price is mandatory for Limit Order
+  <div
+    class="d-flex justify-content-center"
+    style="margin-top: 5%; margin-bottom: 20%"
+  >
+    <form
+      [formGroup]="buyForm"
+      style="width: 40%; text-align: left"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group">
+        <label for="stocks"></label>
+        <select
+          name="stocks"
+          id="stocks"
+          formControlName="stocks"
+          [class.is-invalid]="stocks.invalid && stocks.touched"
+          class="custom-select"
+        >
+          <option value="select-stock" disabled>Select Stock</option>
+          <option *ngFor="let stock of selectStocks">
+            {{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}
+          </option>
+        </select>
+        <small
+          [class.d-none]="stocks.valid || stocks.untouched"
+          class="text-danger"
+        >
+          Please select a stock
         </small>
-        
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary" style="width: 9rem;">
-                BUY
-            </button>
+      </div>
+      <div class="form-group row">
+        <label for="quantity" class="col-sm-4 col-form-label"> Quantity </label>
+        <div class="col-sm-8">
+          <input
+            type="number"
+            id="quantity"
+            pattern="^[1-9]+[0-9]*$"
+            formControlName="quantity"
+            [class.is-invalid]="quantity.invalid && quantity.touched"
+            class="form-control"
+          />
+          <small
+            [class.d-none]="quantity.valid || quantity.untouched"
+            class="text-danger"
+          >
+            Quantity is required
+          </small>
         </div>
+      </div>
+      <div class="form-group row">
+        <label for="orderType" class="col-sm-4 col-form-label">
+          Order Type
+        </label>
+        <div class="col-sm-8">
+          <select
+            name="order"
+            id="orderType"
+            formControlName="orderType"
+            (change)="onOrderTypeChange()"
+            [class.is-invalid]="orderType.invalid && orderType.touched"
+            class="custom-select"
+          >
+            <option value="Select" disabled>Select Order Type</option>
+            <option value="market">Market Order</option>
+            <option value="limit" #limit>Limit Order</option>
+          </select>
+          <small
+            [class.d-none]="orderType.valid || orderType.untouched"
+            class="text-danger"
+          >
+            Please select any order type
+          </small>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="enableBillPrice">
+        <label for="price" class="col-sm-4 col-form-label"> Price </label>
+        <div class="col-sm-8">
+          <input
+            type="number"
+            id="price"
+            pattern="^[1-9]+[0-9]+[0-9]*$"
+            formControlName="price"
+            (keyup)="onPriceChange()"
+            [class.is-invalid]="price.invalid && price.touched"
+            class="form-control"
+          />
+          <small
+            [class.d-none]="price.valid || price.untouched"
+            class="text-danger"
+          >
+            Price is required
+          </small>
+        </div>
+      </div>
+      <small
+        class="alert alert-danger row"
+        role="alert"
+        *ngIf="priceErrorBanner"
+      >
+        Price is mandatory for Limit Order
+      </small>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" style="width: 9rem">
+          BUY
+        </button>
+      </div>
     </form>
   </div>
   <div class="d-flex justify-content-end">
     <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
-        Go back
+      Go back
     </button>
   </div>
 </div>

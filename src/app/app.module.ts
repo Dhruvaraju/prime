@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,8 +15,6 @@ import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StocksService } from './services/stocks.service';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,15 +26,15 @@ import { StocksService } from './services/stocks.service';
     HomepageComponent,
     BuyComponent,
     SellComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [StocksService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

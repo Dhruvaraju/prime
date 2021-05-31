@@ -5,7 +5,7 @@ import { StocksService } from './../../services/stocks.service';
 @Component({
   selector: 'app-sell',
   templateUrl: './sell.component.html',
-  styleUrls: ['./sell.component.css']
+  styleUrls: ['./sell.component.css'],
 })
 export class SellComponent implements OnInit {
   public selectStocks = [];
@@ -28,26 +28,23 @@ export class SellComponent implements OnInit {
   get price() {
     return this.sellForm.get('price');
   }
-  constructor( private fb: FormBuilder, 
-               private stock: StocksService ) { }
+  constructor(private fb: FormBuilder, private stock: StocksService) {}
 
   ngOnInit() {
     this.sellForm = this.fb.group({
-      stocks: ["select-stock", Validators.required ],
-      quantity: ['', Validators.required ],
-      orderType: ["select", Validators.required ],
-      price: ['']
+      stocks: ['select-stock', Validators.required],
+      quantity: ['', Validators.required],
+      orderType: ['select', Validators.required],
+      price: [''],
     });
 
-    this.stock.getStocks()
-      .subscribe((data) => (this.selectStocks = data));
+    this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
   }
 
   onOrderTypeChange() {
-    if(this.sellForm.get('orderType').value === "limit") {
+    if (this.sellForm.get('orderType').value === 'limit') {
       this.enableSellPrice = true;
-    }
-    else {
+    } else {
       this.enableSellPrice = false;
     }
   }
@@ -69,6 +66,6 @@ export class SellComponent implements OnInit {
     } else {
       alert('Error!Try Again');
     }
-    this.sellForm.reset()
+    this.sellForm.reset();
   }
 }

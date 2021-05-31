@@ -4,15 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StocksService {
+  private _url: string = '/assets/stocks/stocks.json';
 
-  private _url: string = "/assets/stocks/stocks.json";
+  constructor(private http: HttpClient) {}
 
-  constructor( private http: HttpClient ) { }
-
-  getStocks(): Observable<IStocks[]>{
+  getStocks(): Observable<IStocks[]> {
     return this.http.get<IStocks[]>(this._url);
   }
 }

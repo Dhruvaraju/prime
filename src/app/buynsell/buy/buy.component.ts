@@ -29,19 +29,17 @@ export class BuyComponent implements OnInit {
     return this.buyForm.get('price');
   }
 
-  constructor( private fb: FormBuilder,
-               private stock: StocksService ) {}
+  constructor(private fb: FormBuilder, private stock: StocksService) {}
 
   ngOnInit() {
     this.buyForm = this.fb.group({
-      stocks: ["select-stock", Validators.required ],
-      quantity: ['', Validators.required ],
-      orderType: ["Select", Validators.required ],
+      stocks: ['select-stock', Validators.required],
+      quantity: ['', Validators.required],
+      orderType: ['Select', Validators.required],
       price: [''],
     });
 
-    this.stock.getStocks()
-              .subscribe((data) => (this.selectStocks = data));
+    this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
   }
 
   onOrderTypeChange() {
@@ -69,6 +67,6 @@ export class BuyComponent implements OnInit {
     } else {
       alert('Error!Try Again');
     }
-    this.buyForm.reset()
+    this.buyForm.reset();
   }
 }
