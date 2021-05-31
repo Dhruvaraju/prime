@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WealthComponent } from './wealth/wealth.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'buy', component: BuyComponent },
   { path: 'sell', component: SellComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'wealth', component: WealthComponent }
 ];
 
 @NgModule({

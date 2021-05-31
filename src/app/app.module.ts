@@ -14,13 +14,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
-import { WealthComponent } from './product-shop/wealth/wealth.component';
-=======
-import { StocksService } from './services/stocks.service';
+import { WealthComponent } from './wealth/wealth.component';
 
-
->>>>>>> 78cc24ebc077cf774acb37984963fd1c90c44293
 
 @NgModule({
   declarations: [
@@ -34,11 +29,8 @@ import { StocksService } from './services/stocks.service';
     BuyComponent,
     SellComponent,
     DashboardComponent,
-<<<<<<< HEAD
-    WealthComponent
-=======
+    WealthComponent,
     
->>>>>>> 78cc24ebc077cf774acb37984963fd1c90c44293
   ],
   imports: [
     BrowserModule,
@@ -46,7 +38,7 @@ import { StocksService } from './services/stocks.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [StocksService],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
