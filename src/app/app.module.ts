@@ -14,7 +14,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StocksService } from './services/stocks.service';
+import { StocksService } from './services/stocks/stocks.service';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-import { IStocks } from '../../assets/stocks/stocks';
+import { IStocks } from '../../../assets/stocks/stocks';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,5 +13,13 @@ export class StocksService {
 
   getStocks(): Observable<IStocks[]> {
     return this.http.get<IStocks[]>(this._url);
+  }
+
+  buyStockOrder(orderDetail: any): Observable<any> {
+    return this.http.post<any>(this._url + 'buy/', orderDetail);
+  }
+
+  sellStockOrder(orderDetail: any): Observable<any> {
+    return this.http.post<any>(this._url + 'sell/', orderDetail);
   }
 }

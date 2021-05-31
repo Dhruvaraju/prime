@@ -14,7 +14,7 @@
           name="stocks"
           id="stocks"
           formControlName="stocks"
-          [class.is-invalid]="stocks.invalid && stocks.touched"
+          [class.is-invalid]="getStocks.invalid && getStocks.touched"
           class="custom-select"
         >
           <option value="select-stock" disabled>Select Stock</option>
@@ -23,7 +23,7 @@
           </option>
         </select>
         <small
-          [class.d-none]="stocks.valid || stocks.untouched"
+          [class.d-none]="getStocks.valid || getStocks.untouched"
           class="text-danger"
         >
           Please select a stock
@@ -37,11 +37,11 @@
             id="quantity"
             pattern="^[1-9]+[0-9]*$"
             formControlName="quantity"
-            [class.is-invalid]="quantity.invalid && quantity.touched"
+            [class.is-invalid]="getQuantity.invalid && getQuantity.touched"
             class="form-control"
           />
           <small
-            [class.d-none]="quantity.valid || quantity.untouched"
+            [class.d-none]="getQuantity.valid || getQuantity.untouched"
             class="text-danger"
           >
             Quantity is required
@@ -58,7 +58,7 @@
             id="orderType"
             (change)="onOrderTypeChange()"
             formControlName="orderType"
-            [class.is-invalid]="orderType.invalid && orderType.touched"
+            [class.is-invalid]="getOrderType.invalid && getOrderType.touched"
             class="custom-select"
           >
             <option value="select" disabled>Select Order Type</option>
@@ -66,7 +66,7 @@
             <option value="limit" #limit>Limit Order</option>
           </select>
           <small
-            [class.d-none]="orderType.valid || orderType.untouched"
+            [class.d-none]="getOrderType.valid || getOrderType.untouched"
             class="text-danger"
           >
             Please select any order type
@@ -82,30 +82,51 @@
             pattern="^[1-9]+[0-9]+[0-9]*$"
             formControlName="price"
             (keyup)="onPriceChange()"
-            [class.is-invalid]="price.invalid && price.touched"
+            [class.is-invalid]="getPrice.invalid && getPrice.touched"
             class="form-control"
           />
           <small
-            [class.d-none]="price.valid || price.untouched"
+            [class.d-none]="getPrice.valid || getPrice.untouched"
             class="text-danger"
           >
             Price is required
           </small>
         </div>
       </div>
-      <div class="alert alert-danger row" role="alert" *ngIf="priceErrorBanner">
+      <small 
+        class="alert alert-danger row" 
+        role="alert" 
+        *ngIf="priceErrorBanner"
+      >
         Price is mandatory for Limit Order
+      </small>
+      
+      <div 
+        class="alert alert-danger" 
+        role="alert" 
+        *ngIf="systemUnavailable"
+      >
+        System Unavailable try again later
       </div>
 
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-success" style="width: 9rem">
+        <button 
+          type="submit" 
+          class="btn btn-success" 
+          [disabled]= "!sellForm.valid" 
+          style="width: 9rem"
+        >
           SELL
         </button>
       </div>
     </form>
   </div>
   <div class="d-flex justify-content-end">
-    <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
+    <button 
+      routerLink="/buysell" 
+      type="button" 
+      class="btn btn-outline-dark"
+    >
       Go back
     </button>
   </div>

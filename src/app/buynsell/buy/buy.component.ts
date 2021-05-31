@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from './../../services/stocks.service';
+import { StocksService } from '../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-buy',
@@ -11,25 +11,31 @@ export class BuyComponent implements OnInit {
   public selectStocks = [];
   enableBillPrice: boolean = false;
   priceErrorBanner: boolean = false; //Price Error Display Banner
+  systemUnavailable: boolean = false; //Display Server error
+  // onSuccessBanner: boolean = false; //Display Success Banner on Submit
+  // onErrorBanner: boolean = false; //Display Success Banner on Error
   buyForm: FormGroup;
 
-  get stocks() {
+  get getStocks() {
     return this.buyForm.get('stocks');
   }
 
-  get quantity() {
+  get getQuantity() {
     return this.buyForm.get('quantity');
   }
 
-  get orderType() {
+  get getOrderType() {
     return this.buyForm.get('orderType');
   }
 
-  get price() {
+  get getPrice() {
     return this.buyForm.get('price');
   }
 
-  constructor(private fb: FormBuilder, private stock: StocksService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private stock: StocksService
+    ) {}
 
   ngOnInit() {
     this.buyForm = this.fb.group({
@@ -68,5 +74,26 @@ export class BuyComponent implements OnInit {
       alert('Error!Try Again');
     }
     this.buyForm.reset();
+  
+    let orderDetail = {
+      stockName: this.buyForm.get('stocks').value,
+      quantity: this.buyForm.get('quantity').value,
+      orderType: this.buyForm.get('orderType').value,  
+      price: this.buyForm.get('price').value
+    };
+    this.stock.buyStockOrder(orderDetail).subscribe(
+      (res) => {
+        if (res.status === 300) {
+          // this.onSuccessBanner = true;
+        } 
+        else {
+          // this.onSuccessBanner = false;
+          // this.buyForm.reset();
+        }
+      },
+      (err) => {
+        this.systemUnavailable = true;
+      }
+    );
   }
 }
