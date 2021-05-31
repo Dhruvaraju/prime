@@ -1,29 +1,26 @@
-<html>
-  <body>
-  
-    <section id="shop">
-      <div class="container">
-        <div class="title">
-          <h1 >Wealth Management Product</h1>
-        
-        </div>
-
-    <div class="d-flex container justify-content-center align-items-center text-center">
-    <form>
-        <div class="form-group">
-            <label for="name">Product Name</label>
-            <input type="name" class="form-control" id="name"  placeholder="eg.Short Term Gold">
+<div class="d-flex container justify-content-center align-items-center text-center">
+    <form [formGroup]="wealth"> 
+   
       
-        </div>
-        <div class="form-group">
-            <label for="type">Product Type</label>
-            <input type="type" class="form-control" id="type" placeholder="eg.Wealth Management">
-        </div>
+      <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" name="name" id="name" class="form-control" formControlName="text">
+        
+      </div>
+      
+  
+      <div class="form-group">
+        <label>Poduct Type</label>
+        <input type="type" name="type" id="type"  class="form-control" formControlName="type">
+      </div>
     
-            <button type="submit" class="btn btn-primary">Submit</button>
+    
+      <div class="text-center">
+        <button class="btn btn-success pb-3px">LOGIN</button>
+      </div>
+    
+      
     </form>
-    </div>
-    </div>
-</section>
-</body>
-</html>
+  </div>
+    
+  
