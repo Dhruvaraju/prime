@@ -1,5 +1,6 @@
 <html>
   <body>
+    <link rel="stylesheet" type="text/css" href="product-shop.component.css">
     <section id="shop">
       <div class="container">
         <div class="title">
@@ -7,9 +8,9 @@
           <p align="center">Here we have a list of financial products!</p>
         </div>
 
-        <div class="container my-5">
+        <div class="container my-5" id="blur">
           <div class="row">
-            <div class="col">
+            <div class="col-md-6 col-sm-12">
               <div class="card text-center">
                 <img
                   src="https://tse1.mm.bing.net/th?id=OIP.cGEvtjUO8fXYL_NQ2OcheQHaEJ&pid=Api&P=0&w=321&h=181.jpg"
@@ -24,9 +25,32 @@
                     the prodcut click the button below.
                   </p>
                 </div>
-                <a href="#" class="btn btn-primary">View Products</a>
+                <a href="#" class="btn btn-primary" onclick="toggle()">Description</a>
               </div>
             </div>
+
+            <div id="popup">
+              <h2>Wealth Management Product</h2>
+              <p>
+                At Prime Wealth Management, we will be focusing on your
+                success and remaining committed to helping you grow your
+                wealth and pursue your financial goals.To know more about
+                the prodcut click the button below.
+              </p>
+              <a href="#" class="btn btn-primary" onclick="toggle()">View Products</a>
+
+            </div>
+
+            <script type="text/javascript">
+              function toggle()
+              {
+                  var blur = document.getElementById('blur');
+                  blur.classList.toggle('active');
+                  var popup = document.getElementById('popup');
+                  popup.classList.toggle('active');
+              }
+
+            </script>
             <div class="col">
               <div class="card text-center">
                 <img

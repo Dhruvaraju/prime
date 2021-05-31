@@ -12,6 +12,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WealthComponent } from './product-shop/wealth/wealth.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomepageComponent,
     BuyComponent,
     SellComponent,
-    DashboardComponent
+    DashboardComponent,
+    WealthComponent
   ],
   imports: [
     BrowserModule,
