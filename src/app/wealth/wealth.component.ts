@@ -10,7 +10,8 @@ export class WealthComponent implements OnInit {
   constructor(private fg:FormBuilder) { }
   wealth=this.fg.group({
     name:[''],
-    type:['']
+    type:[''],
+    value:['']
     
   })
 
