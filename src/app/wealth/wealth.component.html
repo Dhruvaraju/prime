@@ -6,15 +6,11 @@
       <div class="container-fluid">
         <form [formGroup]="wealth">
           <div class="form-group">
-            <label>Product Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              class="form-control"
-              formControlName="text"
-              placeholder="eg. Short Term Gold"
-            />
+            <label for="name">Product Name</label>
+            <select class="form-control" id="name">
+              <option>Short Term Gold</option>
+              <option>Long Term Platinam</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -42,7 +38,7 @@
           </div>
 
           <div class="text-center">
-            <button class="btn btn-success pb-3px">Submit</button>
+            <button class="btn btn-primary pb-3px">Submit</button>
           </div>
 
           <div class="d-flex justify-content-end">
