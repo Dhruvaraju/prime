@@ -15,6 +15,7 @@ import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
+import { IncomeComponent } from './income/income.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { WealthComponent } from './wealth/wealth.component';
     SellComponent,
     DashboardComponent,
     WealthComponent,
+    IncomeComponent,
     
   ],
   imports: [
