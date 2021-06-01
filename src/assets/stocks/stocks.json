@@ -1,5 +1,13 @@
 [
-  { "ticker": "SIS", "name": "Stark Industries", "price": 370 },
+  { "ticker": "ADP", "name": "ADANIPORTS", "price": 740 },
+  { "ticker": "CIP", "name": "Cipla", "price": 955 },
+  { "ticker": "HCT", "name": "HCLTECH", "price": 945 },
+  { "ticker": "ITC", "name": "ITC", "price": 215 },
   { "ticker": "LCP", "name": "Lex Corp", "price": 450 },
-  { "ticker": "WIS", "name": "Wayne Industries", "price": 4900 }
+  { "ticker": "NST", "name": "NESTLEIND", "price": 500 },
+  { "ticker": "SIS", "name": "Stark Industries", "price": 370 },
+  { "ticker": "SBN", "name": "SBIN", "price": 430 },
+  { "ticker": "TMS", "name": "TATAMOTORS", "price": 320 },
+  { "ticker": "TSL", "name": "TATASTEEL", "price": 990 },
+  { "ticker": "WIS", "name": "Wayne Industries", "price": 800 }
 ]

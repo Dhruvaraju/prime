@@ -12,27 +12,25 @@ export class SellComponent implements OnInit {
   enableSellPrice: boolean = false;
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
+  onSuccessBanner: boolean = false; //Display Success Banner on Submit
   sellForm: FormGroup;
 
   get getStocks() {
     return this.sellForm.get('stocks');
   }
-
   get getQuantity() {
     return this.sellForm.get('quantity');
   }
-
   get getOrderType() {
     return this.sellForm.get('orderType');
   }
-
   get getPrice() {
     return this.sellForm.get('price');
   }
   constructor(
     private fb: FormBuilder, 
     private stock: StocksService
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.sellForm = this.fb.group({
@@ -41,7 +39,6 @@ export class SellComponent implements OnInit {
       orderType: ['select', Validators.required],
       price: [''],
     });
-
     this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
   }
 
@@ -65,27 +62,19 @@ export class SellComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    if (this.sellForm.valid) {
-      alert('Product Added to your Portfolio!');
-    } else {
-      alert('Error!Try Again');
-    }
-    this.sellForm.reset();
-  
+    this.onSuccessBanner = true;
+    let marketPrice = this.sellForm.get('stocks').value;
+    let price = marketPrice.slice(marketPrice.length - 3);
     let orderDetail = {
       stockName: this.sellForm.get('stocks').value,
       quantity: this.sellForm.get('quantity').value,
       orderType: this.sellForm.get('orderType').value,  
-      price: this.sellForm.get('price').value
+      priceLimit: this.sellForm.get('price').value,
+      marketPrice: price
     };
     this.stock.sellStockOrder(orderDetail).subscribe(
       (res) => {
-        if (res.status === 300) {
-          alert('Order Successfull');
-        } 
-        else {
-          alert('Invalid');
-        }
+        this.sellForm.reset();
       },
       (err) => {
         this.systemUnavailable = true;

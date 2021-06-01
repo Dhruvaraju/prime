@@ -1,13 +1,16 @@
-import { IStocks } from '../../../assets/stocks/stocks';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IStocks } from '../../../assets/stocks/stocks';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class StocksService {
   private _url: string = '/assets/stocks/stocks.json';
+  baseurl: string = "";
+  stockObject: any[] = ["test"];
 
   constructor(private http: HttpClient) {}
 
@@ -16,10 +19,12 @@ export class StocksService {
   }
 
   buyStockOrder(orderDetail: any): Observable<any> {
-    return this.http.post<any>(this._url + 'buy/', orderDetail);
+    // return this.http.post<any>(this.baseurl + 'bns/buy/', orderDetail);
+    this.stockObject.push(orderDetail);
+    return null;
   }
 
   sellStockOrder(orderDetail: any): Observable<any> {
-    return this.http.post<any>(this._url + 'sell/', orderDetail);
+    return this.http.post<any>(this.baseurl + 'bns/sell/', orderDetail);
   }
 }

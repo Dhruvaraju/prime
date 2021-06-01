@@ -1,7 +1,29 @@
 <div class="container">
+  <div class="row justify-content-center">
+    <marquee behavior="scroll" direction="left" width="65%" loop="10">
+      <div class="holder">
+        <div class="text-container">
+          <p>
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            SBI Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </marquee>
+  </div> 
   <div
     class="d-flex justify-content-center"
-    style="margin-top: 5%; margin-bottom: 20%"
+    style="margin-top: 5%;"
   >
     <form
       [formGroup]="buyForm"
@@ -19,10 +41,10 @@
         >
           <option value="select-stock" disabled>Select Stock</option>
           <option *ngFor="let stock of selectStocks">
-            {{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}
+            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
           </option>
         </select>
-        <small
+        <small 
           [class.d-none]="getStocks.valid || getStocks.untouched"
           class="text-danger"
         >
@@ -108,25 +130,19 @@
         >
         System Unavailable try again later
       </div>
-      <!-- <div 
+      <div 
         class="alert alert-success" 
         role="alert"
         *ngIf="onSuccessBanner"
       >
         Product Added to your Portfolio
       </div>
-      <div 
-        class="alert alert-danger" 
-        role="alert"
-        *ngIf="onErrorBanner"
-      >
-        Error! Try again!
-      </div> -->
 
       <div class="d-flex justify-content-center">
         <button 
           type="submit" 
           class="btn btn-primary" 
+          [disabled]="!this.buyForm.valid"
           style="width: 9rem"
         >
           BUY
@@ -139,9 +155,9 @@
       routerLink="/buysell" 
       type="button" 
       class="btn btn-outline-dark"
+      style="margin-bottom: 15%; margin-top: 5%;"
     >
       Go back
     </button>
   </div>
 </div>
-<router-outlet></router-outlet>
