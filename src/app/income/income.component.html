@@ -1,49 +1,59 @@
 <div class="container">
-    <div class="title">
-        
-            <h3>Income Products</h3>
-        
+  <div class="title">
+    <h3>Income Products</h3>
 
-<div class="container">
-    <div class="container-fluid">
-    <form [formGroup]="income"> 
-   
-      
-      <div class="form-group">
-        <label>Product Name</label>
-        <input type="text" name="name" id="name" class="form-control" formControlName="text" placeholder="eg. Short Term Gold">
-        
-      </div>
-      
-  
-      <div class="form-group">
-        <label>Poduct Type</label>
-        <input type="type" name="type" id="type"  class="form-control" formControlName="type" placeholder="eg.Income Product">
-      </div>
+    <div class="container">
+      <div class="container-fluid">
+        <form [formGroup]="income">
+          <div class="form-group">
+            <label for="name">Product Name</label>
+            <select class="form-control" id="name">
+              <option>Income Plus</option>
+              
+              
+            </select>
+          </div>
 
-      <div class="form-group">
-        <label>Maturity Value</label>
-        <input type="value" name="value" id="value"  class="form-control" formControlName="value" placeholder="eg. 20000">
-      </div>
-    
-    
-      <div class="text-center">
-        <button class="btn btn-success pb-3px">Submit</button>
-      </div>
+          <div class="form-group">
+            <label>Poduct Type</label>
+            <input
+              type="type"
+              name="type"
+              id="type"
+              class="form-control"
+              formControlName="type"
+              placeholder="eg.Income Product"
+            />
+          </div>
 
-      <div class="d-flex justify-content-end">
-        <button routerLink="/shop" type="button" class="btn btn-outline-dark">
-            Go back
-        </button>
+          <div class="form-group">
+            <label>Maturity Value</label>
+            <input
+              type="value"
+              name="value"
+              id="value"
+              class="form-control"
+              formControlName="value"
+              placeholder="eg. 20000"
+            />
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary pb-3px">Submit</button>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button
+              routerLink="/shop"
+              type="button"
+              class="btn btn-outline-dark"
+            >
+              Go back
+            </button>
+          </div>
+        </form>
       </div>
-    
-      
-    </form>
+    </div>
   </div>
 </div>
-</div>
-</div>
 <router-outlet></router-outlet>
-
-    
-  
