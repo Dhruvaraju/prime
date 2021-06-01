@@ -1,58 +1,80 @@
-<form [formGroup]="registrationForm" >
-  <div class="container form-group">
-    <div class="justify-content-center">
-      <h2 class="text-center font-italic">IPO REGISTRATION</h2><hr>
-
-    <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
-        <input type="text" id="cpyname" name="cpyname" 
-               placeholder="eg: Prime Trade Company" class="form-control" 
-               formControlName="cpyname">
-          <div *ngIf="registrationForm.get('cpyname').invalid && (registrationForm.get('cpyname').dirty || registrationForm.get('cpyname').touched)"
-                class="alert alert-danger">
-          <div *ngIf="registrationForm.get('cpyname').errors.required">
-                This field is required.
-          </div>
-          <div *ngIf="registrationForm.get('cpyname').errors.minlength">
-                Company Name cannot be more than 30 characters long and must be 2 characters long.
-          </div>
-          </div><br>
-  
-    <label for="mvalue" class="font-weight-bold">Total Market Value:</label><br>
-        <input type="text" id="mvalue" name="mvalue" placeholder="Value" class="form-control" 
-              formControlName="mvalue"/>
-          <div *ngIf="registrationForm.get('mvalue').invalid && (registrationForm.get('mvalue').dirty || registrationForm.get('mvalue').touched)"
-               class="alert alert-danger">
-          <div *ngIf="registrationForm.get('mvalue').errors.required">
-                This field is required.
-          </div>
-          </div><br>
-
-    <label for="per" class="font-weight-bold">Percentage market cap available for issue:</label><br>
-        <div *ngIf="registrationForm.get('per').invalid &&
-              (registrationForm.get('per').dirty || registrationForm.get('per').touched)"
-               class="alert alert-danger">
-        <div *ngIf="registrationForm.get('per').errors.required">
-              This field is required.
-        </div>
-        </div>
-            <select class="form-control" id="per"  
-                    formControlName="per">
-                <option value=" 0% " >0% </option>
-                <option value=" 5% " >5% </option>
-                <option value=" 10% ">10%</option>
-                <option value=" 15% ">15%</option>
-                <option value=" 20% ">20%</option>
-                <option value=" 25% ">25%</option>
-                <option value=" 30% ">30%</option>
-                <option value=" 35% ">35%</option>
-                <option value=" 40% ">40%</option>
-                <option value=" 45% ">45%</option>
-                <option value=" 49% ">49%</option>
-            </select><br><br>
-    
-    <button type="button" class="btn btn-primary"[disabled]="!registrationForm.valid" (click)="Submit()">Submit</button> 
-    <p>{{state}}</p>
-    
-    </div>
+<div class="container">
+   <div class="justify-content-center">
+      <div class="jumbotron">
+      <form [formGroup]="registrationForm" (ngSubmit)=Submit()>
+            {{registrationForm.value | json}}
+            <h2 class="text-center font-bold">IPO REGISTRATION</h2><hr>
+            <div class="form-group">
+                  <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
+                        <input 
+                              type="text" id="cpyname" name="cpyname" 
+                              placeholder="eg: Prime Trade Company" class="form-control" 
+                              formControlName="cpyname">
+                        <div *ngIf="registrationForm.get('cpyname').invalid 
+                                    && (registrationForm.get('cpyname').dirty || registrationForm.get('cpyname').touched)"
+                                    class="alert alert-danger">
+                        <div *ngIf="registrationForm.get('cpyname').errors.required">
+                                    Please fill this field
+                              </div>
+                              <div *ngIf="registrationForm.get('cpyname').errors.minlength">
+                                    Minimum 2 characters required
+                              </div>
+                              </div><br>
+            </div>
+            <div class="form-group">
+                  <label for="mvalue" class="font-weight-bold">Total Market Value:</label><br>
+                         <input 
+                              type="text" 
+                              id="mvalue"
+                              name="mvalue" 
+                              placeholder="Value" 
+                              class="form-control" 
+                              formControlName="mvalue"/>
+                        <div *ngIf="registrationForm.get('mvalue').invalid
+                               && (registrationForm.get('mvalue').dirty || registrationForm.get('mvalue').touched)"
+                              class="alert alert-danger">
+                        <div *ngIf="registrationForm.get('mvalue').errors.required">
+                               Please fill this field
+                         </div>
+                         </div><br>
+            </div>
+            <div class="form-group">
+                  <label for="per" 
+                  class="font-weight-bold">Percentage market cap available for issue:</label><br>
+                        <div *ngIf="registrationForm.get('per').invalid &&
+                         (registrationForm.get('per').dirty || registrationForm.get('per').touched)"
+                              class="alert alert-danger">
+                        <div *ngIf="registrationForm.get('per').errors.required">
+                              Please fill this field
+                        </div>
+                        </div>
+                        <select
+                         class="form-control" 
+                        id="per"  
+                        formControlName="per">
+                              <option value=" 0% " >0% </option>
+                              <option value=" 5% " >5% </option>
+                              <option value=" 10% ">10%</option>
+                              <option value=" 15% ">15%</option>
+                              <option value=" 20% ">20%</option>
+                              <option value=" 25% ">25%</option>
+                              <option value=" 30% ">30%</option>
+                              <option value=" 35% ">35%</option>
+                              <option value=" 40% ">40%</option>
+                              <option value=" 45% ">45%</option>
+                              <option value=" 49% ">49%</option>
+                              </select><br><br>
+            </div>
+            <div class="form-group">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    [disabled]="!registrationForm.valid" 
+                    >Submit
+                  </button> 
+                  <p>{{state}}</p>
+            </div>
+      </form>
   </div>
-</form>
+</div>
+</div>
