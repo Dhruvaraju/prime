@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-income',
   templateUrl: './income.component.html',
-  styleUrls: ['./income.component.css']
+  styleUrls: ['./income.component.css'],
 })
 export class IncomeComponent implements OnInit {
+  constructor(private fg: FormBuilder) {}
+  income = this.fg.group({
+    name: [''],
+    type: [''],
+    value: [''],
+  });
 
-  constructor(private fg:FormBuilder) { }
-  income=this.fg.group({
-    name:[''],
-    type:[''],
-    value:['']
-  })
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
