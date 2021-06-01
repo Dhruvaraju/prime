@@ -6,11 +6,10 @@ h1 {
     opacity: 0;
   }
   80% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 h5 {
-  
   color: rgba(230, 77, 77, 0.925);
   text-align: center;
   font-family: sans-serif;
