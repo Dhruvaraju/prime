@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { IporegistrationService } from '../services/ipo/iporegistration.service';
+
 @Component({
   selector: 'app-ipo',
   templateUrl: './ipo.component.html',
@@ -10,7 +12,7 @@ export class IpoComponent implements OnInit {
   state="";
   registrationForm :FormGroup;
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
   ngOnInit() {
     this.registrationForm = this.builder.group({
       'cpyname': new FormControl('', [
@@ -26,7 +28,15 @@ export class IpoComponent implements OnInit {
   }
 
 Submit(){
-  if(this.registrationForm.status==="VALID")
+    
+  /*this._reg.register(this.registrationForm.value)
+  .subscribe(
+    
+   response => console.log("Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared",response),
+    error=>console.log("System currently unavailable contact our banking representative to initiate the process",error)
+  );
+}*/
+ if(this.registrationForm.status==="VALID")
   {
     this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
   }
