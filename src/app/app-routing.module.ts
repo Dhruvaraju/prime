@@ -12,6 +12,7 @@ import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
+import { IpoquoteComponent } from './ipo/ipoquote/ipoquote.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'shop', component: ProductShopComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'ipo', component: IpoComponent },
+  { path: 'ipoquote', component : IpoquoteComponent},
   { path: 'buy', component: BuyComponent },
   { path: 'sell', component: SellComponent },
   { path: 'dashboard', component: DashboardComponent },

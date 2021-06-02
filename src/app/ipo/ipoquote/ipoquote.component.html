@@ -1,0 +1,95 @@
+<div class="container my-5">
+    <div class="jumbotron">
+    <div class="card" style="margin-top: 0.5em">
+      <h3 class="card-header text-center">Welcome To IPO</h3>
+      <div class="card-body">
+               <h5 class="card-title"></h5>
+        <p class="card-text p-3 mb-2 font-italic text-white"
+         *ngFor= "let s of quotation">{{s.description}} </p>
+      </div>
+     
+    </div>
+    
+<br>
+<br>
+<div class="text-center">
+
+        <div class="row">
+          
+         <div class="col-12 col-md-4">
+         
+              <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <img src="./../../assets/ipo-images/ipoopen.png" style="width:auto">
+                  <div class="card-body">
+                  <h5 class="card-title">Issue Opens</h5>
+                  <p class="card-text p-3 mb-2 text-white" 
+                   *ngFor= "let s of quotation">{{s.issueDate}} </p>
+                  
+          <br>
+                </div>
+          </div> 
+          </div>
+
+              <div class="col-12 col-md-4">
+              <div class="card shadow p-3 mb-5 bg-body rounded icon" style="width: 18rem;">
+                <img src="./../../assets/ipo-images/ipoclose.png" style="width:auto">
+                  <div class="card-body">
+                  <h5 class="card-title">Issue Closes</h5>
+                  <p class="card-text p-3 mb-2 text-white"
+                  *ngFor= "let s of quotation">{{s.closingdate}}</p>
+                  <br>
+              </div>
+              </div>   </div>
+
+              <div class="col-12 col-md-4 ">
+              <div class="card shadow p-3 mb-5 bg-body rounded " style="width: 18rem;">
+                <img src="./../../assets/ipo-images/ipoprice.png" style="width:auto">
+                  <div class="card-body">
+                  <h5 class="card-title">Issue Price</h5>
+                  <p class="card-text  p-3 mb-2  text-white"
+                  *ngFor= "let s of quotation">{{s.issuePrice}}</p>
+                  <br>
+              </div></div>
+              </div> 
+        </div> 
+        
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <img src="./../../assets/ipo-images/iposize.png" style="width:auto">
+                  <div class="card-body">
+                  <h5 class="card-title">Issue Size</h5>
+                  <p class="card-text p-3 mb-2  text-white" 
+                   *ngFor= "let s of quotation">{{s.issueSize}}</p>
+                  <br>
+                  </div>  </div> 
+             </div> 
+
+              <div class="col-12 col-md-4">
+              <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <img src="./../../assets/ipo-images/ipolot.png" style="width:auto">
+                  <div class="card-body">
+                  <h5 class="card-title">Lot Size</h5>
+                  <p class="card-text p-3 mb-2 text-white"
+                 *ngFor= "let s of quotation">{{s.lotSize}}</p>
+                  <br>
+                  </div></div>
+              </div>  
+
+              <div class="col-12 col-md-4">
+              <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <img src="./../../assets/ipo-images/ratio.jpg" style="width:auto">
+                  <div class="card-body">
+                  <h5 class="card-title ">Ratio</h5>
+                  <p class="card-text p-3 mb-2  text-white font-bold">Institutional 75% ,
+                    Non-Institutional 25% </p>
+                  </div>
+              </div> 
+            </div> 
+          </div>
+
+</div> 
+      
+      </div>
+</div>

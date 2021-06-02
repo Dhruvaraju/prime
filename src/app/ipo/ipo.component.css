@@ -1,9 +1,17 @@
 .container
 {
+   
 line-height: 200%;
 font-size: large;
 display: flex;
 justify-content: center;
+}
+h2
+{
+    color:blueviolet;
+}
+label,h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 p
 {
