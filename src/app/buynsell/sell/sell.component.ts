@@ -62,23 +62,33 @@ export class SellComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    this.onSuccessBanner = true;
-    let marketPrice = this.sellForm.get('stocks').value;
-    let price = marketPrice.slice(marketPrice.length - 3);
-    let orderDetail = {
-      stockName: this.sellForm.get('stocks').value,
-      quantity: this.sellForm.get('quantity').value,
-      orderType: this.sellForm.get('orderType').value,  
-      priceLimit: this.sellForm.get('price').value,
-      marketPrice: price
-    };
-    this.stock.sellStockOrder(orderDetail).subscribe(
-      (res) => {
-        this.sellForm.reset();
-      },
-      (err) => {
-        this.systemUnavailable = true;
+    if (
+      this.sellForm.valid == true
+      ) {
+        // this.onSuccessBanner = true;
+        alert("Product Sale Initiated Successfully")
       }
-    );
+    // else {
+    //   this.onSuccessBanner = false;
+    // }
+    this.sellForm.reset();
+    this.onSuccessBanner = false;
+    // let marketPrice = this.sellForm.get('stocks').value;
+    // let price = marketPrice.slice(marketPrice.length - 3);
+    // let orderDetail = {
+    //   stockName: this.sellForm.get('stocks').value,
+    //   quantity: this.sellForm.get('quantity').value,
+    //   orderType: this.sellForm.get('orderType').value,  
+    //   priceLimit: this.sellForm.get('price').value,
+    //   marketPrice: price
+    // };
+    // this.stock.sellStockOrder(orderDetail).subscribe(
+    //   (res) => {
+    //     this.sellForm.reset();
+    //   },
+    //   (err) => {
+    //     this.systemUnavailable = true;
+    //   }
+    // );
   }
 }

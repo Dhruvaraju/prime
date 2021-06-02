@@ -62,23 +62,32 @@ export class BuyComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    this.onSuccessBanner = true;
-    let marketPrice = this.buyForm.get('stocks').value;
-    let price = marketPrice.slice(marketPrice.length - 3);
-    let orderDetail = {
-      stockName: this.buyForm.get('stocks').value,
-      quantity: this.buyForm.get('quantity').value,
-      orderType: this.buyForm.get('orderType').value,
-      priceLimit: this.buyForm.get('price').value,
-      marketPrice: price
-    };
-    this.stock.buyStockOrder(orderDetail).subscribe(
-      (res) => {
-        this.buyForm.reset();
-      },
-      (err) => {
-        this.systemUnavailable = true;
+    if (
+      this.buyForm.valid == true
+      ) {
+        // this.onSuccessBanner = true;
+        alert("Product Added to your Portfolio")
       }
-    );
+    // else {
+    //   this.onSuccessBanner = false;
+    // }
+    this.buyForm.reset();
+    // let marketPrice = this.buyForm.get('stocks').value;
+    // let price = marketPrice.slice(marketPrice.length - 3);
+    // let orderDetail = {
+    //   stockName: this.buyForm.get('stocks').value,
+    //   quantity: this.buyForm.get('quantity').value,
+    //   orderType: this.buyForm.get('orderType').value,
+    //   priceLimit: this.buyForm.get('price').value,
+    //   marketPrice: price
+    // };
+    // this.stock.buyStockOrder(orderDetail).subscribe(
+    //   (res) => {
+    //     this.buyForm.reset();
+    //   },
+    //   (err) => {
+    //     this.systemUnavailable = true;
+    //   }
+    // );
   }
 }
