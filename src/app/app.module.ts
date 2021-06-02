@@ -28,6 +28,7 @@ import { IporegistrationService } from './services/ipo/iporegistration.service';
     LoginComponent,
     RegisterComponent,
     IpoComponent,
+    IpoquoteComponent,
     BuynsellComponent,
     ProductShopComponent,
     HomepageComponent,

@@ -28,14 +28,15 @@ export class IpoComponent implements OnInit {
   }
 
 Submit(){
-this._reg.register(this.registrationForm.value)
+    
+  /*this._reg.register(this.registrationForm.value)
   .subscribe(
     
    response => console.log("Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared",response),
     error=>console.log("System currently unavailable contact our banking representative to initiate the process",error)
   );
-}
- /* if(this.registrationForm.status==="VALID")
+}*/
+ if(this.registrationForm.status==="VALID")
   {
     this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
   }
@@ -43,6 +44,6 @@ this._reg.register(this.registrationForm.value)
   {
     this.state="System currently unavailable contact our banking representative to initiate the process";
   }
-}*/
+}
 
 }

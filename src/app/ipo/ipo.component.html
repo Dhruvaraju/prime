@@ -1,8 +1,7 @@
 <div class="container">
    <div class="justify-content-center">
       <div class="jumbotron">
-      <form [formGroup]="registrationForm" (ngSubmit)=Submit()>
-            {{registrationForm.value | json}}
+      <form [formGroup]="registrationForm" >
             <h2 class="text-center font-bold">IPO REGISTRATION</h2><hr>
             <div class="form-group">
                   <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
@@ -24,7 +23,7 @@
             <div class="form-group">
                   <label for="mvalue" class="font-weight-bold">Total Market Value:</label><br>
                          <input 
-                              type="text" 
+                              type="number" 
                               id="mvalue"
                               name="mvalue" 
                               placeholder="Value" 
@@ -69,7 +68,7 @@
                   <button
                     type="button"
                     class="btn btn-primary"
-                    [disabled]="!registrationForm.valid" 
+                    [disabled]="!registrationForm.valid" (click)=Submit()
                     >Submit
                   </button> 
                   <p>{{state}}</p>
