@@ -17,11 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
 import { StocksService } from './services/stocks.service';
-<<<<<<< HEAD
 import { formSubmitService } from './services/login&register.service'
-=======
 import { IporegistrationService } from './services/ipo/iporegistration.service';
->>>>>>> main
 
 
 
@@ -49,12 +46,9 @@ import { IporegistrationService } from './services/ipo/iporegistration.service';
   ],
   providers:[
     StocksService,
-    IporegistrationService
+    IporegistrationService,formSubmitService
   ],
-<<<<<<< HEAD
-  providers: [StocksService,formSubmitService],
-=======
->>>>>>> main
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}
