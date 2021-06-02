@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from '../../services/stocks/stocks.service';
+import { StocksService } from './../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-buy',
