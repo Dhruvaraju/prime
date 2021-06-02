@@ -1,0 +1,11 @@
+[
+    
+    { 
+        "description" : "Initial public offering is the process by which a private company can go public by sale of its stocks to general public. After IPO, the company's shares are traded in an open market.Those shares can be further sold by investors through secondary market trading.",
+        "issueDate" :"2021-05-15",
+        "issueSize":300000,
+        "issuePrice":2,
+        "lotSize":200,
+        "closingdate":"2021-10-12"
+    }
+]
