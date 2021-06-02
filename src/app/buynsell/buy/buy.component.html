@@ -1,105 +1,163 @@
 <div class="container">
-  <div class="d-flex justify-content-center" 
-       style="margin-top: 5%; margin-bottom: 20%;">
-    <form 
-        [formGroup]="buyForm" 
-        style="width: 40%; 
-        text-align: left;"
-        (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="stocks"></label>
-            <select 
-                name="stocks"
-                id="stocks"
-                formControlName="stocks" 
-                [class.is-invalid]="stocks.invalid && stocks.touched"
-                class="custom-select">
-                <option value="select-stock" disabled>Select Stock</option>
-                <option *ngFor= "let stock of selectStocks">{{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}</option>
-            </select>
-            <small 
-                [class.d-none]="stocks.valid || stocks.untouched"
-                class="text-danger">
-                Please select a stock
-            </small>
+  <div class="row justify-content-center">
+    <marquee behavior="scroll" direction="left" width="65%" loop="10">
+      <div class="holder">
+        <div class="text-container">
+          <p>
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
+            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            SBI Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
+          </p>
         </div>
-        <div class="form-group row ">
-            <label for="quantity" class="col-sm-4 col-form-label">
-                Quantity
-            </label>
-            <div class="col-sm-8">
-                <input 
-                    type="number" 
-                    id="quantity" 
-                    pattern="^[1-9]+[0-9]*$"
-                    formControlName="quantity"
-                    [class.is-invalid]="quantity.invalid && quantity.touched"
-                    class="form-control"/>
-                <small 
-                    [class.d-none]="quantity.valid || quantity.untouched"
-                    class="text-danger">
-                    Quantity is required
-                </small>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="orderType" class="col-sm-4 col-form-label">
-                Order Type
-            </label>
-            <div class="col-sm-8">
-                <select 
-                    name="order" 
-                    id="orderType"
-                    formControlName="orderType"
-                    (change)="onOrderTypeChange()"
-                    [class.is-invalid]="orderType.invalid && orderType.touched"
-                    class="custom-select">
-                    <option value="Select"disabled>Select Order Type</option>
-                    <option value="market">Market Order</option>
-                    <option value="limit" #limit>Limit Order</option>
-                </select>
-                <small 
-                    [class.d-none]="orderType.valid || orderType.untouched"
-                    class="text-danger">
-                    Please select any order type
-                </small>
-            </div>
-        </div>
-        <div class="form-group row" *ngIf="enableBillPrice"> 
-            <label for="price" class="col-sm-4 col-form-label">
-                 Price
-            </label>
-            <div class="col-sm-8">
-                <input
-                    type="number" 
-                    id="price"
-                    pattern="^[1-9]+[0-9]+[0-9]*$"
-                    formControlName="price"
-                    (keyup)="onPriceChange()"
-                    [class.is-invalid]="price.invalid && price.touched"
-                    class="form-control"/>
-                <small 
-                    [class.d-none]="price.valid || price.untouched"
-                    class="text-danger">
-                    Price is required
-                </small>
-            </div>     
-        </div> 
-        <small class="alert alert-danger row" role="alert" *ngIf="priceErrorBanner">
-            Price is mandatory for Limit Order
+      </div>
+    </marquee>
+  </div> 
+  <div
+    class="d-flex justify-content-center"
+    style="margin-top: 5%;"
+  >
+    <form
+      [formGroup]="buyForm"
+      style="width: 40%; text-align: left"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group">
+        <label for="stocks"></label>
+        <select
+          name="stocks"
+          id="stocks"
+          formControlName="stocks"
+          [class.is-invalid]="getStocks.invalid && getStocks.touched"
+          class="custom-select"
+        >
+          <option value="select-stock" disabled>Select Stock</option>
+          <option *ngFor="let stock of selectStocks">
+            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
+          </option>
+        </select>
+        <small 
+          [class.d-none]="getStocks.valid || getStocks.untouched"
+          class="text-danger"
+        >
+          Please select a stock
         </small>
-        
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary" style="width: 9rem;">
-                BUY
-            </button>
+      </div>
+      <div class="form-group row">
+        <label for="quantity" class="col-sm-4 col-form-label"> Quantity </label>
+        <div class="col-sm-8">
+          <input
+            type="number"
+            id="quantity"
+            pattern="^[1-9]+[0-9]*$"
+            formControlName="quantity"
+            [class.is-invalid]="getQuantity.invalid && getQuantity.touched"
+            class="form-control"
+          />
+          <small
+            [class.d-none]="getQuantity.valid || getQuantity.untouched"
+            class="text-danger"
+          >
+            Quantity is required
+          </small>
         </div>
+      </div>
+      <div class="form-group row">
+        <label for="orderType" class="col-sm-4 col-form-label">
+          Order Type
+        </label>
+        <div class="col-sm-8">
+          <select
+            name="order"
+            id="orderType"
+            formControlName="orderType"
+            (change)="onOrderTypeChange()"
+            [class.is-invalid]="getOrderType.invalid && getOrderType.touched"
+            class="custom-select"
+          >
+            <option value="Select" disabled>Select Order Type</option>
+            <option value="market">Market Order</option>
+            <option value="limit" #limit>Limit Order</option>
+          </select>
+          <small
+            [class.d-none]="getOrderType.valid || getOrderType.untouched"
+            class="text-danger"
+          >
+            Please select any order type
+          </small>
+        </div>
+      </div>
+      <div class="form-group row" *ngIf="enableBillPrice">
+        <label for="price" class="col-sm-4 col-form-label"> Price </label>
+        <div class="col-sm-8">
+          <input
+            type="number"
+            id="price"
+            pattern="^[1-9]+[0-9]+[0-9]*$"
+            formControlName="price"
+            (keyup)="onPriceChange()"
+            [class.is-invalid]="getPrice.invalid && getPrice.touched"
+            class="form-control"
+          />
+          <small
+            [class.d-none]="getPrice.valid || getPrice.untouched"
+            class="text-danger"
+          >
+            Price is required
+          </small>
+        </div>
+      </div>
+      <small
+        class="alert alert-danger row"
+        role="alert"
+        *ngIf="priceErrorBanner"
+      >
+        Price is mandatory for Limit Order
+      </small>
+
+      <div 
+        class="alert alert-danger" 
+        role="alert" 
+        *ngIf="systemUnavailable"
+        >
+        System Unavailable try again later
+      </div>
+      <div 
+        class="alert alert-success" 
+        role="alert"
+        *ngIf="onSuccessBanner"
+      >
+        Product Added to your Portfolio
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button 
+          type="submit" 
+          class="btn btn-primary" 
+          [disabled]="!this.buyForm.valid"
+          style="width: 9rem"
+        >
+          BUY
+        </button>
+      </div>
     </form>
   </div>
   <div class="d-flex justify-content-end">
-    <button routerLink="/buysell" type="button" class="btn btn-outline-dark">
-        Go back
+    <button 
+      routerLink="/buysell" 
+      type="button" 
+      class="btn btn-outline-dark"
+      style="margin-bottom: 15%; margin-top: 5%;"
+    >
+      Go back
     </button>
   </div>
 </div>
-<router-outlet></router-outlet>
