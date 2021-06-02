@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { IpoComponent } from './ipo/ipo.component';
-import { IpoquoteComponent} from './ipo/ipoquote/ipoquote.component';
+import { IpoquoteComponent } from './ipo/ipoquote/ipoquote.component';
 import { BuynsellComponent } from './buynsell/buynsell.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
 import { StocksService } from './services/stocks/stocks.service';
+import { formSubmitService } from './services/login&register.service'
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 
 
@@ -45,8 +46,9 @@ import { IporegistrationService } from './services/ipo/iporegistration.service';
   ],
   providers:[
     StocksService,
-    IporegistrationService
+    IporegistrationService,formSubmitService
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}
