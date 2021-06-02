@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WealthComponent } from './wealth/wealth.component';
+import { IncomeComponent } from './income/income.component';
 import { IpoquoteComponent } from './ipo/ipoquote/ipoquote.component';
 
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'buy', component: BuyComponent },
   { path: 'sell', component: SellComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'wealth', component: WealthComponent },
+  { path: 'income', component: IncomeComponent }
 ];
 
 @NgModule({
