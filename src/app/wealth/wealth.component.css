@@ -1,7 +1,10 @@
 h3 {
   text-align: center;
   color: white;
-  background-color: rgb(37, 153, 182);
   font-family: sans-serif;
-  padding: 10px;
+  
+}
+
+h4{
+  text-align: center;
 }
