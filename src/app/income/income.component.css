@@ -8,12 +8,11 @@ h4 {
   text-align: center;
 }
 
-  @keyframes blink {
-    10% {
-      opacity: 0;
-    }
-    
+@keyframes blink {
+  10% {
+    opacity: 0;
   }
+}
 
 span {
   animation: blink 1s linear infinite;
