@@ -1,7 +1,8 @@
+<div class="container">
 <div
   class="d-flex container justify-content-center align-items-center text-center"
 >
-  <form [formGroup]="loginPage">
+  <form [formGroup]="loginPage" (ngSubmit)="onLogin()" >
     <div class="form-group">
       <label>Username</label>
       <input
@@ -40,13 +41,21 @@
     >
       <small>Password required</small>
     </div>
+    
+      <div *ngIf="message && loginPage.get('password').valid" class="alert alert-danger">
+        <small>Invalid username or password!</small>
+        
+      </div>
+    
     <div class="text-center">
-      <button class="btn btn-success pb-3px">LOGIN</button>
+      <button class="btn btn-success pb-3px" type="submit" [disabled]="loginPage.invalid">LOGIN</button>
     </div>
+    
 
     <div class="text-center">
       <h3>New User?</h3>
       <button class="btn btn-success" routerLink="/register">REGISTER</button>
     </div>
   </form>
+</div>
 </div>

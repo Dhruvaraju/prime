@@ -15,6 +15,7 @@ import { BuyComponent } from './buynsell/buy/buy.component';
 import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StocksService } from './services/stocks.service';
+import { formSubmitService } from './services/login&register.service'
 
 
 
@@ -38,7 +39,7 @@ import { StocksService } from './services/stocks.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [StocksService],
+  providers: [StocksService,formSubmitService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

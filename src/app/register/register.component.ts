@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { passwordValidator } from '../password.validator';
+import {formSubmitService} from '../services/login&register.service';
 
 @Component({
   selector: 'app-register',
@@ -9,30 +10,64 @@ import { passwordValidator } from '../password.validator';
 })
 export class RegisterComponent implements OnInit {
   submitted = false;
-  constructor(private fb: FormBuilder) {}
+  successfulRegistration=false;
+  errors=false;
+  constructor(private fb: FormBuilder
+   ,private lr:formSubmitService) {}
   registrationForm = this.fb.group(
-    {
+    { username: ['', [Validators.required, Validators.minLength(6)]],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.maxLength(10)]],
       email: ['', Validators.required],
+      organisation: ['None'],
       pan: ['', [Validators.required, Validators.maxLength(10)]],
+      password: ['', Validators.required],
+      confirmpassword: ['', Validators.required],
       address01: ['', Validators.required],
-      address02: ['', Validators.required],
+      address02: ['None'],
       state: ['', Validators.required],
       country: ['', Validators.required],
       postalcode: ['', Validators.required],
-      username: ['', [Validators.required, Validators.minLength(6)]],
-      password: ['', Validators.required],
-      confirmpassword: ['', Validators.required],
-      type: ['', Validators.required],
-      organisation: ['None'],
-    },
+      type: ['', Validators.required]
+      },
     { validator: passwordValidator }
   );
+  
 
-  onsubmit() {
-    this.submitted = true;
+   onsubmit() {
+    let formData={
+      userName:this.registrationForm.get('username').value,
+      firstName:this.registrationForm.get('firstname').value,
+      lastName:this.registrationForm.get('lastname').value,
+      email:this.registrationForm.get('email').value,
+      organizationName:this.registrationForm.get('organisation').value,
+      panNumber:this.registrationForm.get('pan').value,
+      password:this.registrationForm.get('password').value,
+      addressLine01:this.registrationForm.get('address01').value,
+      addressLine02:this.registrationForm.get('address02').value,
+      state:this.registrationForm.get('state').value,
+      country:this.registrationForm.get('country').value,
+      pincode:this.registrationForm.get('postalcode').value,
+      userType:this.registrationForm.get('type').value
+  
+    }
+    
+     this.submitted = true;
+     
+     this.lr.onFormSubmit(formData)
+     .subscribe((response)=>{
+       console.log(response)
+       if ((response.status===204) || (response.message==='Success')){
+        this.successfulRegistration=true
+       }
+       
+       },
+       (err)=>{
+         this.errors=true
+       })
+       
+     
+    
   }
 
   ngOnInit(): void {}
