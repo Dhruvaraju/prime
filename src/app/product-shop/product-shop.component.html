@@ -1,58 +1,58 @@
 <div class="container">
   <div class="title">
     <h1>Financial Product</h1>
-    <h5>Here we have a list of Financial Products!</h5>
-  </div>
+    <h5>Here we have a list of Financial Products !</h5>
 
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="card text-center" style="width: 30rem">
-          <img
-            src="https://tse1.mm.bing.net/th?id=OIP.cGEvtjUO8fXYL_NQ2OcheQHaEJ&pid=Api&P=0&w=321&h=181.jpg"
-            alt="wealth product"
-            class="card-img-top"
-          />
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="card text-center" style="width: 30rem">
+            <img
+              src="https://tse1.mm.bing.net/th?id=OIP.cGEvtjUO8fXYL_NQ2OcheQHaEJ&pid=Api&P=0&w=321&h=181.jpg"
+              alt="wealth product"
+              class="card-img-top"
+            />
 
-          <div class="card-body">
-            <h4 class="card-title mb-2">Wealth Management Product</h4>
-            <p class="card-text mb-2">
-              At Prime Wealth Management, we will be focusing on your success
-              and remaining committed to helping you grow your wealth and pursue
-              your financial goals.To know more about the prodcut click the
-              button below.
-            </p>
+            <div class="card-body">
+              <h4 class="">Wealth Management Product</h4>
+              <p class="card-text mb-2">
+                At Prime Wealth Management, we will be focusing on your success
+                and remaining committed to helping you grow your wealth and
+                pursue your financial goals.To know more about the prodcut click
+                the button below.
+              </p>
+            </div>
+            <button routerLink="/wealth" type="button" class="btn btn-primary">
+              View Products
+            </button>
           </div>
-          <button routerLink="/wealth" type="button" class="btn btn-primary">
-            View Products
-          </button>
         </div>
-      </div>
 
-      <div class="col">
-        <div class="card text-center" style="width: 30rem">
-          <img
-            src="https://tse1.mm.bing.net/th?id=OIP.Sn2_fNpqDZtwcPeloZdZ1QHaEy&pid=Api&P=0&w=257&h=167.jpg"
-            alt="income product"
-            class="car-img-top"
-          />
+        <div class="col">
+          <div class="card text-center" style="width: 30rem">
+            <img
+              src="https://tse1.mm.bing.net/th?id=OIP.Sn2_fNpqDZtwcPeloZdZ1QHaEy&pid=Api&P=0&w=257&h=167.jpg"
+              alt="income product"
+              class="car-img-top"
+            />
 
-          <div class="card-body">
-            <h4 class="card-title mb-2">Income Products</h4>
-            <p class="card-text mb-2">
-              At Prime Income Product, we will be focusing on your finance value
-              which will gives you a value to your finance.To know more about
-              the prodcut click the button below.
-            </p>
+            <div class="card-body">
+              <h4 class="card-title mb-2">Income Products</h4>
+              <p class="card-text mb-2">
+                At Prime Income Product, we will be focusing on your finance
+                value which will gives you a value to your finance.To know more
+                about the prodcut click the button below.
+              </p>
+            </div>
+            <button routerLink="/income" type="button" class="btn btn-primary">
+              View Products
+            </button>
+            <router-outlet></router-outlet>
           </div>
-          <button routerLink="/income" type="button" class="btn btn-primary">
-            View Products
-          </button>
-          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>
