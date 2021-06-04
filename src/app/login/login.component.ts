@@ -31,10 +31,12 @@ export class LoginComponent implements OnInit {
     this.rl.onLoginAttempt(loginaccept)
     .subscribe((response)=>{
       console.log(response)
-      if ((response.message) === true){
+      if ((response) === true){
         this.router.navigate(['/dashboard'])
       }
-      
+      else{
+        this.message=true
+      }
     },
     error=>{
       this.message=true

@@ -9,13 +9,13 @@ import { Observable } from "rxjs";
   })
 export class formSubmitService{
     constructor(private http:HttpClient){}
-    url:string="https://prime-banc.herokuapp.com/";
+    url:string="https://ipotrading.herokuapp.com/";
     
     onFormSubmit(formData:any) : Observable<any>{
-        return this.http.post<any>(this.url+'user/',formData)
+        return this.http.post<any>(this.url+'register',formData)
     }
     onLoginAttempt(loginaccept:any): Observable<any>{
-        return this.http.post<any>(this.url+'user/authenticate',loginaccept)
+        return this.http.post<any>(this.url+'user/login',loginaccept)
 
     }
 

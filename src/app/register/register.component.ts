@@ -57,10 +57,11 @@ export class RegisterComponent implements OnInit {
      this.lr.onFormSubmit(formData)
      .subscribe((response)=>{
        console.log(response)
-       if ((response.status===204) || (response.message==='Success')){
+       if ((response.status===200) || (response.message==='success') || (response==='success')){
         this.successfulRegistration=true
        }
-       
+       console.log(response)
+       console.log('log works')
        },
        (err)=>{
          this.errors=true
