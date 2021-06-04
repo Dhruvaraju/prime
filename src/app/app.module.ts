@@ -48,7 +48,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   providers:[
     StocksService,
-    IporegistrationService,formSubmitService
+    IporegistrationService,
+    formSubmitService
   ],
   
   bootstrap: [AppComponent]
