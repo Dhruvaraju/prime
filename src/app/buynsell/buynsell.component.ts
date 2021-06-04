@@ -5,13 +5,10 @@ import { SellComponent } from './sell/sell.component';
 @Component({
   selector: 'app-buynsell',
   templateUrl: './buynsell.component.html',
-  styleUrls: ['./buynsell.component.css']
+  styleUrls: ['./buynsell.component.css'],
 })
 export class BuynsellComponent implements OnInit {
- 
-  constructor() { }
- 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }

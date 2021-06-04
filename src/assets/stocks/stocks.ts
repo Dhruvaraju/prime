@@ -1,5 +1,5 @@
 export interface IStocks {
-    ticker: string,
-    name: string,
-    price: number
+  ticker: string;
+  name: string;
+  price: number;
 }

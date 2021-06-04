@@ -1,57 +1,79 @@
-<div class="container">
-  <div class="title">
-    <h3>Income Products</h3>
+<!--income card-->
+<app-navbar [displayUserNav]="true"></app-navbar>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="card text-center" style="width: 50rem">
+        <img
+          src="https://www.hiltonheadmonthly.com/images/0215_July/Fixed-income.jpg"
+          alt="wealth product"
+          class="card-img-top"
+        />
+      </div>
+    </div>
 
-    <div class="container">
-      <div class="container-fluid">
-        <form [formGroup]="income">
-          <div class="form-group">
-            <label for="name">Product Name</label>
-            <select class="form-control" id="name">
-              <option>Income Plus</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Poduct Type</label>
-            <input
-              type="type"
-              name="type"
-              id="type"
-              class="form-control"
-              formControlName="type"
-              placeholder="eg.Income Product"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Maturity Value</label>
-            <input
-              type="value"
-              name="value"
-              id="value"
-              class="form-control"
-              formControlName="value"
-              placeholder="eg. 20000"
-            />
-          </div>
-
-          <div class="text-center">
-            <button class="btn btn-primary pb-3px">Submit</button>
-          </div>
-
-          <div class="d-flex justify-content-end">
-            <button
-              routerLink="/shop"
-              type="button"
-              class="btn btn-outline-dark"
-            >
-              Go back
-            </button>
-          </div>
-        </form>
+    <div class="col">
+      <div class="card " style="width: 30rem">
+        <div class="card-body">
+          <h4 class="card-header bg-primary mb-2">Income Product</h4>
+          <span class="badge badge-danger">Income Plus</span>
+          <p class="card-text mb-2">
+            At Prime Income Product, For future income needs we perform a 
+            financial analysis and suggest best suited plan which not 
+            cause any financial stress . Live free with our Income 
+            range of products
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="container-fluid">
+    <form [formGroup]="income">
+      <div class="form-group">
+        <label for="name">Product Name :</label>
+        <select class="form-control" id="name">
+          <option>Income Plus</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Product Type :</label>
+        <input
+          type="type"
+          name="type"
+          id="type"
+          class="form-control"
+          formControlName="type"
+          placeholder="eg.Income Product"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Maturity Value :</label>
+        <input
+          type="value"
+          name="value"
+          id="value"
+          class="form-control"
+          formControlName="value"
+          placeholder="eg. 20000"
+        />
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary pb-3px">Submit</button>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button routerLink="/shop" type="button" class="btn btn-outline-dark">
+          Go back
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
