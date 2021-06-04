@@ -10,7 +10,7 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
 export class IpoComponent implements OnInit {
 
   state="";
-  registrationForm :FormGroup;
+  RegistrationForm :FormGroup;
   message =false;
   submitted = false;
   successfulRegistration=false;
@@ -18,7 +18,7 @@ export class IpoComponent implements OnInit {
   constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
   ngOnInit() {
   
-    this.registrationForm = this.builder.group({
+    this.RegistrationForm = this.builder.group({
       'cpyname': new FormControl('', [
         Validators.required,
         Validators.minLength(2),
@@ -35,9 +35,9 @@ export class IpoComponent implements OnInit {
    onsubmit()
    {
             let iporegdetail={
-              companyName :this.registrationForm.get('cpyname').value,
-              currentMarketCap :this.registrationForm.get('mvalue').value,
-              openForSale :this.registrationForm.get('per').value,
+              companyName :this.RegistrationForm.get('cpyname').value,
+              currentMarketCap :this.RegistrationForm.get('mvalue').value,
+              openForSale :this.RegistrationForm.get('per').value
               }
               this.submitted = true;
           
@@ -45,13 +45,15 @@ export class IpoComponent implements OnInit {
               .subscribe((response)=>{
                 console.log(response)
                 if ((response.status===200) || (response.message==='Success')){
-                this.successfulRegistration=true;
+                this.successfulRegistration=true
                 this.state="Success";
+                console.log("working");
                 }
                 },
                 (error)=>{
-                  this.errors=true;
+                  this.errors=true
                   this.state="failure";
+                  console.log(error);
                 })
      }
   }

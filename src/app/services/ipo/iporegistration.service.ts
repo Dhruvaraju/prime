@@ -11,6 +11,5 @@ export class IporegistrationService {
   _url :string="https://ipotrading.herokuapp.com/";
   register(iporegdetail:any) :Observable<any>{
     return this._http.post<any>(this._url+'ipo/register',iporegdetail)
-
 }
 }

@@ -1,7 +1,7 @@
 <div class="container">
    <div class="justify-content-center">
       <div class="jumbotron">
-      <form [formGroup]="registrationForm" *ngIf="!submitted" (ngSubmit)=onsubmit()>
+      <form [formGroup]="RegistrationForm" *ngIf="!submitted" (ngSubmit)="onsubmit()">
             <h2 class="text-center font-bold">IPO REGISTRATION</h2><hr>
             <div class="form-group">
                   <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
@@ -9,13 +9,13 @@
                               type="text" id="cpyname" name="cpyname" 
                               placeholder="eg: Prime Trade Company" class="form-control" 
                               formControlName="cpyname">
-                        <div *ngIf="registrationForm.get('cpyname').invalid 
-                                    && (registrationForm.get('cpyname').dirty || registrationForm.get('cpyname').touched)"
+                        <div *ngIf="RegistrationForm.get('cpyname').invalid 
+                                    && (RegistrationForm.get('cpyname').dirty || RegistrationForm.get('cpyname').touched)"
                                     class="alert alert-danger">
-                        <div *ngIf="registrationForm.get('cpyname').errors.required">
+                        <div *ngIf="RegistrationForm.get('cpyname').errors.required">
                               <small>       Please fill this field</small>
                               </div>
-                              <div *ngIf="registrationForm.get('cpyname').errors.minlength">
+                              <div *ngIf="RegistrationForm.get('cpyname').errors.minlength">
                                     <small>     Minimum 2 characters required</small>
                               </div>
                               </div><br>
@@ -29,10 +29,10 @@
                               placeholder="Value" 
                               class="form-control" 
                               formControlName="mvalue"/>
-                        <div *ngIf="registrationForm.get('mvalue').invalid
-                               && (registrationForm.get('mvalue').dirty || registrationForm.get('mvalue').touched)"
+                        <div *ngIf="RegistrationForm.get('mvalue').invalid
+                               && (RegistrationForm.get('mvalue').dirty || RegistrationForm.get('mvalue').touched)"
                               class="alert alert-danger">
-                        <div *ngIf="registrationForm.get('mvalue').errors.required">
+                        <div *ngIf="RegistrationForm.get('mvalue').errors.required">
                             <small>   Please fill this field</small>
                          </div>
                          </div><br>
@@ -40,10 +40,10 @@
             <div class="form-group">
                   <label for="per" 
                   class="font-weight-bold">Percentage market cap available for issue:</label><br>
-                        <div *ngIf="registrationForm.get('per').invalid &&
-                         (registrationForm.get('per').dirty || registrationForm.get('per').touched)"
+                        <div *ngIf="RegistrationForm.get('per').invalid &&
+                         (RegistrationForm.get('per').dirty || RegistrationForm.get('per').touched)"
                               class="alert alert-danger">
-                        <div *ngIf="registrationForm.get('per').errors.required">
+                        <div *ngIf="RegistrationForm.get('per').errors.required">
                               <small>   Please fill this field</small>
                         </div>
                         </div>
@@ -68,7 +68,7 @@
                   <button
                     type="button"
                     class="btn btn-primary"
-                    [disabled]="!registrationForm.valid"
+                    [disabled]="!RegistrationForm.valid"
                     >Submit
                   </button> 
                   <p>{{state}}</p>
