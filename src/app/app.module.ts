@@ -19,6 +19,7 @@ import { IncomeComponent } from './income/income.component';
 import { StocksService } from './services/stocks/stocks.service';
 import { formSubmitService } from './services/login&register.service'
 import { IporegistrationService } from './services/ipo/iporegistration.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -36,7 +37,8 @@ import { IporegistrationService } from './services/ipo/iporegistration.service';
     SellComponent,
     DashboardComponent,
     WealthComponent,
-    IncomeComponent
+    IncomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
