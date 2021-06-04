@@ -11,9 +11,13 @@ export class IpoComponent implements OnInit {
 
   state="";
   registrationForm :FormGroup;
-
+  message =false;
+  submitted = false;
+  successfulRegistration=false;
+  errors=false;
   constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
   ngOnInit() {
+  
     this.registrationForm = this.builder.group({
       'cpyname': new FormControl('', [
         Validators.required,
@@ -27,23 +31,27 @@ export class IpoComponent implements OnInit {
     })
   }
 
-Submit(){
-    
-  /*this._reg.register(this.registrationForm.value)
-  .subscribe(
-    
-   response => console.log("Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared",response),
-    error=>console.log("System currently unavailable contact our banking representative to initiate the process",error)
-  );
-}*/
- if(this.registrationForm.status==="VALID")
-  {
-    this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
+  
+   onsubmit()
+   {
+            let iporegdetail={
+              companyName :this.registrationForm.get('cpyname').value,
+              currentMarketCap :this.registrationForm.get('mvalue').value,
+              openForSale :this.registrationForm.get('per').value,
+              }
+              this.submitted = true;
+          
+              this._reg.register(iporegdetail)
+              .subscribe((response)=>{
+                console.log(response)
+                if ((response.status===200) || (response.message==='Success')){
+                this.successfulRegistration=true;
+                this.state="Success";
+                }
+                },
+                (error)=>{
+                  this.errors=true;
+                  this.state="failure";
+                })
+     }
   }
-  else if(this.registrationForm.status==="INVALID")
-  {
-    this.state="System currently unavailable contact our banking representative to initiate the process";
-  }
-}
-
-}

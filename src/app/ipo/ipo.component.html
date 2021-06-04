@@ -1,7 +1,7 @@
 <div class="container">
    <div class="justify-content-center">
       <div class="jumbotron">
-      <form [formGroup]="registrationForm" >
+      <form [formGroup]="registrationForm" *ngIf="!submitted" (ngSubmit)=onsubmit()>
             <h2 class="text-center font-bold">IPO REGISTRATION</h2><hr>
             <div class="form-group">
                   <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
@@ -13,10 +13,10 @@
                                     && (registrationForm.get('cpyname').dirty || registrationForm.get('cpyname').touched)"
                                     class="alert alert-danger">
                         <div *ngIf="registrationForm.get('cpyname').errors.required">
-                                    Please fill this field
+                              <small>       Please fill this field</small>
                               </div>
                               <div *ngIf="registrationForm.get('cpyname').errors.minlength">
-                                    Minimum 2 characters required
+                                    <small>     Minimum 2 characters required</small>
                               </div>
                               </div><br>
             </div>
@@ -33,7 +33,7 @@
                                && (registrationForm.get('mvalue').dirty || registrationForm.get('mvalue').touched)"
                               class="alert alert-danger">
                         <div *ngIf="registrationForm.get('mvalue').errors.required">
-                               Please fill this field
+                            <small>   Please fill this field</small>
                          </div>
                          </div><br>
             </div>
@@ -44,7 +44,7 @@
                          (registrationForm.get('per').dirty || registrationForm.get('per').touched)"
                               class="alert alert-danger">
                         <div *ngIf="registrationForm.get('per').errors.required">
-                              Please fill this field
+                              <small>   Please fill this field</small>
                         </div>
                         </div>
                         <select
@@ -68,12 +68,20 @@
                   <button
                     type="button"
                     class="btn btn-primary"
-                    [disabled]="!registrationForm.valid" (click)=Submit()
+                    [disabled]="!registrationForm.valid"
                     >Submit
                   </button> 
                   <p>{{state}}</p>
             </div>
-      </form>
+    
+      <div *ngIf="submitted" class="text-center">
+            <div *ngIf="successfulRegistration">
+                <h3>Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared</h3>
+                
+            </div>
+            <div *ngIf="errors">System currently unavailable contact our banking representative to initiate the process!</div><br><br>
+        </div>
+      </form>  
   </div>
 </div>
 </div>
