@@ -5,5 +5,5 @@ export interface IpoquoteDetails
     issueSize: number,
     issuePrice: number,
     lotSize: number,
-    closingdate: Date
+    closingDate: Date
 }
