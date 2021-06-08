@@ -1,7 +1,7 @@
 <div class="container">
    <div class="justify-content-center">
       <div class="jumbotron">
-      <form [formGroup]="RegistrationForm" (ngSubmit)="onsubmit()">
+      <form [formGroup]="RegistrationForm" >
             <h2 class="text-center font-bold">IPO REGISTRATION</h2><hr>
             <div class="form-group">
                   <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
@@ -69,18 +69,12 @@
                     type="button"
                     class="btn btn-primary"
                     [disabled]="!RegistrationForm.valid"
+                    (click)="onSubmit()"
                     >Submit
                   </button> 
+                  <br>
                   <p>{{state}}</p>
             </div>
-    
-      <!--div *ngIf="submitted" class="text-center">
-            <div *ngIf="successfulRegistration">
-                <h3>Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared</h3>
-                
-            </div>
-            <div *ngIf="errors">System currently unavailable contact our banking representative to initiate the process!</div><br><br>
-        </div-->
       </form>  
   </div>
 </div>

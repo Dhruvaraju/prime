@@ -10,10 +10,7 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
 export class IpoComponent implements OnInit {
   state="";
   RegistrationForm :FormGroup;
-  //message =false;
-  //submitted = false;
-  //successfulRegistration=false;
-  //errors=false;
+
   constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
   ngOnInit() {
   
@@ -31,29 +28,37 @@ export class IpoComponent implements OnInit {
   }
 
   
-   onsubmit()
+   onSubmit()
    {
-     console.log("hello world success");
-            let iporegdetail={
-              userName :"deepika",
+     console.log("for my reference");
+
+            let iporegdetail=
+            {
+              availableForSale :this.RegistrationForm.get('per').value,
               companyName :this.RegistrationForm.get('cpyname').value,
-             currentMarketCap :this.RegistrationForm.get('mvalue').value,
-              openForSale :this.RegistrationForm.get('per').value,
-              
-              }
-             // this.submitted = true;
+              marketCap :this.RegistrationForm.get('mvalue').value,
+              userName :"karthikank" //this.loginPage.get('username').value,
+            // "ipoQuote":
+             // {
+             //   "description" :" ",
+            //    "issueDate":" ",
+            //    "issueSize":" ",
+            //    "issuePrice":" ",
+            //    "lotSize": " ",
+             //   "closingDate": " "
+            //  }
+            }
           
               this._reg.register(iporegdetail)
               .subscribe((response)=>{
                 console.log(response)
-                if ((response.status===200) || (response.value==='Success')){
-               // this.successfulRegistration=true
+                if ((response.status===200) || (response.message==='Registered for Ipo successfully'))
+                {
                 this.state="Success";
                 console.log("working");
                 }
                 },
                 (error)=>{
-                 // this.errors=true
                   this.state="failure";
                   console.log(error);
                 })
