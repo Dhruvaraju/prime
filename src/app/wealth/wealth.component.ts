@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./wealth.component.css'],
 })
 export class WealthComponent implements OnInit {
+  alert: boolean = false;
   constructor(private fg: FormBuilder) {}
   wealth = this.fg.group({
     name: [''],
@@ -14,4 +15,5 @@ export class WealthComponent implements OnInit {
   });
 
   ngOnInit(): void {}
+  
 }
