@@ -105,3 +105,10 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 - At present app is hosted in firebase
 - A continuos delivery is enabled with help of github actions
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
+
+## Services hosting Details
+- Services sourcecode available at https://github.com/revathi/trading-services
+- Hosted at: https://ipotrading.herokuapp.com/
+
+## Trello Board for UI construction
+- https://trello.com/b/t9PT6XGw/pilot-fe-prime
