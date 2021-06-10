@@ -1,9 +1,13 @@
 # Prime-banc
 
-[![Deploy to Firebase on merge](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml)
+[![Builds](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/Dhruvaraju/prime/actions/workflows/firebase-hosting-merge.yml)
 
 - [Prime-banc](#prime-banc)
 - [Prime](#prime)
+  - [Installing Angular cli](#installing-angular-cli)
+    - [Install Node js](#install-node-js)
+    - [Install NVM (Optional)](#install-nvm-optional)
+    - [Angular CLI](#angular-cli)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
   - [Build](#build)
@@ -19,10 +23,59 @@
   - [git stash clear](#git-stash-clear)
   - [git fetch --all](#git-fetch---all)
   - [App Hosting](#app-hosting)
+  - [Services hosting Details](#services-hosting-details)
+  - [Trello Board for UI construction](#trello-board-for-ui-construction)
 
 # Prime
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+
+## Installing Angular cli
+
+### Install Node js
+
+- Install node js available at https://nodejs.org/en/
+
+### Install NVM (Optional)
+
+> If you are planning to work on projects with different node versions, Install NVM
+
+- NVM available at location: [NVM-Releases](https://github.com/coreybutler/nvm-windows/releases)
+
+To install a particular version of node use the below command
+
+```
+nvm install <<version>>
+```
+
+To use a particular version of node
+
+```
+nvm use <<version>>
+```
+
+To list all the installed node versions
+
+```
+nvm list
+```
+
+### Angular CLI
+
+A utility for bootstrapping angular project and generating code. To install angular cli in a machine run the following command in terminal after installing node.
+
+```
+npm install -g @angular/cli
+```
+
+CLI can be used for generating components, services and many more
+
+```
+//to generate component
+ng generate component <<componentName>>
+// To generate service
+ng generate service <<service name>>
+```
 
 ## Development server
 
@@ -107,8 +160,13 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 - App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
 
 ## Services hosting Details
-- Services sourcecode available at https://github.com/revathi/trading-services
+
+- Services source code available at [Trading-services](https://github.com/revathi/trading-services)
 - Hosted at: https://ipotrading.herokuapp.com/
 
 ## Trello Board for UI construction
+
 - https://trello.com/b/t9PT6XGw/pilot-fe-prime
+
+#TODO how routing works
+#TODO Usage of HttpClient and HttpClientModule
