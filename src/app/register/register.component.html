@@ -1,113 +1,299 @@
+<app-navbar [displayUserNav]="false"></app-navbar>
 <div class="container">
-<div class="container-fluid">
-    <form [formGroup]="registrationForm" *ngIf="!submitted" (ngSubmit)="onsubmit()">
-        <!-- {{registrationForm.status|json}} -->
-        <div class="form-group mb-3 ml-3">
-            <label>FirstName</label>
-            <input type="text" name="FirstName" id="FirstName" class="form-control" formControlName="firstname">
-        </div>
-        <div *ngIf="registrationForm.get('firstname').invalid && registrationForm.get('firstname').touched" class="alert alert-danger">
-            <small>FirstName field is required</small>
-        </div>
-        
-        <div class="form-group mb-3 ml-3">     
-            <label>LastName</label>
-            <input type="text" name="LastName" id="LastName" class="form-control" formControlName="lastname">
-        </div>
-        <div *ngIf="registrationForm.get('lastname').invalid && registrationForm.get('lastname').touched" class="alert alert-danger">
-            <small>LastName field is required</small>
-        </div>
-        <div class="form-group mb-3 ml-3">     
-            
-            <label>Mobilenumber</label>
-            <input type="tel" name="Mobilenumber" id="Mobilenumber" class="form-control" formControlName="phone" [class.is-invalid]="registrationForm.get('phone').invalid && registrationForm.get('phone').touched">
-        </div>
-        <div *ngIf="registrationForm.get('phone').errors?.maxlength" class="alert alert-danger">
-            <small>Phone number mustnot be more than 10 characters</small> 
-          </div>
-        <div class="form-group mb-3 ml-3">   
-            <label>Email id</label>
-            <input type="email" name="email" id="email" class="form-control" formControlName="email">
-        </div>
-        <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="alert alert-danger">
-            <small>Please enter your email</small>
-        </div>
-        <div class="form-group mb-3 ml-3">     
-            <label>PAN </label>
-            <input type="text" name="Pan" id="Pan" class="form-control" formControlName="pan" [class.is-invalid]="registrationForm.get('pan').invalid && registrationForm.get('pan').touched">
-        </div>
-        <div *ngIf="registrationForm.get('pan').errors?.maxlength" class="alert alert-danger">
-            <small>PAN must be 10 characters</small> 
-        </div>
-        
-        <div class="form-group mb-3 ml-3">     
-            <label>AddressLine01 </label>
-            <input type="text" name="AddressLine01" id="AddressLine01" class="form-control" formControlName="address01">
-        </div>
-        
-        <div class="form-group mb-3 ml-3">     
-            <label>AddressLine02 </label>
-            <input type="text" name="AddressLine02" id="AddressLine02" class="form-control" formControlName="address02">
-        </div>
-        <div class="form-group mb-3 ml-3">     
-            <label>State </label>
-            <input type="text" name="state" id="state" class="form-control" formControlName="state">
-        </div>
-        
-        <div class="form-group mb-3 ml-3">     
-            <label>Country </label>
-            <input type="text" name="country" id="country" class="form-control" formControlName="country">
-        </div>
-        
-        <div class="form-group mb-3 ml-3">     
-            <label>PostalCode </label>
-            <input type="number" name="postalcode" id="postalcode" class="form-control" formControlName="postalcode">
-        </div>
-        
+  <div class="container-fluid">
+    <form
+      [formGroup]="registrationForm"
+      *ngIf="!submitted"
+      (ngSubmit)="onsubmit()"
+    >
+      <!-- {{registrationForm.status|json}} -->
+      <div class="form-group mb-3 ml-3">
+        <label>FirstName</label>
+        <input
+          type="text"
+          name="FirstName"
+          id="FirstName"
+          class="form-control"
+          formControlName="firstname"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('firstname').invalid &&
+          registrationForm.get('firstname').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>FirstName field is required</small>
+      </div>
 
-        <div class="form-group mb-3 ml-3">     
-            
-            <label>Create a username</label>
-            <input type="text" name="usrname" id="usrname" class="form-control" formControlName="username" [class.is-invalid]="registrationForm.get('username').invalid && registrationForm.get('username').touched">
-        </div>
-        <div *ngIf="registrationForm.get('username').errors?.minlength" class="alert alert-danger">
-            <small>Minimum 6 characters required</small>
-        </div>
-        <div class="form-group mb-3 ml-3">         
-            <label>Create Password</label>
-            <input type="password" name="pswd" id="pswd" class="form-control" formControlName="password">
-        </div>
-        <div class="form-group mb-3 ml-3">      
-            <label>Confirm Password</label>
-            <input type="password" name="confirm" id="confirm" class="form-control" formControlName="confirmpassword" [class.is-invlaid]="registrationForm.errors?.mismatch" >
-        </div>        
-        <div *ngIf="registrationForm.errors?.mismatch" class="alert alert-danger">
-            <small>password mismatch</small>
+      <div class="form-group mb-3 ml-3">
+        <label>LastName</label>
+        <input
+          type="text"
+          name="LastName"
+          id="LastName"
+          class="form-control"
+          formControlName="lastname"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('lastname').invalid &&
+          registrationForm.get('lastname').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>LastName field is required</small>
+      </div>
 
+      <div class="form-group mb-3 ml-3">
+        <label>Email id</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('email').invalid &&
+          registrationForm.get('email').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>Email field is required</small>
+      </div>
+      <div class="form-group mb-3 ml-3">
+        <label>PAN </label>
+        <input
+          type="text"
+          name="Pan"
+          id="Pan"
+          class="form-control"
+          formControlName="pan"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('pan').invalid &&
+          registrationForm.get('pan').touched
+        "
+      >
+        <div
+          *ngIf="registrationForm.get('pan').errors?.required"
+          class="alert alert-danger"
+        >
+          <small>Pan number is required</small>
         </div>
-        <div class="form-group mb-3 ml-3"> 
+        <div
+          *ngIf="registrationForm.get('pan').errors?.maxlength"
+          class="alert alert-danger"
+        >
+          <small>PAN must be 10 characters</small>
+        </div>
+      </div>
+      <div class="form-group mb-3 ml-3">
+        <label>AddressLine01 </label>
+        <input
+          type="text"
+          name="AddressLine01"
+          id="AddressLine01"
+          class="form-control"
+          formControlName="address01"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('address01').invalid &&
+          registrationForm.get('address01').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>Address is required</small>
+      </div>
 
-            <select name="type" class="custom-select" formControlName="type">
-                <option selected>Select user type</option>
-                <option value="Individual">Individual</option>
-                <option value="Institution">Institution</option>
-                
-            </select>
-        </div>
-        <div class="form-group mb-3 ml-3" *ngIf="registrationForm.get('type').value=='Institution'">     
-                <label>Institution Name</label>
-                <input type="text" name="institutionName" id="institutionName" class="form-control" formControlName="organisation">
-        </div>
-        <div class="text-center">      
-              <button class="btn btn-success btn-lg" [disabled]="registrationForm.invalid" type="submit">Submit</button>
-        </div>
+      <div class="form-group mb-3 ml-3">
+        <label>AddressLine02 </label>
+        <input
+          type="text"
+          name="AddressLine02"
+          id="AddressLine02"
+          class="form-control"
+          formControlName="address02"
+        />
+      </div>
+      <div class="form-group mb-3 ml-3">
+        <label>State </label>
+        <input
+          type="text"
+          name="state"
+          id="state"
+          class="form-control"
+          formControlName="state"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('state').invalid &&
+          registrationForm.get('state').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>State name is required</small>
+      </div>
 
+      <div class="form-group mb-3 ml-3">
+        <label>Country </label>
+        <input
+          type="text"
+          name="country"
+          id="country"
+          class="form-control"
+          formControlName="country"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('country').invalid &&
+          registrationForm.get('country').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>Country name is required</small>
+      </div>
+
+      <div class="form-group mb-3 ml-3">
+        <label>PostalCode </label>
+        <input
+          type="number"
+          name="postalcode"
+          id="postalcode"
+          class="form-control"
+          formControlName="postalcode"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('postalcode').invalid &&
+          registrationForm.get('postalcode').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>PostalCode is required</small>
+      </div>
+
+      <div class="form-group mb-3 ml-3">
+        <label>Create a username</label>
+        <input
+          type="text"
+          name="usrname"
+          id="usrname"
+          class="form-control"
+          formControlName="username"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('username').invalid &&
+          registrationForm.get('username').touched
+        "
+      >
+        <div
+          *ngIf="registrationForm.get('username').errors?.required"
+          class="alert alert-danger"
+        >
+          <small>Username is required</small>
+        </div>
+        <div
+          *ngIf="registrationForm.get('username').errors?.minlength"
+          class="alert alert-danger"
+        >
+          <small>Minimum 6 characters required</small>
+        </div>
+      </div>
+      <div class="form-group mb-3 ml-3">
+        <label>Create Password</label>
+        <input
+          type="password"
+          name="pswd"
+          id="pswd"
+          class="form-control"
+          formControlName="password"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('password').invalid &&
+          registrationForm.get('password').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>Password is required</small>
+      </div>
+      <div class="form-group mb-3 ml-3">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          name="confirm"
+          id="confirm"
+          class="form-control"
+          formControlName="confirmpassword"
+          [class.is-invlaid]="registrationForm.errors?.mismatch"
+        />
+      </div>
+      <div *ngIf="registrationForm.errors?.mismatch" class="alert alert-danger">
+        <small>password mismatch</small>
+      </div>
+      <div class="form-group mb-3 ml-3">
+        <select name="type" class="custom-select" formControlName="type">
+          <option value="" default selected>Select user type</option>
+          <option value="Individual">Individual</option>
+          <option value="Institution">Institution</option>
+        </select>
+      </div>
+      <div
+        *ngIf="
+          registrationForm.get('type').invalid &&
+          registrationForm.get('type').touched
+        "
+        class="alert alert-danger"
+      >
+        <small>Usertype is required</small>
+      </div>
+      <div
+        class="form-group mb-3 ml-3"
+        *ngIf="registrationForm.get('type').value == 'Institution'"
+      >
+        <label>Institution Name</label>
+        <input
+          type="text"
+          name="institutionName"
+          id="institutionName"
+          class="form-control"
+          formControlName="organisation"
+        />
+      </div>
+      <div class="text-center">
+        <button
+          class="btn btn-success btn-lg"
+          [disabled]="registrationForm.invalid"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
     <div *ngIf="submitted" class="text-center">
+      <div *ngIf="successfulRegistration">
         <h3>Registration Complete</h3>
-        <button class="btn btn-success" routerLink="/login">Go to LOGIN</button>
+        <p>Successfully Registered</p>
+      </div>
+      <div *ngIf="errors">System Unavailable,try again later!</div>
+      <br /><br />
+      <button class="btn btn-success" routerLink="/login">Go to LOGIN</button>
     </div>
-</div>        
-</div>        
-        
-        
+  </div>
+</div>

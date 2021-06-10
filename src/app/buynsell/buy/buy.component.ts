@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from './../../services/stocks.service';
+import { StocksService } from './../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-buy',
@@ -11,37 +11,35 @@ export class BuyComponent implements OnInit {
   public selectStocks = [];
   enableBillPrice: boolean = false;
   priceErrorBanner: boolean = false; //Price Error Display Banner
+  systemUnavailable: boolean = false; //Display Server error
+  onSuccessBanner: boolean = false; //Display Success Banner on Submit
   buyForm: FormGroup;
 
-  get stocks() {
+  get getStocks() {
     return this.buyForm.get('stocks');
   }
-
-  get quantity() {
+  get getQuantity() {
     return this.buyForm.get('quantity');
   }
-
-  get orderType() {
+  get getOrderType() {
     return this.buyForm.get('orderType');
   }
-
-  get price() {
+  get getPrice() {
     return this.buyForm.get('price');
   }
-
-  constructor( private fb: FormBuilder,
-               private stock: StocksService ) {}
+  constructor(
+    private fb: FormBuilder, 
+    private stock: StocksService
+  ) {}
 
   ngOnInit() {
     this.buyForm = this.fb.group({
-      stocks: ["select-stock", Validators.required ],
-      quantity: ['', Validators.required ],
-      orderType: ["Select", Validators.required ],
+      stocks: ['select-stock', Validators.required],
+      quantity: ['', Validators.required],
+      orderType: ['Select', Validators.required],
       price: [''],
     });
-
-    this.stock.getStocks()
-              .subscribe((data) => (this.selectStocks = data));
+    this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
   }
 
   onOrderTypeChange() {
@@ -64,11 +62,32 @@ export class BuyComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    if (this.buyForm.valid) {
-      alert('Product Added to your Portfolio!');
-    } else {
-      alert('Error!Try Again');
-    }
-    this.buyForm.reset()
+    if (
+      this.buyForm.valid == true
+      ) {
+        // this.onSuccessBanner = true;
+        alert("Product Added to your Portfolio")
+      }
+    // else {
+    //   this.onSuccessBanner = false;
+    // }
+    this.buyForm.reset();
+    // let marketPrice = this.buyForm.get('stocks').value;
+    // let price = marketPrice.slice(marketPrice.length - 3);
+    // let orderDetail = {
+    //   stockName: this.buyForm.get('stocks').value,
+    //   quantity: this.buyForm.get('quantity').value,
+    //   orderType: this.buyForm.get('orderType').value,
+    //   priceLimit: this.buyForm.get('price').value,
+    //   marketPrice: price
+    // };
+    // this.stock.buyStockOrder(orderDetail).subscribe(
+    //   (res) => {
+    //     this.buyForm.reset();
+    //   },
+    //   (err) => {
+    //     this.systemUnavailable = true;
+    //   }
+    // );
   }
 }

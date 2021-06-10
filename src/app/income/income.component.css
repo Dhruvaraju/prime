@@ -2,5 +2,18 @@ h3 {
   text-align: center;
   color: white;
   background-color: rgb(37, 153, 182);
-  padding:10px;
+  padding: 10px;
+}
+h4 {
+  text-align: center;
+}
+
+@keyframes blink {
+  10% {
+    opacity: 0;
+  }
+}
+
+span {
+  animation: blink 1s linear infinite;
 }

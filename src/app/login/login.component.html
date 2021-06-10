@@ -1,28 +1,62 @@
-<div class="d-flex container justify-content-center align-items-center text-center">
-  <form [formGroup]="loginPage"> 
- 
-    
+<app-navbar [displayUserNav]="false"></app-navbar>
+<div class="container">
+<div
+  class="d-flex container justify-content-center align-items-center text-center"
+>
+  <form [formGroup]="loginPage" (ngSubmit)="onLogin()" >
     <div class="form-group">
       <label>Username</label>
-      <input type="text" name="username" id="username" class="form-control" formControlName="username">
-      
+      <input
+        type="text"
+        name="username"
+        id="username"
+        class="form-control"
+        formControlName="username"
+      />
     </div>
-    <div class="alert alert-danger" *ngIf="loginPage.get('username').invalid && loginPage.get('username').touched"><small >Username required</small></div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        loginPage.get('username').invalid && loginPage.get('username').touched
+      "
+    >
+      <small>Username required</small>
+    </div>
 
     <div class="form-group">
       <label>Password</label>
-      <input type="password" name="password" id="password"  class="form-control" formControlName="password">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+      />
     </div>
-  
-  <div class="alert alert-danger" *ngIf="loginPage.get('password').invalid && loginPage.get('password').touched"><small >Password required</small></div>
+
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        loginPage.get('password').invalid && loginPage.get('password').touched
+      "
+    >
+      <small>Password required</small>
+    </div>
+    
+      <div *ngIf="message && loginPage.get('password').valid" class="alert alert-danger">
+        <small>Invalid username or password!</small>
+        
+      </div>
+    
     <div class="text-center">
-      <button class="btn btn-success pb-3px">LOGIN</button>
+      <button class="btn btn-success pb-3px" type="submit" [disabled]="loginPage.invalid">LOGIN</button>
     </div>
-  
-    <div class=" text-center">
-      <h3 >New User?</h3>
+    
+
+    <div class="text-center">
+      <h3>New User?</h3>
       <button class="btn btn-success" routerLink="/register">REGISTER</button>
     </div>
   </form>
 </div>
-  
+</div>
