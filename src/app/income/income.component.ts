@@ -7,10 +7,11 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./income.component.css'],
 })
 export class IncomeComponent implements OnInit {
+
   constructor(private fg: FormBuilder) {}
   income = this.fg.group({
-    name: [''],
-    type: [''],
+    name: ['Income Plus'],
+    type: ['Income Products'],
     value: [''],
   });
 

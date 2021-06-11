@@ -32,12 +32,16 @@
 
 <div class="container">
   <div class="container-fluid">
-    <form [formGroup]="wealth">
+    <form #wealthForm ="ngForm" [formGroup]="wealth">
+
+      {{ wealthForm.value | json}}
+
       <div class="form-group">
         <label for="name"><strong>Product Name :</strong></label>
 
-        <select class="form-control" id="name" placeholder="Select Products">
-          <option>Short Term Gold</option>
+        <select class="form-control" id="name" >
+          <option selected>Select Product</option>
+          <option >Short Term Gold</option>
           <option>Long Term Platinum</option>
         </select>
       </div>
@@ -85,7 +89,7 @@
           Buy
         </button>
       </div>
-<!--
+      <!--
       <div
         
         class="alert alert-success alert-dismissible fade show"
