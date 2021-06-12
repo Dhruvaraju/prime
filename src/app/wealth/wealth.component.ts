@@ -18,9 +18,8 @@ export class WealthComponent implements OnInit {
   });
 
 
-  onsubmit() {
-    console.log(this.wealthForm);
-    }
+ 
+    
   
   ngOnInit(): void {}
   
