@@ -19,10 +19,9 @@ export class WealthComponent implements OnInit {
 
 
   onsubmit() {
-    let formData={
-      productName:this.wealthForm.get('name').value,
+    console.log(this.wealthForm);
     }
-  }
+  
   ngOnInit(): void {}
   
 }
