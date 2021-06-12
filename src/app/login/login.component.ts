@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.rl.onLoginAttempt(loginaccept)
     .subscribe((response)=>{
       console.log(response)
-      if ((response) === true){
+      if ((response.message) === true){
         this.router.navigate(['/dashboard'])
       }
       else{

@@ -11,6 +11,7 @@ import {formSubmitService} from '../services/login&register.service';
 export class RegisterComponent implements OnInit {
   submitted = false;
   successfulRegistration=false;
+  alreadyexists=false;
   errors=false;
   constructor(private fb: FormBuilder
    ,private lr:formSubmitService) {}
@@ -57,11 +58,13 @@ export class RegisterComponent implements OnInit {
      this.lr.onFormSubmit(formData)
      .subscribe((response)=>{
        console.log(response)
-       if ((response.status===200) || (response.message==='success') || (response==='success')){
+       if  (response.message==='User Registered Successfully') {
         this.successfulRegistration=true
        }
-       console.log(response)
-       console.log('log works')
+       else{
+         this.alreadyexists=true
+       }
+       
        },
        (err)=>{
          this.errors=true
