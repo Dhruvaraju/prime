@@ -29,7 +29,7 @@
     <form
       [formGroup]="sellForm"
       style="width: 40%; text-align: left"
-      (ngSubmit)="onSubmit()"
+      (ngSubmit)=" onSellOrderSubmit()"
     >
       <div class="form-group">
         <label for="stocks"></label>
@@ -37,7 +37,7 @@
           name="stocks"
           id="stocks"
           formControlName="stocks"
-          [class.is-invalid]="getStocks.invalid && getStocks.touched"
+          [class.is-invalid]="this.sellForm.get('stocks').invalid && this.sellForm.get('stocks').touched"
           class="custom-select"
         >
           <option value="select-stock" disabled>Select Stock</option>
@@ -46,7 +46,7 @@
           </option>
         </select>
         <small
-          [class.d-none]="getStocks.valid || getStocks.untouched"
+          [class.d-none]="this.sellForm.get('stocks').valid || this.sellForm.get('stocks').untouched"
           class="text-danger"
         >
           Please select a stock
@@ -60,11 +60,11 @@
             id="quantity"
             pattern="^[1-9]+[0-9]*$"
             formControlName="quantity"
-            [class.is-invalid]="getQuantity.invalid && getQuantity.touched"
+            [class.is-invalid]="this.sellForm.get('quantity').invalid && this.sellForm.get('quantity').touched"
             class="form-control"
           />
           <small
-            [class.d-none]="getQuantity.valid || getQuantity.untouched"
+            [class.d-none]="this.sellForm.get('quantity').valid || this.sellForm.get('quantity').untouched"
             class="text-danger"
           >
             Quantity is required
@@ -81,7 +81,7 @@
             id="orderType"
             (change)="onOrderTypeChange()"
             formControlName="orderType"
-            [class.is-invalid]="getOrderType.invalid && getOrderType.touched"
+            [class.is-invalid]="this.sellForm.get('orderType').invalid && this.sellForm.get('orderType').touched"
             class="custom-select"
           >
             <option value="select" disabled>Select Order Type</option>
@@ -89,14 +89,14 @@
             <option value="limit" #limit>Limit Order</option>
           </select>
           <small
-            [class.d-none]="getOrderType.valid || getOrderType.untouched"
+            [class.d-none]="this.sellForm.get('orderType').valid || this.sellForm.get('orderType').untouched"
             class="text-danger"
           >
             Please select any order type
           </small>
         </div>
       </div>
-      <div class="form-group row" *ngIf="enableSellPrice">
+      <div class="form-group row" *ngIf="displayPriceForLimitOrder">
         <label for="price" class="col-sm-4 col-form-label"> Price </label>
         <div class="col-sm-8">
           <input
@@ -105,11 +105,11 @@
             pattern="^[1-9]+[0-9]+[0-9]*$"
             formControlName="price"
             (keyup)="onPriceChange()"
-            [class.is-invalid]="getPrice.invalid && getPrice.touched"
+            [class.is-invalid]="this.sellForm.get('price').invalid && this.sellForm.get('price').touched"
             class="form-control"
           />
           <small
-            [class.d-none]="getPrice.valid || getPrice.untouched"
+            [class.d-none]="this.sellForm.get('price').valid || this.sellForm.get('price').untouched"
             class="text-danger"
           >
             Price is required

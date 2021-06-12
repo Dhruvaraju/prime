@@ -6,11 +6,10 @@ import { IStocks } from '../../../assets/stocks/stocks';
 @Injectable({
   providedIn: 'root',
 })
-
 export class StocksService {
   private _url: string = '/assets/stocks/stocks.json';
-  baseurl: string = "https://ipotrading.herokuapp.com/";
-  stockObject: any[] = ["test"];
+  baseurl: string = 'https://ipotrading.herokuapp.com/';
+  stockObject: any[] = ['test'];
 
   constructor(private http: HttpClient) {}
 
@@ -18,13 +17,11 @@ export class StocksService {
     return this.http.get<IStocks[]>(this._url);
   }
 
-  buyStockOrder(orderDetail: any): Observable<any> {
-    return this.http.post<any>(this.baseurl + 'bns/buy/', orderDetail);
-    // this.stockObject.push(orderDetail);
-    // return null;
+  buyStockOrder(buyOrderRequest: any): Observable<any> {
+    return this.http.post<any>(this.baseurl + 'bns/buy/', buyOrderRequest);
   }
 
-  sellStockOrder(orderDetail: any): Observable<any> {
-    return this.http.post<any>(this.baseurl + 'bns/sell/', orderDetail);
+  sellStockOrder(sellOrderRequest: any): Observable<any> {
+    return this.http.post<any>(this.baseurl + 'bns/sell/', sellOrderRequest);
   }
 }
