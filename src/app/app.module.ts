@@ -49,7 +49,8 @@ import { ServiceshopService } from './services/serviceshop.service';
   ],
   providers:[
     StocksService,
-    IporegistrationService,formSubmitService,
+    IporegistrationService,
+    formSubmitService,
     ServiceshopService,
   ],
   
