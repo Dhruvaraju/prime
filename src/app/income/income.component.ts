@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-income',
@@ -9,9 +9,9 @@ import { FormBuilder } from '@angular/forms';
 export class IncomeComponent implements OnInit {
 
   constructor(private fg: FormBuilder) {}
-  income = this.fg.group({
-    name: ['Income Plus'],
-    type: ['Income Products'],
+  incomeForm = this.fg.group({
+    name: ['',Validators.required],
+    type: [''],
     value: [''],
   });
 

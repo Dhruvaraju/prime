@@ -32,18 +32,26 @@
 
 <div class="container">
   <div class="container-fluid">
-    <form #wealthForm ="ngForm" [formGroup]="wealth">
-
-      {{ wealthForm.value | json}}
-
-      <div class="form-group">
+    <form 
+      [formGroup]="wealthForm" 
+      *ngIf="!submitted"
+      (ngSubmit)="onsubmit()"
+    >
+    
+      <div class="form-group mb-3 ml-3">
         <label for="name"><strong>Product Name :</strong></label>
-
-        <select class="form-control" id="name" >
-          <option selected>Select Product</option>
-          <option >Short Term Gold</option>
+        <select name="name" class="custom-select" formControlName="name">
+          <option value="" default selected>Select Product</option>
+          <option>Short Term Gold</option>
           <option>Long Term Platinum</option>
         </select>
+      </div>
+
+      <div
+        *ngIf="wealthForm.get('name').invalid && wealthForm.get('name').touched"
+        class="alert alert-danger"
+      >
+        <small>Please Select a Product</small>
       </div>
 
       <h5>
@@ -55,57 +63,15 @@
       <p><strong>Product Type :</strong> Wealth management Product</p>
       <p><strong>Maturity Value :</strong> 22%</p>
 
-      <!--
-      <div class="form-group">
-        <label>Product Type :</label>
-        <input
-          type="type"
-          name="type"
-          id="type"
-          class="form-control"
-          formControlName="type"
-          placeholder="eg.Wealth Management Product"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Maturity Value :</label>
-        <input
-          type="value"
-          name="value"
-          id="value"
-          class="form-control"
-          formControlName="value"
-          placeholder="eg.22%"
-        />
-      </div>
-    -->
       <div class="text-center">
         <button
-          routerlink="/dashboard"
-          type="button"
-          class="btn btn-primary pb-3px"
+          class="btn btn-primary btn-lg"
+          [disabled]="wealthForm.invalid"
+          type="submit"
         >
           Buy
         </button>
       </div>
-      <!--
-      <div
-        
-        class="alert alert-success alert-dismissible fade show"
-        role="alert"
-      >
-        <strong>Success !</strong> Your Product added to the portfolio.
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    -->
 
       <div class="d-flex justify-content-end">
         <button routerLink="/shop" type="button" class="btn btn-outline-dark">
@@ -113,7 +79,13 @@
         </button>
       </div>
     </form>
+    <div *ngIf="submitted" class="text-center">
+      <div *ngIf="productAdded">
+        <p>Successfully Registered</p>
+      </div>
+      <div *ngIf="errors">System Unavailable,try again later!</div>
+    </div>
   </div>
-</div>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

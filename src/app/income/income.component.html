@@ -13,15 +13,14 @@
     </div>
 
     <div class="col">
-      <div class="card " style="width: 30rem">
+      <div class="card" style="width: 30rem">
         <div class="card-body">
           <h4 class="card-header bg-primary mb-2">Income Product</h4>
           <span class="badge badge-danger">Income Plus</span>
           <p class="card-text mb-2">
-            At Prime Income Product, For future income needs we perform a 
-            financial analysis and suggest best suited plan which not 
-            cause any financial stress . Live free with our Income 
-            range of products
+            At Prime Income Product, For future income needs we perform a
+            financial analysis and suggest best suited plan which not cause any
+            financial stress . Live free with our Income range of products
           </p>
         </div>
       </div>
@@ -31,16 +30,20 @@
 
 <div class="container">
   <div class="container-fluid">
-    <form #incomeForm ="ngForm"[formGroup]="income">
-
-        {{ incomeForm.value | json}}
-
+    <form [formGroup]="incomeForm">
       <div class="form-group">
         <label for="name"><strong>Product Name :</strong></label>
-        <select class="form-control" id="name">
-          <option selected>Select Product</option>
+        <select name="name" class="custom-select" formControlName="name">
+          <option value="" default selected>Select Product</option>
           <option>Income Plus</option>
         </select>
+      </div>
+
+      <div
+        *ngIf="incomeForm.get('name').invalid && incomeForm.get('name').touched"
+        class="alert alert-danger"
+      >
+        <small>Please Select a Product</small>
       </div>
 
       <h6>
@@ -51,33 +54,15 @@
 
       <p><strong>Product Type :</strong> Income Product</p>
       <p><strong>Maturity Vakue :</strong> 20000</p>
-<!--
-      <div class="form-group">
-        <label>Product Type :</label>
-        <input
-          type="type"
-          name="type"
-          id="type"
-          class="form-control"
-          formControlName="type"
-          placeholder="eg.Income Product"
-        />
-      </div>
 
-      <div class="form-group">
-        <label>Maturity Value :</label>
-        <input
-          type="value"
-          name="value"
-          id="value"
-          class="form-control"
-          formControlName="value"
-          placeholder="eg. 20000"
-        />
-      </div>
-    -->
       <div class="text-center">
-        <button class="btn btn-primary pb-3px" type="buy">Buy</button>
+        <button
+          class="btn btn-primary btn-lg"
+          [disabled]="incomeForm.invalid"
+          type="submit"
+        >
+          Buy
+        </button>
       </div>
 
       <div class="d-flex justify-content-end">
