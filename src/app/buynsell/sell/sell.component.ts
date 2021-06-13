@@ -12,7 +12,6 @@ export class SellComponent implements OnInit {
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
-  onSuccessBanner: boolean = false; //Display Success Banner on Submit
   sellForm: FormGroup;
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
@@ -47,14 +46,6 @@ export class SellComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    // if (this.sellForm.valid === true) {
-    //   this.onSuccessBanner = true;
-    //   // alert("Product Sale Initiated Successfully")
-    // } else {
-    //   this.onSuccessBanner = false;
-    // }
-    // // this.sellForm.reset();
-    // this.onSuccessBanner = false;
 
     let stockDetail = this.sellForm.get('stocks').value;
     let stockTikker = stockDetail.slice(0, 3);

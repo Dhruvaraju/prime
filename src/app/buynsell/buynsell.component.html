@@ -1,7 +1,7 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
 <div class="container">
   <div class="row justify-content-center">
-    <marquee behavior="scroll" direction="left" width="65%" loop="10">
+    <marquee behavior="scroll" direction="left" width="75%" loop="10">
       <div class="holder">
         <div class="text-container">
           <p>
@@ -46,26 +46,28 @@
         <img src="./../../assets/buysell.jpeg" width="50%" />
       </div>
     </div> -->
-    <div class="d-flex">
+    <div class="col-7">
       <div class="card">
-        <h3 class="card-header text-center">HOLDINGS:</h3>
+        <h3 class="card-header">Portfolio</h3>
         <div class="card-body">
           <p class="card-text">
-            Stocks owed by you after clearance from depository.
+            Stocks owned by you after clearance from depository.
           </p>
           <table class="table table-hover">
-            <thead class="thead-light">
+            <thead class="table-primary">
               <tr>
                 <th scope="col">Stock Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Market price per stock</th>
+                <th scope="col">Net Qty</th>
+                <th scope="col">LTP</th>
+                <th scope="col">Current Value</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let stock of stockList">
                 <td>{{ stock.productName }}</td>
                 <td>{{ stock.quantity }}</td>
-                <td>{{ stock.buyPrice }}</td>
+                <td>${{ stock.buyPrice }}</td>
+                <td>${{ (stock.quantity)*(stock.buyPrice) }}</td>
               </tr>
             </tbody>
           </table>

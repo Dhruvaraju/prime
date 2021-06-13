@@ -12,7 +12,6 @@ export class BuyComponent implements OnInit {
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
-  onSuccessBanner: boolean = false; //Display Success Banner on Submit
   buyForm: FormGroup;
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}

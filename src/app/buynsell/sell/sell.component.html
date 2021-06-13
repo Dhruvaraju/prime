@@ -1,7 +1,7 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
 <div class="container">
   <div class="row justify-content-center">
-    <marquee behavior="scroll" direction="left" width="65%" loop="10">
+    <marquee behavior="scroll" direction="left" width="75%" loop="10">
       <div class="holder">
         <div class="text-container">
           <p>
@@ -131,13 +131,6 @@
       >
         System Unavailable try again later
       </div>
-      <div 
-        class="alert alert-success" 
-        role="alert"
-        *ngIf="onSuccessBanner"
-      >
-        Product Sale Initiated Successfully
-      </div>
 
       <div class="d-flex justify-content-center">
         <button 
@@ -145,11 +138,51 @@
           class="btn btn-success" 
           [disabled]= "!sellForm.valid" 
           style="width: 9rem"
+          data-toggle="modal"
+          data-target="#sellOrderSuccess"
         >
           SELL
         </button>
       </div>
     </form>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="sellOrderSuccess"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="sellOrderSuccessLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sellOrderSuccessLabel">Success!!</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Product Sale Initiated Successfully
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-dismiss="modal"
+            routerLink="/buysell" 
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="d-flex justify-content-end">
     <button 
