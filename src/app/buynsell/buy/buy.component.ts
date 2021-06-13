@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from './../../services/stocks/stocks.service';
+import { stocksService } from './../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-buy',
@@ -15,7 +15,7 @@ export class BuyComponent implements OnInit {
   onSuccessBanner: boolean = false; //Display Success Banner on Submit
   buyForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private stock: StocksService) {}
+  constructor(private fb: FormBuilder, private stock: stocksService) {}
 
   ngOnInit() {
     this.buyForm = this.fb.group({
@@ -49,15 +49,19 @@ export class BuyComponent implements OnInit {
     }
 
     let stockDetail = this.buyForm.get('stocks').value;
+    let stockTikker = stockDetail.slice(0, 3);
+    let stockName = stockDetail.substring(
+      stockDetail.lastIndexOf('.') + 1,
+      stockDetail.lastIndexOf('-')
+    );
     let currentMarketPrice = stockDetail.slice(stockDetail.length - 3);
-    let stockTikker = stockDetail.slice(0,3);
     let limitOrderPrice = currentMarketPrice;
     if (this.buyForm.get('orderType').value === 'limit') {
       limitOrderPrice = this.buyForm.get('price').value;
     }
     let buyOrderRequest = {
-      userName: 'Alan',
-      productName: this.buyForm.get('stocks').value,
+      userName: 'alexjames',
+      productName: stockName,
       productID: stockTikker,
       productType: 'STOCK',
       subcategory: 'STOCK',

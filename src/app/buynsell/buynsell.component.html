@@ -5,25 +5,73 @@
       <div class="holder">
         <div class="text-container">
           <p>
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             SBI Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
           </p>
         </div>
       </div>
     </marquee>
   </div>
-  <div class="d-flex justify-content-center">
-    <img src="./../../assets/buysell.jpeg" width="100%" />
+  <div class="row justify-content-center">
+    <!-- <div class="col-sm-8">
+      <div class="d-flex">
+        <img src="./../../assets/buysell.jpeg" width="50%" />
+      </div>
+    </div> -->
+    <div class="d-flex">
+      <div class="card">
+        <h3 class="card-header text-center">HOLDINGS:</h3>
+        <div class="card-body">
+          <p class="card-text">
+            Stocks owed by you after clearance from depository.
+          </p>
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Stock Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Market price per stock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let stock of stockList">
+                <td>{{ stock.productName }}</td>
+                <td>{{ stock.quantity }}</td>
+                <td>{{ stock.buyPrice }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     class="d-flex justify-content-center"
@@ -52,4 +100,5 @@
       </div>
     </div>
   </div>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

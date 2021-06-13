@@ -42,7 +42,7 @@
         >
           <option value="select-stock" disabled>Select Stock</option>
           <option *ngFor="let stock of selectStocks">
-            {{ stock.ticker }}. {{ stock.name }} - ${{ stock.price }}
+            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
           </option>
         </select>
         <small

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from './../../services/stocks/stocks.service';
+import { stocksService } from './../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-sell',
@@ -15,7 +15,7 @@ export class SellComponent implements OnInit {
   onSuccessBanner: boolean = false; //Display Success Banner on Submit
   sellForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private stock: StocksService) {}
+  constructor(private fb: FormBuilder, private stock: stocksService) {}
 
   ngOnInit() {
     this.sellForm = this.fb.group({
@@ -47,25 +47,29 @@ export class SellComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    if (this.sellForm.valid === true) {
-      this.onSuccessBanner = true;
-      // alert("Product Sale Initiated Successfully")
-    } else {
-      this.onSuccessBanner = false;
-    }
-    // this.sellForm.reset();
-    this.onSuccessBanner = false;
+    // if (this.sellForm.valid === true) {
+    //   this.onSuccessBanner = true;
+    //   // alert("Product Sale Initiated Successfully")
+    // } else {
+    //   this.onSuccessBanner = false;
+    // }
+    // // this.sellForm.reset();
+    // this.onSuccessBanner = false;
 
     let stockDetail = this.sellForm.get('stocks').value;
+    let stockTikker = stockDetail.slice(0, 3);
+    let stockName = stockDetail.substring(
+      stockDetail.lastIndexOf('.') + 1,
+      stockDetail.lastIndexOf('-')
+    );
     let currentMarketPrice = stockDetail.slice(stockDetail.length - 3);
-    let stockTikker  = stockDetail.slice(0,3);
     let limitOrderPrice = currentMarketPrice;
     if (this.sellForm.get('orderType').value === 'limit') {
       limitOrderPrice = this.sellForm.get('price').value;
     }
     let sellOrderRequest = {
-      userName: 'Alan',
-      productName: this.sellForm.get('stocks').value,
+      userName: 'alexjames',
+      productName: stockName,
       productID: stockTikker,
       productType: 'STOCK',
       subcategory: 'STOCK',
