@@ -10,4 +10,10 @@ export class ServiceshopService {
   constructor(private http:HttpClient) { }
   url:string="https://prime-banc.herokuapp.com/";
 
+  wealth(productdata) :Observable<any>
+  {
+    return this.http.post<any>(this.url,productdata);
+  }
+
 }
+ 
