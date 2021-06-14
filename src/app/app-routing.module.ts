@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './services/routerGuards/auth.guard';
 import { BuynsellComponent } from './buynsell/buynsell.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { IpoComponent } from './ipo/ipo.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'buysell', component: BuynsellComponent },
+  { path: 'buysell', component: BuynsellComponent, canActivate: [AuthGuard] },
   { path: 'shop', component: ProductShopComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'ipo', component: IpoComponent },

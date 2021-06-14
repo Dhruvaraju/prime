@@ -39,7 +39,7 @@ import { ServiceshopService } from './services/serviceshop.service';
     DashboardComponent,
     WealthComponent,
     IncomeComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
