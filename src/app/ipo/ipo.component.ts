@@ -10,6 +10,7 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
 export class IpoComponent implements OnInit {
   state="";
   states="";
+
   RegistrationForm :FormGroup;
 
   constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
@@ -31,7 +32,6 @@ export class IpoComponent implements OnInit {
   
    onSubmit()
    {
-     console.log("for my reference");
 
             let iporegdetail=
             {
@@ -55,6 +55,7 @@ export class IpoComponent implements OnInit {
               if ((response.message ==="ipo registered successfully")|| (response.status===200) ){
                this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
                console.log("success");
+      
               }
               
               },
@@ -62,5 +63,12 @@ export class IpoComponent implements OnInit {
                 this.states="System currently unavailable contact our banking representative to initiate the process";
                 console.log(error);
               })
+
+
      }
+     scroll(el: HTMLElement) {
+      el.scrollIntoView();
+    }
+
+ 
   }

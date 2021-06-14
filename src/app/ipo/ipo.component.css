@@ -1,21 +1,57 @@
-
 h2
 {
-    color:blueviolet;
+    color:blue;
 }
 label,h2{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-  
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+  .demo
+  {
+    font-size:32px;
+    font-family: Georgia;
   }
-.demo
-{
+  
+  .flo{
 
+    font-size:30px;
+    font-family: Georgia;
+    margin-left: 150px;
+
+  }
+  .dem {
+   
+position:absolute;
+
+    z-index: -1;
+  }
+
+h3
+{
+  font-family: 'Times New Roman', Times, serif;
+}
+.leaves
+{/* The image used */
+  background-image:"../assets/ipo-images/leaf.jpg";
+  z-index: -1;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("/assets/ipo-images/leaf.jpg");
+
+  /* Center and scale the image nicely */
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: right top;
-  margin-right: 200px;
-  background-attachment: scroll;
+  background-size: cover;
+  position: relative;
+}
+.centered {
+  color:blueviolet;
+  font-size: 20px;
+}
+.con
+{
+  max-width: 500px;
+  margin: auto;
+  padding: 10px;
 }
