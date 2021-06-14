@@ -16,11 +16,13 @@ import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
-import { StocksService } from './services/stocks/stocks.service';
+import { stocksService } from './services/stocks/stocks.service';
 import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ServiceshopService } from './services/serviceshop.service';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -39,7 +41,9 @@ import { ServiceshopService } from './services/serviceshop.service';
     DashboardComponent,
     WealthComponent,
     IncomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    UnauthorizedComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ import { ServiceshopService } from './services/serviceshop.service';
     ReactiveFormsModule,
   ],
   providers:[
-    StocksService,
+    stocksService,
     IporegistrationService,
     formSubmitService,
     ServiceshopService,

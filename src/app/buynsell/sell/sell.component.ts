@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from './../../services/stocks/stocks.service';
+import { stocksService } from './../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-sell',
@@ -9,28 +9,13 @@ import { StocksService } from './../../services/stocks/stocks.service';
 })
 export class SellComponent implements OnInit {
   public selectStocks = [];
-  enableSellPrice: boolean = false;
+  displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
-  onSuccessBanner: boolean = false; //Display Success Banner on Submit
   sellForm: FormGroup;
+  userName: string = localStorage.getItem('username');
 
-  get getStocks() {
-    return this.sellForm.get('stocks');
-  }
-  get getQuantity() {
-    return this.sellForm.get('quantity');
-  }
-  get getOrderType() {
-    return this.sellForm.get('orderType');
-  }
-  get getPrice() {
-    return this.sellForm.get('price');
-  }
-  constructor(
-    private fb: FormBuilder, 
-    private stock: StocksService
-  ) {}
+  constructor(private fb: FormBuilder, private stock: stocksService) {}
 
   ngOnInit() {
     this.sellForm = this.fb.group({
@@ -44,9 +29,9 @@ export class SellComponent implements OnInit {
 
   onOrderTypeChange() {
     if (this.sellForm.get('orderType').value === 'limit') {
-      this.enableSellPrice = true;
+      this.displayPriceForLimitOrder = true;
     } else {
-      this.enableSellPrice = false;
+      this.displayPriceForLimitOrder = false;
     }
   }
 
@@ -54,7 +39,7 @@ export class SellComponent implements OnInit {
     this.priceErrorBanner = false;
   }
 
-  onSubmit() {
+  onSellOrderSubmit() {
     if (
       this.sellForm.get('orderType').value === 'limit' &&
       this.sellForm.get('price').value === ''
@@ -62,33 +47,35 @@ export class SellComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    if (
-      this.sellForm.valid == true
-      ) {
-        // this.onSuccessBanner = true;
-        alert("Product Sale Initiated Successfully")
+
+    let stockDetail = this.sellForm.get('stocks').value;
+    let stockTikker = stockDetail.slice(0, 3);
+    let stockName = stockDetail.substring(
+      stockDetail.lastIndexOf('.') + 1,
+      stockDetail.lastIndexOf('-')
+    );
+    let currentMarketPrice = stockDetail.slice(stockDetail.length - 3);
+    let limitOrderPrice = currentMarketPrice;
+    if (this.sellForm.get('orderType').value === 'limit') {
+      limitOrderPrice = this.sellForm.get('price').value;
+    }
+    let sellOrderRequest = {
+      userName: this.userName,
+      productName: stockName,
+      productID: stockTikker,
+      productType: 'STOCK',
+      subcategory: 'STOCK',
+      buyPrice: limitOrderPrice,
+      marketPrice: currentMarketPrice,
+      quantity: this.sellForm.get('quantity').value,
+    };
+    this.stock.sellStockOrder(sellOrderRequest).subscribe(
+      (res) => {
+        this.sellForm.reset();
+      },
+      (err) => {
+        this.systemUnavailable = true;
       }
-    // else {
-    //   this.onSuccessBanner = false;
-    // }
-    this.sellForm.reset();
-    this.onSuccessBanner = false;
-    // let marketPrice = this.sellForm.get('stocks').value;
-    // let price = marketPrice.slice(marketPrice.length - 3);
-    // let orderDetail = {
-    //   stockName: this.sellForm.get('stocks').value,
-    //   quantity: this.sellForm.get('quantity').value,
-    //   orderType: this.sellForm.get('orderType').value,  
-    //   priceLimit: this.sellForm.get('price').value,
-    //   marketPrice: price
-    // };
-    // this.stock.sellStockOrder(orderDetail).subscribe(
-    //   (res) => {
-    //     this.sellForm.reset();
-    //   },
-    //   (err) => {
-    //     this.systemUnavailable = true;
-    //   }
-    // );
+    );
   }
 }

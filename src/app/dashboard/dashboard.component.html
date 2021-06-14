@@ -1,90 +1,78 @@
-<app-navbar [displayUserNav]="true"></app-navbar>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card" style="margin-top: 0.5em">
-        <h3 class="card-header text-center">Stocks owned:</h3>
-        <div class="card-body">
-          <p class="card-text">
-            Stocks owed by you after clearance from depository.
-          </p>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Stock Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Market price per stock</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Stark Industries</td>
-                <td>289</td>
-                <td>370</td>
-              </tr>
-              <tr>
-                <td>Lex Corp</td>
-                <td>6700</td>
-                <td>450</td>
-              </tr>
-              <tr>
-                <td>Wayne Industries</td>
-                <td>50000</td>
-                <td>4900</td>
-              </tr>
-            </tbody>
-          </table>
-          <a href="#" class="btn btn-primary inline" routerLink="/buysell"
-            >Buy/Sell Stocks</a
-          >
+<div class="container text-center" *ngIf="pageLoader">
+  <app-navbar [displayUserNav]="false"></app-navbar>
+  <img src="./../../assets/loader.gif" />
+</div>
+
+<div *ngIf="!pageLoader">
+  <app-navbar [displayUserNav]="true"></app-navbar>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="margin-top: 0.5em">
+          <h3 class="card-header text-center">Stocks owned:</h3>
+          <div class="card-body">
+            <p class="card-text">
+              Stocks owed by you after clearance from depository.
+            </p>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Stock Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Market price per stock</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let stock of stockList">
+                  <td>{{ stock.productName }}</td>
+                  <td>{{ stock.quantity }}</td>
+                  <td>{{ stock.marketPrice }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="#" class="btn btn-primary inline" routerLink="/buysell"
+              >Buy/Sell Stocks</a
+            >
+          </div>
         </div>
-      </div>
-      <div class="card" style="margin-top: 0.5em">
-        <h3 class="card-header text-center">Financial products Owned:</h3>
-        <div class="card-body">
-          <p class="card-text">
-            Active financial product subscriptions are present below
-          </p>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Maturity Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Income Plus</td>
-                <td>Income</td>
-                <td>20000</td>
-              </tr>
-              <tr>
-                <td>Short Term gold</td>
-                <td>Wealth-Management</td>
-                <td>25%</td>
-              </tr>
-              <tr>
-                <td>Long Term Platinum</td>
-                <td>Wealth-Management</td>
-                <td>46%</td>
-              </tr>
-            </tbody>
-          </table>
-          <a href="#" class="btn btn-primary" routerLink="/shop"
-            >Explore Financial Products</a
-          >
+        <div class="card" style="margin-top: 0.5em">
+          <h3 class="card-header text-center">Financial products Owned:</h3>
+          <div class="card-body">
+            <p class="card-text">
+              Active financial product subscriptions are present below
+            </p>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Maturity Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of financialProductList">
+                  <td>{{ product.productName }}</td>
+                  <td>{{ product.subcategory }}</td>
+                  <td>{{ product.marketPrice }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="#" class="btn btn-primary" routerLink="/shop"
+              >Explore Financial Products</a
+            >
+          </div>
         </div>
-      </div>
-      <div class="card" style="margin-top: 0.5em">
-        <h3 class="card-header text-center">IPO's Initiated</h3>
-        <div class="card-body">
-          <h5 class="card-title">North-West Refineries</h5>
-          <p class="card-text">Request triggered, Quote pending.</p>
-          <a href="#" class="btn btn-primary" routerLink="/ipo">Initiate New IPO</a>
+        <div class="card" style="margin-top: 0.5em">
+          <h3 class="card-header text-center">IPO's Initiated</h3>
+          <div class="card-body">
+            <h5 class="card-title">North-West Refineries</h5>
+            <p class="card-text">Request triggered, Quote pending.</p>
+            <a href="#" class="btn btn-primary" routerLink="/ipo"
+              >Initiate New IPO</a
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
