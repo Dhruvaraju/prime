@@ -35,25 +35,24 @@ export class IpoComponent implements OnInit {
 
             let iporegdetail=
             {
-              availableForSale :this.RegistrationForm.get('per').value,
-              companyName :this.RegistrationForm.get('cpyname').value,
-              marketCap :this.RegistrationForm.get('mvalue').value,
-              userName :"karthikank" //this.loginPage.get('username').value,
-            // "ipoQuote":
-             // {
-             //   "description" :" ",
-            //    "issueDate":" ",
-            //    "issueSize":" ",
-            //    "issuePrice":" ",
-            //    "lotSize": " ",
-             //   "closingDate": " "
-            //  }
+                        
+                availableForSale:this.RegistrationForm.get('per').value,
+                closingDate: " ",
+                companyName: this.RegistrationForm.get('cpyname').value,
+                description: " ",
+                id: 0,
+                issueDate: "",
+                issuePrice: 0,
+                issueSize: 0,
+                lotSize: 0,
+                marketCap: this.RegistrationForm.get('mvalue').value,
+                userName: "str"
             }
           
             this._reg.register(iporegdetail)
             .subscribe((response)=>{
               console.log(response)
-              if ((response.status===200) || (response.message==='Success')){
+              if ((response.message ==="ipo registered successfully")|| (response.status===200) ){
                this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
                console.log("success");
               }

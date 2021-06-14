@@ -1,28 +1,23 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
+
 <div class="container">
+      
    <div class="justify-content-center">
-            <div class="row">
-                 
-            <div class=" col-lg-6">
-                  <img src="../assets/ipo-images/hero-bg.png" class="img-fluid" alt=""></div>
+            <div class="bg-image" 
+     style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
+            height: 100vh">
+
+               
+                        <div class="demo">
+            <!---div class=" col-lg-6">
+                  <img src="../assets/ipo-images/hero-bg.png" class="img-fluid" alt="">
+              <button type ="button" >Get Started</button></div>
                <div class=" col-lg-4 ">   <img src="../assets/ipo-images/hero-img.png" 
                   class="img-fluid" alt="picture">
-                </div>
-                <div class="col-lg-6 d-flex flex-column justify-content-center">
-                  <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-                  <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
-                  <div data-aos="fade-up" data-aos-delay="600">
-                    <div class="text-center text-lg-start">
-                      <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                        <span>Get Started</span>
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-            
-            <div class="jumbotron">
+                </div-->
+       
       <form [formGroup]="RegistrationForm" >
+            <div class="card">
             <h2 class="text-center font-bold">IPO REGISTRATION</h2><hr>
             <div class="form-group">
                   <label for="cpyname" class="font-weight-bold ">Company Name:</label><br>
@@ -97,9 +92,8 @@
                   <h5 style="color:green;">{{state}}</h5>
                   <h5 style="color: red;">{{states}}</h5>
             </div>
-   
+      </div>
       </form> 
 </div> 
-  </div>
-</div>
+</div></div>
 </div>
