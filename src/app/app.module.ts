@@ -17,9 +17,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
 import { StocksService } from './services/stocks/stocks.service';
-import { formSubmitService } from './services/login&register.service'
+import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ServiceshopService } from './services/serviceshop.service';
 
 
 
@@ -48,7 +49,9 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   providers:[
     StocksService,
-    IporegistrationService,formSubmitService
+    IporegistrationService,
+    formSubmitService,
+    ServiceshopService,
   ],
   
   bootstrap: [AppComponent]

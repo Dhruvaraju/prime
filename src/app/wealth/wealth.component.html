@@ -32,51 +32,45 @@
 
 <div class="container">
   <div class="container-fluid">
-    <form [formGroup]="wealth">
-      <div class="form-group">
-        <label for="name">Product Name :</label>
-        <select class="form-control" id="name">
+    <form 
+      [formGroup]="wealthForm" 
+      *ngIf="!submitted"
+      (ngSubmit)="onsubmit()"
+    >
+    
+      <div class="form-group mb-3 ml-3">
+        <label for="name"><strong>Product Name :</strong></label>
+        <select name="name" class="custom-select" formControlName="name">
+          <option value="" default selected>Select Product</option>
           <option>Short Term Gold</option>
-          <option>Long Term Platinam</option>
+          <option>Long Term Platinum</option>
         </select>
       </div>
-      <!--changes
+
+      <div
+        *ngIf="wealthForm.get('name').invalid && wealthForm.get('name').touched"
+        class="alert alert-danger"
+      >
+        <small>Please Select a Product</small>
+      </div>
+
       <h5>
         <span class="badge badge-pill badge-danger mb-2">Monthly</span>
         <span class="badge badge-pill badge-primary my-2">Quaterly</span>
         <span class="badge badge-pill badge-success my-2">Yearly</span>
       </h5>
 
-      <p>Product Type : Wealth management Product</p>
-      <p>Maturity Value : 22%</p>
-    -->
-
-      <div class="form-group">
-        <label>Product Type :</label>
-        <input
-          type="type"
-          name="type"
-          id="type"
-          class="form-control"
-          formControlName="type"
-          placeholder="eg.Wealth Management Product"
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Maturity Value :</label>
-        <input
-          type="value"
-          name="value"
-          id="value"
-          class="form-control"
-          formControlName="value"
-          placeholder="eg.22%"
-        />
-      </div>
+      <p><strong>Product Type :</strong> Wealth management Product</p>
+      <p><strong>Maturity Value :</strong> 22%</p>
 
       <div class="text-center">
-        <button class="btn btn-primary pb-3px">Submit</button>
+        <button
+          class="btn btn-primary btn-lg"
+          [disabled]="wealthForm.invalid"
+          type="submit"
+        >
+          Buy
+        </button>
       </div>
 
       <div class="d-flex justify-content-end">
@@ -85,7 +79,13 @@
         </button>
       </div>
     </form>
+    <div *ngIf="submitted" class="text-center">
+      <div *ngIf="productAdded">
+        <p>Successfully Registered</p>
+      </div>
+      <div *ngIf="errors">System Unavailable,try again later!</div>
+    </div>
   </div>
-</div>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

@@ -27,10 +27,7 @@ export class BuyComponent implements OnInit {
   get getPrice() {
     return this.buyForm.get('price');
   }
-  constructor(
-    private fb: FormBuilder, 
-    private stock: StocksService
-  ) {}
+  constructor(private fb: FormBuilder, private stock: StocksService) {}
 
   ngOnInit() {
     this.buyForm = this.fb.group({
@@ -62,32 +59,27 @@ export class BuyComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-    if (
-      this.buyForm.valid == true
-      ) {
-        // this.onSuccessBanner = true;
-        alert("Product Added to your Portfolio")
+
+    let marketPrice = this.buyForm.get('stocks').value;
+    let price = marketPrice.slice(marketPrice.length - 3);
+    let orderDetail = {
+      classifaction: 'limit',
+      id: 0,
+      marketPrice: price,
+      priceLimit: 0,
+      quantity: this.buyForm.get('quantity').value,
+      type: 'buy',
+      userName: 'alex'
+    };
+    this.stock.buyStockOrder(orderDetail).subscribe(
+      (res) => {
+        this.buyForm.reset();
+        console.log(res);
+      },
+      (err) => {
+        this.systemUnavailable = true;
+        console.log(err);
       }
-    // else {
-    //   this.onSuccessBanner = false;
-    // }
-    this.buyForm.reset();
-    // let marketPrice = this.buyForm.get('stocks').value;
-    // let price = marketPrice.slice(marketPrice.length - 3);
-    // let orderDetail = {
-    //   stockName: this.buyForm.get('stocks').value,
-    //   quantity: this.buyForm.get('quantity').value,
-    //   orderType: this.buyForm.get('orderType').value,
-    //   priceLimit: this.buyForm.get('price').value,
-    //   marketPrice: price
-    // };
-    // this.stock.buyStockOrder(orderDetail).subscribe(
-    //   (res) => {
-    //     this.buyForm.reset();
-    //   },
-    //   (err) => {
-    //     this.systemUnavailable = true;
-    //   }
-    // );
+    );
   }
 }
