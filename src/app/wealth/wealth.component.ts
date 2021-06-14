@@ -30,7 +30,7 @@ submit()
     this.ck.wealth(wealthdata)
     .subscribe(response =>
       {
-        console.log(response)
+        console.log('Success!',response)
       })
 }
  

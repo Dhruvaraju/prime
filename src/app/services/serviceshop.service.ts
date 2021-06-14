@@ -8,11 +8,16 @@ import { Observable } from "rxjs";
 export class ServiceshopService {
 
   constructor(private http:HttpClient) { }
-  url:string="https://prime-banc.herokuapp.com/";
+  url:string="https://ipotrading.herokuapp.com/fpshop/buy";
 
   wealth(productdata) :Observable<any>
   {
     return this.http.post<any>(this.url,productdata);
+  }
+
+  income(formdata) :Observable<any>
+  {
+    return this.http.post<any>(this.url,formdata);
   }
 
 }

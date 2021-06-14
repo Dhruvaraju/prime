@@ -73,6 +73,7 @@
           Buy
         </button>
       </div>
+     
 
       <div class="d-flex justify-content-end">
         <button routerLink="/shop" type="button" class="btn btn-outline-dark">
@@ -80,13 +81,7 @@
         </button>
       </div>
     </form>
-    <div *ngIf="submitted" class="text-center">
-      <div *ngIf="productAdded">
-        <p>Successfully Registered</p>
-      </div>
-      <div *ngIf="errors">System Unavailable,try again later!</div>
-    </div>
-  </div>
+    
 
   <router-outlet></router-outlet>
 </div>

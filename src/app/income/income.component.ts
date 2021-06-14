@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
+import {ServiceshopService} from '../services/serviceshop.service';
 
 @Component({
   selector: 'app-income',
@@ -8,12 +9,30 @@ import { FormBuilder,Validators } from '@angular/forms';
 })
 export class IncomeComponent implements OnInit {
 
-  constructor(private fg: FormBuilder) {}
+  submitted = false;
+  productAdded=false;
+  errors=false;
+
+  constructor(private fg: FormBuilder, private ip : ServiceshopService ) {}
   incomeForm = this.fg.group({
     name: ['',Validators.required],
     type: [''],
     value: [''],
   });
 
+
+  submit()
+{
+  let incomedata={
+    buyPrice:this.incomeForm.get('value').value,
+    productName:this.incomeForm.get('value').value,
+    productType:this.incomeForm.get('value').value}
+    
+    this.ip.wealth(incomedata)
+    .subscribe(response =>
+      {
+        console.log(response)
+      })
+}
   ngOnInit(): void {}
 }
