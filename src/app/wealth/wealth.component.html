@@ -35,10 +35,15 @@
     <form [formGroup]="wealthForm">
       <div class="form-group mb-3 ml-3">
         <label for="name"><strong>Product Name :</strong></label>
-        <select name="name" class="custom-select" formControlName="name" id="name">
+        <select
+          name="name"
+          class="custom-select"
+          formControlName="name"
+          id="name"
+        >
           <option value="" default selected>Select Product</option>
-          <option value="shortterm" #shortterm >Short Term Gold</option>
-          <option value="longterm" #longterm >Long Term Platinum</option>
+          <option value="shortterm" #shortterm>Short Term Gold</option>
+          <option value="longterm" #longterm>Long Term Platinum</option>
         </select>
       </div>
 
@@ -46,7 +51,7 @@
         *ngIf="wealthForm.get('name').invalid && wealthForm.get('name').touched"
         class="alert alert-danger"
       >
-        <small>Please Select a Product</small>
+        <small>Please Select a Product !</small>
       </div>
 
       <h5>
@@ -63,10 +68,55 @@
           class="btn btn-primary btn-lg"
           [disabled]="wealthForm.invalid"
           type="submit"
+          data-toggle="modal"
+          data-target="#wealthProductModel"
           (click)="onSubmitWealth()"
         >
           Buy
         </button>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="wealthProductModel"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="wealthProductModelTitle"
+        aria-hidden="true"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="wealthProductModelTitle">
+                <Strong>Success !</Strong>
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <strong> Wealth Management Product</strong> is successfully added
+              to the Portfolio.
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="d-flex justify-content-end">

@@ -10,7 +10,8 @@ import {ServiceshopService} from '../services/serviceshop.service';
 export class IncomeComponent implements OnInit {
 
   submitted = false;
-  productAdded=false;
+  
+  alreadyexists=false;
   errors=false;
 
   constructor(private fg: FormBuilder, private ip : ServiceshopService ) {}
@@ -29,10 +30,24 @@ export class IncomeComponent implements OnInit {
     productType:this.incomeForm.get('value').value}
     
     this.ip.wealth(incomedata)
-    .subscribe(response =>
-      {
-        console.log(response)
+    .subscribe((response)=>{
+      console.log(response)
+      if  (response.message==='product added') {
+       this.submitted = true; 
+       
+      }
+      else{
+        this.alreadyexists=true
+      }
+      
+      },
+      (err)=>{
+        this.errors=true
       })
-}
+       
+     
+    
+    }
+
   ngOnInit(): void {}
 }
