@@ -32,18 +32,13 @@
 
 <div class="container">
   <div class="container-fluid">
-    <form 
-      [formGroup]="wealthForm" 
-      *ngIf="!submitted"
-      
-    >
-    
+    <form [formGroup]="wealthForm">
       <div class="form-group mb-3 ml-3">
         <label for="name"><strong>Product Name :</strong></label>
-        <select name="name" class="custom-select" formControlName="name">
+        <select name="name" class="custom-select" formControlName="name" id="name">
           <option value="" default selected>Select Product</option>
-          <option>Short Term Gold</option>
-          <option>Long Term Platinum</option>
+          <option value="shortterm" #shortterm >Short Term Gold</option>
+          <option value="longterm" #longterm >Long Term Platinum</option>
         </select>
       </div>
 
@@ -68,12 +63,11 @@
           class="btn btn-primary btn-lg"
           [disabled]="wealthForm.invalid"
           type="submit"
-          (click)="submit()"
+          (click)="onSubmitWealth()"
         >
           Buy
         </button>
       </div>
-     
 
       <div class="d-flex justify-content-end">
         <button routerLink="/shop" type="button" class="btn btn-outline-dark">
@@ -81,7 +75,7 @@
         </button>
       </div>
     </form>
-    
 
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </div>
 </div>

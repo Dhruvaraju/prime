@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {ServiceshopService} from '../services/serviceshop.service';
+import { ServiceshopService } from '../services/serviceshop.service';
 
 @Component({
   selector: 'app-wealth',
@@ -8,34 +8,39 @@ import {ServiceshopService} from '../services/serviceshop.service';
   styleUrls: ['./wealth.component.css'],
 })
 export class WealthComponent implements OnInit {
-  submitted = false;
-  productAdded=false;
-  errors=false;
   
-  constructor(private fg: FormBuilder,private ck : ServiceshopService ) {}
+  productAdded = false;
+  errors = false;
+
+  constructor(private fg: FormBuilder, private ck: ServiceshopService) {}
   wealthForm = this.fg.group({
-    name: ['',Validators.required],
+    name: ['', Validators.required],
     type: [''],
     value: [''],
   });
 
-  
-submit()
-{
-  let wealthdata={
-    buyPrice:this.wealthForm.get('value').value,
-    productName:this.wealthForm.get('value').value,
-    productType:this.wealthForm.get('value').value}
+  onSubmitWealth() {
+    let pdtName = this.wealthForm.get('name').value;
+    let pdtID = 'WM001';
+    if (pdtName === 'longterm') {
+      pdtID = 'WM002';
+    }
     
-    this.ck.wealth(wealthdata)
-    .subscribe(response =>
-      {
-        console.log('Success!',response)
-      })
-}
- 
+    let wealthdata = {
+      buyPrice: '22%',
+      marketPrice:'100',
+      quantity:'1',
+      productID: pdtID,
+      productName: pdtName,
+      productType: 'FP',
+      subcategory:'wealth',
+      userName: 'alexjames'
+    };
     
-  
+    this.ck.wealth(wealthdata).subscribe((response) => {
+      console.log('Success!', response);
+    });
+  }
+
   ngOnInit(): void {}
-  
 }
