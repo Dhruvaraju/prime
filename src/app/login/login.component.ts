@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit {
 
     this.rl.onLoginAttempt(loginaccept)
     .subscribe((response)=>{
-      console.log(response)
       if ((response.message) === true){
+        localStorage.setItem('username',response.userName);
+        localStorage.setItem('userType',response.userType);
+        localStorage.setItem('validated',response.message);
         this.router.navigate(['/dashboard'])
       }
       else{
