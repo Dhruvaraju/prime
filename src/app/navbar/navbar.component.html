@@ -45,10 +45,10 @@
           src="https://raw.githubusercontent.com/Dhruvaraju/Open-Log/master/src/assets/user.svg"
           alt="User: "
         />
-        UserName
+        {{username}}
       </a>
       <div class="form-inline">
-        <a class="btn btn-outline-info btn-sm">Logout</a>
+        <a class="btn btn-outline-info btn-sm" (click)="handleLogOut()">Logout</a>
       </div>
     </div>
   </div>

@@ -13,6 +13,7 @@ export class SellComponent implements OnInit {
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
   sellForm: FormGroup;
+  userName: string = localStorage.getItem('username');
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
 
@@ -59,7 +60,7 @@ export class SellComponent implements OnInit {
       limitOrderPrice = this.sellForm.get('price').value;
     }
     let sellOrderRequest = {
-      userName: 'alexjames',
+      userName: this.userName,
       productName: stockName,
       productID: stockTikker,
       productType: 'STOCK',

@@ -25,6 +25,6 @@ export class stocksService {
   }
 
   getStocksOwnedByUser(userName: string): Observable<any> {
-    return this.http.get(this.baseurl + 'bns/findByUName/alexjames')
+    return this.http.get(this.baseurl + 'bns/findByUName/' + userName);
   }
 }
