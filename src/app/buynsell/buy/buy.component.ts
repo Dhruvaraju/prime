@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StocksService } from './../../services/stocks/stocks.service';
+import { stocksService } from './../../services/stocks/stocks.service';
 
 @Component({
   selector: 'app-buy',
@@ -9,25 +9,12 @@ import { StocksService } from './../../services/stocks/stocks.service';
 })
 export class BuyComponent implements OnInit {
   public selectStocks = [];
-  enableBillPrice: boolean = false;
+  displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
-  onSuccessBanner: boolean = false; //Display Success Banner on Submit
   buyForm: FormGroup;
 
-  get getStocks() {
-    return this.buyForm.get('stocks');
-  }
-  get getQuantity() {
-    return this.buyForm.get('quantity');
-  }
-  get getOrderType() {
-    return this.buyForm.get('orderType');
-  }
-  get getPrice() {
-    return this.buyForm.get('price');
-  }
-  constructor(private fb: FormBuilder, private stock: StocksService) {}
+  constructor(private fb: FormBuilder, private stock: stocksService) {}
 
   ngOnInit() {
     this.buyForm = this.fb.group({
@@ -41,9 +28,9 @@ export class BuyComponent implements OnInit {
 
   onOrderTypeChange() {
     if (this.buyForm.get('orderType').value === 'limit') {
-      this.enableBillPrice = true;
+      this.displayPriceForLimitOrder = true;
     } else {
-      this.enableBillPrice = false;
+      this.displayPriceForLimitOrder = false;
     }
   }
 
@@ -51,7 +38,7 @@ export class BuyComponent implements OnInit {
     this.priceErrorBanner = false;
   }
 
-  onSubmit() {
+  onBuyFormSubmit() {
     if (
       this.buyForm.get('orderType').value === 'limit' &&
       this.buyForm.get('price').value === ''
@@ -60,25 +47,33 @@ export class BuyComponent implements OnInit {
       return null;
     }
 
-    let marketPrice = this.buyForm.get('stocks').value;
-    let price = marketPrice.slice(marketPrice.length - 3);
-    let orderDetail = {
-      classifaction: 'limit',
-      id: 0,
-      marketPrice: price,
-      priceLimit: 0,
+    let stockDetail = this.buyForm.get('stocks').value;
+    let stockTikker = stockDetail.slice(0, 3);
+    let stockName = stockDetail.substring(
+      stockDetail.lastIndexOf('.') + 1,
+      stockDetail.lastIndexOf('-')
+    );
+    let currentMarketPrice = stockDetail.slice(stockDetail.length - 3);
+    let limitOrderPrice = currentMarketPrice;
+    if (this.buyForm.get('orderType').value === 'limit') {
+      limitOrderPrice = this.buyForm.get('price').value;
+    }
+    let buyOrderRequest = {
+      userName: 'alexjames',
+      productName: stockName,
+      productID: stockTikker,
+      productType: 'STOCK',
+      subcategory: 'STOCK',
+      buyPrice: limitOrderPrice,
+      marketPrice: currentMarketPrice,
       quantity: this.buyForm.get('quantity').value,
-      type: 'buy',
-      userName: 'alex'
     };
-    this.stock.buyStockOrder(orderDetail).subscribe(
+    this.stock.buyStockOrder(buyOrderRequest).subscribe(
       (res) => {
         this.buyForm.reset();
-        console.log(res);
       },
       (err) => {
         this.systemUnavailable = true;
-        console.log(err);
       }
     );
   }
