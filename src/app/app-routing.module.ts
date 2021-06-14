@@ -14,21 +14,25 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
 import { IpoquoteComponent } from './ipo/ipoquote/ipoquote.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
+  { path: 'home', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'buysell', component: BuynsellComponent, canActivate: [AuthGuard] },
-  { path: 'shop', component: ProductShopComponent },
-  { path: 'home', component: HomepageComponent },
-  { path: 'ipo', component: IpoComponent },
-  { path: 'ipoquote', component : IpoquoteComponent},
-  { path: 'buy', component: BuyComponent },
-  { path: 'sell', component: SellComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'wealth', component: WealthComponent },
-  { path: 'income', component: IncomeComponent }
+  { path: 'shop', component: ProductShopComponent, canActivate: [AuthGuard] },
+  { path: 'ipo', component: IpoComponent, canActivate: [AuthGuard]  },
+  { path: 'ipoquote', component : IpoquoteComponent, canActivate: [AuthGuard] },
+  { path: 'buy', component: BuyComponent, canActivate: [AuthGuard] },
+  { path: 'sell', component: SellComponent, canActivate: [AuthGuard]  },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'wealth', component: WealthComponent, canActivate: [AuthGuard] },
+  { path: 'income', component: IncomeComponent, canActivate: [AuthGuard] },
+  { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({

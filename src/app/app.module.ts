@@ -21,6 +21,8 @@ import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ServiceshopService } from './services/serviceshop.service';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -40,6 +42,8 @@ import { ServiceshopService } from './services/serviceshop.service';
     WealthComponent,
     IncomeComponent,
     NavbarComponent,
+    UnauthorizedComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
