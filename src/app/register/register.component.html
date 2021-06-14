@@ -285,17 +285,20 @@
         >
           Submit
         </button>
+        <div *ngIf="alreadyexists">
+          <h5>User already exists</h5>
+          <small class="alert alert-danger">Try again with different username or email!</small>
+        </div>
+        <div *ngIf="errors">System Unavailable,try again later!</div>
       </div>
     </form>
     <div *ngIf="submitted" class="text-center">
-      <div *ngIf="successfulRegistration">
+      
         <h3>Registration Complete</h3>
         <p>Successfully Registered</p>
-      </div>
-      <div *ngIf="alreadyexists">
-        <h3>User already exists</h3>
-      </div>
-      <div *ngIf="errors">System Unavailable,try again later!</div>
+      
+      
+      
       <br /><br />
       <button class="btn btn-success" routerLink="/login">Go to LOGIN</button>
     </div>
