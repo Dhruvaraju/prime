@@ -10,10 +10,11 @@ import { stocksService } from './../services/stocks/stocks.service';
 })
 export class BuynsellComponent implements OnInit {
   stockList: any;
-  constructor(private transactionService:stocksService) {}
+  username: string = localStorage.getItem('username');
+  constructor(private transactionService: stocksService) {}
 
   ngOnInit(): void {
-    this.transactionService.getStocksOwnedByUser('alexjames').subscribe(
+    this.transactionService.getStocksOwnedByUser(this.username).subscribe(
       (res) => {
         this.stockList = res;
       },

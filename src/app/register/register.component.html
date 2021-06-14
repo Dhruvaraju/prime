@@ -4,7 +4,7 @@
     <form
       [formGroup]="registrationForm"
       *ngIf="!submitted"
-      (ngSubmit)="onsubmit()"
+      
     >
       <!-- {{registrationForm.status|json}} -->
       <div class="form-group mb-3 ml-3">
@@ -78,7 +78,7 @@
       </div>
       <div
         *ngIf="
-          registrationForm.get('pan').invalid &&
+          registrationForm.get('pan').invalid && 
           registrationForm.get('pan').touched
         "
       >
@@ -281,17 +281,24 @@
           class="btn btn-success btn-lg"
           [disabled]="registrationForm.invalid"
           type="submit"
+          (click)="onsubmit()"
         >
           Submit
         </button>
+        <div *ngIf="alreadyexists">
+          <h5>User already exists</h5>
+          <small class="alert alert-danger">Try again with different username or email!</small>
+        </div>
+        <div *ngIf="errors">System Unavailable,try again later!</div>
       </div>
     </form>
     <div *ngIf="submitted" class="text-center">
-      <div *ngIf="successfulRegistration">
+      
         <h3>Registration Complete</h3>
         <p>Successfully Registered</p>
-      </div>
-      <div *ngIf="errors">System Unavailable,try again later!</div>
+      
+      
+      
       <br /><br />
       <button class="btn btn-success" routerLink="/login">Go to LOGIN</button>
     </div>
