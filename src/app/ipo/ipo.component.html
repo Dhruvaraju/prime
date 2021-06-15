@@ -3,36 +3,33 @@
    <div class="justify-content-center">
        <div class=" row ">
              <div class="card-body">
-            <div class="col-12">
+                  <div class="col-12">
                         <div class="card bg-primary text-white text-center">
                               <div class="card-body font-italic demo">Welcome To IPO</div>
                         </div>
                               <div class="dem"><img src="../assets/ipo-images/hero-bg.png" class="img-fluid float-left" alt="picture"></div>
-                        <div class="flo ">
+                        <div class="flowofimage ">
                                     <h2 class="text-center"> <br><q>An ipo is not the end but actually the begining</q></h2>  
-                               
                                     <button type="button" (click)="scroll(target)"  
                                     class="btn btn-primary">Get Started-><br>
                                     </button>
                         </div> 
                         <img src="../assets/ipo-images/hero-img.png" 
                         class="img-fluid float-right" alt="picture">
-            </div>
-                       
-            </div> <div class=" col-10 font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To know more about IPO ? 
-                               <a href="https://en.wikipedia.org/wiki/Initial_public_offering" target="_blank" >Read More!</a></div> 
-                  </div>  
-      
+            </div>         
+            </div>      <div class=" col-10 font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To know more about IPO ? 
+                              <a href="https://en.wikipedia.org/wiki/Initial_public_offering" target="_blank" >Read More!</a>
+                        </div> 
+      </div>   
       <div class="row">
             <div class="card-body" >
                   <div class="col-12 bg-img ">
-                  <div class="con ">
+                  <div class="positionfixing ">
                     <form [formGroup]="RegistrationForm" >
                         <div #target>
-                              
                               <h2 class="text-center font-bold justify-content-center" >IPO REGISTRATION</h2><hr style="color: lightgreen;">
                               <div class="form-group">
-                                    <label for="cpyname" class="font-weight-bold centered">Company Name:</label><br>
+                                    <label for="cpyname" class="font-weight-bold colorandfont">Company Name:</label><br>
                                           <input 
                                                 type="text" id="cpyname" name="cpyname" 
                                                 placeholder="eg: Prime Trade Company" class="form-control" 
@@ -49,36 +46,36 @@
                                                 </div><br>
                               </div>
                               <div class="form-group">
-                                    <label for="mvalue" class="font-weight-bold centered">Total Market Value:</label><br>
+                                    <label for="marketvalue" class="font-weight-bold colorandfont">Total Market Value:</label><br>
                                           <input 
                                                 type="number" 
-                                                id="mvalue"
-                                                name="mvalue" 
+                                                id="marketvalue"
+                                                name="marketvalue" 
                                                 placeholder="Value" 
                                                 class="form-control" 
-                                                formControlName="mvalue"/>
-                                          <div *ngIf="RegistrationForm.get('mvalue').invalid
-                                                && (RegistrationForm.get('mvalue').dirty || RegistrationForm.get('mvalue').touched)"
+                                                formControlName="marketvalue"/>
+                                          <div *ngIf="RegistrationForm.get('marketvalue').invalid
+                                                && (RegistrationForm.get('marketvalue').dirty || RegistrationForm.get('marketvalue').touched)"
                                                 class="alert alert-danger">
-                                          <div *ngIf="RegistrationForm.get('mvalue').errors.required">
+                                          <div *ngIf="RegistrationForm.get('marketvalue').errors.required">
                                           Please fill this field
                                           </div>
                                           </div><br>
                               </div>
                               <div class="form-group ">
-                                    <label for="per" 
-                                    class="font-weight-bold centered">Percentage market cap available for issue:</label><br>
-                                          <div *ngIf="RegistrationForm.get('per').invalid &&
-                                          (RegistrationForm.get('per').dirty || RegistrationForm.get('per').touched)"
+                                    <label for="marketcappercent" 
+                                    class="font-weight-bold colorandfont">Percentage market cap available for issue:</label><br>
+                                          <div *ngIf="RegistrationForm.get('marketcappercent').invalid &&
+                                          (RegistrationForm.get('marketcappercent').dirty || RegistrationForm.get('marketcappercent').touched)"
                                                 class="alert alert-danger">
-                                          <div *ngIf="RegistrationForm.get('per').errors.required">
+                                          <div *ngIf="RegistrationForm.get('marketcappercent').errors.required">
                                                 Please fill this field
                                           </div>
                                           </div>
                                           <select
                                           class="form-control" 
-                                          id="per"  
-                                          formControlName="per">
+                                          id="marketcappercent"  
+                                          formControlName="marketcappercent">
                                                 <option value="0">0% </option>
                                                 <option value="5" >5% </option>
                                                 <option value="10">10%</option>
@@ -96,26 +93,23 @@
                                     <button
                                     type="button"
                                     class="btn btn-primary"
-                                    [disabled]="make"
+                                    [disabled]="disableafterclick"
                                     [disabled]="!RegistrationForm.valid"
-                                    (click)="onSubmit();resets()"
+                                    (click)="invokeformsubmit();calldisable();"
                                     >Submit
                                     </button> 
                                     <br>
-                                   
-                                   
-                                    <h5 style="color:black;">{{state}}</h5>
-                                    <h5 style="color: red;">{{states}}</h5>
+                                    <h5 style="color:black;">{{SucessStatement}}</h5>
+                                    <h5 style="color:red;">{{FailureStatement}}</h5>
                               </div>
                         </div>
-                  
                   </form> 
-</div></div>
+            </div>
+      </div>
+   </div>
+   </div>
+            <div *ngIf="showhiddenbutton">
+            <button class="badge badge-warning"  routerLink="/ipoquote">Let's go to ipo quote</button>
+            </div>
 </div>
-
-
-</div>
-<div *ngIf="isshown">
-<button class="badge badge-warning"  routerLink="/ipoquote">Let's go to ipo quote</button>
-</div></div>
 

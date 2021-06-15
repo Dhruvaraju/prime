@@ -13,10 +13,10 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
   styleUrls: ['./ipo.component.css'],
 })
 export class IpoComponent implements OnInit {
-  state="";
-  states="";
-  isshown :boolean=false;
-  make:boolean=false;
+  SucessStatement="";
+  FailureStatement="";
+  showhiddenbutton :boolean=false;
+  disableafterclick:boolean=false;
   userName: string = localStorage.getItem('username');
   RegistrationForm :FormGroup;
 
@@ -31,14 +31,14 @@ export class IpoComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(50),
       ]),
-      mvalue: new FormControl('', Validators.required),
-      per: new FormControl('', Validators.required),
+      marketvalue: new FormControl('', Validators.required),
+      marketcappercent: new FormControl('', Validators.required),
     });
   }
 
-  onSubmit() {
+  invokeformsubmit() {
     let iporegdetail = {
-      availableForSale: this.RegistrationForm.get('per').value,
+      availableForSale: this.RegistrationForm.get('marketcappercent').value,
       closingDate: ' ',
       companyName: this.RegistrationForm.get('cpyname').value,
       description: ' ',
@@ -47,7 +47,7 @@ export class IpoComponent implements OnInit {
       issuePrice: 0,
       issueSize: 0,
       lotSize: 0,
-      marketCap: this.RegistrationForm.get('mvalue').value,
+      marketCap: this.RegistrationForm.get('marketvalue').value,
       userName: this.userName,
     };
 
@@ -58,14 +58,14 @@ export class IpoComponent implements OnInit {
           response.message === 'ipo registered successfully' ||
           response.status === 200
         ) {
-          this.state =
+          this.SucessStatement =
             'Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared';
           console.log('success');
-          this.isshown=true;
+          this.showhiddenbutton=true;
         }
       },
       (error) => {
-        this.states =
+        this.FailureStatement =
           'System currently unavailable contact our banking representative to initiate the process';
         console.log(error);
       }
@@ -74,8 +74,8 @@ export class IpoComponent implements OnInit {
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
-  resets()
+  calldisable()
   {
-    this.make=true;
+    this.disableafterclick=true;
   }
 }
