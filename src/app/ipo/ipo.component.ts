@@ -39,9 +39,9 @@ export class IpoComponent implements OnInit {
   invokeformsubmit() {
     let iporegdetail = {
       availableForSale: this.RegistrationForm.get('marketcappercent').value,
-      closingDate: ' ',
+      closingDate: '',
       companyName: this.RegistrationForm.get('cpyname').value,
-      description: ' ',
+      description: '',
       id: 0,
       issueDate: '',
       issuePrice: 0,
