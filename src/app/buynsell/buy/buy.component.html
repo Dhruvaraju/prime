@@ -40,7 +40,10 @@
       </div>
     </marquee>
   </div>
-  <div class="d-flex justify-content-center" style="margin-top: 5%">
+  <!-- <div class="d-flex justify-content-end">
+    <a class="btn btn-light" (click)="viewTable()"> Portfolio </a>
+  </div> -->
+  <div class="d-flex justify-content-center">
     <form
       [formGroup]="buyForm"
       style="width: 40%; text-align: left"
@@ -190,7 +193,7 @@
     aria-labelledby="buyOrderSuccessLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="buyOrderSuccessLabel">Success!!</h5>
@@ -203,15 +206,13 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          Product Added to your Portfolio
-        </div>
+        <div class="modal-body">Product Added to your Portfolio</div>
         <div class="modal-footer">
           <button
             type="button"
             class="btn btn-primary"
             data-dismiss="modal"
-            routerLink="/buysell" 
+            routerLink="/buy"
           >
             OK
           </button>
