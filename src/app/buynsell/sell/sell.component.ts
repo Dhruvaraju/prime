@@ -9,6 +9,9 @@ import { stocksService } from './../../services/stocks/stocks.service';
 })
 export class SellComponent implements OnInit {
   public selectStocks = [];
+  stockUnavailable: boolean = false;
+  popup: boolean = false;
+
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
@@ -71,7 +74,16 @@ export class SellComponent implements OnInit {
     };
     this.stock.sellStockOrder(sellOrderRequest).subscribe(
       (res) => {
-        this.sellForm.reset();
+        if (res.message === 'Enter owned stock details correctly') {
+          this.stockUnavailable = true;
+          this.popup = false;
+              
+        } else {
+          this.stockUnavailable = false;
+          this.popup = true;
+          this.sellForm.reset();
+        }
+        
       },
       (err) => {
         this.systemUnavailable = true;

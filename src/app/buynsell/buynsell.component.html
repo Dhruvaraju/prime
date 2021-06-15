@@ -40,20 +40,28 @@
       </div>
     </marquee>
   </div>
+  <div>
+    <a class="btn btn-light" (click)="home()">
+      Home
+    </a>
+    <a class="btn btn-light" (click)="viewTable()">
+      Portfolio
+    </a>
+  </div>
   <div class="row justify-content-center">
-    <!-- <div class="col-sm-8">
-      <div class="d-flex">
-        <img src="./../../assets/buysell.jpeg" width="50%" />
+    <div class="col" *ngIf="displayHome">
+      <div class="d-flex" style="margin-top: 0.5em;">
+        <img src="./../../assets/buysell.jpeg" width="100%" />
       </div>
-    </div> -->
-    <div class="col-7">
+    </div>
+    <div  *ngIf="onClickButton">
       <div class="card">
         <h3 class="card-header">Portfolio</h3>
-        <div class="card-body">
-          <p class="card-text">
-            Stocks owned by you after clearance from depository.
+        <div class="card-body"> 
+          <p *ngIf="!stockList?.length">
+            Your Portfolio is empty, Please buy any stock
           </p>
-          <table class="table table-hover">
+          <table class="table table-hover count-Table table-responsive" *ngIf="stockList?.length">
             <thead class="table-primary">
               <tr>
                 <th scope="col">Stock Name</th>
@@ -67,7 +75,7 @@
                 <td>{{ stock.productName }}</td>
                 <td>{{ stock.quantity }}</td>
                 <td>${{ stock.buyPrice }}</td>
-                <td>${{ (stock.quantity)*(stock.buyPrice) }}</td>
+                <td>${{ stock.quantity * stock.buyPrice }}</td>
               </tr>
             </tbody>
           </table>

@@ -18,15 +18,17 @@
               <thead>
                 <tr>
                   <th scope="col">Stock Name</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Market price per stock</th>
+                  <th scope="col">Net Qty</th>
+                  <th scope="col">LTP</th>
+                  <th scope="col">Current Value</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let stock of stockList">
                   <td>{{ stock.productName }}</td>
                   <td>{{ stock.quantity }}</td>
-                  <td>{{ stock.marketPrice }}</td>
+                  <td>${{ stock.marketPrice }}</td>
+                  <td>${{ (stock.quantity)*(stock.marketPrice) }}</td>
                 </tr>
               </tbody>
             </table>
