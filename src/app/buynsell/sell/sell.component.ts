@@ -8,6 +8,7 @@ import { stocksService } from './../../services/stocks/stocks.service';
   styleUrls: ['./sell.component.css'],
 })
 export class SellComponent implements OnInit {
+  stockList: any;
   public selectStocks = [];
   stockUnavailable: boolean = false;
   popup: boolean = false;
@@ -28,7 +29,22 @@ export class SellComponent implements OnInit {
       price: [''],
     });
     this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
+    this.fetchPortfolio();
   }
+
+  fetchPortfolio(){
+    this.stock.getStocksOwnedByUser(this.userName).subscribe(
+      (res) => {
+        this.stockList = res.filter(
+          (product) => product.productType === 'STOCK'
+        );
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
 
   onOrderTypeChange() {
     if (this.sellForm.get('orderType').value === 'limit') {

@@ -43,192 +43,146 @@
   <!-- <div class="d-flex justify-content-end">
     <a class="btn btn-light" (click)="viewTable()"> Portfolio </a>
   </div> -->
-  <div class="row">
-    <div class="col-6">
-      <div class="card">
-        <h3 class="card-header">Buy More & Earn More</h3>
-        <div class="card-body">
-          <form
-            [formGroup]="buyForm"
-            style="text-align: left"
-            (ngSubmit)="onBuyFormSubmit()"
+  <div class="d-flex justify-content-center">
+    <form
+      [formGroup]="buyForm"
+      style="width: 40%; text-align: left"
+      (ngSubmit)="onBuyFormSubmit()"
+    >
+      <div class="form-group">
+        <label for="stocks"></label>
+        <select
+          name="stocks"
+          id="stocks"
+          formControlName="stocks"
+          [class.is-invalid]="
+            this.buyForm.get('stocks').invalid &&
+            this.buyForm.get('stocks').touched
+          "
+          class="custom-select"
+        >
+          <option value="select-stock" disabled>Select Stock</option>
+          <option *ngFor="let stock of selectStocks">
+            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
+          </option>
+        </select>
+        <small
+          [class.d-none]="
+            this.buyForm.get('stocks').valid ||
+            this.buyForm.get('stocks').untouched
+          "
+          class="text-danger"
+        >
+          Please select a stock
+        </small>
+      </div>
+      <div class="form-group row">
+        <label for="quantity" class="col-sm-4 col-form-label"> Quantity </label>
+        <div class="col-sm-8">
+          <input
+            type="number"
+            id="quantity"
+            pattern="^[1-9]+[0-9]*$"
+            formControlName="quantity"
+            [class.is-invalid]="
+              this.buyForm.get('quantity').invalid &&
+              this.buyForm.get('quantity').touched
+            "
+            class="form-control"
+          />
+          <small
+            [class.d-none]="
+              this.buyForm.get('quantity').valid ||
+              this.buyForm.get('quantity').untouched
+            "
+            class="text-danger"
           >
-            <div class="form-group">
-              <label for="stocks"></label>
-              <select
-                name="stocks"
-                id="stocks"
-                formControlName="stocks"
-                [class.is-invalid]="
-                  this.buyForm.get('stocks').invalid &&
-                  this.buyForm.get('stocks').touched
-                "
-                class="custom-select"
-              >
-                <option value="select-stock" disabled>Select Stock</option>
-                <option *ngFor="let stock of selectStocks">
-                  {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
-                </option>
-              </select>
-              <small
-                [class.d-none]="
-                  this.buyForm.get('stocks').valid ||
-                  this.buyForm.get('stocks').untouched
-                "
-                class="text-danger"
-              >
-                Please select a stock
-              </small>
-            </div>
-            <div class="form-group row">
-              <label for="quantity" class="col-sm-4 col-form-label">
-                Quantity
-              </label>
-              <div class="col-sm-8">
-                <input
-                  type="number"
-                  id="quantity"
-                  pattern="^[1-9]+[0-9]*$"
-                  formControlName="quantity"
-                  [class.is-invalid]="
-                    this.buyForm.get('quantity').invalid &&
-                    this.buyForm.get('quantity').touched
-                  "
-                  class="form-control"
-                />
-                <small
-                  [class.d-none]="
-                    this.buyForm.get('quantity').valid ||
-                    this.buyForm.get('quantity').untouched
-                  "
-                  class="text-danger"
-                >
-                  Quantity is required
-                </small>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="orderType" class="col-sm-4 col-form-label">
-                Order Type
-              </label>
-              <div class="col-sm-8">
-                <select
-                  name="order"
-                  id="orderType"
-                  formControlName="orderType"
-                  (change)="onOrderTypeChange()"
-                  [class.is-invalid]="
-                    this.buyForm.get('orderType').invalid &&
-                    this.buyForm.get('orderType').touched
-                  "
-                  class="custom-select"
-                >
-                  <option value="Select" disabled>Select Order Type</option>
-                  <option value="market">Market Order</option>
-                  <option value="limit" #limit>Limit Order</option>
-                </select>
-                <small
-                  [class.d-none]="
-                    this.buyForm.get('orderType').valid ||
-                    this.buyForm.get('orderType').untouched
-                  "
-                  class="text-danger"
-                >
-                  Please select any order type
-                </small>
-              </div>
-            </div>
-            <div class="form-group row" *ngIf="displayPriceForLimitOrder">
-              <label for="price" class="col-sm-4 col-form-label"> Price </label>
-              <div class="col-sm-8">
-                <input
-                  type="number"
-                  id="price"
-                  pattern="^[1-9]+[0-9]+[0-9]*$"
-                  formControlName="price"
-                  (keyup)="onPriceChange()"
-                  [class.is-invalid]="
-                    this.buyForm.get('price').invalid &&
-                    this.buyForm.get('price').touched
-                  "
-                  class="form-control"
-                />
-                <small
-                  [class.d-none]="
-                    this.buyForm.get('price').valid ||
-                    this.buyForm.get('price').untouched
-                  "
-                  class="text-danger"
-                >
-                  Price is required
-                </small>
-              </div>
-            </div>
-            <small
-              class="alert alert-danger row"
-              role="alert"
-              *ngIf="priceErrorBanner"
-            >
-              Price is mandatory for Limit Order
-            </small>
-
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="systemUnavailable"
-            >
-              System Unavailable try again later
-            </div>
-
-            <div class="d-flex justify-content-center">
-              <button
-                type="submit"
-                class="btn btn-primary"
-                [disabled]="!this.buyForm.valid"
-                style="width: 9rem"
-                data-toggle="modal"
-                data-target="#buyOrderSuccess"
-              >
-                BUY
-              </button>
-            </div>
-          </form>
+            Quantity is required
+          </small>
         </div>
       </div>
-    </div>
-    <div class="col-6">
-      <!-- <div *ngIf="onClickButton"> -->
-        <div class="card">
-          <h3 class="card-header">Portfolio</h3>
-          <div class="card-body">
-            <p *ngIf="!stockList?.length">
-              Your Portfolio is empty, Please buy any stock
-            </p>
-            <table
-              class="table table-hover count-Table table-responsive"
-              *ngIf="stockList?.length"
-            >
-              <thead class="table-primary">
-                <tr>
-                  <th scope="col">Stock Name</th>
-                  <th scope="col">Net Qty</th>
-                  <th scope="col">LTP</th>
-                  <th scope="col">Current Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let stock of stockList">
-                  <td>{{ stock.productName }}</td>
-                  <td>{{ stock.quantity }}</td>
-                  <td>${{ stock.buyPrice }}</td>
-                  <td>${{ stock.quantity * stock.buyPrice }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <div class="form-group row">
+        <label for="orderType" class="col-sm-4 col-form-label">
+          Order Type
+        </label>
+        <div class="col-sm-8">
+          <select
+            name="order"
+            id="orderType"
+            formControlName="orderType"
+            (change)="onOrderTypeChange()"
+            [class.is-invalid]="
+              this.buyForm.get('orderType').invalid &&
+              this.buyForm.get('orderType').touched
+            "
+            class="custom-select"
+          >
+            <option value="Select" disabled>Select Order Type</option>
+            <option value="market">Market Order</option>
+            <option value="limit" #limit>Limit Order</option>
+          </select>
+          <small
+            [class.d-none]="
+              this.buyForm.get('orderType').valid ||
+              this.buyForm.get('orderType').untouched
+            "
+            class="text-danger"
+          >
+            Please select any order type
+          </small>
         </div>
-      <!-- </div> -->
-    </div>
+      </div>
+      <div class="form-group row" *ngIf="displayPriceForLimitOrder">
+        <label for="price" class="col-sm-4 col-form-label"> Price </label>
+        <div class="col-sm-8">
+          <input
+            type="number"
+            id="price"
+            pattern="^[1-9]+[0-9]+[0-9]*$"
+            formControlName="price"
+            (keyup)="onPriceChange()"
+            [class.is-invalid]="
+              this.buyForm.get('price').invalid &&
+              this.buyForm.get('price').touched
+            "
+            class="form-control"
+          />
+          <small
+            [class.d-none]="
+              this.buyForm.get('price').valid ||
+              this.buyForm.get('price').untouched
+            "
+            class="text-danger"
+          >
+            Price is required
+          </small>
+        </div>
+      </div>
+      <small
+        class="alert alert-danger row"
+        role="alert"
+        *ngIf="priceErrorBanner"
+      >
+        Price is mandatory for Limit Order
+      </small>
+
+      <div class="alert alert-danger" role="alert" *ngIf="systemUnavailable">
+        System Unavailable try again later
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!this.buyForm.valid"
+          style="width: 9rem"
+          data-toggle="modal"
+          data-target="#buyOrderSuccess"
+        >
+          BUY
+        </button>
+      </div>
+    </form>
   </div>
   <!-- Modal -->
   <div

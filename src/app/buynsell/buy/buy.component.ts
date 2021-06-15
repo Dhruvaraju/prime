@@ -31,7 +31,10 @@ export class BuyComponent implements OnInit {
       price: [''],
     });
     this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
+    this.fetchPortfolio();
+  }
 
+  fetchPortfolio(){
     this.stock.getStocksOwnedByUser(this.userName).subscribe(
       (res) => {
         this.stockList = res.filter(
@@ -89,6 +92,7 @@ export class BuyComponent implements OnInit {
     this.stock.buyStockOrder(buyOrderRequest).subscribe(
       (res) => {
         this.buyForm.reset();
+        this.fetchPortfolio();
       },
       (err) => {
         this.systemUnavailable = true;

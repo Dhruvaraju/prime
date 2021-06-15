@@ -59,8 +59,8 @@
           class="custom-select"
         >
           <option value="select-stock" disabled>Select Stock</option>
-          <option *ngFor="let stock of selectStocks">
-            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
+          <option *ngFor="let stock of stockList">
+            {{ stock.productID }}.{{ stock.productName }} - ${{ stock.marketPrice }}
           </option>
         </select>
         <small
