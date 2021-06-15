@@ -86,7 +86,7 @@
                       <p class="font-weight-bold">Issue Date</p>
                     </div>
                     <div class="col">
-                      <p>{{ ipoDetail.issueDate }}</p>
+                      <p>{{ ipoDetail.issueDate | date:'fullDate' }}</p>
                     </div>
                   </div>
                   <div class="row">
@@ -94,7 +94,7 @@
                       <p class="font-weight-bold">Closing Date</p>
                     </div>
                     <div class="col">
-                      <p>{{ ipoDetail.closingDate }}</p>
+                      <p>{{ ipoDetail.closingDate | date:'fullDate' }}</p>
                     </div>
                   </div>
                   <div class="row">
@@ -102,7 +102,7 @@
                       <p class="font-weight-bold">Issue Price</p>
                     </div>
                     <div class="col">
-                      <p>{{ ipoDetail.issuePrice }}</p>
+                      <p>$ {{ ipoDetail.issuePrice | number: '1.0-2' }}</p>
                     </div>
                   </div>
                 </div>
