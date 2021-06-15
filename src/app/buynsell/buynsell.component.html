@@ -40,28 +40,31 @@
       </div>
     </marquee>
   </div>
-  <div>
+  <!-- <div>
     <a class="btn btn-light" (click)="home()">
       Home
     </a>
     <a class="btn btn-light" (click)="viewTable()">
       Portfolio
     </a>
-  </div>
+  </div> -->
   <div class="row justify-content-center">
-    <div class="col" *ngIf="displayHome">
-      <div class="d-flex" style="margin-top: 0.5em;">
-        <img src="./../../assets/buysell.jpeg" width="100%" />
+    <div class="col">
+      <div class="d-flex" style="margin-top: 0.5em">
+        <img src="./../../assets/buynsell-images/bg.jpg" width="115%" />
       </div>
     </div>
-    <div  *ngIf="onClickButton">
-      <div class="card">
+    <div class="col justify-content-end">
+      <div class="card" style="margin-top: 2.5em">
         <h3 class="card-header">Portfolio</h3>
-        <div class="card-body"> 
+        <div class="card-body">
           <p *ngIf="!stockList?.length">
             Your Portfolio is empty, Please buy any stock
           </p>
-          <table class="table table-hover count-Table table-responsive" *ngIf="stockList?.length">
+          <table
+            class="table table-hover count-Table table-responsive"
+            *ngIf="stockList?.length"
+          >
             <thead class="table-primary">
               <tr>
                 <th scope="col">Stock Name</th>
