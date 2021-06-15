@@ -78,7 +78,7 @@
           *ngIf="registrationForm.get('username').errors?.minlength"
           class="alert alert-danger"
         >
-          <small>Minimum 6 form-group characters required</small>
+          <small>Minimum 6 characters required</small>
         </div>
       </div>
       
@@ -306,10 +306,16 @@
           <small>Pan number is required</small>
         </div>
         <div
-          *ngIf="registrationForm.get('pan').errors?.maxlength"
+          *ngIf="registrationForm.get('pan').errors?.minlength"
           class="alert alert-danger"
         >
           <small>Pan Number must be 10 characters</small>
+        </div>
+        <div
+          *ngIf="registrationForm.get('pan').errors?.maxlength"
+          class="alert alert-danger"
+        >
+          <small>Pan Number should not be greater than 10 characters</small>
         </div>
       </div>
 
