@@ -8,13 +8,15 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
   styleUrls: ['./ipo.component.css']
 })
 export class IpoComponent implements OnInit {
-
   state="";
-  registrationForm :FormGroup;
+  states="";
+
+  RegistrationForm :FormGroup;
 
   constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
   ngOnInit() {
-    this.registrationForm = this.builder.group({
+  
+    this.RegistrationForm = this.builder.group({
       'cpyname': new FormControl('', [
         Validators.required,
         Validators.minLength(2),
@@ -27,23 +29,46 @@ export class IpoComponent implements OnInit {
     })
   }
 
-Submit(){
-    
-  /*this._reg.register(this.registrationForm.value)
-  .subscribe(
-    
-   response => console.log("Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared",response),
-    error=>console.log("System currently unavailable contact our banking representative to initiate the process",error)
-  );
-}*/
- if(this.registrationForm.status==="VALID")
-  {
-    this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
-  }
-  else if(this.registrationForm.status==="INVALID")
-  {
-    this.state="System currently unavailable contact our banking representative to initiate the process";
-  }
-}
+  
+   onSubmit()
+   {
 
-}
+            let iporegdetail=
+            {
+                        
+                availableForSale:this.RegistrationForm.get('per').value,
+                closingDate: " ",
+                companyName: this.RegistrationForm.get('cpyname').value,
+                description: " ",
+                id: 0,
+                issueDate: "",
+                issuePrice: 0,
+                issueSize: 0,
+                lotSize: 0,
+                marketCap: this.RegistrationForm.get('mvalue').value,
+                userName: "str"
+            }
+          
+            this._reg.register(iporegdetail)
+            .subscribe((response)=>{
+              console.log(response)
+              if ((response.message ==="ipo registered successfully")|| (response.status===200) ){
+               this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
+               console.log("success");
+      
+              }
+              
+              },
+              (error)=>{
+                this.states="System currently unavailable contact our banking representative to initiate the process";
+                console.log(error);
+              })
+
+
+     }
+     scroll(el: HTMLElement) {
+      el.scrollIntoView();
+    }
+
+ 
+  }
