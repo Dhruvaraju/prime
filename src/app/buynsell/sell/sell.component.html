@@ -5,31 +5,46 @@
       <div class="holder">
         <div class="text-container">
           <p>
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
-            <img src="./../../assets/icon.jpg" style="height: 2em; width: 2em" />
+            <img
+              src="./../../assets/icon.jpg"
+              style="height: 2em; width: 2em"
+            />
             SBI Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
           </p>
         </div>
       </div>
     </marquee>
   </div>
-  <div
-    class="d-flex justify-content-center"
-    style="margin-top: 5%;"
-  >
+  <div class="d-flex justify-content-center" style="margin-top: 5%">
     <form
       [formGroup]="sellForm"
       style="width: 40%; text-align: left"
-      (ngSubmit)=" onSellOrderSubmit()"
+      (ngSubmit)="onSellOrderSubmit()"
     >
       <div class="form-group">
         <label for="stocks"></label>
@@ -37,16 +52,22 @@
           name="stocks"
           id="stocks"
           formControlName="stocks"
-          [class.is-invalid]="this.sellForm.get('stocks').invalid && this.sellForm.get('stocks').touched"
+          [class.is-invalid]="
+            this.sellForm.get('stocks').invalid &&
+            this.sellForm.get('stocks').touched
+          "
           class="custom-select"
         >
           <option value="select-stock" disabled>Select Stock</option>
-          <option *ngFor="let stock of selectStocks">
-            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
+          <option *ngFor="let stock of stockList">
+            {{ stock.productID }}.{{ stock.productName }} - ${{ stock.marketPrice }}
           </option>
         </select>
         <small
-          [class.d-none]="this.sellForm.get('stocks').valid || this.sellForm.get('stocks').untouched"
+          [class.d-none]="
+            this.sellForm.get('stocks').valid ||
+            this.sellForm.get('stocks').untouched
+          "
           class="text-danger"
         >
           Please select a stock
@@ -60,11 +81,17 @@
             id="quantity"
             pattern="^[1-9]+[0-9]*$"
             formControlName="quantity"
-            [class.is-invalid]="this.sellForm.get('quantity').invalid && this.sellForm.get('quantity').touched"
+            [class.is-invalid]="
+              this.sellForm.get('quantity').invalid &&
+              this.sellForm.get('quantity').touched
+            "
             class="form-control"
           />
           <small
-            [class.d-none]="this.sellForm.get('quantity').valid || this.sellForm.get('quantity').untouched"
+            [class.d-none]="
+              this.sellForm.get('quantity').valid ||
+              this.sellForm.get('quantity').untouched
+            "
             class="text-danger"
           >
             Quantity is required
@@ -81,7 +108,10 @@
             id="orderType"
             (change)="onOrderTypeChange()"
             formControlName="orderType"
-            [class.is-invalid]="this.sellForm.get('orderType').invalid && this.sellForm.get('orderType').touched"
+            [class.is-invalid]="
+              this.sellForm.get('orderType').invalid &&
+              this.sellForm.get('orderType').touched
+            "
             class="custom-select"
           >
             <option value="select" disabled>Select Order Type</option>
@@ -89,7 +119,10 @@
             <option value="limit" #limit>Limit Order</option>
           </select>
           <small
-            [class.d-none]="this.sellForm.get('orderType').valid || this.sellForm.get('orderType').untouched"
+            [class.d-none]="
+              this.sellForm.get('orderType').valid ||
+              this.sellForm.get('orderType').untouched
+            "
             class="text-danger"
           >
             Please select any order type
@@ -105,38 +138,47 @@
             pattern="^[1-9]+[0-9]+[0-9]*$"
             formControlName="price"
             (keyup)="onPriceChange()"
-            [class.is-invalid]="this.sellForm.get('price').invalid && this.sellForm.get('price').touched"
+            [class.is-invalid]="
+              this.sellForm.get('price').invalid &&
+              this.sellForm.get('price').touched
+            "
             class="form-control"
           />
           <small
-            [class.d-none]="this.sellForm.get('price').valid || this.sellForm.get('price').untouched"
+            [class.d-none]="
+              this.sellForm.get('price').valid ||
+              this.sellForm.get('price').untouched
+            "
             class="text-danger"
           >
             Price is required
           </small>
         </div>
       </div>
-      <small 
-        class="alert alert-danger row" 
-        role="alert" 
+      <small
+        class="alert alert-danger row"
+        role="alert"
         *ngIf="priceErrorBanner"
       >
         Price is mandatory for Limit Order
       </small>
-      
+
+      <div class="alert alert-danger" role="alert" *ngIf="systemUnavailable">
+        System Unavailable try again later
+      </div>
       <div 
         class="alert alert-danger" 
-        role="alert" 
-        *ngIf="systemUnavailable"
-      >
-        System Unavailable try again later
+        role="alert"
+        *ngIf="stockUnavailable"
+      > 
+        Stock unavailable, Please enter the correct details
       </div>
 
       <div class="d-flex justify-content-center">
-        <button 
-          type="submit" 
-          class="btn btn-success" 
-          [disabled]= "!sellForm.valid" 
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!sellForm.valid"
           style="width: 9rem"
           data-toggle="modal"
           data-target="#sellOrderSuccess"
@@ -146,7 +188,7 @@
       </div>
     </form>
   </div>
-  <!-- Modal -->
+  <!-- Modal for sellOrderSuccess -->
   <div
     class="modal fade"
     id="sellOrderSuccess"
@@ -155,7 +197,7 @@
     aria-labelledby="sellOrderSuccessLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="sellOrderSuccessLabel">Success!!</h5>
@@ -168,15 +210,13 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          Product Sale Initiated Successfully
-        </div>
+        <div class="modal-body">Product Sale Initiated Successfully</div>
         <div class="modal-footer">
           <button
             type="button"
             class="btn btn-primary"
             data-dismiss="modal"
-            routerLink="/buysell" 
+            routerLink="/buysell"
           >
             OK
           </button>
@@ -184,12 +224,51 @@
       </div>
     </div>
   </div>
+  
+  <!-- Modal for stockUnavailable -->
+  <div
+    class="modal fade"
+    id="stockUnavailable"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="stockUnavailableLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="stockUnavailableLabel">OOPS!!</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Current Stock is not owned by you</div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-dismiss="modal"
+            routerLink="/sell"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="d-flex justify-content-end">
-    <button 
-      routerLink="/buysell" 
-      type="button" 
+    <button
+      routerLink="/buysell"
+      type="button"
       class="btn btn-outline-dark"
-      style="margin-bottom: 15%; margin-top: 5%;"
+      style="margin-bottom: 15%; margin-top: 5%"
     >
       Go back
     </button>
