@@ -30,7 +30,7 @@
 
 <div class="container">
   <div class="container-fluid">
-    <form [formGroup]="incomeForm">
+    <form [formGroup]="incomeForm" *ngIf="!submitted">
       <div class="form-group">
         <label for="name"><strong>Product Name :</strong></label>
         <select name="name" class="custom-select" formControlName="name">
@@ -43,7 +43,7 @@
         *ngIf="incomeForm.get('name').invalid && incomeForm.get('name').touched"
         class="alert alert-danger"
       >
-        <small>Please Select a Product</small>
+        <small>Please Select a Product !</small>
       </div>
 
       <h6>
@@ -53,17 +53,65 @@
       </h6>
 
       <p><strong>Product Type :</strong> Income Product</p>
-      <p><strong>Maturity Vakue :</strong> 20000</p>
+      <p><strong>Maturity Value :</strong> 20000</p>
 
       <div class="text-center">
         <button
           class="btn btn-primary btn-lg"
           [disabled]="incomeForm.invalid"
           type="submit"
+          data-toggle="modal"
+          data-target="#incomeProductModel"
+          (click)="onSubmitIncome()"
         >
           Buy
         </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="incomeProductModel"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="incomeProductModelTitle"
+          aria-hidden="true"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title-primary" id="incomeProductModelTitle">
+                  <Strong>Success !</Strong>
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <strong>Income Product</strong> is successfully added to the
+                Portfolio.
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <!--
+      <div *ngIf="submit" class="text-center"></div> -->
 
       <div class="d-flex justify-content-end">
         <button routerLink="/shop" type="button" class="btn btn-outline-dark">
