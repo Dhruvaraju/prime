@@ -33,5 +33,12 @@ export class DashboardComponent implements OnInit {
         this.getProductsFailed = true;
       }
     );
+    this.dashboardService.getIpoDetails(this.userName).subscribe(
+      res => {
+        this.ipoList = res;
+        console.log(res);
+      }
+    )
   }
+  
 }
