@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,Validators } from '@angular/forms';
-import {ServiceshopService} from '../services/serviceshop.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ServiceshopService } from '../services/serviceshop.service';
 
 @Component({
   selector: 'app-income',
@@ -8,46 +8,31 @@ import {ServiceshopService} from '../services/serviceshop.service';
   styleUrls: ['./income.component.css'],
 })
 export class IncomeComponent implements OnInit {
-
+  userName: string = localStorage.getItem('username');
   submitted = false;
-  
-  alreadyexists=false;
-  errors=false;
 
-  constructor(private fg: FormBuilder, private ip : ServiceshopService ) {}
+  alreadyexists = false;
+  errors = false;
+
+  constructor(private fg: FormBuilder, private ip: ServiceshopService) {}
   incomeForm = this.fg.group({
-    name: ['',Validators.required],
+    name: ['', Validators.required],
     type: [''],
     value: [''],
   });
 
+  onSubmitIncome() {
+    let pdtName = this.incomeForm.get('name').value;
 
-  submit()
-{
-  let incomedata={
-    buyPrice:this.incomeForm.get('value').value,
-    productName:this.incomeForm.get('value').value,
-    productType:this.incomeForm.get('value').value}
-    
-    this.ip.wealth(incomedata)
-    .subscribe((response)=>{
-      console.log(response)
-      if  (response.message==='product added') {
-       this.submitted = true; 
-       
-      }
-      else{
-        this.alreadyexists=true
-      }
-      
-      },
-      (err)=>{
-        this.errors=true
-      })
-       
-     
-    
-    }
+    let incomedata = {
+      productID: 'I001',
+      userName: this.userName,
+    };
+
+    this.ip.income(incomedata).subscribe((response) => {
+      console.log('Success!', response);
+    });
+  }
 
   ngOnInit(): void {}
 }

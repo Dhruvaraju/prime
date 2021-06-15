@@ -8,9 +8,9 @@ import { ServiceshopService } from '../services/serviceshop.service';
   styleUrls: ['./wealth.component.css'],
 })
 export class WealthComponent implements OnInit {
-  
   productAdded = false;
   errors = false;
+  userName: string = localStorage.getItem('username');
 
   constructor(private fg: FormBuilder, private ck: ServiceshopService) {}
   wealthForm = this.fg.group({
@@ -25,18 +25,12 @@ export class WealthComponent implements OnInit {
     if (pdtName === 'longterm') {
       pdtID = 'WM002';
     }
-    
+
     let wealthdata = {
-      buyPrice: '22%',
-      marketPrice:'100',
-      quantity:'1',
       productID: pdtID,
-      productName: pdtName,
-      productType: 'FP',
-      subcategory:'wealth',
-      userName: 'alexjames'
+      userName: this.userName,
     };
-    
+
     this.ck.wealth(wealthdata).subscribe((response) => {
       console.log('Success!', response);
     });
