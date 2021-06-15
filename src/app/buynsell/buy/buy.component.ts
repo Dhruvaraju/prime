@@ -78,7 +78,7 @@ export class BuyComponent implements OnInit {
     }
     let buyOrderRequest = {
       userName: this.userName,
-      productName: stockName,
+      productName: stockName,  
       productID: stockTikker,
       productType: 'STOCK',
       subcategory: 'STOCK',

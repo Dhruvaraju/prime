@@ -7,11 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class IporegistrationService {
 
-_url='https://prime-banc.herokuapp.com/ipo/register';
   constructor(private _http:HttpClient) {}
-   
-  register(userdata) :Observable<any>
-  {
-    return this._http.post<any>(this._url,userdata);
-  }
+  _url :string="https://ipotrading.herokuapp.com/";
+  register(iporegdetail:any) :Observable<any>{
+    return this._http.post<any>(this._url+'ipo/register',iporegdetail);
+}
 }

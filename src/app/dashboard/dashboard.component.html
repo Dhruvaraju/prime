@@ -66,12 +66,50 @@
         </div>
         <div class="card" style="margin-top: 0.5em">
           <h3 class="card-header text-center">IPO's Initiated</h3>
-          <div class="card-body">
-            <h5 class="card-title">North-West Refineries</h5>
-            <p class="card-text">Request triggered, Quote pending.</p>
-            <a href="#" class="btn btn-primary" routerLink="/ipo"
-              >Initiate New IPO</a
-            >
+          <a href="#" routerLink="/ipo" style="float: right; margin-left: 0.5em"
+            >Initiate New IPO</a
+          >
+          <div class="row" style="margin: 0.5em">
+            <div class="col-sm-6" *ngFor="let ipoDetail of ipoList">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ ipoDetail.companyName }}</h5>
+                  <p>{{ ipoDetail.description }}</p>
+                  <div class="row">
+                    <div class="col">
+                      <p class="font-weight-bold">Lotsize</p>
+                    </div>
+                    <div class="col">
+                      <p>{{ ipoDetail.lotSize }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p class="font-weight-bold">Issue Date</p>
+                    </div>
+                    <div class="col">
+                      <p>{{ ipoDetail.issueDate | date:'fullDate' }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p class="font-weight-bold">Closing Date</p>
+                    </div>
+                    <div class="col">
+                      <p>{{ ipoDetail.closingDate | date:'fullDate' }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p class="font-weight-bold">Issue Price</p>
+                    </div>
+                    <div class="col">
+                      <p>$ {{ ipoDetail.issuePrice | number: '1.0-2' }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

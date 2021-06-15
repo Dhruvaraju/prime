@@ -1,19 +1,48 @@
-.container
-{
-   
-line-height: 200%;
-font-size: large;
-display: flex;
-justify-content: center;
-}
-h2
-{
+  h2
+  {
+      color:blue;
+  }
+  label,h2
+  {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  .demo
+  {
+      font-size:32px;
+      font-family: Georgia;
+  }
+  .flowofimage
+  {
+      font-size:30px;
+      font-family: Georgia;
+      margin-left: 150px;
+  }
+  .dem 
+  {    
+      position:absolute;
+      z-index: -1;
+  }
+  h3
+  {
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .bg-img 
+  {
+    /* The image used */
+    background-image: url("/assets/ipo-images/leaf.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  .colorandfont {
     color:blueviolet;
-}
-label,h2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-p
-{
-    color: green;
-}
+    font-size: 20px;
+  }
+  .positionfixing
+  {
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+  }
