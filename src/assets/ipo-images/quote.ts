@@ -1,9 +1,9 @@
-export interface IpoquoteDetails
+export class IpoquoteDetails
 {
-    description: string,
-    issueDate : Date,
-    issueSize: number,
-    issuePrice: number,
-    lotSize: number,
-    closingdate: Date
+    description: string;
+    issueDate : number;
+    issueSize: number;
+    issuePrice: number;
+    lotSize: number ;
+    closingDate: number;
 }

@@ -6,6 +6,6 @@
         "issueSize":300000,
         "issuePrice":2,
         "lotSize":200,
-        "closingdate":"2021-10-12"
+        "closingDate":"2021-10-12"
     }
 ]
