@@ -10,17 +10,19 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
 export class IpoComponent implements OnInit {
   state="";
   states="";
-
+  isshown :boolean=false;
+  make:boolean=false;
+  userName: string = localStorage.getItem('username');
   RegistrationForm :FormGroup;
 
   constructor(private builder: FormBuilder,private _reg:IporegistrationService) { }
   ngOnInit() {
   
     this.RegistrationForm = this.builder.group({
-      'cpyname': new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50)
+        'cpyname': new FormControl('', [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50)
     ]),
         'mvalue': new FormControl('',
          Validators.required),
@@ -32,10 +34,8 @@ export class IpoComponent implements OnInit {
   
    onSubmit()
    {
-
             let iporegdetail=
             {
-                        
                 availableForSale:this.RegistrationForm.get('per').value,
                 closingDate: " ",
                 companyName: this.RegistrationForm.get('cpyname').value,
@@ -46,7 +46,7 @@ export class IpoComponent implements OnInit {
                 issueSize: 0,
                 lotSize: 0,
                 marketCap: this.RegistrationForm.get('mvalue').value,
-                userName: "str"
+                userName:this.userName
             }
           
             this._reg.register(iporegdetail)
@@ -55,7 +55,7 @@ export class IpoComponent implements OnInit {
               if ((response.message ==="ipo registered successfully")|| (response.status===200) ){
                this.state="Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared";
                console.log("success");
-      
+                 this.isshown=true;
               }
               
               },
@@ -69,6 +69,8 @@ export class IpoComponent implements OnInit {
      scroll(el: HTMLElement) {
       el.scrollIntoView();
     }
-
- 
+    resets()
+    {
+      this.make=true;
+    }
   }
