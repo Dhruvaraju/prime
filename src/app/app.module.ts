@@ -22,7 +22,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { stocksService } from './services/stocks/stocks.service';
-import { ServiceshopService } from './services/serviceshop.service';
+import { ServiceShopService } from './services/serviceshop.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { ServiceshopService } from './services/serviceshop.service';
     stocksService,
     IporegistrationService,
     formSubmitService,
-    ServiceshopService,
+    ServiceShopService,
   ],
 
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ServiceshopService } from '../services/serviceshop.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServiceShopService } from '../services/serviceshop.service';
 
 @Component({
   selector: 'app-income',
@@ -9,30 +9,80 @@ import { ServiceshopService } from '../services/serviceshop.service';
 })
 export class IncomeComponent implements OnInit {
   userName: string = localStorage.getItem('username');
-  submitted = false;
+  incomeProductForm: FormGroup;
+  productList: any;
+  selectedProduct: any;
+  serviceFailureMessage: boolean;
+  productOwnedMessage: boolean;
 
-  alreadyexists = false;
-  errors = false;
+  constructor(
+    private formBuilder: FormBuilder,
+    private fpService: ServiceShopService
+  ) {
+    this.buildIncomeForm();
+  }
 
-  constructor(private fg: FormBuilder, private ip: ServiceshopService) {}
-  incomeForm = this.fg.group({
-    name: ['', Validators.required],
-    type: [''],
-    value: [''],
-  });
-
-  onSubmitIncome() {
-    let pdtName = this.incomeForm.get('name').value;
-
-    let incomedata = {
-      productID: 'I001',
-      userName: this.userName,
-    };
-
-    this.ip.income(incomedata).subscribe((response) => {
-      console.log('Success!', response);
+  /**
+   * Creating form Components
+   */
+  buildIncomeForm() {
+    this.incomeProductForm = this.formBuilder.group({
+      product: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {}
+  /**
+   * Making initial call to get list of product details.
+   * Filtering only Income products.
+   */
+  ngOnInit(): void {
+    this.productList = this.fpService
+      .fetchFinancialProductList()
+      .subscribe((res) => {
+        this.fpService.fetchFinancialProductList().subscribe((res) => {
+          this.productList = res.filter(
+            (product) => product.subcategory === 'INCOME'
+          );
+        });
+      });
+  }
+
+  /**
+   * On selecting a product from drop down its attribute values are populated.
+   */
+  onProductSelection() {
+    this.productOwnedMessage = false;
+    this.selectedProduct = this.productList.filter(
+      (product) =>
+        product.productID === this.incomeProductForm.get('product').value
+    )[0];
+  }
+
+  /**
+   * On clicking submit button this function will be triggered.
+   * Request body is populated, buy service is invoked.
+   * if product is owned, productOwnedMessage is set to true.
+   * Else a success message is created.
+   */
+  onIncomeFormSubmit() {
+    this.serviceFailureMessage = false;
+    let selectedProductData = {
+      productID: this.selectedProduct.productID,
+      userName: this.userName,
+    };
+    this.fpService.buyFinancialProduct(selectedProductData).subscribe(
+      (res) => {
+        if (res.message === 'User already owned the product') {
+          this.productOwnedMessage = true;
+        } else {
+          this.incomeProductForm.reset();
+          this.selectedProduct = null;
+          document.getElementById('successModal').click();
+        }
+      },
+      (err) => {
+        this.serviceFailureMessage = true;
+      }
+    );
+  }
 }
