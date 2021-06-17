@@ -12,7 +12,7 @@ export class stocksService {
 
   constructor(private http: HttpClient) {}
 
-  getStocks(): Observable<IStocks[]> {
+  fetchStocks(): Observable<IStocks[]> {
     return this.http.get<IStocks[]>(this._url);
   }
 

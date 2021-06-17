@@ -11,7 +11,6 @@ export class SellComponent implements OnInit {
   stockList: any;
   public selectStocks = [];
   stockUnavailable: boolean = false;
-  popup: boolean = false;
 
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
@@ -28,11 +27,11 @@ export class SellComponent implements OnInit {
       orderType: ['select', Validators.required],
       price: [''],
     });
-    this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
+    this.stock.fetchStocks().subscribe((data) => (this.selectStocks = data));
     this.fetchPortfolio();
   }
 
-  fetchPortfolio(){
+  fetchPortfolio() {
     this.stock.getStocksOwnedByUser(this.userName).subscribe(
       (res) => {
         this.stockList = res.filter(
@@ -44,7 +43,6 @@ export class SellComponent implements OnInit {
       }
     );
   }
-
 
   onOrderTypeChange() {
     if (this.sellForm.get('orderType').value === 'limit') {
@@ -92,14 +90,10 @@ export class SellComponent implements OnInit {
       (res) => {
         if (res.message === 'Enter owned stock details correctly') {
           this.stockUnavailable = true;
-          this.popup = false;
-              
         } else {
           this.stockUnavailable = false;
-          this.popup = true;
           this.sellForm.reset();
         }
-        
       },
       (err) => {
         this.systemUnavailable = true;

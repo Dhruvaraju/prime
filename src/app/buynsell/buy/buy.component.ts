@@ -9,7 +9,6 @@ import { stocksService } from './../../services/stocks/stocks.service';
 })
 export class BuyComponent implements OnInit {
   stockList: any;
-  onClickButton: boolean = false;
   public selectStocks = [];
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
@@ -19,10 +18,6 @@ export class BuyComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
 
-  viewTable() {
-    this.onClickButton = true; 
-  }
-
   ngOnInit() {
     this.buyForm = this.fb.group({
       stocks: ['select-stock', Validators.required],
@@ -30,7 +25,7 @@ export class BuyComponent implements OnInit {
       orderType: ['Select', Validators.required],
       price: [''],
     });
-    this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
+    this.stock.fetchStocks().subscribe((data) => (this.selectStocks = data));
     this.fetchPortfolio();
   }
 
