@@ -28,91 +28,55 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="container-fluid">
-    <form [formGroup]="incomeForm" *ngIf="!submitted">
+<div class="container card">
+  <div class="container-fluid" style="margin-top: 1em">
+    <form [formGroup]="incomeProductForm" (ngSubmit)="onIncomeFormSubmit()">
       <div class="form-group">
         <label for="name"><strong>Product Name :</strong></label>
-        <select name="name" class="custom-select" formControlName="name">
-          <option value="" default selected>Select Product</option>
-          <option>Income Plus</option>
+        <select
+          name="product"
+          class="custom-select"
+          formControlName="product"
+          (change)="onProductSelection()"
+        >
+          <option
+            value="{{ product.productID }}"
+            *ngFor="let product of productList"
+          >
+            {{ product.productName }}
+          </option>
         </select>
       </div>
-
-      <div
-        *ngIf="incomeForm.get('name').invalid && incomeForm.get('name').touched"
-        class="alert alert-danger"
-      >
-        <small>Please Select a Product !</small>
+      <div *ngIf="selectedProduct; nq: null">
+        <p>
+          <strong>Product Description :</strong>
+          {{ selectedProduct.productDescription }}
+        </p>
+        <p><strong>Sale Price :</strong> {{ selectedProduct?.buyPrice }}</p>
+        <p>
+          <strong>Maturity Price :</strong> {{ selectedProduct?.marketPrice }}
+        </p>
       </div>
-
-      <h6>
-        <span class="badge badge-pill badge-danger mb-2">Monthly</span>
-        <span class="badge badge-pill badge-primary my-2">Quaterly</span>
-        <span class="badge badge-pill badge-success my-2">Yearly</span>
-      </h6>
-
-      <p><strong>Product Type :</strong> Income Product</p>
-      <p><strong>Maturity Value :</strong> 20000</p>
-
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="serviceFailureMessage"
+      >
+        System is unavailable, please try after sometime. If issue persists
+        contact our customer care.
+      </div>
+      <div class="alert alert-info" role="alert" *ngIf="productOwnedMessage">
+        This product already exists, in your portfolio.
+      </div>
       <div class="text-center">
         <button
           class="btn btn-primary btn-lg"
-          [disabled]="incomeForm.invalid"
+          [disabled]="!incomeProductForm.valid"
           type="submit"
-          data-toggle="modal"
-          data-target="#incomeProductModel"
-          (click)="onSubmitIncome()"
         >
           Buy
         </button>
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="incomeProductModel"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="incomeProductModelTitle"
-          aria-hidden="true"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-        >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title-primary" id="incomeProductModelTitle">
-                  <Strong>Success !</Strong>
-                </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <strong>Income Product</strong> is successfully added to the
-                Portfolio.
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-dismiss="modal"
-                >
-                  Ok
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-      <!--
-      <div *ngIf="submit" class="text-center"></div> -->
-
       <div class="d-flex justify-content-end">
         <button routerLink="/shop" type="button" class="btn btn-outline-dark">
           Go back
@@ -122,4 +86,49 @@
   </div>
 </div>
 
-<router-outlet></router-outlet>
+<button
+  style="visibility: hidden"
+  data-toggle="modal"
+  data-target="#incomeProductModel"
+  id="successModal"
+>
+  Launch Modal
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="incomeProductModel"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="incomeProductModelTitle"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title-primary" id="incomeProductModelTitle">
+          <Strong>Success !</Strong>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <strong>Income Product</strong> is successfully added to the Portfolio.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
