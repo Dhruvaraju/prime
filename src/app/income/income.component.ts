@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServiceShopService } from '../services/serviceShop.service';
+import { ServiceShopService } from '../services/serviceshop.service';
 
 @Component({
   selector: 'app-income',
