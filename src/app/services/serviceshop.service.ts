@@ -5,15 +5,27 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceshopService {
-  url: string = 'https://ipotrading.herokuapp.com/';
+export class ServiceShopService {
+  baseUrl: string = 'https://ipotrading.herokuapp.com/';
   constructor(private http: HttpClient) {}
 
-  wealth(wealthdata: any): Observable<any> {
-    return this.http.post<any>(this.url + 'fpshop/buy/', wealthdata);
+  /**
+   * To get list of financial product from service.
+   * @returns FInancial products list
+   */
+  fetchFinancialProductList(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'fpshop/catalog');
   }
 
-  income(formdata): Observable<any> {
-    return this.http.post<any>(this.url + 'fpshop/buy/', formdata);
+  /**
+   * To buy a financial product.
+   * @param productInformation
+   * @returns message
+   */
+  buyFinancialProduct(productInformation: any): Observable<any> {
+    return this.http.post<any>(
+      this.baseUrl + 'fpshop/buy/',
+      productInformation
+    );
   }
 }

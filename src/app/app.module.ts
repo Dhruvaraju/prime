@@ -16,15 +16,13 @@ import { SellComponent } from './buynsell/sell/sell.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WealthComponent } from './wealth/wealth.component';
 import { IncomeComponent } from './income/income.component';
-import { stocksService } from './services/stocks/stocks.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ServiceshopService } from './services/serviceshop.service';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-
-
+import { stocksService } from './services/stocks/stocks.service';
+import { ServiceShopService } from './services/serviceshop.service';
 
 @NgModule({
   declarations: [
@@ -55,9 +53,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     stocksService,
     IporegistrationService,
     formSubmitService,
-    ServiceshopService,
+    ServiceShopService,
   ],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}
