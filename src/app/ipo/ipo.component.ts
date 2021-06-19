@@ -13,12 +13,14 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
   styleUrls: ['./ipo.component.css'],
 })
 export class IpoComponent implements OnInit {
-  SucessStatement="";
-  FailureStatement="";
-  showhiddenbutton :boolean=false;
-  disableafterclick:boolean=false;
+  SuccessStatement = '';
+  FailureStatement = '';
+  showhiddenbutton: boolean = false;
+  disableafterclick: boolean = false;
+  statuscheck: boolean = false;
+  statuserror: boolean = false;
   userName: string = localStorage.getItem('username');
-  RegistrationForm :FormGroup;
+  RegistrationForm: FormGroup;
 
   constructor(
     private builder: FormBuilder,
@@ -58,13 +60,16 @@ export class IpoComponent implements OnInit {
           response.message === 'ipo registered successfully' ||
           response.status === 200
         ) {
-          this.SucessStatement =
+          this.SuccessStatement =
             'Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared';
           console.log('success');
-          this.showhiddenbutton=true;
+          this.calldisable();
+          this.statuscheck = true;
+          this.showhiddenbutton = true;
         }
       },
       (error) => {
+        this.statuserror = true;
         this.FailureStatement =
           'System currently unavailable contact our banking representative to initiate the process';
         console.log(error);
@@ -74,8 +79,8 @@ export class IpoComponent implements OnInit {
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
-  calldisable()
-  {
-    this.disableafterclick=true;
+
+  calldisable() {
+    this.disableafterclick = true;
   }
 }

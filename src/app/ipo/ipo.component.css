@@ -29,7 +29,7 @@
   .bg-img 
   {
     /* The image used */
-    background-image: url("/assets/ipo-images/leaf.jpg");
+    background-image: url("/assets/ipo-images/hero-bg.png");
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -45,4 +45,14 @@
     max-width: 500px;
     margin: auto;
     padding: 10px;
+  }
+  .main
+  {
+    /* The image used */
+    background-image: url("/assets/ipo-images/ipohandhold.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
   }
