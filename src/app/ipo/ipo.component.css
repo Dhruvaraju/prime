@@ -29,7 +29,7 @@
   .bg-img 
   {
     /* The image used */
-    background-image: url("/assets/ipo-images/leaf.jpg");
+    background-image: url("/assets/ipo-images/hero-bg.png");
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -46,3 +46,5 @@
     margin: auto;
     padding: 10px;
   }
+  
+  
