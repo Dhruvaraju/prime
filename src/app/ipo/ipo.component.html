@@ -1,6 +1,7 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
 <div class="container">
   <div class="justify-content-center">
+    <!--title of the page -->
     <div class="card">
       <div class="card-body">
         <div class="row">
@@ -8,95 +9,108 @@
             <div class="card bg-primary text-white text-center">
               <div class="card-body font-italic demo">Welcome To IPO</div>
             </div>
-            <!--div class="dem"-->
-
-            <!--/div-->
+           
             <div class="flowofimage">
               <h2 class="text-center">
                 <br /><q>An ipo is not the end but actually the begining</q>
               </h2>
               <button
                 type="button"
-                (click)="scroll(target)"
+                (click)="scroll(targets)"
                 class="btn btn-primary"
               >
-                Get Started-><br />
+                Get Started->
               </button>
             </div>
             <img
               src="../assets/ipo-images/hero-img.png"
               class="img-fluid float-right"
               alt="picture"
+              width="500"
+              height="400"
             />
           </div>
         </div>
         <div class="col-10 font-weight-bold">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To know more about IPO ?
-          <a href="https://en.wikipedia.org/wiki/Initial_public_offering"
+          <a
+            href="https://en.wikipedia.org/wiki/Initial_public_offering"
+            target="_blank"
             >Read More!</a
           >
         </div>
       </div>
     </div>
     <br />
+    <!--slideshow of the page -->
     <div class="card">
-      <div class="card-body row">
-        <div
-          id="carouselExampleSlidesOnly"
-          class="carousel slide carousel-fade"
-          data-bs-ride="carousel"
-        >
+      <div class="card-body">
+        <div id="demoforslide" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ul class="carousel-indicators">
+            <li
+              data-target="#demoforslide"
+              data-slide-to="0"
+              class="active"
+            ></li>
+            <li data-target="#demoforslide" data-slide-to="1"></li>
+            <li data-target="#demoforslide" data-slide-to="2"></li>
+          </ul>
+
+          <!-- The slideshow -->
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
-                src="./../../assets/ipo-images/ipoopen.png"
-                class="d-block w-100"
-                alt="firar"
+                src="./../../assets/ipo-images/register.png"
+                alt="ipo image"
+                width="1100"
+                height="500"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="./../../assets/ipo-images/hero-bg.png"
-                class="d-block w-100"
-                alt="second"
+                src="./../../assets/ipo-images/reg.jpg"
+                alt="yellow page"
+                width="1100"
+                height="500"
               />
             </div>
             <div class="carousel-item">
               <img
-                src="./../../assets/ipo-images/plain.jpeg"
-                class="d-block w-100"
-                alt="third"
+                src="./../../assets/ipo-images/ipohandhold.jpg"
+                alt="ipohandhold image"
+                width="1100"
+                height="500"
               />
             </div>
           </div>
-          <button
+
+          <!-- Left and right controls -->
+          <a
             class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleSlidesOnly"
-            data-bs-slide="prev"
+            href="#demoforslide"
+            data-slide="prev"
           >
-            <p class="carousel-control-prev-icon" aria-hidden="true"></p>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a
             class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleSlidesOnly"
-            data-bs-slide="next"
+            href="#demoforslide"
+            data-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+            <span class="carousel-control-next-icon"></span>
+          </a>
         </div>
       </div>
     </div>
     <br />
+    <!--registration of the page -->
     <div class="card">
       <div class="card-body row">
         <div class="col-12 bg-img">
           <div class="positionfixing">
             <form [formGroup]="RegistrationForm">
-              <div #target>
+              <div #targets>
                 <h2 class="text-center font-bold justify-content-center">
                   IPO REGISTRATION
                 </h2>
@@ -237,8 +251,8 @@
                             <Strong *ngIf="!statuscheck && !statuserror"
                               >Please Wait !
                             </Strong>
-
-                            <Strong *ngIf="statuserror" style="color: red"
+                            <!--response from db is evaluated-->
+                            <Strong *ngIf="statuserror" style="color: tomato"
                               >Failed !!!
                             </Strong>
                             <Strong *ngIf="statuscheck" style="color: limegreen"
@@ -255,6 +269,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
+                          <!--response from db is evaluated-->
                           <strong *ngIf="statuserror" style="color: red"
                             ><span style="font-size: 50px">&#10005;</span>
                             {{ FailureStatement }}</strong
@@ -281,6 +296,7 @@
             </form>
           </div>
         </div>
+        <!--ipoquote hidden button of the page -->
         <div *ngIf="showhiddenbutton">
           <button class="btn btn-warning btn-lg" routerLink="/ipoquote">
             Let's go to ipo quote
