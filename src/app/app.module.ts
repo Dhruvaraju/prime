@@ -24,6 +24,7 @@ import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { stocksService } from './services/stocks/stocks.service';
 import { ServiceShopService } from './services/serviceshop.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
