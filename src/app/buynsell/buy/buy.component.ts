@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { stocksService } from './../../services/stocks/stocks.service';
 
@@ -9,19 +9,16 @@ import { stocksService } from './../../services/stocks/stocks.service';
 })
 export class BuyComponent implements OnInit {
   stockList: any;
-  onClickButton: boolean = false;
   public selectStocks = [];
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
+  successBanner: boolean = false; //Display success banner on transaction complete
   buyForm: FormGroup;
   userName: string = localStorage.getItem('username');
+  @Output() returnEvent = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
-
-  viewTable() {
-    this.onClickButton = true; 
-  }
 
   ngOnInit() {
     this.buyForm = this.fb.group({
@@ -30,7 +27,7 @@ export class BuyComponent implements OnInit {
       orderType: ['Select', Validators.required],
       price: [''],
     });
-    this.stock.getStocks().subscribe((data) => (this.selectStocks = data));
+    this.stock.fetchStocks().subscribe((data) => (this.selectStocks = data));
     this.fetchPortfolio();
   }
 
@@ -91,8 +88,10 @@ export class BuyComponent implements OnInit {
     };
     this.stock.buyStockOrder(buyOrderRequest).subscribe(
       (res) => {
+        this.successBanner = true;
         this.buyForm.reset();
         this.fetchPortfolio();
+        this.returnEvent.emit('buy-sucess');
       },
       (err) => {
         this.systemUnavailable = true;
