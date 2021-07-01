@@ -10,22 +10,17 @@ import { stocksService } from './../services/stocks/stocks.service';
 })
 export class BuynsellComponent implements OnInit {
   stockList: any;
-  onClickButton: boolean = false;
-  displayHome: boolean = true;
+  displayBuy: boolean = false;
+  displaySell: boolean = false;
   username: string = localStorage.getItem('username');
+
   constructor(private transactionService: stocksService) {}
 
-  viewTable() {
-    this.onClickButton = true;    
-    this.displayHome = false;
+  ngOnInit() {
+    this.fetchPortfolio();
   }
 
-  home() {
-    this.displayHome = true;   
-    this.onClickButton = false; 
-  }
-
-  ngOnInit(): void {
+  fetchPortfolio() {
     this.transactionService.getStocksOwnedByUser(this.username).subscribe(
       (res) => {
         this.stockList = res.filter(
@@ -36,5 +31,22 @@ export class BuynsellComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  scroll(el: HTMLElement, detail) {
+    if (detail === 'buy') {
+      this.displayBuy = true;
+      this.displaySell = false;
+    } else {
+      this.displayBuy = false;
+      this.displaySell = true;
+    }
+    setTimeout(function () {
+      el.scrollIntoView();
+    }, 100);
+  }
+
+  retriggerService($event) {
+    this.ngOnInit();
   }
 }

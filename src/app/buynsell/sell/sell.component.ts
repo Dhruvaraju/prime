@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { stocksService } from './../../services/stocks/stocks.service';
 
@@ -11,12 +11,14 @@ export class SellComponent implements OnInit {
   stockList: any;
   public selectStocks = [];
   stockUnavailable: boolean = false;
-
+  responseMessage: any;
   displayPriceForLimitOrder: boolean = false; //Display Input field for Limit Order Price
   priceErrorBanner: boolean = false; //Price Error Display Banner
   systemUnavailable: boolean = false; //Display Server error
+  successBanner: boolean = false; //Display success banner on transaction complete
   sellForm: FormGroup;
   userName: string = localStorage.getItem('username');
+  @Output() returnEvent = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
 
@@ -88,12 +90,15 @@ export class SellComponent implements OnInit {
     };
     this.stock.sellStockOrder(sellOrderRequest).subscribe(
       (res) => {
-        if (res.message === 'Enter owned stock details correctly') {
-          this.stockUnavailable = true;
-        } else {
+        this.responseMessage = res.message;
+        if (res.message === 'Product Initiated For Sale') {
+          this.successBanner = true;
           this.stockUnavailable = false;
-          this.sellForm.reset();
+          this.returnEvent.emit('sell-sucess');
+        } else {
+          this.stockUnavailable = true;
         }
+        this.sellForm.reset();
       },
       (err) => {
         this.systemUnavailable = true;

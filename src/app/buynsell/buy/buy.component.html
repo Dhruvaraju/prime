@@ -1,188 +1,175 @@
-<app-navbar [displayUserNav]="true"></app-navbar>
 <div class="container">
-  <div class="row justify-content-center">
-    <marquee behavior="scroll" direction="left" width="75%" loop="10">
-      <div class="holder">
-        <div class="text-container">
-          <p>
-            <img
-              src="./../../assets/icon.jpg"
-              style="height: 2em; width: 2em"
-            />
-            TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
-            <img
-              src="./../../assets/icon.jpg"
-              style="height: 2em; width: 2em"
-            />
-            RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
-            <img
-              src="./../../assets/icon.jpg"
-              style="height: 2em; width: 2em"
-            />
-            Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
-            <img
-              src="./../../assets/icon.jpg"
-              style="height: 2em; width: 2em"
-            />
-            Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
-            <img
-              src="./../../assets/icon.jpg"
-              style="height: 2em; width: 2em"
-            />
-            TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
-            <img
-              src="./../../assets/icon.jpg"
-              style="height: 2em; width: 2em"
-            />
-            SBI Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
-          </p>
-        </div>
-      </div>
-    </marquee>
-  </div>
-  <!-- <div class="d-flex justify-content-end">
-    <a class="btn btn-light" (click)="viewTable()"> Portfolio </a>
-  </div> -->
-  <div class="d-flex justify-content-center">
-    <form
-      [formGroup]="buyForm"
-      style="width: 40%; text-align: left"
-      (ngSubmit)="onBuyFormSubmit()"
-    >
-      <div class="form-group">
-        <label for="stocks"></label>
-        <select
-          name="stocks"
-          id="stocks"
-          formControlName="stocks"
-          [class.is-invalid]="
-            this.buyForm.get('stocks').invalid &&
-            this.buyForm.get('stocks').touched
-          "
-          class="custom-select"
-        >
-          <option value="select-stock" disabled>Select Stock</option>
-          <option *ngFor="let stock of selectStocks">
-            {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
-          </option>
-        </select>
-        <small
-          [class.d-none]="
-            this.buyForm.get('stocks').valid ||
-            this.buyForm.get('stocks').untouched
-          "
-          class="text-danger"
-        >
-          Please select a stock
-        </small>
-      </div>
-      <div class="form-group row">
-        <label for="quantity" class="col-sm-4 col-form-label"> Quantity </label>
-        <div class="col-sm-8">
-          <input
-            type="number"
-            id="quantity"
-            pattern="^[1-9]+[0-9]*$"
-            formControlName="quantity"
-            [class.is-invalid]="
-              this.buyForm.get('quantity').invalid &&
-              this.buyForm.get('quantity').touched
-            "
-            class="form-control"
-          />
-          <small
-            [class.d-none]="
-              this.buyForm.get('quantity').valid ||
-              this.buyForm.get('quantity').untouched
-            "
-            class="text-danger"
-          >
-            Quantity is required
-          </small>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="orderType" class="col-sm-4 col-form-label">
-          Order Type
-        </label>
-        <div class="col-sm-8">
-          <select
-            name="order"
-            id="orderType"
-            formControlName="orderType"
-            (change)="onOrderTypeChange()"
-            [class.is-invalid]="
-              this.buyForm.get('orderType').invalid &&
-              this.buyForm.get('orderType').touched
-            "
-            class="custom-select"
-          >
-            <option value="Select" disabled>Select Order Type</option>
-            <option value="market">Market Order</option>
-            <option value="limit" #limit>Limit Order</option>
-          </select>
-          <small
-            [class.d-none]="
-              this.buyForm.get('orderType').valid ||
-              this.buyForm.get('orderType').untouched
-            "
-            class="text-danger"
-          >
-            Please select any order type
-          </small>
-        </div>
-      </div>
-      <div class="form-group row" *ngIf="displayPriceForLimitOrder">
-        <label for="price" class="col-sm-4 col-form-label"> Price </label>
-        <div class="col-sm-8">
-          <input
-            type="number"
-            id="price"
-            pattern="^[1-9]+[0-9]+[0-9]*$"
-            formControlName="price"
-            (keyup)="onPriceChange()"
-            [class.is-invalid]="
-              this.buyForm.get('price').invalid &&
-              this.buyForm.get('price').touched
-            "
-            class="form-control"
-          />
-          <small
-            [class.d-none]="
-              this.buyForm.get('price').valid ||
-              this.buyForm.get('price').untouched
-            "
-            class="text-danger"
-          >
-            Price is required
-          </small>
-        </div>
-      </div>
-      <small
-        class="alert alert-danger row"
-        role="alert"
-        *ngIf="priceErrorBanner"
-      >
-        Price is mandatory for Limit Order
-      </small>
+  <div
+    class="container card"
+    style="align-content: flex-end; border-color: white"
+  >
+    <div class="container-fluid" style="margin-top: 1em">
+      <div class="row">
+        <img
+          class="card-img"
+          src="./../../assets/buynsell-images/bg-buy.jpg"
+          style="width: 68em"
+        />
 
-      <div class="alert alert-danger" role="alert" *ngIf="systemUnavailable">
-        System Unavailable try again later
-      </div>
+        <div class="card-img-overlay">
+          <div class="d-flex justify-content-center" style="margin-top: 15em">
+            <form
+              [formGroup]="buyForm"
+              id="buyComponentFormTage"
+              style="text-align: left; width: 40%"
+              (ngSubmit)="onBuyFormSubmit()"
+            >
+              <div class="form-group">
+                <label for="stocks">Stock:</label>
+                <select
+                  name="stocks"
+                  id="stocks"
+                  formControlName="stocks"
+                  [class.is-invalid]="
+                    this.buyForm.get('stocks').invalid &&
+                    this.buyForm.get('stocks').touched
+                  "
+                  class="custom-select"
+                >
+                  <option value="select-stock" disabled></option>
+                  <option *ngFor="let stock of selectStocks">
+                    {{ stock.ticker }}.{{ stock.name }} - ${{ stock.price }}
+                  </option>
+                </select>
+                <small
+                  [class.d-none]="
+                    this.buyForm.get('stocks').valid ||
+                    this.buyForm.get('stocks').untouched
+                  "
+                  class="text-danger"
+                >
+                  Please select a stock
+                </small>
+              </div>
+              <div class="form-group row">
+                <label for="quantity" class="col-sm-4 col-form-label">
+                  Quantity
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    type="number"
+                    id="quantity"
+                    pattern="^[1-9]+[0-9]*$"
+                    formControlName="quantity"
+                    [class.is-invalid]="
+                      this.buyForm.get('quantity').invalid &&
+                      this.buyForm.get('quantity').touched
+                    "
+                    class="form-control"
+                  />
+                  <small
+                    [class.d-none]="
+                      this.buyForm.get('quantity').valid ||
+                      this.buyForm.get('quantity').untouched
+                    "
+                    class="text-danger"
+                  >
+                    Quantity is required
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="orderType" class="col-sm-4 col-form-label">
+                  Order Type
+                </label>
+                <div class="col-sm-8">
+                  <select
+                    name="order"
+                    id="orderType"
+                    formControlName="orderType"
+                    (change)="onOrderTypeChange()"
+                    [class.is-invalid]="
+                      this.buyForm.get('orderType').invalid &&
+                      this.buyForm.get('orderType').touched
+                    "
+                    class="custom-select"
+                  >
+                    <option value="Select" disabled>Select Order Type</option>
+                    <option value="market">Market Order</option>
+                    <option value="limit" #limit>Limit Order</option>
+                  </select>
+                  <small
+                    [class.d-none]="
+                      this.buyForm.get('orderType').valid ||
+                      this.buyForm.get('orderType').untouched
+                    "
+                    class="text-danger"
+                  >
+                    Please select any order type
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row" *ngIf="displayPriceForLimitOrder">
+                <label for="price" class="col-sm-4 col-form-label">
+                  Price
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    type="number"
+                    id="price"
+                    pattern="^[1-9]+[0-9]+[0-9]*$"
+                    formControlName="price"
+                    (keyup)="onPriceChange()"
+                    [class.is-invalid]="
+                      this.buyForm.get('price').invalid &&
+                      this.buyForm.get('price').touched
+                    "
+                    class="form-control"
+                  />
+                  <small
+                    [class.d-none]="
+                      this.buyForm.get('price').valid ||
+                      this.buyForm.get('price').untouched
+                    "
+                    class="text-danger"
+                  >
+                    Price is required
+                  </small>
+                </div>
+              </div>
+              <small
+                class="alert alert-danger row"
+                role="alert"
+                *ngIf="priceErrorBanner"
+              >
+                Price is mandatory for Limit Order
+              </small>
 
-      <div class="d-flex justify-content-center">
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="!this.buyForm.valid"
-          style="width: 9rem"
-          data-toggle="modal"
-          data-target="#buyOrderSuccess"
-        >
-          BUY
-        </button>
+              <div class="row d-flex justify-content-center">
+                <div class="col-4 d-grid text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!this.buyForm.valid"
+                    style="width: 9rem"
+                    data-toggle="modal"
+                    data-target="#buyOrderSuccess"
+                    (click)="fetchPortfolio()"
+                  >
+                    BUY
+                  </button>
+                </div>
+                <!-- <div class="col-4 d-grid text-center">
+                  <a
+                    type="button"
+                    class="btn btn-success"
+                    style="width: 9rem"
+                    routerLink="/buysell"
+                  >
+                    Portfolio
+                  </a>
+                </div> -->
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
   <!-- Modal -->
   <div
@@ -192,11 +179,23 @@
     role="dialog"
     aria-labelledby="buyOrderSuccessLabel"
     aria-hidden="true"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="buyOrderSuccessLabel">Success!!</h5>
+          <h5 class="modal-title" id="buyOrderSuccessLabel">
+            <div *ngIf="!successBanner && !systemUnavailable">
+              <Strong>It may take some time</Strong>
+            </div>
+            <Strong *ngIf="successBanner" style="color: green">
+              Success!!
+            </Strong>
+            <Strong *ngIf="systemUnavailable" style="color: red">
+              Error!!
+            </Strong>
+          </h5>
           <button
             type="button"
             class="close"
@@ -206,7 +205,18 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">Product Added to your Portfolio</div>
+        <div class="modal-body">
+          <div
+            class="d-flex justify-content-center"
+            *ngIf="!successBanner && !systemUnavailable"
+          >
+            <img src="./../../assets/loader.gif" />
+          </div>
+          <Strong *ngIf="successBanner">Product Added to your Portfolio</Strong>
+          <Strong *ngIf="systemUnavailable"
+            >System Unavailable try again later</Strong
+          >
+        </div>
         <div class="modal-footer">
           <button
             type="button"

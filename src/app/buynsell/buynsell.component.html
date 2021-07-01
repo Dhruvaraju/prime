@@ -6,27 +6,27 @@
         <div class="text-container">
           <p>
             <img
-              src="./../../assets/icon.jpg"
+              src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
             TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
             <img
-              src="./../../assets/icon.jpg"
+              src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
             RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
             <img
-              src="./../../assets/icon.jpg"
+              src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
             Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
             <img
-              src="./../../assets/icon.jpg"
+              src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
             Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
             <img
-              src="./../../assets/icon.jpg"
+              src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
             TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
@@ -40,79 +40,96 @@
       </div>
     </marquee>
   </div>
-  <!-- <div>
-    <a class="btn btn-light" (click)="home()">
-      Home
-    </a>
-    <a class="btn btn-light" (click)="viewTable()">
-      Portfolio
-    </a>
-  </div> -->
-  <div class="row justify-content-center">
-    <div class="col">
-      <div class="d-flex" style="margin-top: 0.5em">
-        <img src="./../../assets/buynsell-images/bg.jpg" width="115%" />
+  <div class="row">
+    <div class="container card" style="border-color: white">
+      <div class="container-fluid">
+        <div class="d-flex">
+          <img
+            class="card-img opacity-3"
+            src="./../../assets/buynsell-images/bg-buynsell.jpg"
+            style="width: 68.5em; margin-left: 0px; padding-left: 0px;"
+          />
+        </div>
       </div>
-    </div>
-    <div class="col justify-content-end">
-      <div class="card" style="margin-top: 2.5em">
-        <h3 class="card-header">Portfolio</h3>
-        <div class="card-body">
-          <p *ngIf="!stockList?.length">
-            Your Portfolio is empty, Please buy any stock
-          </p>
-          <table
-            class="table table-hover count-Table table-responsive"
-            *ngIf="stockList?.length"
+      <div class="card-img-overlay">
+        <div class="d-flex justify-content-end">
+          <div
+            class="card"
+            style="margin-top: 6em; width: 27.5em; border-color: white"
           >
-            <thead class="table-primary">
-              <tr>
-                <th scope="col">Stock Name</th>
-                <th scope="col">Net Qty</th>
-                <th scope="col">LTP</th>
-                <th scope="col">Current Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let stock of stockList">
-                <td>{{ stock.productName }}</td>
-                <td>{{ stock.quantity }}</td>
-                <td>${{ stock.buyPrice }}</td>
-                <td>${{ stock.quantity * stock.buyPrice }}</td>
-              </tr>
-            </tbody>
-          </table>
+            <h3 class="card-header">Portfolio</h3>
+            <div class="card-body" id="fetchBuynSellPortfolio">
+              <p *ngIf="!stockList?.length">
+                Your Portfolio is empty, Please buy any stock
+              </p>
+              <table
+                class="
+                  table table-hover table-bordered
+                  count-Table
+                  table-grey table-responsive
+                "
+                *ngIf="stockList?.length"
+              >
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Stock Name</th>
+                    <th scope="col">Net Qty</th>
+                    <th scope="col">LTP</th>
+                    <th scope="col">Current Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let stock of stockList">
+                    <td>{{ stock.productName }}</td>
+                    <td>{{ stock.quantity }}</td>
+                    <td>${{ stock.buyPrice }}</td>
+                    <td>${{ stock.quantity * stock.buyPrice }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-center">
+                <div class="row">
+                  <div class="col-6 d-grid text-center">
+                    <button
+                      type="button"
+                      (click)="scroll(targets, 'buy')"
+                      class="btn btn-primary btn-block"
+                      style="width: 9rem"
+                    >
+                      Buy
+                    </button>
+                  </div>
+                  <div class="col-6 d-grid text-center">
+                    <button
+                      (click)="scroll(sellBlock, 'sell')"
+                      type="button"
+                      class="btn btn-danger btn-block"
+                      style="width: 9rem"
+                      *ngIf="stockList?.length"
+                    >
+                      Sell
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div
-    class="d-flex justify-content-center"
-    style="margin-top: 2em; margin-bottom: 10%"
-  >
-    <div class="row">
-      <div class="col-6 d-grid text-center">
-        <button
-          routerLink="/buy"
-          type="button"
-          class="btn btn-primary btn-lg btn-block"
-          style="width: 9rem"
-        >
-          Buy
-        </button>
-      </div>
-      <div class="col-6 d-grid text-center">
-        <button
-          routerLink="/sell"
-          type="button"
-          class="btn btn-success btn-lg btn-block"
-          style="width: 9rem"
-          *ngIf="stockList?.length"
-        >
-          Sell
-        </button>
-      </div>
-    </div>
+
+  <div #targets>
+    <app-buy
+      *ngIf="displayBuy"
+      (returnEvent)="retriggerService($event)"
+    ></app-buy>
+  </div>
+  <div #sellBlock>
+    <app-sell
+      *ngIf="displaySell"
+      (returnEvent)="retriggerService($event)"
+    ></app-sell>
   </div>
   <router-outlet></router-outlet>
 </div>
