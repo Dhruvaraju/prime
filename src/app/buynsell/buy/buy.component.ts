@@ -32,7 +32,7 @@ export class BuyComponent implements OnInit {
     this.fetchPortfolio();
   }
 
-  fetchPortfolio(){
+  fetchPortfolio() {
     this.stock.getStocksOwnedByUser(this.userName).subscribe(
       (res) => {
         this.stockList = res.filter(
@@ -46,7 +46,7 @@ export class BuyComponent implements OnInit {
   }
 
   scrollToPortfolio() {
-    this.returnToPortfolio.emit()
+    this.returnToPortfolio.emit();
   }
 
   onOrderTypeChange() {
@@ -82,7 +82,7 @@ export class BuyComponent implements OnInit {
     }
     let buyOrderRequest = {
       userName: this.userName,
-      productName: stockName,  
+      productName: stockName,
       productID: stockTikker,
       productType: 'STOCK',
       subcategory: 'STOCK',

@@ -48,7 +48,7 @@ export class SellComponent implements OnInit {
   }
 
   scrollToPortfolio() {
-    this.returnToPortfolio.emit()
+    this.returnToPortfolio.emit();
   }
 
   onOrderTypeChange() {
