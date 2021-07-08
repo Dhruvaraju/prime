@@ -47,6 +47,13 @@ export class BuynsellComponent implements OnInit {
   }
 
   retriggerService($event) {
+    console.log($event)
     this.ngOnInit();
+  }
+
+  scrollUp(pf: HTMLElement) {
+    setTimeout(function () {
+      pf.scrollIntoView();
+    }, 100);
   }
 }

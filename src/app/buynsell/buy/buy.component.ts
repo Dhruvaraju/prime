@@ -17,6 +17,7 @@ export class BuyComponent implements OnInit {
   buyForm: FormGroup;
   userName: string = localStorage.getItem('username');
   @Output() returnEvent = new EventEmitter<string>();
+  @Output() returnToPortfolio = new EventEmitter();
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
 
@@ -44,6 +45,10 @@ export class BuyComponent implements OnInit {
     );
   }
 
+  scrollToPortfolio() {
+    this.returnToPortfolio.emit()
+  }
+
   onOrderTypeChange() {
     if (this.buyForm.get('orderType').value === 'limit') {
       this.displayPriceForLimitOrder = true;
@@ -64,7 +69,6 @@ export class BuyComponent implements OnInit {
       this.priceErrorBanner = true;
       return null;
     }
-
     let stockDetail = this.buyForm.get('stocks').value;
     let stockTikker = stockDetail.slice(0, 3);
     let stockName = stockDetail.substring(

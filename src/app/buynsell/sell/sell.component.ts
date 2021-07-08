@@ -19,6 +19,7 @@ export class SellComponent implements OnInit {
   sellForm: FormGroup;
   userName: string = localStorage.getItem('username');
   @Output() returnEvent = new EventEmitter<string>();
+  @Output() returnToPortfolio = new EventEmitter();
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
 
@@ -44,6 +45,10 @@ export class SellComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  scrollToPortfolio() {
+    this.returnToPortfolio.emit()
   }
 
   onOrderTypeChange() {

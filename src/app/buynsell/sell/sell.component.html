@@ -5,7 +5,7 @@
         <img
           class="card-img opacity-4"
           src="./../../assets/buynsell-images/bg-sell.jpg"
-          style="width: 68em; margin-left: 0px; padding-left: 0px;"
+          style="width: 68em; margin-left: 0px; padding-left: 0px"
         />
         <div class="card-img-overlay">
           <div class="d-flex justify-content-center" style="margin-top: 9em">
@@ -141,17 +141,29 @@
                 Price is mandatory for Limit Order
               </small>
 
-              <div class="d-flex justify-content-center">
-                <button
-                  type="submit"
-                  class="btn btn-danger"
-                  [disabled]="!sellForm.valid"
-                  style="width: 9rem"
-                  data-toggle="modal"
-                  data-target="#sellOrderSuccess"
-                >
-                  SELL
-                </button>
+              <div class="row d-flex justify-content-center">
+                <div class="col-4 d-grid text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-danger"
+                    [disabled]="!sellForm.valid"
+                    style="width: 9rem"
+                    data-toggle="modal"
+                    data-target="#sellOrderSuccess"
+                  >
+                    SELL
+                  </button>
+                </div>
+                <div class="col-4 d-grid text-center">
+                  <a
+                    type="button"
+                    class="btn btn-success"
+                    style="width: 9rem"
+                    (click)="scrollToPortfolio()"
+                  >
+                    Portfolio
+                  </a>
+                </div>
               </div>
             </form>
           </div>
@@ -263,17 +275,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="d-flex justify-content-end">
-      <button
-        routerLink="/buysell"
-        type="button"
-        class="btn btn-outline-dark"
-        style="margin-bottom: 15%; margin-top: 5%"
-      >
-        Go back
-      </button>
     </div>
   </div>
 </div>
