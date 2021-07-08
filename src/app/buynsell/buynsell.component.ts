@@ -47,7 +47,7 @@ export class BuynsellComponent implements OnInit {
   }
 
   retriggerService($event) {
-    console.log($event)
+    console.log($event);
     this.ngOnInit();
   }
 
