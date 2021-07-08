@@ -1,5 +1,5 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
-<div class="container">
+<div class="container" #portfolio>
   <div class="row justify-content-center">
     <marquee behavior="scroll" direction="left" width="75%" loop="10">
       <div class="holder">
@@ -123,12 +123,14 @@
     <app-buy
       *ngIf="displayBuy"
       (returnEvent)="retriggerService($event)"
+      (returnToPortfolio)="scrollUp(portfolio)"
     ></app-buy>
   </div>
   <div #sellBlock>
     <app-sell
       *ngIf="displaySell"
       (returnEvent)="retriggerService($event)"
+      (returnToPortfolio)="scrollUp(portfolio)"
     ></app-sell>
   </div>
   <router-outlet></router-outlet>
