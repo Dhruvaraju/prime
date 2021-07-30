@@ -1,0 +1,404 @@
+<app-navbar [displayUserNav]="true"></app-navbar>
+<div class="container">
+    <div class="justify-content-center">
+
+
+    <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="card bg-primary text-white text-center">
+                <div class="card-body font-italic demo">INVEST IN MUTUAL FUNDS</div>
+              </div>
+             
+              <div class="flowofimage">
+                <h2 class="text-center">
+                  <br /><q>Start Investing Save More!</q>
+                </h2>
+                 <button
+                  type="button"
+                  (click)="scroll(targets)"
+                  class="btn btn-primary"
+                >
+                  START->
+                </button>
+               
+              </div>
+              <br/>
+              <img
+                src="https://doc.utimf.com/v1/AUTH_5b9dd00b-8132-4a21-a800-711111810cee/UTIContainer/Guide%20on%20How%20Mutual%20Funds%20Work%3F20200809-141343.jpg"
+                class="img-fluid float-right"
+                alt="picture"
+                width="900"
+                height="500"
+              />
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <br />
+
+ </div>
+
+
+
+  <div class="title">
+    <h1>FUND TYPES</h1>
+    <h5>Here we have two types of Mutual Funds!</h5>
+    
+    <div class="container my-5">
+      <div class="row ">
+        <div class="col-md-6 col-sm-12">
+          <div class="card text-center" style="width: 30rem">
+            <img
+              src="https://qph.fs.quoracdn.net/main-qimg-923a3dab8897ed90b7ce1048f0ceeac7"
+              alt="open-ended"
+              class="card-img-top"
+            />
+
+            <div class="card-body">
+              <h4 class="card-title mb-2">Open-end Funds</h4>
+              <p class="card-text mb-2">
+                At Prime Open-end Funds, we will be focusing on  collection of investor money pooled together to achieve a common investment objective and helping you grow your wealth and
+                helping you to achieve your future financial goals.
+              </p>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+          <div class="card text-center" style="width: 30rem">
+            <img
+              src="https://realinvestmentadvice.com/wp-content/uploads/2018/10/Closed-End-Funds-Discount.png"
+              alt="Closed-end"
+              class="car-img-top"
+            />
+
+            <div class="card-body">
+              <h4 class="card-title mb-2">Closed-end Funds</h4>
+              <p class="card-text mb-2">
+                At Prime Closed-end Funds, we will be focusing on   pooled assets that raises a fixed amount of capital through an initial public offering(IPO) and then lists shares for trade on a stock exchange thereby 
+                helping you to achieve your future financial goals.
+              </p>
+            </div>
+            
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <br/>
+
+  <!--registration of the page -->
+  <div class="card">
+    <div class="card-body row">
+      <div class="col-12 bg-img">
+        <div class="positionfixing">
+          <form [formGroup]="RegistrationForm">
+            <div #targets>
+              <h2 class="text-center font-bold justify-content-center">
+                MUTUAL FUND REGISTRATION
+              </h2>
+              <hr style="color: lightgreen" />
+              <div class="form-group">
+                <label for="fundtype" class="font-weight-bold colorandfont"
+                  >Fund Type:</label
+                ><br />
+                <select
+                class="form-control"
+                id="fundtype"
+                formControlName="fundtype"
+              >
+                
+                <option value="Open-ended">Open-ended</option>
+                <option value="Closed-end">Closed-ended</option>
+                
+                
+               </select>
+                <div
+                  *ngIf="
+                    RegistrationForm.get('fundtype').invalid &&
+                    (RegistrationForm.get('fundtype').dirty ||
+                      RegistrationForm.get('fundtype').touched)
+                  "
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="RegistrationForm.get('fundtype').errors.required"
+                  >
+                    Please fill this field
+                  </div>
+                </div>
+                
+               
+               <br />
+                
+              </div>
+              <div class="form-group">
+                <label for="risklevel" class="font-weight-bold colorandfont"
+                  >Risk Level</label
+                ><br />
+               
+                <div
+                  *ngIf="
+                    RegistrationForm.get('risklevel').invalid &&
+                    (RegistrationForm.get('risklevel').dirty ||
+                      RegistrationForm.get('risklevel').touched)
+                  "
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="
+                      RegistrationForm.get('risklevel').errors.required
+                    "
+                  >
+                    Please fill this field
+                  </div>
+                </div>
+                <select
+                  class="form-control"
+                  id="risklevel"
+                  formControlName="risklevel"
+                >
+                  
+                  <option value="Titanium">Titanium</option>
+                  <option value="Platinum">Platinum</option>
+                  <option value="Diamond">Diamond</option>
+                  
+                 </select>
+                 <br />
+                
+              </div>
+              <div class="form-group">
+                <label
+                  for="tenure"
+                  class="font-weight-bold colorandfont"
+                  >Tenure</label
+                ><br />
+                <div
+                  *ngIf="
+                    RegistrationForm.get('tenure').invalid &&
+                    (RegistrationForm.get('tenure').dirty ||
+                      RegistrationForm.get('tenure').touched)
+                  "
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="
+                      RegistrationForm.get('tenure').errors.required
+                    "
+                  >
+                    Please fill this field
+                  </div>
+                </div>
+                <select
+                  class="form-control"
+                  id="tenure"
+                  formControlName="tenure"
+                >
+                 
+                  <option value="5">5Yrs</option>
+                  <option value="10">10Yrs</option>
+                  <option value="15">15Yrs</option>
+                  <option value="20">20Yrs</option>
+                  <option value="25">25Yrs</option>
+                 </select
+                ><br /><br />
+             
+                <div class="form-group">
+                    <label for="amtinvested" class="font-weight-bold colorandfont"
+                      >Amount for Investment</label
+                    ><br />
+                    <input
+                      type="number"
+                      id="amtinvested"
+                      name="amtinvested"
+                      placeholder="Value"
+                      class="form-control"
+                      formControlName="amtinvested"
+                    />
+                    <div
+                      *ngIf="
+                        RegistrationForm.get('amtinvested').invalid &&
+                        (RegistrationForm.get('amtinvested').dirty ||
+                          RegistrationForm.get('amtinvested').touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div
+                        *ngIf="
+                          RegistrationForm.get('amtinvested').errors.required
+                        "
+                      >
+                        Please fill this field
+                      </div>
+                      <div
+                        *ngIf="
+                          RegistrationForm.get('amtinvested').errors.min
+                        "
+                      >
+                        Min amount should be greater than 1000
+                      </div>
+                    </div>
+                    <br />
+                  </div>
+
+              </div>
+
+              <div class="form-group">
+                <label for="paymentpattern" class="font-weight-bold colorandfont"
+                  >Payment Pattern</label
+                ><br />
+                
+                <div
+                  *ngIf="
+                    RegistrationForm.get('paymentpattern').invalid &&
+                    (RegistrationForm.get('paymentpattern').dirty ||
+                      RegistrationForm.get('paymentpattern').touched)
+                  "
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="
+                      RegistrationForm.get('paymentpattern').errors.required
+                    "
+                  >
+                    Please fill this field
+                  </div>
+                </div>
+                <select
+                  class="form-control"
+                  id="paymentpattern"
+                  formControlName="paymentpattern"
+                >
+                  
+                  <option value="Monthly">Monthly</option>
+                  <option value="Quarterly">Quarterly</option>
+                 
+                  
+                 </select>
+                 <br />
+                 
+                
+              </div>
+
+              <div class="form-group">
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  [disabled]="disableafterclick"
+                  
+                  (click)="invokeformcalculate()"
+                  
+                >
+                  Calculate Returns
+                </button>
+                <br />
+               
+              </div>
+              
+              <div *ngIf="Returns">
+                <p>
+                   Your respective investment plan  will give an approx amount of ${{Returns}}
+                </p>
+                    
+              </div>
+         
+              <br />
+              <br />
+              <div class="form-group">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#centralModalSuccess"
+                  [disabled]="disableafterclick"
+                  
+                  (click)="invokeformsubmit()"
+                >
+                  Submit
+                </button>
+                <br />
+              </div> 
+                <div
+                  class="modal fade"
+                  id="centralModalSuccess"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="Title"
+                  aria-hidden="true"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="Title">
+                          <Strong *ngIf="!statuscheck && !statuserror"
+                            >Please Wait !
+                          </Strong> 
+                          <!--response from db is evaluated--> 
+                          <Strong *ngIf="statuserror" style="color: tomato"
+                            >Failed !!!
+                          </Strong>
+                          <Strong *ngIf="statuscheck" style="color: limegreen"
+                            >Success !!!
+                          </Strong>
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body"> 
+                        <!--response from db is evaluated-->
+                        <strong *ngIf="statuserror" style="color: red"
+                          ><span style="font-size: 50px">&#10005;</span>
+                          {{ FailureStatement }}</strong
+                        >
+                        <strong *ngIf="statuscheck" style="color: green"
+                          ><span style="font-size: 50px">&#10004;</span>
+                          {{ SuccessStatement }}</strong
+                        >
+                      </div>
+                      <div class="modal-footer">
+                        <a
+                          type="button"
+                          class="btn btn-outline-success waves-effect"
+                          data-dismiss="modal"
+                          >OK</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                
+                <h5 style="color: red">{{ FailureStatement }}</h5>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div> 
+      <!--ipoquote hidden button of the page -->
+      <div *ngIf="showhiddenbutton">
+        <button class="btn btn-warning btn-lg" routerLink="/ipoquote">
+          Let's go to ipo quote
+        </button>
+      </div> 
+    </div>
+ </div> 
+
+</div>
+

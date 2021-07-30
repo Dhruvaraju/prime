@@ -1,5 +1,6 @@
+import { DashboardService } from './../services/dashboard/dashboard.service';
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../services/dashboard/dashboard.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ export class DashboardComponent implements OnInit {
   stockList: any;
   financialProductList: any;
   ipoList: any;
+  mutualfund : any;
   userName: String = localStorage.getItem('username');
 
   constructor(private dashboardService: DashboardService) {}
@@ -38,7 +40,12 @@ export class DashboardComponent implements OnInit {
         this.ipoList = res;
         console.log(res);
       }
-    )
-  }
+    );
   
+  /* this.dashboardService.mutualRegister(this.userName).subscribe(
+     res =>{
+         this.mutualfund= res;
+     } */
+  //)
+ }
 }
