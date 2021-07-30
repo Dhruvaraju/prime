@@ -42,10 +42,10 @@ export class DashboardComponent implements OnInit {
       }
     );
   
-  /* this.dashboardService.mutualRegister(this.userName).subscribe(
+  this.dashboardService.mutualRegister(this.userName).subscribe(
      res =>{
          this.mutualfund= res;
-     } */
-  //)
+     } 
+  )
  }
 }
