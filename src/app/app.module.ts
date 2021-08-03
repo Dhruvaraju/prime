@@ -23,6 +23,7 @@ import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { stocksService } from './services/stocks/stocks.service';
 import { ServiceShopService } from './services/serviceshop.service';
+import { MutualComponent } from './mutual/mutual.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ServiceShopService } from './services/serviceshop.service';
     IncomeComponent,
     UnauthorizedComponent,
     NotFoundComponent,
+    MutualComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { ServiceShopService } from './services/serviceshop.service';
     IporegistrationService,
     formSubmitService,
     ServiceShopService,
+  
   ],
 
   bootstrap: [AppComponent]

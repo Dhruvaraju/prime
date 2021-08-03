@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,4 +16,5 @@ export class IpoquoteserviceService {
   getfeatures(userName: string): Observable<any>{
     return this.http.get<any>(this._url+'findIpo/'+ userName);
 }
+
   }
