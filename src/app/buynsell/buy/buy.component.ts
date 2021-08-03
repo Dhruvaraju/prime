@@ -62,6 +62,8 @@ export class BuyComponent implements OnInit {
   }
 
   onBuyFormSubmit() {
+    this.successBanner = false;
+    this.systemUnavailable = false;
     if (
       this.buyForm.get('orderType').value === 'limit' &&
       this.buyForm.get('price').value === ''

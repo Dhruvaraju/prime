@@ -64,6 +64,9 @@ export class SellComponent implements OnInit {
   }
 
   onSellOrderSubmit() {
+    this.successBanner = false;
+    this.stockUnavailable= false;
+    this.systemUnavailable = false;
     if (
       this.sellForm.get('orderType').value === 'limit' &&
       this.sellForm.get('price').value === ''
@@ -96,7 +99,7 @@ export class SellComponent implements OnInit {
     this.stock.sellStockOrder(sellOrderRequest).subscribe(
       (res) => {
         this.responseMessage = res.message;
-        if (res.message === 'Product Initiated For Sale') {
+        if (this.responseMessage ==="Product Initiated For Sale") {
           this.successBanner = true;
           this.stockUnavailable = false;
           this.returnEvent.emit('sell-sucess');
