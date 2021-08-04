@@ -1,62 +1,94 @@
-<app-navbar [displayUserNav]="false"></app-navbar>
-<div class="container">
-<div
-  class="d-flex container justify-content-center align-items-center text-center"
->
-  <form [formGroup]="loginPage"  >
-    <div class="form-group">
-      <label>Username</label>
-      <input
-        type="text"
-        name="username"
-        id="username"
-        class="form-control"
-        formControlName="username"
-      />
-    </div>
-    <div
-      class="alert alert-danger"
-      *ngIf="
-        loginPage.get('username').invalid && loginPage.get('username').touched
-      "
-    >
-      <small>Username required</small>
-    </div>
+<div class="container-fluid ps-md-0">
+  <div class="row g-0">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Welcome back!</h3>
 
-    <div class="form-group">
-      <label>Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        class="form-control"
-        formControlName="password"
-      />
-    </div>
-
-    <div
-      class="alert alert-danger"
-      *ngIf="
-        loginPage.get('password').invalid && loginPage.get('password').touched
-      "
-    >
-      <small>Password required</small>
-    </div>
-    
-      <div *ngIf="message && loginPage.get('password').valid" class="alert alert-danger">
-        <small>Invalid username or password!</small>
-        
+              <!-- Sign In Form -->
+              <form [formGroup]="loginPage">
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="floatingInput"
+                    placeholder="User name"
+                    formControlName="username"
+                  />
+                  <label for="floatingInput">User Name</label>
+                </div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    loginPage.get('username').invalid &&
+                    loginPage.get('username').touched
+                  "
+                >
+                  <small>Username required</small>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="floatingPassword"
+                    placeholder="Password"
+                    formControlName="password"
+                  />
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    loginPage.get('password').invalid &&
+                    loginPage.get('password').touched
+                  "
+                >
+                  <small>Password required</small>
+                </div>
+                <div
+                  *ngIf="message && loginPage.get('password').valid"
+                  class="alert alert-danger"
+                >
+                  <small>Invalid username or password!</small>
+                </div>
+                <div class="d-grid row">
+                  <div class="col">
+                    <button
+                      class="
+                        btn btn-lg btn-primary btn-login
+                        text-uppercase
+                        fw-bold
+                        mb-3
+                      "
+                      type="submit"
+                      [disabled]="loginPage.invalid"
+                      (click)="onLogin()"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button
+                      class="
+                        btn btn-lg btn-primary btn-login
+                        text-uppercase
+                        fw-bold
+                        mb-3
+                      "
+                      routerLink="/register"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    
-    <div class="text-center">
-      <button class="btn btn-success pb-3px" type="submit" [disabled]="loginPage.invalid" (click)="onLogin()">LOGIN</button>
     </div>
-    
-
-    <div class="text-center">
-      <h3>New User?</h3>
-      <button class="btn btn-success" routerLink="/register">REGISTER</button>
-    </div>
-  </form>
-</div>
+  </div>
 </div>

@@ -1,42 +1,242 @@
-<app-navbar [displayUserNav]="false"></app-navbar>
-<div class="container">
-  <div class="jumbotron">
-    <h1 class="display-4 font-weight-bold">Prime</h1>
-    <p class="lead">
-      a one stop solution for investment banking needs. We provide IPO support
-      and trading services.
-    </p>
-    <hr class="my-4" />
-    <p>Trading | Account Management | Wealth Management</p>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Our Services</h5>
-          <p class="card-text">
-            Our business serve corporate, institutional and individual clients
-            to achieve their goals
-          </p>
-          <a href="#" class="btn btn-primary" routerLink="/login"
-            >Existing user Login</a
-          >
+<body class="d-flex flex-column h-100">
+  <main class="flex-shrink-0">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container px-5">
+        <a class="navbar-brand" href="index.html">Prime</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="btn btn-outline-light btn-lg px-4" routerLink="/login"
+                >Sign In</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+      <div class="container px-5">
+        <div class="row align-items-center justify-content-center">
+          <div class="col">
+            <div class="my-5 text-center text-xl-start">
+              <h1 class="display-6 fw-bolder text-white mb-2">
+                Prime an investment banking solution
+              </h1>
+              <p class="lead fw-normal text-white-50 mb-4">
+                Pioneers in customizing financial solutions to turns your dreams
+                into reality.
+              </p>
+              <div
+                class="
+                  d-grid
+                  gap-3
+                  d-sm-flex
+                  justify-content-sm-center justify-content-xl-start
+                "
+              >
+                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features"
+                  >Our Services</a
+                >
+                <a
+                  class="btn btn-outline-light btn-lg px-4"
+                  routerLink="/register"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col text-center">
+            <img
+              class="img-fluid rounded-3 my-5"
+              src="./../../assets/banner-img.png"
+              alt="..."
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Features section-->
+    <section class="py-5" id="features">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2 class="text-bold">Services we offer:</h2>
+            <div class="text-center" style="width: 25em;height: 25em;margin-left: 4em;">
+              <img
+                class="img-fluid rounded-2"
+                src="./../../assets/service.jpg"
+                alt="..."
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="row gx-5 row-cols-1 row-cols-md-2">
+              <div class="col">
+                <div
+                  class="
+                    feature
+                    bg-primary bg-gradient
+                    text-white
+                    rounded-3
+                    mb-3
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-collection"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"
+                    />
+                  </svg>
+                </div>
+                <h2 class="h5">Advice</h2>
+                <p class="mb-0">
+                  Paragraph of text beneath the heading to explain the heading.
+                  Here is just a bit more text.
+                </p>
+              </div>
+              <div class="col mb-5 h-100">
+                <div
+                  class="
+                    feature
+                    bg-primary bg-gradient
+                    text-white
+                    rounded-3
+                    mb-3
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-building"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"
+                    />
+                    <path
+                      d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"
+                    />
+                  </svg>
+                </div>
+                <h2 class="h5">Trading</h2>
+                <p class="mb-0">
+                  Paragraph of text beneath the heading to explain the heading.
+                  Here is just a bit more text.
+                </p>
+              </div>
+              <div class="col mb-5 mb-md-0 h-100">
+                <div
+                  class="
+                    feature
+                    bg-primary bg-gradient
+                    text-white
+                    rounded-3
+                    mb-3
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-currency-exchange"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"
+                    />
+                  </svg>
+                </div>
+                <h2 class="h5">Management</h2>
+                <p class="mb-0">
+                  Paragraph of text beneath the heading to explain the heading.
+                  Here is just a bit more text.
+                </p>
+              </div>
+              <div class="col h-100">
+                <div
+                  class="
+                    feature
+                    bg-primary bg-gradient
+                    text-white
+                    rounded-3
+                    mb-3
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-cash-coin"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"
+                    />
+                    <path
+                      d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"
+                    />
+                    <path
+                      d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"
+                    />
+                    <path
+                      d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"
+                    />
+                  </svg>
+                </div>
+                <h2 class="h5">Capitalization</h2>
+                <p class="mb-0">
+                  Paragraph of text beneath the heading to explain the heading.
+                  Here is just a bit more text.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonial section-->
+    <div class="py-5 bg-light">
+      <div class="container">
+        <div class="row gx-5 justify-content-center">
+          <div class="text-center">
+            <div class="fs-4 mb-4 fst-italic">
+              "We turn your ideas into reality by leveraging variety of talent
+              from finance, engineering, science and humanities"
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Our mission</h5>
-          <p class="card-text">
-            We turn your ideas into reality by leveraging variety of talent from
-            finance, engineering, science and humanities
-          </p>
-          <a href="#" class="btn btn-primary" routerLink="/register"
-            >Create your Account</a
-          >
+  </main>
+  <!-- Footer-->
+  <footer class="bg-dark py-4 mt-auto">
+    <div class="container px-5">
+      <div
+        class="
+          row
+          align-items-center
+          justify-content-between
+          flex-column flex-sm-row
+        "
+      >
+        <div class="col-auto">
+          <div class="small m-0 text-white">Copyright &copy; Prime 2021</div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </footer>
+</body>
