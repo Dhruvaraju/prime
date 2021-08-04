@@ -67,8 +67,7 @@
         <div class="card" style="margin-top: 0.5em">
           <h3 class="card-header text-center">IPO's Initiated</h3>
           <a href="#" routerLink="/ipo" style="float: right; margin-left: 0.5em"
-            >Initiate New IPO</a
-          >
+            >Initiate New IPO</a>
           <div class="row" style="margin: 0.5em">
             <div class="col-sm-6" *ngFor="let ipoDetail of ipoList">
               <div class="card">
@@ -115,4 +114,46 @@
       </div>
     </div>
   </div>
+ 
+ 
+ 
+ 
+          <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="card" style="margin-top: 0.5em">
+                    <h3 class="card-header text-center">Mutual Funds Invested:</h3>
+                    <div class="card-body">
+                      <p class="card-text">
+                        Active Mutual subscriptions are present below.
+                      </p>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Fund Type</th>
+                            <th scope="col">Risk Level</th>
+                            <th scope="col">Tenure</th>
+                            <th scope="col">Amount Invested</th>
+                            <th scope="col">Payment Pattern</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr *ngFor="let mf of mutualfund">
+                            <td>{{ mf.fundtype }}</td>
+                            <td>{{ mf.risklevel }}</td>
+                            <td>{{ mf.tenure }}</td>
+                            <td>{{ mf.amtinvested }}</td>
+                            <td>{{ mf.paymentpattern }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <a href="#" class="btn btn-primary inline" routerLink="/mutual fund"
+                        >Explore Mutual Funds</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 </div>

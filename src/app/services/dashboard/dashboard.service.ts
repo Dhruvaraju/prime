@@ -17,4 +17,7 @@ export class DashboardService {
   getIpoDetails(username: String): Observable<any> {
     return this.http.get(this.baseUrl + 'findIpo/' + username);
   }
+  mutualRegister(username:String) :Observable<any>{
+    return this.http.get<any>(this.baseUrl+'mutual fund/register'+ username);
+}
 }

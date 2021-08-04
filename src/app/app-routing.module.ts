@@ -16,6 +16,7 @@ import { IncomeComponent } from './income/income.component';
 import { IpoquoteComponent } from './ipo/ipoquote/ipoquote.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'wealth', component: WealthComponent, canActivate: [AuthGuard] },
   { path: 'income', component: IncomeComponent, canActivate: [AuthGuard] },
+  { path: 'mutual fund', component: MutualFundComponent, canActivate: [AuthGuard]},
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: "**", component: NotFoundComponent }
 ];
