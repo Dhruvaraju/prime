@@ -53,7 +53,7 @@ export class MutualFundComponent implements OnInit {
       userName: this.userName,
       
     };
-   //console.log(mutualregdetail);
+   
 
     this._reg.register(mutualregdetail).subscribe(
       (response) => {
@@ -89,12 +89,10 @@ export class MutualFundComponent implements OnInit {
     }
     if(this.RegistrationForm.get('paymentpattern').value=="Quarterly")
     {
-      //this.ReturnsCalculated = (this.RegistrationForm.get('amtinvested').value) * (1+0.12*this.RegistrationForm.get('tenure').value)^this.RegistrationForm.get('tenure').value*2 ;
+     
       this.Amt=this.RegistrationForm.get('amtinvested').value * (this.RegistrationForm.get('tenure').value *3);
     }
-    //this.ReturnsCalculated = ((this.RegistrationForm.get('amtinvested').value *(11/100)*12)/((Math.pow((1+(.11*12)),(this.RegistrationForm.get('tenure').value*12))-1)));
-    // this.ReturnsCalculated = this.RegistrationForm.get('amtinvested').value  * (((this.RegistrationForm.get('tenure').value + (12/100)) (12 -1)) / (12/100)) * (1 + (12/100));
-    //this.ReturnsCalculated = ((this.RegistrationForm.get('amtinvested').value *(.12/12))/((1+(.12/12))^(((this.RegistrationForm.get('tenure').value*12))-1)));
+
     if(this.RegistrationForm.get('risklevel').value=="Titanium")
     {
     
@@ -115,8 +113,7 @@ export class MutualFundComponent implements OnInit {
     }
 
   
-    //console.log('hello'+' '+ this.ReturnsCalculated);
-   //this.RegistrationForm.reset();
+   
    }
    
   
