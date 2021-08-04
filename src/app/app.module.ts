@@ -25,6 +25,8 @@ import { stocksService } from './services/stocks/stocks.service';
 import { ServiceShopService } from './services/serviceshop.service';
 import { FooterComponent } from './footer/footer.component';
 
+import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
+import { MutualFundregistrationService } from './services/mutual-fund/mutualfundregistration.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { FooterComponent } from './footer/footer.component';
     UnauthorizedComponent,
     NotFoundComponent,
     FooterComponent,
+    MutualFundComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { FooterComponent } from './footer/footer.component';
     IporegistrationService,
     formSubmitService,
     ServiceShopService,
+    MutualFundregistrationService
   ],
 
   bootstrap: [AppComponent]
