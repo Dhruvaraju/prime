@@ -27,6 +27,8 @@ import { FooterComponent } from './footer/footer.component';
 
 import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
 import { MutualFundregistrationService } from './services/mutual-fund/mutualfundregistration.service';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { MutualFundregistrationService } from './services/mutual-fund/mutualfund
     NotFoundComponent,
     FooterComponent,
     MutualFundComponent,
+    AboutComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,43 +1,69 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
 <div class="container">
-<div class="card text-center" style="margin:1em" *ngFor="let ipoDetail of quotation">
-  <h5 class="card-header">{{ipoDetail.companyName}}</h5>
-  <div class="card-body">
-    <h5 class="card-title">{{ipoDetail.description}}</h5>
-   <br>
-    <div class="row text-center">
-      <div class="col">
-        <img src="./../../assets/ipo-images/ipoopen.png" style="width:100px;height:100px"> 
-        <p class="font-weight-bold">Issue date: {{ ipoDetail.issueDate | date:'fullDate' }}</p>
+  <div
+    class="card text-center"
+    style="margin: 1em"
+    *ngFor="let ipoDetail of quotation"
+  >
+    <h5 class="card-header">{{ ipoDetail.companyName }}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{ ipoDetail.description }}</h5>
+      <br />
+      <div class="row text-center">
+        <div class="col">
+          <img
+            src="./../../assets/ipo-images/ipoopen.png"
+            style="width: 100px; height: 100px"
+          />
+          <p class="font-weight-bold">
+            Issue date: {{ ipoDetail.issueDate | date: "fullDate" }}
+          </p>
+        </div>
+        <div class="col">
+          <img
+            src="./../../assets/ipo-images/ipoclose.png"
+            style="width: 100px; height: 100px"
+          />
+          <p class="font-weight-bold">
+            Closing Date: {{ ipoDetail.closingDate | date: "fullDate" }}
+          </p>
+        </div>
+        <div class="col">
+          <img
+            src="./../../assets/ipo-images/ipoprice.png"
+            style="width: 100px; height: 100px"
+          />
+          <p class="font-weight-bold">
+            Issue Price: $ {{ ipoDetail.issuePrice | number: "1.0-2" }}
+          </p>
+        </div>
       </div>
-      <div class="col">
-        <img src="./../../assets/ipo-images/ipoclose.png" style="width:100px;height:100px"> 
-        <p class="font-weight-bold">Closing Date: {{ ipoDetail.closingDate | date:'fullDate' }}</p>
+      <div class="row text-center">
+        <div class="col">
+          <img
+            src="./../../assets/ipo-images/iposize.png"
+            style="width: 100px; height: 100px"
+          />
+          <p class="font-weight-bold">Issue Size: {{ ipoDetail.issueSize }}</p>
+        </div>
+        <div class="col">
+          <img
+            src="./../../assets/ipo-images/ipolot.png"
+            style="width: 100px; height: 100px"
+          />
+          <p class="font-weight-bold">Lot Size: {{ ipoDetail.lotSize }}</p>
+        </div>
+        <div class="col">
+          <img
+            src="./../../assets/ipo-images/ratio.jpg"
+            style="width: 100px; height: 100px"
+          />
+          <p class="font-weight-bold">
+            Market Cap: $ {{ ipoDetail.marketCap }}
+          </p>
+        </div>
       </div>
-      <div class="col">
-        <img src="./../../assets/ipo-images/ipoprice.png" style="width:100px;height:100px"> 
-        <p class="font-weight-bold">Issue Price: $ {{ ipoDetail.issuePrice | number: '1.0-2' }}</p>
-      </div>   
-    </div>
-    <div class="row text-center">
-      <div class="col">
-        <img src="./../../assets/ipo-images/iposize.png" style="width:100px;height:100px"> 
-        <p class="font-weight-bold">Issue Size: {{ ipoDetail.issueSize }}</p>
-      </div>
-      <div class="col">
-        <img src="./../../assets/ipo-images/ipolot.png" style="width:100px;height:100px"> 
-        <p class="font-weight-bold">Lot Size: {{ ipoDetail.lotSize }}</p>
-      </div>
-      <div class="col">
-        <img src="./../../assets/ipo-images/ratio.jpg" style="width:100px;height:100px"> 
-        <p class="font-weight-bold">Market Cap: $ {{ ipoDetail.marketCap }}</p>
-      </div>   
     </div>
   </div>
 </div>
-</div>
-
-
-
-
-
+<app-footer></app-footer>
