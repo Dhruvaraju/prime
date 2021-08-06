@@ -17,6 +17,8 @@ import { IpoquoteComponent } from './ipo/ipoquote/ipoquote.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -25,14 +27,24 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'buysell', component: BuynsellComponent, canActivate: [AuthGuard] },
   { path: 'shop', component: ProductShopComponent, canActivate: [AuthGuard] },
-  { path: 'ipo', component: IpoComponent, canActivate: [AuthGuard]  },
-  { path: 'ipoquote', component : IpoquoteComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'ipo', component: IpoComponent, canActivate: [AuthGuard] },
+  { path: 'ipoquote', component: IpoquoteComponent, canActivate: [AuthGuard] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'wealth', component: WealthComponent, canActivate: [AuthGuard] },
   { path: 'income', component: IncomeComponent, canActivate: [AuthGuard] },
-  { path: 'mutual fund', component: MutualFundComponent, canActivate: [AuthGuard]},
+  {
+    path: 'mutual fund',
+    component: MutualFundComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent },
-  { path: "**", component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,96 @@
+<app-navbar [displayUserNav]="true"></app-navbar>
+<body class="d-flex flex-column">
+  <main class="flex-shrink-0">
+    <section>
+      <div class="container px-5">
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+          <div class="text-center mb-5">
+            <h1 class="fw-bolder">Get in touch</h1>
+            <p class="lead fw-normal text-muted mb-0">
+              We'd love to hear from you
+            </p>
+          </div>
+          <div
+            class="container d-flex justify-content-center"
+          >
+            <div class="col-lg-8 col-xl-6">
+              <form
+                id="contactForm"
+                [formGroup]="contactForm"
+                (ngSubmit)="contactFormSubmit()"
+              >
+                <!-- Name input-->
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="name"
+                    type="text"
+                    placeholder="Enter your name"
+                    formControlName="name"
+                  />
+                  <label for="name">Full name</label>
+                </div>
+                <!-- Email address input-->
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="email"
+                    type="email"
+                    placeholder="name@example.com"
+                    formControlName="email"
+                  />
+                  <label for="email">Email address</label>
+                </div>
+                <!-- Phone number input-->
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="phone"
+                    type="tel"
+                    placeholder="(123) 456-7890"
+                    formControlName="phoneNumber"
+                  />
+                  <label for="phone">Phone number</label>
+                </div>
+                <!-- Message input-->
+                <div class="form-floating mb-3">
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    type="text"
+                    placeholder="Enter your message here..."
+                    style="height: 10rem"
+                    formControlName="message"
+                  ></textarea>
+                  <label for="message">Message</label>
+                </div>
+                <div
+                  class="alert alert-success"
+                  role="alert"
+                  *ngIf="successfulSubmission"
+                >
+                  We got your message,Thank you.
+                </div>
+
+                <!-- Submit Button-->
+                <div class="d-grid">
+                  <button
+                    class="btn btn-primary btn-lg"
+                    id="submitButton"
+                    type="submit"
+                    [disabled]="!this.contactForm.valid"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Contact cards-->
+      </div>
+    </section>
+  </main>
+</body>
+
+<app-footer></app-footer>

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       confirmpassword: ['', Validators.required],
       address01: ['', Validators.required],
-      address02: ['None'],
+      address02: ['Address Line 02'],
       state: ['', Validators.required],
       country: ['', Validators.required],
       postalcode: ['', Validators.required],

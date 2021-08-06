@@ -1,56 +1,71 @@
-<div class="container">
-  <div *ngIf="!displayUserNav">
-    <div
-      class="
-        d-flex
-        flex-column flex-md-row
-        align-items-center
-        p-3
-        px-md-4
-        mb-3
-        bg-white
-        border-bottom
-        shadow-sm
-      "
-    >
-      <h5 class="my-0 mr-md-auto font-weight-bold">Prime</h5>
+<div *ngIf="!displayUserNav">
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light bg-transparent"
+    id="gtco-main-nav"
+  >
+    <div class="container">
+      <a class="navbar-brand">Prime</a>
+      <button
+        class="navbar-toggler"
+        data-target="#my-nav"
+        onclick="myFunction(this)"
+        data-toggle="collapse"
+      >
+        <span class="bar1"></span> <span class="bar2"></span>
+        <span class="bar3"></span>
+      </button>
+      <div id="my-nav" class="collapse navbar-collapse"></div>
     </div>
-  </div>
+  </nav>
+</div>
 
-  <div *ngIf="displayUserNav">
-    <div
-      class="
-        d-flex
-        flex-column flex-md-row
-        align-items-center
-        p-3
-        px-md-4
-        mb-3
-        bg-white
-        border-bottom
-        shadow-sm
-      "
-    >
-      <h5 class="my-0 mr-md-auto font-weight-normal">Prime</h5>
-      <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" routerLink="/ipo">IPO</a>
-        <a class="p-2 text-dark" routerLink="/buysell">Stock Trading</a>
-        <a class="p-2 text-dark" routerLink="/shop">Financial Products</a>
-        <a class="p-2 text-dark" routerLink="/mutual fund">Mutual Fund</a>
+<div *ngIf="displayUserNav">
+  <body class="d-flex flex-column">
+    <main class="flex-shrink-0">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+          <a class="navbar-brand" href="index.html">Prime</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/buysell">Stocks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/shop">Wealth</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/mutual fund">Mutual Fund</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/ipo">IPO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/contact">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-outline-light" routerLink="/dashboard" (click)="handleLogOut()">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
-      <a class="btn btn-outline-primary" routerLink="/home">Home &raquo;</a>
-    </div>
-    <div class="navbar navbar-light bg-light" style="margin-bottom: 0.5em">
-      <a class="" routerLink="/dashboard"
-        ><img
-          src="https://raw.githubusercontent.com/Dhruvaraju/Open-Log/master/src/assets/user.svg"
-          alt="User: "
-        />
-        {{username}}
-      </a>
-      <div class="form-inline">
-        <a class="btn btn-outline-info btn-sm" (click)="handleLogOut()">Logout</a>
-      </div>
-    </div>
-  </div>
+    </main>
+  </body>
 </div>

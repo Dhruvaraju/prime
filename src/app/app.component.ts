@@ -12,7 +12,6 @@ export class AppComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log(this.router);
-    console.log('Activated route details:"', this.activatedRoute);
+    
   }
 }
