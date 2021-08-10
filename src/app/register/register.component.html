@@ -1,88 +1,94 @@
-<app-navbar [displayUserNav]="false"></app-navbar>
 <div class="container">
-  <div class="container-fluid">
-    
-    <form [formGroup]="registrationForm" *ngIf="!submitted">
-      <!-- {{registrationForm.status|json}} -->
-      <h3 class="mb-3">Registration Form</h3>
-      <div class="row">
-        <div class="col-sm-6  form-group">
-          
-            <label>FirstName</label>
+  <div class="row py-1 mt-4 align-items-center">
+    <!-- For Demo Purpose -->
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+      <img
+        class="img-fluid rounded-2"
+        src="./../../assets/register.jpg"
+        alt="..."
+      />
+      <h1>Create an Account</h1>
+      <p class="font-italic text-muted mb-0">
+        Information collected will only be used to maintain your account.
+        Existing users <a routerLink="/login"> Login </a>
+      </p>
+    </div>
+
+    <!-- Registeration Form -->
+    <div class="col-md-7 col-lg-6 ml-auto">
+      <form [formGroup]="registrationForm" *ngIf="!submitted">
+        <div class="row">
+          <div class="col-sm-6 form-group">
             <input
               type="text"
               name="FirstName"
               id="FirstName"
               class="form-control mb-3"
-              placeholder="Enter firstname here.."
+              placeholder="FirstName"
               formControlName="firstname"
             />
-          
-          <div
-            *ngIf="
-              registrationForm.get('firstname').invalid &&
-              registrationForm.get('firstname').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>FirstName field is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('firstname').invalid &&
+                registrationForm.get('firstname').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>FirstName field is required</small>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-6  form-group">
-          
-            <label>LastName</label>
+          <div class="col-sm-6 form-group">
             <input
               type="text"
               name="LastName"
               id="LastName"
               class="form-control mb-3"
-              placeholder="Enter lastname here.."
+              placeholder="Lastname"
               formControlName="lastname"
             />
-          
-          <div
-            *ngIf="
-              registrationForm.get('lastname').invalid &&
-              registrationForm.get('lastname').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>LastName field is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('lastname').invalid &&
+                registrationForm.get('lastname').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>LastName field is required</small>
+            </div>
           </div>
         </div>
-      </div>
-      
-        <label>Create a username</label>
+
         <input
           type="text"
           name="usrname"
           id="usrname"
           class="form-control mb-3"
-          placeholder="Create username"
+          placeholder="User Name"
           formControlName="username"
         />
-      
-      <div
-        *ngIf="
-          registrationForm.get('username').invalid &&
-          registrationForm.get('username').touched
-        "
-      >
+
         <div
-          *ngIf="registrationForm.get('username').errors?.required"
-          class="alert alert-danger"
+          *ngIf="
+            registrationForm.get('username').invalid &&
+            registrationForm.get('username').touched
+          "
         >
-          <small>Username is required</small>
+          <div
+            *ngIf="registrationForm.get('username').errors?.required"
+            class="alert alert-danger"
+          >
+            <small>Username is required</small>
+          </div>
+          <div
+            *ngIf="registrationForm.get('username').errors?.minlength"
+            class="alert alert-danger"
+          >
+            <small>Minimum 6 characters required</small>
+          </div>
         </div>
-        <div
-          *ngIf="registrationForm.get('username').errors?.minlength"
-          class="alert alert-danger"
-        >
-          <small>Minimum 6 characters required</small>
-        </div>
-      </div>
-      
-        <label>Email Address</label>
+
         <input
           type="email"
           name="email"
@@ -91,20 +97,18 @@
           placeholder="Enter email address here.."
           formControlName="email"
         />
-      
-      <div
-        *ngIf="
-          registrationForm.get('email').invalid &&
-          registrationForm.get('email').touched
-        "
-        class="alert alert-danger"
-      >
-        <small>Email field is required</small>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group ">
-          
-            <label>Create Password</label>
+
+        <div
+          *ngIf="
+            registrationForm.get('email').invalid &&
+            registrationForm.get('email').touched
+          "
+          class="alert alert-danger"
+        >
+          <small>Email field is required</small>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
             <input
               type="password"
               name="pswd"
@@ -113,20 +117,18 @@
               placeholder="Create password"
               formControlName="password"
             />
-          
-          <div
-            *ngIf="
-              registrationForm.get('password').invalid &&
-              registrationForm.get('password').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>Password is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('password').invalid &&
+                registrationForm.get('password').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>Password is required</small>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-6 form-group ">
-          
-            <label>Confirm Password</label>
+          <div class="col-sm-6 form-group">
             <input
               type="password"
               name="confirm"
@@ -136,88 +138,83 @@
               formControlName="confirmpassword"
               [class.is-invlaid]="registrationForm.errors?.mismatch"
             />
-          
-          <div
-            *ngIf="registrationForm.errors?.mismatch"
-            class="alert alert-danger"
-          >
-            <small>password mismatch</small>
+
+            <div
+              *ngIf="registrationForm.errors?.mismatch"
+              class="alert alert-danger"
+            >
+              <small>password mismatch</small>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 form-group ">
-            <label>Select user type</label>
-            <select name="type" class="custom-select mb-3"  formControlName="type">
-              
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <select
+              name="type"
+              class="custom-select mb-3"
+              formControlName="type"
+            >
+              <option value="">Select User Type</option>
               <option value="Individual">Individual</option>
               <option value="Institution">Institution</option>
             </select>
-          
-          <div
-            *ngIf="
-              registrationForm.get('type').invalid &&
-              registrationForm.get('type').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>Usertype is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('type').invalid &&
+                registrationForm.get('type').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>Usertype is required</small>
+            </div>
+          </div>
+          <div class="col-sm-6 form-group mb-3">
+            <div *ngIf="registrationForm.get('type').value == 'Institution'">
+              <input
+                type="text"
+                name="institutionName"
+                id="institutionName"
+                class="form-control"
+                placeholder="Enter organisation name here.."
+                formControlName="organisation"
+              />
+            </div>
           </div>
         </div>
-        <div class="col-sm-6 form-group mb-3">
-          <div
-            
-            *ngIf="registrationForm.get('type').value == 'Institution'"
-          >
-            <label>Organisation Name</label>
-            <input
-              type="text"
-              name="institutionName"
-              id="institutionName"
-              class="form-control"
-              placeholder="Enter organisation name here.."
-              formControlName="organisation"
-            />
-          </div>
+
+        <div>
+          <input
+            type="text"
+            name="AddressLine01"
+            id="AddressLine01"
+            class="form-control mb-3"
+            placeholder="Address Line 01"
+            formControlName="address01"
+          />
         </div>
-      </div>
+        <div
+          *ngIf="
+            registrationForm.get('address01').invalid &&
+            registrationForm.get('address01').touched
+          "
+          class="alert alert-danger"
+        >
+          <small>Address is required</small>
+        </div>
 
-      <div >
-        <label>AddressLine01 </label>
-        <input
-          type="text"
-          name="AddressLine01"
-          id="AddressLine01"
-          class="form-control mb-3"
-          placeholder="Address Line 01"
-          formControlName="address01"
-        />
-      </div>
-      <div
-        *ngIf="
-          registrationForm.get('address01').invalid &&
-          registrationForm.get('address01').touched
-        "
-        class="alert alert-danger"
-      >
-        <small>Address is required</small>
-      </div>
-
-      <div >
-        <label>AddressLine02 </label>
-        <input
-          type="text"
-          name="AddressLine02"
-          id="AddressLine02"
-          class="form-control mb-3"
-          placeholder="Address Line 02"
-          formControlName="address02"
-        />
-      </div>
-      <div class="row">
-        <div class="col-sm-4  form-group">
-          
-            <label>State </label>
+        <div>
+          <input
+            type="text"
+            name="AddressLine02"
+            id="AddressLine02"
+            class="form-control mb-3"
+            placeholder="Address Line 02"
+            formControlName="address02"
+          />
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
             <input
               type="text"
               name="state"
@@ -226,20 +223,18 @@
               placeholder="Enter state name"
               formControlName="state"
             />
-          
-          <div
-            *ngIf="
-              registrationForm.get('state').invalid &&
-              registrationForm.get('state').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>State name is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('state').invalid &&
+                registrationForm.get('state').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>State name is required</small>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-4  form-group">
-          
-            <label>Country </label>
+          <div class="col-sm-4 form-group">
             <input
               type="text"
               name="country"
@@ -248,20 +243,18 @@
               placeholder="Enter country name"
               formControlName="country"
             />
-          
-          <div
-            *ngIf="
-              registrationForm.get('country').invalid &&
-              registrationForm.get('country').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>Country name is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('country').invalid &&
+                registrationForm.get('country').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>Country name is required</small>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-4  form-group">
-          
-            <label>Zip </label>
+          <div class="col-sm-4 form-group">
             <input
               type="number"
               name="postalcode"
@@ -270,64 +263,53 @@
               placeholder="Enter zip code"
               formControlName="postalcode"
             />
-          
-          <div
-            *ngIf="
-              registrationForm.get('postalcode').invalid &&
-              registrationForm.get('postalcode').touched
-            "
-            class="alert alert-danger"
-          >
-            <small>Zip Code is required</small>
+
+            <div
+              *ngIf="
+                registrationForm.get('postalcode').invalid &&
+                registrationForm.get('postalcode').touched
+              "
+              class="alert alert-danger"
+            >
+              <small>Zip Code is required</small>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group mb-3">
-        <label>PanNumber </label>
-        <input
-          type="text"
-          name="Pan"
-          id="Pan"
-          class="form-control"
-          placeholder="Enter pan number here.."
-          formControlName="pan"
-        />
-      </div>
-      <div
-        *ngIf="
-          registrationForm.get('pan').invalid &&
-          registrationForm.get('pan').touched
-        "
-      >
-        <div
-          *ngIf="registrationForm.get('pan').errors?.required"
-          class="alert alert-danger"
-        >
-          <small>Pan number is required</small>
+        <div class="form-group mb-3">
+          <input
+            type="text"
+            name="Pan"
+            id="Pan"
+            class="form-control"
+            placeholder="Enter pan number here.."
+            formControlName="pan"
+          />
         </div>
         <div
-          *ngIf="registrationForm.get('pan').errors?.minlength"
-          class="alert alert-danger"
+          *ngIf="
+            registrationForm.get('pan').invalid &&
+            registrationForm.get('pan').touched
+          "
         >
-          <small>Pan Number must be 10 characters</small>
+          <div
+            *ngIf="registrationForm.get('pan').errors?.required"
+            class="alert alert-danger"
+          >
+            <small>Pan number is required</small>
+          </div>
+          <div
+            *ngIf="registrationForm.get('pan').errors?.minlength"
+            class="alert alert-danger"
+          >
+            <small>Pan Number must be 10 characters</small>
+          </div>
+          <div
+            *ngIf="registrationForm.get('pan').errors?.maxlength"
+            class="alert alert-danger"
+          >
+            <small>Pan Number should not be greater than 10 characters</small>
+          </div>
         </div>
-        <div
-          *ngIf="registrationForm.get('pan').errors?.maxlength"
-          class="alert alert-danger"
-        >
-          <small>Pan Number should not be greater than 10 characters</small>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <button
-          class="w-100 btn btn-primary btn-lg"
-          [disabled]="registrationForm.invalid"
-          type="submit"
-          (click)="onsubmit()"
-        >
-          Submit
-        </button>
         <div *ngIf="alreadyexists">
           <h5>User already exists</h5>
           <small class="alert alert-danger"
@@ -335,14 +317,29 @@
           >
         </div>
         <div *ngIf="errors">System Unavailable,try again later!</div>
-      </div>
-    </form>
-    <div *ngIf="submitted" class="text-center">
-      <h3>Registration Complete</h3>
-      <p>Successfully Registered</p>
+        <div class="text-center">
+          <button
+            class="w-100 btn btn-primary btn-lg"
+            [disabled]="registrationForm.invalid"
+            type="submit"
+            (click)="onsubmit()"
+          >
+            Submit
+          </button>
+          
+        </div>
+      </form>
+      <div class="container">
+        <div class="container-fluid">
+          <div *ngIf="submitted" class="text-center">
+            <h3>Registration Complete</h3>
+            <p>Successfully Registered</p>
 
-      <br /><br />
-      <button class="btn btn-success" routerLink="/login">Go to LOGIN</button>
+            <br /><br />
+            <button class="btn btn-primary" routerLink="/login">Login</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

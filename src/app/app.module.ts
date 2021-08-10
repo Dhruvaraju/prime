@@ -23,7 +23,12 @@ import { formSubmitService } from './services/login&register.service';
 import { IporegistrationService } from './services/ipo/iporegistration.service';
 import { stocksService } from './services/stocks/stocks.service';
 import { ServiceShopService } from './services/serviceshop.service';
+import { FooterComponent } from './footer/footer.component';
 
+import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
+import { MutualFundregistrationService } from './services/mutual-fund/mutualfundregistration.service';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -45,6 +50,10 @@ import { ServiceShopService } from './services/serviceshop.service';
     UnauthorizedComponent,
     NotFoundComponent,
     
+    FooterComponent,
+    MutualFundComponent,
+    AboutComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +67,7 @@ import { ServiceShopService } from './services/serviceshop.service';
     formSubmitService,
     ServiceShopService,
   
+    MutualFundregistrationService
   ],
 
   bootstrap: [AppComponent]

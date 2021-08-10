@@ -5,107 +5,186 @@
 
 <div *ngIf="!pageLoader">
   <app-navbar [displayUserNav]="true"></app-navbar>
-  <div class="container">
+  <div class="container content-wrapper">
+    <!-- Welcome and Date Start -->
     <div class="row">
-      <div class="col">
-        <div class="card" style="margin-top: 0.5em">
-          <h3 class="card-header text-center">Stocks owned:</h3>
-          <div class="card-body">
-            <p class="card-text">
-              Stocks owed by you after clearance from depository.
-            </p>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Stock Name</th>
-                  <th scope="col">Net Qty</th>
-                  <th scope="col">LTP</th>
-                  <th scope="col">Current Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let stock of stockList">
-                  <td>{{ stock.productName }}</td>
-                  <td>{{ stock.quantity }}</td>
-                  <td>${{ stock.marketPrice }}</td>
-                  <td>${{ (stock.quantity)*(stock.marketPrice) }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <a href="#" class="btn btn-primary inline" routerLink="/buysell"
-              >Buy/Sell Stocks</a
-            >
+      <div class="col-md-12 grid-margin">
+        <div class="row">
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Welcome {{ userName }}</h3>
+            <h6 class="font-weight-normal mb-0">Your investments Dashboard</h6>
+          </div>
+          <div class="col-12 col-xl-4">
+            <div class="justify-content-end d-flex">
+              <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                {{ todayDate | date: "fullDate" }}
+              </div>
+            </div>
           </div>
         </div>
-        <div class="card" style="margin-top: 0.5em">
-          <h3 class="card-header text-center">Financial products Owned:</h3>
-          <div class="card-body">
-            <p class="card-text">
-              Active financial product subscriptions are present below
-            </p>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Maturity Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let product of financialProductList">
-                  <td>{{ product.productName }}</td>
-                  <td>{{ product.subcategory }}</td>
-                  <td>{{ product.marketPrice }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <a href="#" class="btn btn-primary" routerLink="/shop"
-              >Explore Financial Products</a
-            >
+      </div>
+    </div>
+    <!-- Welcome and Date Start -->
+    <!-- First row birds eye view start-->
+    <div class="row">
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+          <div class="col-md-6 mb-1 stretch-card transparent">
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Stocks</p>
+                <p class="fs-30 mb-2">{{ totalStockPrice }}</p>
+                {{ stockPercent | number: "1.0-2" }}%
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-1 stretch-card transparent">
+            <div class="card card-dark-blue">
+              <div class="card-body">
+                <p class="mb-4">Financial Products</p>
+                <p class="fs-30 mb-2">{{ totalFpPrice }}</p>
+                <p>{{ fpPercent | number: "1.0-2" }}%</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="card" style="margin-top: 0.5em">
-          <h3 class="card-header text-center">IPO's Initiated</h3>
-          <a href="#" routerLink="/ipo" style="float: right; margin-left: 0.5em"
-            >Initiate New IPO</a
-          >
-          <div class="row" style="margin: 0.5em">
-            <div class="col-sm-6" *ngFor="let ipoDetail of ipoList">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">{{ ipoDetail.companyName }}</h5>
-                  <p>{{ ipoDetail.description }}</p>
-                  <div class="row">
-                    <div class="col">
-                      <p class="font-weight-bold">Lotsize</p>
-                    </div>
-                    <div class="col">
-                      <p>{{ ipoDetail.lotSize }}</p>
-                    </div>
+      </div>
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+              <div class="card-body">
+                <p class="mb-4">Mutual Funds</p>
+                <p class="fs-30 mb-2">0</p>
+                <p>2.00%</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+              <div class="card-body">
+                <p class="mb-4">IPO</p>
+                <p class="fs-30 mb-2">2</p>
+                <p>Open for Investment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- First row birds eye view end-->
+    <!--Stocks List Start-->
+    <div class="row">
+      <div
+        class="col-md-6 stretch-card"
+        style="height: 18em; overflow-y: scroll"
+      >
+        <div class="card">
+          <div class="card-body" *ngIf="stockList != ''">
+            <p class="card-title mb-0">Stocks</p>
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Holding</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let stock of stockList">
+                    <td>{{ stock.productName }}</td>
+                    <td>{{ stock.quantity }}</td>
+                    <td>${{ stock.marketPrice }}</td>
+                    <td>
+                      <div class="badge badge-success">
+                        ${{ stock.quantity * stock.marketPrice }}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="stockList == ''">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="text-center">
+                  <img
+                    class="img-fluid rounded-3 my-4"
+                    style="width: 12em"
+                    src="./../../assets/empty.jpg"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 my-4 text-center">
+                <div class="my-5 text-center text-xl-start">
+                  <p class="lead fw-normal mb-4">Didn't buy any stocks yet?</p>
+                  <div class="justify-content-sm-center">
+                    <a
+                      class="btn btn-primary btn-lg px-4 me-sm-3"
+                      routerLink="/buysell"
+                      >Buy Stocks</a
+                    >
                   </div>
-                  <div class="row">
-                    <div class="col">
-                      <p class="font-weight-bold">Issue Date</p>
-                    </div>
-                    <div class="col">
-                      <p>{{ ipoDetail.issueDate | date:'fullDate' }}</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <p class="font-weight-bold">Closing Date</p>
-                    </div>
-                    <div class="col">
-                      <p>{{ ipoDetail.closingDate | date:'fullDate' }}</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <p class="font-weight-bold">Issue Price</p>
-                    </div>
-                    <div class="col">
-                      <p>$ {{ ipoDetail.issuePrice | number: '1.0-2' }}</p>
-                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 stretch-card">
+        <div class="card">
+          <div class="card-body" *ngIf="financialProductList != ''">
+            <p class="card-title mb-0">Financial Products</p>
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Maturity Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of financialProductList">
+                    <td>{{ product.productName }}</td>
+                    <td>{{ product.subcategory }}</td>
+                    <td>
+                      <div class="badge badge-success">
+                        ${{ product.marketPrice }}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="financialProductList == ''">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="text-center">
+                  <img
+                    class="img-fluid rounded-3 my-4"
+                    style="width: 12em"
+                    src="./../../assets/empty-fp.jpg"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 my-4 text-center">
+                <div class="my-5 text-center text-xl-start">
+                  <p class="lead fw-normal mb-3">
+                    Didn't buy any Financial products yet?
+                  </p>
+                  <div class="justify-content-sm-center">
+                    <a
+                      class="btn btn-primary btn-lg px-4 me-sm-3"
+                      routerLink="/shop"
+                      >Invest Now</a
+                    >
                   </div>
                 </div>
               </div>
@@ -114,5 +193,23 @@
         </div>
       </div>
     </div>
+    <!--Stocks list end-->
   </div>
+
+  <footer class="bg-dark py-4 mt-auto">
+    <div class="container px-5">
+      <div
+        class="
+          row
+          align-items-center
+          justify-content-between
+          flex-column flex-sm-row
+        "
+      >
+        <div class="col-auto">
+          <div class="small m-0 text-white">Copyright &copy; Prime 2021</div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
