@@ -1,56 +1,126 @@
 <app-navbar [displayUserNav]="true"></app-navbar>
-<div class="container">
-  <div class="justify-content-center">
-    <!--title of the page -->
-    <div class="card">
-      <div class="card-body">
+    <!--welcome of the page -->
+        <div class="container-fluid">        
         <div class="row">
-          <div class="col-12">
-            <div class="card bg-primary text-white text-center">
-              <div class="card-body font-italic demo">Welcome To IPO</div>
-            </div>
-           
-            <div class="flowofimage">
-              <h2 class="text-center">
-                <br /><q>An ipo is not the end but actually the begining</q>
-              </h2>
-              <button
-                type="button"
-                (click)="scroll(targets)"
-                class="btn btn-primary"
-              >
-                Get Started->
-              </button>
-            </div>
-            <img
-              src="../assets/ipo-images/hero-img.png"
-              class="img-fluid float-right"
-              alt="picture"
-              width="500"
-              height="400"
-            />
+          <!--column 1 of welcome page -->
+                <div class="col">
+                  <div class=" left1 flowofimage"  style="padding-left: 100px;" id="div2" >
+                <br>   
+                      <h1   style="color:navy; font-style:italic;text-align: center;">WELCOME TO IPO</h1>
+                    <br>
+                    <h2  style="color:navy;font-weight: bolder;float: left;padding-left:15px;">  We offer smart solution for growing your business</h2>
+                    <h4> <q  style= "float: left;font-style:italic; color :navy;">An ipo is not the end but actually the begining</q>
+                      <br>
+                    </h4>              <br>              <br>              <br>
+                    <button
+                      type="button"              
+                      class="btn btn-primary btn-lg"  
+                      style="font-weight: bolder;"           
+                      (click)="scroll(target)" >
+                      Get Started ->
+                    </button>              <br>            
+                  </div>
+                </div>
+                <!--column 2 of welcome page -->
+                    <div class="col">
+                      <div class="right1">
+                      </div>
+                    </div>     <br>              <br>              <br>        
+                
           </div>
-        </div>
-        <div class="col-10 font-weight-bold">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To know more about IPO ?
-          <a
-            href="https://en.wikipedia.org/wiki/Initial_public_offering"
-            target="_blank"
-            >Read More!</a
-          >
-        </div>
-      </div>
-    </div>
-    <br />
+         </div>
+      <!--end of welcome page -->
+
+        
+      <!--flip page -->
+      <div class="container-fluid">   
+        <!--header of the flip page -->
+        <div #target>          <br>                  
+                      <div class="text-center" style="padding-left: 30px;" >
+                              <h1 style="text-align: center; color:navy;font-weight: bolder;">Start your journey with us</h1> 
+                              <h3  style="text-align: center; color:navy;font-weight: bolder;">Hover the image to see some tips</h3>
+                                      <button
+                              type="button"   
+                              style="text-align: center;font-weight: bolder;"           
+                              class="btn btn-primary btn-lg " 
+                                  (click)="scroll(targets)" >
+                            Let's Register ->
+                            </button><br>
+                      </div>  <br>
+      <div class="row">   
+        <!--column 1 of the flip page -->
+                  <div class="col">          <br>
+                          <div class="flip-card">
+                          <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                  <img src="./../../assets/ipo-images/target.jpg" alt="Avatar" style="width:400px;height:400px;">
+                                </div>
+                                <div class="flip-card-back" style="font-size: 30px;">
+                                  <h1>Raise Capital</h1> <br>
+                                  <p>Grow your business </p> 
+                                  <p>Wonderful opportunities</p>
+                                 <p> Listed on an exchange</p>
+                                </div>
+                          </div>
+                          </div>
+                  </div>
    
+    <!--column 2 of the flip page -->
+                  <div class="col">                    <br>
+                          <div class="flip-card">
+                          <div class="flip-card-inner">
+                                  <div class="flip-card-front">
+                                    <img src="./../../assets/ipo-images/slide2.jpg" alt="Avatar" style="width:400px;height:400px;">
+                                  </div>
+                                  <div class="flip-card-back" style="font-size: 30px;">
+                                    <h1>About IPO</h1> <br>
+                                    <p>Initial public offering is the process by which a private company
+                                      can go public by sale of its stocks to general public</p>                                                                         
+                                    <a
+                                    href="https://en.wikipedia.org/wiki/Initial_public_offering"
+                                    target="_blank"
+                                    style="color:chartreuse;"
+                                    >Read More!</a>
+                                  </div>
+                          </div>
+                          </div>
+                  </div>
+   
+    <!--column 3 of the flip page -->
+                  <div class="col">               <br>
+                                  <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                      <div class="flip-card-front">
+                                        <img  src="./../../assets/ipo-images/ani.jpeg" alt="proper" style="width:400px;height:400px;float :right;">
+                                      </div>
+                                      <div class="flip-card-back" style="font-size: 30px;">
+                                        <h1>Prefer</h1> <br>
+                                        <p>Long Term investing </p> 
+                                        <p>  Analysing financial metrics </p>
+                                        <p> Identify the opportunities  </p>        
+                                      </div>
+                                    </div>
+                                  </div>
+                  </div>
+      </div>
+       <!--close row and col of the flip page -->
+  </div>    
+  
+    <br>
+      <br>
+      <br>
+    <!--end of the flip page -->
+
     <!--registration of the page -->
-    <div class="card">
-      <div class="card-body row">
+<div class="container-fluid">
+      <div class=" row">
         <div class="col-12 bg-img">
           <div class="positionfixing">
             <form [formGroup]="RegistrationForm">
               <div #targets>
-                <h2 class="text-center font-bold justify-content-center">
+                <br>
+                <br>
+                <h2 class="text-center justify-content-center" style="color:navy;font-weight: bolder;">
                   IPO REGISTRATION
                 </h2>
                 <hr style="color: lightgreen" />
@@ -242,6 +312,5 @@
           </button>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    
+
