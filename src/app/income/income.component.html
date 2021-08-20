@@ -12,10 +12,10 @@
       </div>
     </div>
 
-    <div class="col">
+    <div class="col" style="margin-left: 3em;margin-top: 5em;">
       <div class="card" style="width: 30rem">
         <div class="card-body">
-          <h4 class="card-header bg-primary mb-2">Income Product</h4>
+          <h4 class="card-header bg-primary mb-2 font-weight-bold">Income Product</h4>
           <span class="badge badge-danger">Income Plus</span>
           <p class="card-text mb-2">
             At Prime Income Product, For future income needs we perform a
@@ -29,13 +29,13 @@
 </div>
 
 <div class="container card">
-  <div class="container-fluid" style="margin-top: 1em">
+  <div class="container-fluid" style="margin-top: 1em;width: 50em;">
     <form [formGroup]="incomeProductForm" (ngSubmit)="onIncomeFormSubmit()">
-      <div class="form-group">
-        <label for="name"><strong>Product Name :</strong></label>
+      <div class="row form-group">
+        <label class="col" style="float: right;" for="name"><strong>Product Name :</strong></label>
         <select
           name="product"
-          class="custom-select"
+          class="custom-select col"
           formControlName="product"
           (change)="onProductSelection()"
         >
@@ -48,14 +48,18 @@
         </select>
       </div>
       <div *ngIf="selectedProduct; nq: null">
+        <strong>Product Description :</strong>
         <p>
-          <strong>Product Description :</strong>
+          
           {{ selectedProduct.productDescription }}
         </p>
-        <p><strong>Sale Price :</strong> {{ selectedProduct?.buyPrice }}</p>
-        <p>
+        <div class="row">
+          <p class="col"><strong>Sale Price :</strong> {{ selectedProduct?.buyPrice }}</p>
+        <p class="col">
           <strong>Maturity Price :</strong> {{ selectedProduct?.marketPrice }}
         </p>
+        </div>
+        
       </div>
       <div
         class="alert alert-danger"
@@ -70,14 +74,15 @@
       </div>
       <div class="text-center">
         <button
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary btn-md"
           [disabled]="!incomeProductForm.valid"
           type="submit"
+          style="width: 10em;"
         >
           Buy
         </button>
       </div>
-      <div class="d-flex justify-content-end">
+      <div class="d-flex justify-content-end" style="margin-bottom: 1em;">
         <button routerLink="/shop" type="button" class="btn btn-outline-dark">
           Go back
         </button>

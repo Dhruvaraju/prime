@@ -5,14 +5,12 @@
       <div class="container px-5">
         <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
           <div class="text-center mb-5">
-            <h1 class="fw-bolder">Get in touch</h1>
-            <p class="lead fw-normal text-muted mb-0">
+            <h1 class="font-weight-bold">Get in touch</h1>
+            <p class="lead font-weight-normal text-muted mb-0">
               We'd love to hear from you
             </p>
           </div>
-          <div
-            class="container d-flex justify-content-center"
-          >
+          <div class="container d-flex justify-content-center">
             <div class="col-lg-8 col-xl-6">
               <form
                 id="contactForm"
@@ -28,7 +26,6 @@
                     placeholder="Enter your name"
                     formControlName="name"
                   />
-                  <label for="name">Full name</label>
                 </div>
                 <!-- Email address input-->
                 <div class="form-floating mb-3">
@@ -36,10 +33,9 @@
                     class="form-control"
                     id="email"
                     type="email"
-                    placeholder="name@example.com"
+                    placeholder="Enter Email"
                     formControlName="email"
                   />
-                  <label for="email">Email address</label>
                 </div>
                 <!-- Phone number input-->
                 <div class="form-floating mb-3">
@@ -47,10 +43,9 @@
                     class="form-control"
                     id="phone"
                     type="tel"
-                    placeholder="(123) 456-7890"
+                    placeholder="Enter Phone Number"
                     formControlName="phoneNumber"
                   />
-                  <label for="phone">Phone number</label>
                 </div>
                 <!-- Message input-->
                 <div class="form-floating mb-3">
@@ -62,7 +57,6 @@
                     style="height: 10rem"
                     formControlName="message"
                   ></textarea>
-                  <label for="message">Message</label>
                 </div>
                 <div
                   class="alert alert-success"
@@ -75,7 +69,7 @@
                 <!-- Submit Button-->
                 <div class="d-grid">
                   <button
-                    class="btn btn-primary btn-lg"
+                    class="btn btn-primary btn-lg btn-block"
                     id="submitButton"
                     type="submit"
                     [disabled]="!this.contactForm.valid"
