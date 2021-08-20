@@ -1,1 +1,14 @@
-@import url(https://drive.google.com/uc?export=view&id=1S13xpsZSsmEU0EQLC6JiIVFj7Xj2YlHc);
+.dark-bg-custom {
+  background-color: black;
+}
+
+.custom-svg {
+  margin: 10px;
+  color: white;
+}
+
+.pr-svg-container {
+  background-color: #007bff;
+  width: max-content;
+  border-radius: 5px;
+}

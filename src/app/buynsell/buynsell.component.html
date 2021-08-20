@@ -58,7 +58,7 @@
             style="margin-top: 6em; width: 27.5em; border-color: white"
           >
             <h3 class="card-header">Portfolio</h3>
-            <div class="card-body" id="fetchBuynSellPortfolio">
+            <div class="card-body" id="fetchBuynSellPortfolio" >
               <p *ngIf="!stockList?.length">
                 Your Portfolio is empty, Please buy any stock
               </p>
@@ -68,6 +68,7 @@
                   count-Table
                   table-grey table-responsive
                 "
+                style="height:16em;overflow-y: scroll;"
                 *ngIf="stockList?.length"
               >
                 <thead class="thead-light">

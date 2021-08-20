@@ -1,1 +1,317 @@
-@import url(https://drive.google.com/uc?export=view&id=1LgvwLbdSLRFdNBXIeiOonFTRmley-jum);
+/* Cards */
+.card {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    transition: background 0.25s ease;
+    -webkit-transition: background 0.25s ease;
+    -moz-transition: background 0.25s ease;
+    -ms-transition: background 0.25s ease;
+    border: none;
+  }
+  
+  .card.tale-bg {
+    background: #DAE7FF;
+  }
+  
+  .card.transparent {
+    background: transparent;
+  }
+  
+  .card .card-body {
+    padding: 1.25rem 1.25rem;
+  }
+  
+  .card .card-body + .card-body {
+    padding-top: 1rem;
+  }
+  
+  .card .card-title {
+    color: #010101;
+    margin-bottom: 1.2rem;
+    text-transform: capitalize;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  .card .card-subtitle {
+    font-weight: 400;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+  }
+  
+  .card .card-description {
+    margin-bottom: .875rem;
+    font-weight: 400;
+    color: #76838f;
+  }
+  
+  .card.card-outline-success {
+    border: 1px solid #57B657;
+  }
+  
+  .card.card-outline-primary {
+    border: 1px solid #4B49AC;
+  }
+  
+  .card.card-outline-warning {
+    border: 1px solid #FFC100;
+  }
+  
+  .card.card-outline-danger {
+    border: 1px solid #FF4747;
+  }
+  
+  .card.card-rounded {
+    border-radius: 5px;
+  }
+  
+  .card.card-faded {
+    background: #b5b0b2;
+    border-color: #b5b0b2;
+  }
+  
+  .card.card-circle-progress {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .card.card-img-holder {
+    position: relative;
+  }
+  
+  .card.card-img-holder .card-img-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+  
+  .card.card-weather .weather-daily .weather-day {
+    opacity: .5;
+    font-weight: 900;
+  }
+  
+  .card.card-weather .weather-daily i {
+    font-size: 20px;
+  }
+  
+  .card.card-weather .weather-daily .weather-temp {
+    margin-top: .5rem;
+    margin-bottom: 0;
+    opacity: .5;
+    font-size: .75rem;
+  }
+  
+  .card.card-tale {
+    background: #7DA0FA;
+    color: #ffffff;
+  }
+  
+  .card.card-tale:hover {
+    background: #96b2fb;
+  }
+  
+  .card.card-dark-blue {
+    background: #4747A1;
+    color: #ffffff;
+  }
+  
+  .card.card-dark-blue:hover {
+    background: #5050b2;
+  }
+  
+  .card.card-light-blue {
+    background: #7978E9;
+    color: #ffffff;
+  }
+  
+  .card.card-light-blue:hover {
+    background: #8f8eed;
+  }
+  
+  .card.card-light-danger {
+    background: #F3797E;
+    color: #ffffff;
+  }
+  
+  .card.card-light-danger:hover {
+    background: #f59095;
+  }
+  
+  .card-inverse-primary {
+    background: rgba(75, 73, 172, 0.2);
+    border: 1px solid #45439e;
+    color: #393783;
+  }
+  
+  .card-inverse-secondary {
+    background: rgba(163, 164, 165, 0.2);
+    border: 1px solid #969798;
+    color: #7c7d7d;
+  }
+  
+  .card-inverse-success {
+    background: rgba(87, 182, 87, 0.2);
+    border: 1px solid #50a750;
+    color: #428a42;
+  }
+  
+  .card-inverse-info {
+    background: rgba(36, 138, 253, 0.2);
+    border: 1px solid #217fe9;
+    color: #1b69c0;
+  }
+  
+  .card-inverse-warning {
+    background: rgba(255, 193, 0, 0.2);
+    border: 1px solid #ebb200;
+    color: #c29300;
+  }
+  
+  .card-inverse-danger {
+    background: rgba(255, 71, 71, 0.2);
+    border: 1px solid #eb4141;
+    color: #c23636;
+  }
+  
+  .card-inverse-light {
+    background: rgba(248, 249, 250, 0.2);
+    border: 1px solid #e4e5e6;
+    color: #bcbdbe;
+  }
+  
+  .card-inverse-dark {
+    background: rgba(40, 47, 58, 0.2);
+    border: 1px solid #252b35;
+    color: #1e242c;
+  }
+  
+  .data-icon-card-primary {
+    background: #4B49AC;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-primary .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-primary .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-secondary {
+    background: #a3a4a5;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-secondary .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-secondary .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-success {
+    background: #57B657;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-success .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-success .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-info {
+    background: #248AFD;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-info .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-info .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-warning {
+    background: #FFC100;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-warning .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-warning .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-danger {
+    background: #FF4747;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-danger .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-danger .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-light {
+    background: #f8f9fa;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-light .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-light .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-dark {
+    background: #282f3a;
+    color: #ffffff;
+  }
+  
+  .data-icon-card-dark .card-title {
+    color: #ffffff;
+  }
+  
+  
+  
+  .data-icon-card-dark .background-icon i {
+    z-index: 1;
+    color: #ffffff;
+  }

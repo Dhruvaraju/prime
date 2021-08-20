@@ -1,13 +1,12 @@
 <div class="container text-center" *ngIf="pageLoader">
-  <app-navbar [displayUserNav]="false"></app-navbar>
   <img src="./../../assets/loader.gif" />
 </div>
 
 <div *ngIf="!pageLoader">
   <app-navbar [displayUserNav]="true"></app-navbar>
-  <div class="container content-wrapper">
+  <div class="container content-wrapper" style="background-color: #f5f7ff">
     <!-- Welcome and Date Start -->
-    <div class="row">
+    <div class="row" style="padding: 1em">
       <div class="col-md-12 grid-margin">
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
@@ -26,23 +25,23 @@
     </div>
     <!-- Welcome and Date Start -->
     <!-- First row birds eye view start-->
-    <div class="row">
+    <div class="row" style="padding: 1em">
       <div class="col-md-6 grid-margin transparent">
         <div class="row">
           <div class="col-md-6 mb-1 stretch-card transparent">
             <div class="card card-tale">
               <div class="card-body">
-                <p class="mb-4">Stocks</p>
-                <p class="fs-30 mb-2">{{ totalStockPrice }}</p>
-                {{ stockPercent | number: "1.0-2" }}%
+                <p class="mb-4 font-weight-bold">Stocks</p>
+                <p class="fs-30 mb-2">$ {{ totalStockPrice }}</p>
+                <p>{{ stockPercent | number: "1.0-2" }}%</p>
               </div>
             </div>
           </div>
           <div class="col-md-6 mb-1 stretch-card transparent">
             <div class="card card-dark-blue">
               <div class="card-body">
-                <p class="mb-4">Financial Products</p>
-                <p class="fs-30 mb-2">{{ totalFpPrice }}</p>
+                <p class="mb-4 font-weight-bold">Financial Products</p>
+                <p class="fs-30 mb-2">$ {{ totalFpPrice }}</p>
                 <p>{{ fpPercent | number: "1.0-2" }}%</p>
               </div>
             </div>
@@ -54,8 +53,8 @@
           <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
             <div class="card card-light-blue">
               <div class="card-body">
-                <p class="mb-4">Mutual Funds</p>
-                <p class="fs-30 mb-2">0</p>
+                <p class="mb-4 font-weight-bold">Mutual Funds</p>
+                <p class="fs-30 mb-2">$ 0</p>
                 <p>2.00%</p>
               </div>
             </div>
@@ -63,7 +62,7 @@
           <div class="col-md-6 stretch-card transparent">
             <div class="card card-light-danger">
               <div class="card-body">
-                <p class="mb-4">IPO</p>
+                <p class="mb-4 font-weight-bold">IPO</p>
                 <p class="fs-30 mb-2">2</p>
                 <p>Open for Investment</p>
               </div>
@@ -74,14 +73,14 @@
     </div>
     <!-- First row birds eye view end-->
     <!--Stocks List Start-->
-    <div class="row">
+    <div class="row" style="padding-bottom: 2em">
       <div
         class="col-md-6 stretch-card"
-        style="height: 18em; overflow-y: scroll"
+        style="height: 19em; overflow-y: scroll"
       >
         <div class="card">
           <div class="card-body" *ngIf="stockList != ''">
-            <p class="card-title mb-0">Stocks</p>
+            <p class="card-title mb-0 font-weight-bold">Stocks</p>
             <div class="table-responsive">
               <table class="table table-striped table-borderless">
                 <thead>
@@ -124,7 +123,7 @@
                   <p class="lead fw-normal mb-4">Didn't buy any stocks yet?</p>
                   <div class="justify-content-sm-center">
                     <a
-                      class="btn btn-primary btn-lg px-4 me-sm-3"
+                      class="btn btn-primary btn-md px-4 me-sm-3"
                       routerLink="/buysell"
                       >Buy Stocks</a
                     >
@@ -138,7 +137,7 @@
       <div class="col-md-6 stretch-card">
         <div class="card">
           <div class="card-body" *ngIf="financialProductList != ''">
-            <p class="card-title mb-0">Financial Products</p>
+            <p class="card-title mb-0 font-weight-bold">Financial Products</p>
             <div class="table-responsive">
               <table class="table table-striped table-borderless">
                 <thead>
@@ -181,7 +180,7 @@
                   </p>
                   <div class="justify-content-sm-center">
                     <a
-                      class="btn btn-primary btn-lg px-4 me-sm-3"
+                      class="btn btn-primary btn-md px-4 me-sm-3"
                       routerLink="/shop"
                       >Invest Now</a
                     >
@@ -196,20 +195,5 @@
     <!--Stocks list end-->
   </div>
 
-  <footer class="bg-dark py-4 mt-auto">
-    <div class="container px-5">
-      <div
-        class="
-          row
-          align-items-center
-          justify-content-between
-          flex-column flex-sm-row
-        "
-      >
-        <div class="col-auto">
-          <div class="small m-0 text-white">Copyright &copy; Prime 2021</div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <app-footer></app-footer>
 </div>
