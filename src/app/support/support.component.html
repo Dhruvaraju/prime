@@ -1,0 +1,62 @@
+<app-navbar [displayUserNav]="true"></app-navbar>
+<div class="container">
+  <div class="row py-5">
+    <div class="col-lg-6 card">
+      <img
+        class="img-fluid rounded mb-5 mb-lg-0"
+        src="../../assets/support.svg"
+        alt="..."
+      />
+    </div>
+    <div class="col-lg-6">
+      <div class="container px-5 py-5 row justify-content-center">
+        <h3 class="font-weight-bold">Having trouble with our services?</h3>
+        <p class="text-center my-1">
+          We strive to provide seamless and uninterrupted services, kindly
+          provide us a chance to resolve it, By raising an issue, with the help
+          of following form.
+        </p>
+      </div>
+      <div class="container justify-content-center px-4">
+        <form [formGroup]="supportForm" (ngSubmit)="supportFormSubmit()">
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="phone"
+              type="text"
+              placeholder="Explain your issue in a single line"
+              formControlName="issueHeading"
+            />
+          </div>
+          <!-- Message input-->
+          <div class="form-floating mb-3">
+            <textarea
+              class="form-control"
+              id="message"
+              type="text"
+              placeholder="Describe your issue with information as mentioned below
+                  Date occurred:
+                  Error Message Received:
+                  Any Additional Information:
+                  "
+              style="height: 10rem"
+              formControlName="issueDescription"
+            ></textarea>
+          </div>
+          <div class="">
+            <button
+              class="btn btn-primary btn-lg btn-block"
+              id="submitButton"
+              type="submit"
+              disabled="true"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
