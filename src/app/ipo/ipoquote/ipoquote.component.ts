@@ -17,5 +17,5 @@ ngOnInit(){
     this._quote.getfeatures(this.userName)
     .subscribe((data) => this.quotation=data)
   }
-
-    }
+  
+  }
