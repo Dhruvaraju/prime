@@ -1,46 +1,38 @@
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100" id="page-start">
   <main class="flex-shrink-0">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark dark-bg-custom">
       <div class="container px-5">
-        <a class="navbar-brand" href="index.html">Prime</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="btn btn-outline-light btn-lg px-4" routerLink="/login"
-                >Sign In</a
-              >
-            </li>
-          </ul>
-        </div>
+        <a class="navbar-brand font-weight-bold">Prime</a>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="btn btn-outline-success btn-md px-4" routerLink="/login"
+              >Sign In</a
+            >
+          </li>
+        </ul>
       </div>
     </nav>
     <!-- Header-->
-    <header class="bg-dark py-5">
+    <header class="dark-bg-custom py-5">
       <div class="container px-5">
         <div class="row align-items-center justify-content-center">
           <div class="col">
             <div class="my-5 text-center text-xl-start">
-              <h1 class="display-6 fw-bolder text-white mb-2">
+              <h1 class="display-6 font-weight-bold text-white mb-2">
                 Prime an investment banking solution
               </h1>
               <p class="lead fw-normal text-white-50 mb-4">
                 Pioneers in customizing financial solutions to turns your dreams
                 into reality.
               </p>
-              <div
-                class="
-                  d-grid
-                  gap-3
-                  d-sm-flex
-                  justify-content-sm-center justify-content-xl-start
-                "
-              >
+              <div class="d-flex-center">
                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features"
                   >Our Services</a
                 >
                 <a
-                  class="btn btn-outline-light btn-lg px-4"
+                  class="btn btn-outline-success btn-lg px-4"
+                  style="margin:1em;"
                   routerLink="/register"
                   >Sign Up</a
                 >
@@ -58,40 +50,35 @@
       </div>
     </header>
     <!-- Features section-->
+    <div style="float: right; position: relative; margin: 10px">
+      <a class="btn btn-outline-info" href="#page-start">Scroll Up</a>
+    </div>
     <section class="py-5" id="features">
       <div class="container">
         <div class="row">
           <div class="col">
-            <h2 class="text-bold">Services we offer:</h2>
+            <h2 class="font-weight-bold">Services we offer:</h2>
             <div
               class="text-center"
-              style="width: 25em; height: 25em; margin-left: 4em"
+              
             >
               <img
-                class="img-fluid rounded-2"
+                class="img-fluid"
                 src="./../../assets/service.jpg"
                 alt="..."
               />
             </div>
           </div>
-          <div class="col">
-            <div class="row gx-5 row-cols-1 row-cols-md-2">
+          <div class="col" style="margin-top: 5em;">
+            <div class="row row-cols-1 row-cols-md-2">
               <div class="col">
-                <div
-                  class="
-                    feature
-                    bg-primary bg-gradient
-                    text-white
-                    rounded-3
-                    mb-3
-                  "
-                >
+                <div class="d-flex-center pr-svg-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-collection"
+                    class="bi bi-collection custom-svg"
                     viewBox="0 0 16 16"
                   >
                     <path
@@ -99,28 +86,20 @@
                     />
                   </svg>
                 </div>
-                <h2 class="h5">Advice</h2>
+                <h2 class="h5 font-weight-bold">Advice</h2>
                 <p class="mb-0">
                   We provide financial advisory services for corporations and
                   institutional customers.
                 </p>
               </div>
               <div class="col mb-5 h-100">
-                <div
-                  class="
-                    feature
-                    bg-primary bg-gradient
-                    text-white
-                    rounded-3
-                    mb-3
-                  "
-                >
+                <div class="d-flex-center pr-svg-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-building"
+                    class="bi bi-building custom-svg"
                     viewBox="0 0 16 16"
                   >
                     <path
@@ -132,28 +111,20 @@
                     />
                   </svg>
                 </div>
-                <h2 class="h5">Trading</h2>
+                <h2 class="h5 font-weight-bold">Trading</h2>
                 <p class="mb-0">
                   Our app provides best in class for your investments banking
                   needs by providing access to edge connectivity to exchanges.
                 </p>
               </div>
               <div class="col mb-5 mb-md-0 h-100">
-                <div
-                  class="
-                    feature
-                    bg-primary bg-gradient
-                    text-white
-                    rounded-3
-                    mb-3
-                  "
-                >
+                <div class="d-flex-center pr-svg-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-currency-exchange"
+                    class="bi bi-currency-exchange custom-svg"
                     viewBox="0 0 16 16"
                   >
                     <path
@@ -161,28 +132,20 @@
                     />
                   </svg>
                 </div>
-                <h2 class="h5">Management</h2>
+                <h2 class="h5 font-weight-bold">Management</h2>
                 <p class="mb-0">
                   Our mutual funds, wealth management options will bring your
                   dreams to reality.
                 </p>
               </div>
               <div class="col h-100">
-                <div
-                  class="
-                    feature
-                    bg-primary bg-gradient
-                    text-white
-                    rounded-3
-                    mb-3
-                  "
-                >
+                <div class="d-flex-center pr-svg-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-cash-coin"
+                    class="bi bi-cash-coin custom-svg"
                     viewBox="0 0 16 16"
                   >
                     <path
@@ -200,7 +163,7 @@
                     />
                   </svg>
                 </div>
-                <h2 class="h5">Capitalization</h2>
+                <h2 class="h5 font-weight-bold">Capitalization</h2>
                 <p class="mb-0">
                   We leverage best in class engineering, humanitarian and
                   financial knowledge to provide innovative capital raising
@@ -217,10 +180,10 @@
       <div class="container">
         <div class="row gx-5 justify-content-center">
           <div class="text-center">
-            <div class="fs-4 mb-4 fst-italic">
+            <h5 class="font-italic">
               "We turn your ideas into reality by leveraging variety of talent
               from finance, engineering, science and humanities"
-            </div>
+            </h5>
           </div>
         </div>
       </div>
