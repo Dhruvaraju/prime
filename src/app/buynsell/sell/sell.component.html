@@ -1,3 +1,4 @@
+<app-navbar [displayUserNav]="true"></app-navbar>
 <div class="container">
   <div class="row">
     <div class="container card" style="border-color: white">
@@ -20,13 +21,14 @@
                   name="stocks"
                   id="stocks"
                   formControlName="stocks"
+                  placeholder = "Select Stocks"
                   [class.is-invalid]="
                     this.sellForm.get('stocks').invalid &&
                     this.sellForm.get('stocks').touched
                   "
                   class="custom-select"
                 >
-                  <option value="select-stock" disabled>Select Stock</option>
+                  <option value="select-stock" >Select Stock</option>
                   <option *ngFor="let stock of stockList">
                     {{ stock.productID }}.{{ stock.productName }} - ${{
                       stock.marketPrice
@@ -153,17 +155,17 @@
                     data-toggle="modal"
                     data-target="#sellOrderSuccess"
                   >
-                    SELL
+                    <strong>SELL</strong> 
                   </button>
                 </div>
                 <div class="col-4 d-grid text-center">
                   <a
                     type="button"
-                    class="btn btn-success"
+                    class="btn btn-dark"
                     style="width: 9rem"
-                    (click)="scrollToPortfolio()"
+                    routerLink="/buysell"
                   >
-                    Portfolio
+                  <strong>PORTFOLIO</strong> 
                   </a>
                 </div>
               </div>
@@ -291,3 +293,5 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
+
