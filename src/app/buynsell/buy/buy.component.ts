@@ -16,8 +16,8 @@ export class BuyComponent implements OnInit {
   successBanner: boolean = false; //Display success banner on transaction complete
   buyForm: FormGroup;
   userName: string = localStorage.getItem('username');
-  @Output() returnEvent = new EventEmitter<string>();
-  @Output() returnToPortfolio = new EventEmitter();
+  // @Output() returnEvent = new EventEmitter<string>();
+  // @Output() returnToPortfolio = new EventEmitter();
 
   constructor(private fb: FormBuilder, private stock: stocksService) {}
 
@@ -45,9 +45,9 @@ export class BuyComponent implements OnInit {
     );
   }
 
-  scrollToPortfolio() {
-    this.returnToPortfolio.emit();
-  }
+  // scrollToPortfolio() {
+  //   this.returnToPortfolio.emit();
+  // }
 
   onOrderTypeChange() {
     if (this.buyForm.get('orderType').value === 'limit') {
@@ -97,7 +97,7 @@ export class BuyComponent implements OnInit {
         this.successBanner = true;
         this.buyForm.reset();
         this.fetchPortfolio();
-        this.returnEvent.emit('buy-sucess');
+        // this.returnEvent.emit('buy-sucess');
       },
       (err) => {
         this.systemUnavailable = true;
