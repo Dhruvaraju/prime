@@ -30,6 +30,7 @@ import { MutualFundregistrationService } from './services/mutual-fund/mutualfund
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { ContactComponent } from './contact/contact.component';
     IncomeComponent,
     UnauthorizedComponent,
     NotFoundComponent,
+    
     FooterComponent,
     MutualFundComponent,
     AboutComponent,
@@ -64,6 +66,7 @@ import { ContactComponent } from './contact/contact.component';
     IporegistrationService,
     formSubmitService,
     ServiceShopService,
+  
     MutualFundregistrationService
   ],
 

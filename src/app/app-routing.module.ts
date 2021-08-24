@@ -20,6 +20,7 @@ import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
+
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'home', component: HomepageComponent },
