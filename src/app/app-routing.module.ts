@@ -19,6 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { SupportComponent } from './support/support.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
   },
   { path: 'wealth', component: WealthComponent, canActivate: [AuthGuard] },
   { path: 'income', component: IncomeComponent, canActivate: [AuthGuard] },
+  { path: 'support', component: SupportComponent, canActivate: [AuthGuard] },
   {
     path: 'mutual fund',
     component: MutualFundComponent,

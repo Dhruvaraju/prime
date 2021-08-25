@@ -29,6 +29,7 @@ import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
 import { MutualFundregistrationService } from './services/mutual-fund/mutualfundregistration.service';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { SupportComponent } from './support/support.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ContactComponent } from './contact/contact.component';
     MutualFundComponent,
     AboutComponent,
     ContactComponent,
+    SupportComponent,
   ],
   imports: [
     BrowserModule,
