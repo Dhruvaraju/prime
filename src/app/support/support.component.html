@@ -58,5 +58,54 @@
     </div>
   </div>
 </div>
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#exampleModalCenter"
+  style="visibility: hidden"
+  id="launchMessage"
+>
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body px-5">
+        <div class="row card">
+          <img
+            class="img-fluid rounded mb-5 mb-lg-0"
+            src="../../assets/under-maintainance.svg"
+            alt="..."
+          />
+        </div>
+        <div class="row">
+          <div class="container px-5 py-5 row justify-content-center">
+            <h3 class="font-weight-bold text-center">Under construction</h3>
+            <p class="text-center my-1">
+              This page is added to show up-coming feature. As of now it is not
+              operational fully (Only for View). We are sorry for the
+              inconvenience.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>

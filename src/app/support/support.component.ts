@@ -15,6 +15,7 @@ export class SupportComponent implements OnInit {
       issueHeading: ['', Validators.required],
       issueDescription: ['', Validators.required],
     });
+    document.getElementById("launchMessage").click();
   }
 
   supportFormSubmit(){
