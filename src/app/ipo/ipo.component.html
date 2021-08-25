@@ -27,84 +27,7 @@
                       </div>
                     </div>     <br>              <br>              <br>        
                 
-          <div class="col-12">
-            <div class="card bg-primary text-white text-center">
-              <div class="card-body font-italic demo">Welcome To IPO</div>
-            </div>
-
-            <div class="flowofimage">
-              <h2 class="text-center">
-                <br /><q>An ipo is not the end but actually the begining</q>
-              </h2>
-              <button
-                type="button"
-                (click)="scroll(targets)"
-                class="btn btn-primary"
-              >
-                Get Started->
-              </button>
-            </div>
-            <img
-              src="../assets/ipo-images/hero-img.png"
-              class="img-fluid float-right"
-              alt="picture"
-              width="500"
-              height="400"
-            />
-          </div>
-        </div>
-        <div class="col-10 font-weight-bold">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To know more about IPO ?
-          <a
-            href="https://en.wikipedia.org/wiki/Initial_public_offering"
-            target="_blank"
-            >Read More!</a
-          >
-        </div>
-      </div>
-   
-    <br />
-    <!--slideshow of the page -->
-    <div class="card">
-      <div class="card-body">
-        <div id="demoforslide" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ul class="carousel-indicators">
-            <li
-              data-target="#demoforslide"
-              data-slide-to="0"
-              class="active"
-            ></li>
-            <li data-target="#demoforslide" data-slide-to="1"></li>
-            <li data-target="#demoforslide" data-slide-to="2"></li>
-          </ul>
-
-          <!-- The slideshow -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="./../../assets/ipo-images/register.png"
-                alt="ipo image"
-                width="1100"
-                height="500"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="./../../assets/ipo-images/reg.jpg"
-                alt="yellow page"
-                width="1100"
-                height="500"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="./../../assets/ipo-images/ipohandhold.jpg"
-                alt="ipohandhold image"
-                width="1100"
-                height="500"
-              />
-            </div>
+        
           </div>
          </div>
       <!--end of welcome page -->
@@ -183,7 +106,7 @@
       </div>
        <!--close row and col of the flip page -->
   </div>    
-  
+  </div>
     <br>
       <br>
       <br>
@@ -355,6 +278,8 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
+                        
+                    
                         <div class="modal-body">
                           <!--response from db is evaluated-->
                           <strong *ngIf="statuserror" style="color: red"
@@ -389,10 +314,9 @@
             Let's go to ipo quote
           </button>
         </div>
-      </div>
-    
 
+      </div>
     </div>
-  </div>
-</div>
+
+  
 <app-footer></app-footer>
