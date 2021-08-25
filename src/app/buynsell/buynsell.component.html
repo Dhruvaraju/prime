@@ -9,32 +9,32 @@
               src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
-            TCS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
+            PWS reports 15% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
             <img
               src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
-            RIL Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
+            R&L Reports 108% YoY Jump in Net Profit in Q4 &nbsp;&nbsp;
             <img
               src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
-            Zomato to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
+            Zerox to Raise Rs.8250 crores via IPO &nbsp;&nbsp;
             <img
               src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
-            Berger Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
+            QMR Paints Reports 2x Jump in Net Profit in Q4 &nbsp;&nbsp;
             <img
               src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
-            TATA Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
+            Power Solar Secures Contrat from NHPC &nbsp;&nbsp;
             <img
-            src="./../../assets/buynsell-images/icon.jpg"
+              src="./../../assets/buynsell-images/icon.jpg"
               style="height: 2em; width: 2em"
             />
-            SBI Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
+            SYF Reports 80% YoY Rise in Net Profit in Q4 &nbsp;&nbsp;
           </p>
         </div>
       </div>
@@ -55,60 +55,69 @@
         <div class="d-flex justify-content-end">
           <div
             class="card"
-            style="margin-top: 6em; width: 27.5em; border-color: white"
+            style="margin-top: 6.5em; width: 28em; border-color: white"
           >
-            <h3 class="card-header">Portfolio</h3>
-            <div class="card-body" id="fetchBuynSellPortfolio" >
-              <p *ngIf="!stockList?.length">
-                Your Portfolio is empty, Please buy any stock
-              </p>
-              <table
-                class="
-                  table table-hover table-bordered
-                  count-Table
-                  table-grey table-responsive
-                "
-                style="height:16em;overflow-y: scroll;"
+            <h3 class="card-header font-weight-bold">Portfolio</h3>
+            <div class="card-body" id="fetchBuynSellPortfolio">
+              <div *ngIf="!stockList?.length">
+                <img
+                  class="card-img"
+                  src="./../../assets/buynsell-images/buy-stock.jpg"
+                  style="width: 20em; height: 17.5em"
+                />
+              </div>
+              <div
+                class="col-md-14 stretch-card"
+                style="height: 18em; overflow-y: scroll"
                 *ngIf="stockList?.length"
               >
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Stock Name</th>
-                    <th scope="col">Net Qty</th>
-                    <th scope="col">LTP</th>
-                    <th scope="col">Current Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let stock of stockList">
-                    <td>{{ stock.productName }}</td>
-                    <td>{{ stock.quantity }}</td>
-                    <td>${{ stock.buyPrice }}</td>
-                    <td>${{ stock.quantity * stock.buyPrice }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="d-flex justify-content-center">
+                <table
+                  class="
+                    table table-striped table-borderless
+                    count-Table
+                    table-grey table-responsive
+                  "
+                  *ngIf="stockList?.length"
+                >
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Stock Name</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">LTP</th>
+                      <th scope="col">Holding</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let stock of stockList">
+                      <td>{{ stock.productName }}</td>
+                      <td>{{ stock.quantity }}</td>
+                      <td>${{ stock.buyPrice }}</td>
+                      <td>${{ stock.quantity * stock.buyPrice }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="d-flex justify-content-center" style="margin-top: 0.6em;">
                 <div class="row">
                   <div class="col-6 d-grid text-center">
                     <button
                       type="button"
-                      (click)="scroll(targets, 'buy')"
                       class="btn btn-primary btn-block"
                       style="width: 9rem"
+                      routerLink="/buy"
                     >
-                      Buy
+                      Buy Stocks
                     </button>
                   </div>
                   <div class="col-6 d-grid text-center">
                     <button
-                      (click)="scroll(sellBlock, 'sell')"
                       type="button"
                       class="btn btn-danger btn-block"
                       style="width: 9rem"
                       *ngIf="stockList?.length"
+                      routerLink="/sell"
                     >
-                      Sell
+                      Sell Stocks
                     </button>
                   </div>
                 </div>
@@ -120,7 +129,7 @@
     </div>
   </div>
 
-  <div #targets>
+  <!-- <div #targets>
     <app-buy
       *ngIf="displayBuy"
       (returnEvent)="retriggerService($event)"
@@ -133,7 +142,7 @@
       (returnEvent)="retriggerService($event)"
       (returnToPortfolio)="scrollUp(portfolio)"
     ></app-sell>
-  </div>
+  </div> -->
   <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>

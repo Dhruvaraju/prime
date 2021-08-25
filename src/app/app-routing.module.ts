@@ -27,6 +27,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'buysell', component: BuynsellComponent, canActivate: [AuthGuard] },
+  { path: 'buy', component: BuyComponent, canActivate: [AuthGuard] },
+  { path: 'sell', component: SellComponent, canActivate: [AuthGuard] },
   { path: 'shop', component: ProductShopComponent, canActivate: [AuthGuard] },
   { path: 'ipo', component: IpoComponent, canActivate: [AuthGuard] },
   { path: 'ipoquote', component: IpoquoteComponent, canActivate: [AuthGuard] },

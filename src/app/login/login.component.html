@@ -6,7 +6,10 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4">Welcome back!</h3>
+              <h1>Welcome back!</h1>
+              <h6 class="login-heading mb-4 text-secondary">
+                Please Login with your credentials
+              </h6>
 
               <!-- Sign In Form -->
               <form [formGroup]="loginPage">
@@ -15,10 +18,10 @@
                     type="email"
                     class="form-control"
                     id="floatingInput"
-                    placeholder="User name"
+                    placeholder="Username"
                     formControlName="username"
                   />
-                  <label for="floatingInput">User Name</label>
+                  <!-- <label for="floatingInput">User Name</label> -->
                 </div>
                 <div
                   class="alert alert-danger"
@@ -37,7 +40,7 @@
                     placeholder="Password"
                     formControlName="password"
                   />
-                  <label for="floatingPassword">Password</label>
+                  <!-- <label for="floatingPassword">Password</label> -->
                 </div>
                 <div
                   class="alert alert-danger"
@@ -55,14 +58,17 @@
                   <small>Invalid username or password!</small>
                 </div>
                 <div class="row d-flex justify-content-center">
-                  <div class="col">
+                  <div class="col text-center">
                     <button
                       class="
-                        btn btn-md btn-primary 
+                        btn btn-lg
+                        px-4
+                        btn-primary
                         text-uppercase
                         fw-bold
                         mb-3
                       "
+                      style="border-radius: 2em"
                       type="submit"
                       [disabled]="loginPage.invalid"
                       (click)="onLogin()"
@@ -70,18 +76,12 @@
                       Sign In
                     </button>
                   </div>
+                </div>
+                <div class="row d-flex justify-content-center text-center">
                   <div class="col">
-                    <button
-                      class="
-                        btn btn-md  btn-outline-info
-                        text-uppercase
-                        fw-bold
-                        mb-3
-                      "
-                      routerLink="/register"
-                    >
-                      Sign Up
-                    </button>
+                    <a class="fw-bold mb-3" routerLink="/register">
+                      Create new account
+                    </a>
                   </div>
                 </div>
               </form>

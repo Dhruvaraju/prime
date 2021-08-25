@@ -33,27 +33,27 @@ export class BuynsellComponent implements OnInit {
     );
   }
 
-  scroll(el: HTMLElement, detail) {
-    if (detail === 'buy') {
-      this.displayBuy = true;
-      this.displaySell = false;
-    } else {
-      this.displayBuy = false;
-      this.displaySell = true;
-    }
-    setTimeout(function () {
-      el.scrollIntoView();
-    }, 100);
-  }
+  // scroll(el: HTMLElement, detail) {
+  //   if (detail === 'buy') {
+  //     this.displayBuy = true;
+  //     this.displaySell = false;
+  //   } else {
+  //     this.displayBuy = false;
+  //     this.displaySell = true;
+  //   }
+  //   setTimeout(function () {
+  //     el.scrollIntoView();
+  //   }, 100);
+  // }
 
-  retriggerService($event) {
-    console.log($event);
-    this.ngOnInit();
-  }
+  // retriggerService($event) {
+  //   console.log($event);
+  //   this.ngOnInit();
+  // }
 
-  scrollUp(pf: HTMLElement) {
-    setTimeout(function () {
-      pf.scrollIntoView();
-    }, 100);
-  }
+  // scrollUp(pf: HTMLElement) {
+  //   setTimeout(function () {
+  //     pf.scrollIntoView();
+  //   }, 100);
+  // }
 }

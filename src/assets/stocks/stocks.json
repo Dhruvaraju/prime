@@ -1,13 +1,15 @@
 [
-  { "ticker": "ADP", "name": "ADANIPORTS", "price": 740 },
+  { "ticker": "ADN", "name": "ADN Industries", "price": 740 },
   { "ticker": "CIP", "name": "Cipla", "price": 955 },
   { "ticker": "HCT", "name": "HCLTECH", "price": 945 },
-  { "ticker": "ITC", "name": "ITC", "price": 215 },
+  { "ticker": "ICT", "name": "I&C Technologies", "price": 215 },
   { "ticker": "LCP", "name": "Lex Corp", "price": 450 },
+  { "ticker": "MSF", "name": "Microsoft", "price": 278 },
   { "ticker": "NST", "name": "NESTLEIND", "price": 500 },
+  { "ticker": "QPY", "name": "Q-Pay", "price": 768 },
   { "ticker": "SIS", "name": "Stark Industries", "price": 370 },
-  { "ticker": "SBN", "name": "SBIN", "price": 430 },
-  { "ticker": "TMS", "name": "TATAMOTORS", "price": 320 },
-  { "ticker": "TSL", "name": "TATASTEEL", "price": 990 },
+  { "ticker": "SVN", "name": "SVRN", "price": 430 },
+  { "ticker": "TMS", "name": "TRQ Motors", "price": 320 },
+  { "ticker": "TKS", "name": "TK Steel", "price": 990 },
   { "ticker": "WIS", "name": "Wayne Industries", "price": 800 }
 ]
