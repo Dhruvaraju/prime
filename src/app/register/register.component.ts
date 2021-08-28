@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { passwordValidator } from '../password.validator';
-import { formSubmitService } from '../services/login&register.service';
+import { loginFormValidator } from './password.validator';
+import { InternalServices } from '../services/investments/internal.service';
 
 @Component({
   selector: 'app-register',
@@ -9,55 +9,64 @@ import { formSubmitService } from '../services/login&register.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  submitted = false;
-
-  alreadyexists = false;
+  userAdded = false;
+  userExists = false;
   errors = false;
-  constructor(private fb: FormBuilder, private lr: formSubmitService) {}
-  registrationForm = this.fb.group(
+  constructor(
+    private formBuilder: FormBuilder,
+    private registerService: InternalServices
+  ) {}
+  registrationForm = this.formBuilder.group(
     {
       username: ['', [Validators.required, Validators.minLength(6)]],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', Validators.required],
-      organisation: ['None'],
-      pan: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+      organization: ['None'],
+      pan: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
       password: ['', Validators.required],
-      confirmpassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
       address01: ['', Validators.required],
       address02: ['Address Line 02'],
       state: ['', Validators.required],
       country: ['', Validators.required],
-      postalcode: ['', Validators.required],
+      postalCode: ['', Validators.required],
       type: ['', Validators.required],
     },
-    { validator: passwordValidator }
+    { validators: loginFormValidator.validatePassword }
   );
 
   onsubmit() {
-    let formData = {
+    let customerInfo = {
       userName: this.registrationForm.get('username').value,
-      firstName: this.registrationForm.get('firstname').value,
-      lastName: this.registrationForm.get('lastname').value,
+      firstName: this.registrationForm.get('firstName').value,
+      lastName: this.registrationForm.get('lastName').value,
       email: this.registrationForm.get('email').value,
-      organizationName: this.registrationForm.get('organisation').value,
+      organizationName: this.registrationForm.get('organization').value,
       panNumber: this.registrationForm.get('pan').value,
       password: this.registrationForm.get('password').value,
       addressLine01: this.registrationForm.get('address01').value,
       addressLine02: this.registrationForm.get('address02').value,
       state: this.registrationForm.get('state').value,
       country: this.registrationForm.get('country').value,
-      pincode: this.registrationForm.get('postalcode').value,
+      pincode: this.registrationForm.get('postalCode').value,
       userType: this.registrationForm.get('type').value,
     };
 
-    this.lr.onFormSubmit(formData).subscribe(
+    this.registerService.registerUser(customerInfo).subscribe(
       (response) => {
         console.log(response);
-        if (response.message === 'User Registered Successfully') {
-          this.submitted = true;
+        if (response.status === 'ADDED') {
+          this.userAdded = true;
         } else {
-          this.alreadyexists = true;
+          this.userExists = true;
         }
       },
       (err) => {

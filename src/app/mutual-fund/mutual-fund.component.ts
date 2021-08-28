@@ -6,122 +6,91 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { MutualFundregistrationService } from '../services/mutual-fund/mutualfundregistration.service';
+import { InternalServices } from '../services/investments/internal.service';
+
 @Component({
   selector: 'app-mutual-fund',
   templateUrl: './mutual-fund.component.html',
-  styleUrls: ['./mutual-fund.component.css']
+  styleUrls: ['./mutual-fund.component.css'],
 })
 export class MutualFundComponent implements OnInit {
-
   SuccessStatement = '';
   FailureStatement = '';
-  showhiddenbutton: boolean = false;
-  disableafterclick: boolean = false;
-  statuscheck: boolean = false;
-  statuserror: boolean = false;
+  disableAfterSubmit: boolean = false;
+  registrationSuccess: boolean = false;
+  registrationFailed: boolean = false;
   userName: string = localStorage.getItem('username');
   RegistrationForm: FormGroup;
-  ReturnsCalculated: any ;
+  ReturnsCalculated: any;
   Returns: any;
   Amt: any;
 
   constructor(
     private builder: FormBuilder,
-    private _reg: MutualFundregistrationService
+    private mutualFundService: InternalServices
   ) {}
   ngOnInit() {
     this.RegistrationForm = this.builder.group({
-      fundtype: new FormControl('', Validators.required),
-      risklevel: new FormControl('', Validators.required),
+      fundType: new FormControl('', Validators.required),
+      riskLevel: new FormControl('', Validators.required),
       tenure: new FormControl('', Validators.required),
-      amtinvested: new FormControl('', [Validators.required,Validators.min(1000)]),
-      paymentpattern: new FormControl('', Validators.required),
-      
+      amtInvested: new FormControl('', [
+        Validators.required,
+        Validators.min(1000),
+      ]),
+      paymentPattern: new FormControl('', Validators.required),
     });
   }
 
-  invokeformsubmit() {
-    let mutualregdetail = {
-      
-      
-      FundType : this.RegistrationForm.get('fundtype').value,
-      RiskLevel: this.RegistrationForm.get('risklevel').value,
-      Tenure : this.RegistrationForm.get('tenure').value,
-      AmountInvested: this.RegistrationForm.get('amtinvested').value,
-      PaymentPattern: this.RegistrationForm.get('paymentpattern').value,
+  mutualFundFormSubmit() {
+    let mutualFundRequest = {
+      fundType: this.RegistrationForm.get('fundType').value,
+      riskLevel: this.RegistrationForm.get('riskLevel').value,
+      tenure: this.RegistrationForm.get('tenure').value,
+      investmentAmount: this.RegistrationForm.get('amtInvested').value,
+      paymentMode: this.RegistrationForm.get('paymentPattern').value,
+      maturityAmount: this.Returns,
       userName: this.userName,
-      
     };
-   
-
-    this._reg.register(mutualregdetail).subscribe(
-      (response) => {
-        console.log(response);
-        if (
-          response.message === ' Registered successfully' ||
-          response.status === 200
-        ) {
+    this.mutualFundService.registerMutualFund(mutualFundRequest).subscribe(
+      (res) => {
+        if (res.status === 'ADDED') {
           this.SuccessStatement =
             'Successfully registered!!! services initiated';
-          console.log('success');
-          this.calldisable();
-          this.statuscheck = true;
-          this.showhiddenbutton = true;
+          this.disableAfterSubmit = true;
+          this.registrationSuccess = true;
         }
       },
       (error) => {
-        this.statuserror = true;
-        this.FailureStatement =
-          'System currently unavailable';
-        console.log(error);
+        this.registrationFailed = true;
+        this.FailureStatement = 'System currently unavailable';
       }
     );
-
   }
-  invokeformcalculate(){
-    
-    
-    
-    if(this.RegistrationForm.get('paymentpattern').value=="Monthly")
-    {
-    this.Amt=this.RegistrationForm.get('amtinvested').value * (this.RegistrationForm.get('tenure').value *12);
-    }
-    if(this.RegistrationForm.get('paymentpattern').value=="Quarterly")
-    {
-     
-      this.Amt=this.RegistrationForm.get('amtinvested').value * (this.RegistrationForm.get('tenure').value *3);
+  calculateReturns() {
+    if (this.RegistrationForm.get('paymentPattern').value == 'Monthly') {
+      this.Amt =
+        this.RegistrationForm.get('amtInvested').value *
+        (this.RegistrationForm.get('tenure').value * 12);
+    } else {
+      this.Amt =
+        this.RegistrationForm.get('amtInvested').value *
+        (this.RegistrationForm.get('tenure').value * 3);
     }
 
-    if(this.RegistrationForm.get('risklevel').value=="Titanium")
-    {
-    
-    this.ReturnsCalculated = (this.Amt* 25)/100;
-    this.Returns = (this.ReturnsCalculated+this.Amt);
+    if (this.RegistrationForm.get('riskLevel').value == 'Titanium') {
+      this.ReturnsCalculated = (this.Amt * 25) / 100;
+      this.Returns = this.ReturnsCalculated + this.Amt;
+    } else if (this.RegistrationForm.get('riskLevel').value == 'Platinum') {
+      this.ReturnsCalculated = (this.Amt * 21) / 100;
+      this.Returns = this.ReturnsCalculated + this.Amt;
+    } else {
+      this.ReturnsCalculated = (this.Amt * 15) / 100;
+      this.Returns = this.ReturnsCalculated + this.Amt;
     }
-     if(this.RegistrationForm.get('risklevel').value=="Platinum")
-    {
-   
-    this.ReturnsCalculated = (this.Amt* 21)/100;
-    this.Returns = (this.ReturnsCalculated+this.Amt);
-    }
-    if(this.RegistrationForm.get('risklevel').value=="Diamond")
-    {
-      this.ReturnsCalculated = (this.Amt* 15)/100;
-     this.Returns = (this.ReturnsCalculated+this.Amt);
+  }
 
-    }
-
-  
-   
-   }
-   
-  
   scroll(el: HTMLElement) {
     el.scrollIntoView();
-  }
-
-  calldisable() {
-    this.disableafterclick = true;
   }
 }

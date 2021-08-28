@@ -1,48 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,Validators} from '@angular/forms';
-import {formSubmitService} from '../services/login&register.service';
-import {Router} from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { InternalServices } from '../services/investments/internal.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  message=false
+  invalidCredentials = false;
+  serviceFailed: boolean = false;
 
-  constructor(private fg:FormBuilder,
-     private rl:formSubmitService,private router:Router) { }
-  loginPage=this.fg.group({
-    username:['',Validators.required],
-    password:['',Validators.required]
-    
-  })
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private loginService: InternalServices
+  ) {}
+  loginPage = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  ngOnInit(): void {
-  }
-  onLogin(){
-    let loginaccept={
-      userName:this.loginPage.get('username').value,
-      password:this.loginPage.get('password').value
-    }
+  ngOnInit(): void {}
 
+  onLoginFormSubmit() {
+    this.serviceFailed = false;
+    let authenticateRequest = {
+      userName: this.loginPage.get('username').value,
+      password: this.loginPage.get('password').value,
+    };
 
-    this.rl.onLoginAttempt(loginaccept)
-    .subscribe((response)=>{
-      if ((response.message) === true){
-        localStorage.setItem('username',response.userName);
-        localStorage.setItem('userType',response.userType);
-        localStorage.setItem('validated',response.message);
-        this.router.navigate(['/dashboard'])
+    this.loginService.authenticateUser(authenticateRequest).subscribe(
+      (response) => {
+        if (response.authenticated === true) {
+          localStorage.setItem('username', response.userName);
+          localStorage.setItem('userType', response.userType);
+          localStorage.setItem('validated', response.authenticated);
+          localStorage.setItem('registeredDate', response.userFrom);
+          localStorage.setItem('lastLogin',response.lastLoginDate);
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.invalidCredentials = true;
+        }
+      },
+      (error) => {
+        this.serviceFailed = true;
       }
-      else{
-        this.message=true
-      }
-    },
-    error=>{
-      this.message=true
-    })
-
+    );
   }
 }

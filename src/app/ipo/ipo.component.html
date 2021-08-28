@@ -22,7 +22,7 @@
         </h2>
         <h4>
           <q style="float: left; font-style: italic; color: navy"
-            >An ipo is not the end but actually the begining</q
+            >An ipo is not the end but actually the beginning</q
           >
           <br />
         </h4>
@@ -143,7 +143,7 @@
               <h1>Prefer</h1>
               <br />
               <p>Long Term investing</p>
-              <p>Analysing financial metrics</p>
+              <p>Analyzing financial metrics</p>
               <p>Identify the opportunities</p>
             </div>
           </div>
@@ -180,24 +180,28 @@
               ><br />
               <input
                 type="text"
-                id="cpyname"
-                name="cpyname"
+                id="companyName"
+                name="companyName"
                 placeholder="eg: Prime Trade Company"
                 class="form-control"
-                formControlName="cpyname"
+                formControlName="companyName"
               />
               <div
                 *ngIf="
-                  RegistrationForm.get('cpyname').invalid &&
-                  (RegistrationForm.get('cpyname').dirty ||
-                    RegistrationForm.get('cpyname').touched)
+                  RegistrationForm.get('companyName').invalid &&
+                  (RegistrationForm.get('companyName').dirty ||
+                    RegistrationForm.get('companyName').touched)
                 "
                 class="alert alert-danger"
               >
-                <div *ngIf="RegistrationForm.get('cpyname').errors.required">
+                <div
+                  *ngIf="RegistrationForm.get('companyName').errors.required"
+                >
                   Please fill this field
                 </div>
-                <div *ngIf="RegistrationForm.get('cpyname').errors.minlength">
+                <div
+                  *ngIf="RegistrationForm.get('companyName').errors.minlength"
+                >
                   Minimum 2 characters required
                 </div>
               </div>
@@ -210,21 +214,21 @@
               <input
                 type="number"
                 id="marketvalue"
-                name="marketvalue"
+                name="marketValue"
                 placeholder="Value"
                 class="form-control"
-                formControlName="marketvalue"
+                formControlName="marketValue"
               />
               <div
                 *ngIf="
-                  RegistrationForm.get('marketvalue').invalid &&
-                  (RegistrationForm.get('marketvalue').dirty ||
-                    RegistrationForm.get('marketvalue').touched)
+                  RegistrationForm.get('marketValue').invalid &&
+                  (RegistrationForm.get('marketValue').dirty ||
+                    RegistrationForm.get('marketValue').touched)
                 "
                 class="alert alert-danger"
               >
                 <div
-                  *ngIf="RegistrationForm.get('marketvalue').errors.required"
+                  *ngIf="RegistrationForm.get('marketValue').errors.required"
                 >
                   Please fill this field
                 </div>
@@ -239,16 +243,14 @@
               ><br />
               <div
                 *ngIf="
-                  RegistrationForm.get('marketcappercent').invalid &&
-                  (RegistrationForm.get('marketcappercent').dirty ||
-                    RegistrationForm.get('marketcappercent').touched)
+                  RegistrationForm.get('mCapPercent').invalid &&
+                  (RegistrationForm.get('mCapPercent').dirty ||
+                    RegistrationForm.get('mCapPercent').touched)
                 "
                 class="alert alert-danger"
               >
                 <div
-                  *ngIf="
-                    RegistrationForm.get('marketcappercent').errors.required
-                  "
+                  *ngIf="RegistrationForm.get('mCapPercent').errors.required"
                 >
                   Please fill this field
                 </div>
@@ -256,7 +258,7 @@
               <select
                 class="form-control"
                 id="marketcappercent"
-                formControlName="marketcappercent"
+                formControlName="mCapPercent"
               >
                 <option value="0">0%</option>
                 <option value="5">5%</option>
@@ -277,9 +279,9 @@
                 class="btn btn-primary"
                 data-toggle="modal"
                 data-target="#centralModalSuccess"
-                [disabled]="disableafterclick"
+                [disabled]="disableAfterSubmit"
                 [disabled]="!RegistrationForm.valid"
-                (click)="invokeformsubmit()"
+                (click)="ipoFormSubmission()"
               >
                 Submit
               </button>
@@ -291,8 +293,7 @@
         </form>
       </div>
     </div>
-    <!--ipoquote hidden button of the page -->
-    <div *ngIf="showhiddenbutton">
+    <div *ngIf="showIpoQuote">
       <button class="btn btn-warning btn-lg" routerLink="/ipoquote">
         Let's go to ipo quote
       </button>
@@ -314,10 +315,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="Title">
-          <Strong *ngIf="!statuscheck && !statuserror">Please Wait ! </Strong>
-          <!--response from db is evaluated-->
-          <Strong *ngIf="statuserror" style="color: tomato">Failed !!! </Strong>
-          <Strong *ngIf="statuscheck" style="color: limegreen"
+          <Strong *ngIf="!registrationSuccess && !registrationFailed"
+            >Please Wait !
+          </Strong>
+          <Strong *ngIf="registrationFailed" style="color: tomato"
+            >Failed !!!
+          </Strong>
+          <Strong *ngIf="registrationSuccess" style="color: limegreen"
             >Success !!!
           </Strong>
         </h5>
@@ -332,12 +336,11 @@
       </div>
 
       <div class="modal-body">
-        <!--response from db is evaluated-->
-        <strong *ngIf="statuserror" style="color: red"
+        <strong *ngIf="registrationFailed" style="color: red"
           ><span style="font-size: 50px">&#10005;</span>
           {{ FailureStatement }}</strong
         >
-        <strong *ngIf="statuscheck" style="color: green"
+        <strong *ngIf="registrationSuccess" style="color: green"
           ><span style="font-size: 50px">&#10004;</span>
           {{ SuccessStatement }}</strong
         >

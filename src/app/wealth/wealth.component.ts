@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ServiceShopService } from '../services/serviceshop.service';
+import { InternalServices } from '../services/investments/internal.service';
 
 @Component({
   selector: 'app-wealth',
@@ -17,7 +17,7 @@ export class WealthComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private fpService: ServiceShopService
+    private financialProductService: InternalServices
   ) {
     this.buildWealthForm();
   }
@@ -36,11 +36,13 @@ export class WealthComponent implements OnInit {
    * Filtering only Wealth products.
    */
   ngOnInit(): void {
-    this.fpService.fetchFinancialProductList().subscribe((res) => {
-      this.productList = res.filter(
-        (product) => product.subcategory === 'WEALTH'
-      );
-    });
+    this.financialProductService
+      .fetchFinancialProductList()
+      .subscribe((res) => {
+        this.productList = res.filter(
+          (product) => product.subcategory === 'WEALTH'
+        );
+      });
   }
 
   /**
@@ -52,12 +54,18 @@ export class WealthComponent implements OnInit {
   onWealthFormSubmit() {
     this.serviceFailureMessage = false;
     let selectedProductData = {
-      productID: this.selectedProduct.productID,
       userName: this.userName,
+      productName: this.selectedProduct.productName,
+      productID: this.selectedProduct.productID,
+      productType: this.selectedProduct.productType,
+      subcategory: this.selectedProduct.subcategory,
+      buyPrice: this.selectedProduct.buyPrice,
+      marketPrice: this.selectedProduct.marketPrice,
+      quantity: 1
     };
-    this.fpService.buyFinancialProduct(selectedProductData).subscribe(
+    this.financialProductService.buyProduct(selectedProductData).subscribe(
       (res) => {
-        if (res.message === 'User already owned the product') {
+        if (res.status === 'EXISTS') {
           this.productOwnedMessage = true;
         } else {
           this.wealthForm.reset();

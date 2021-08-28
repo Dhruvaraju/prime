@@ -112,20 +112,20 @@
                 <select
                   class="form-control"
                   id="fundtype"
-                  formControlName="fundtype"
+                  formControlName="fundType"
                 >
-                  <option value="Open-ended">Open-ended</option>
-                  <option value="Closed-end">Closed-ended</option>
+                  <option value="OPEN">Open-ended</option>
+                  <option value="CLOSED">Closed-ended</option>
                 </select>
                 <div
                   *ngIf="
-                    RegistrationForm.get('fundtype').invalid &&
-                    (RegistrationForm.get('fundtype').dirty ||
-                      RegistrationForm.get('fundtype').touched)
+                    RegistrationForm.get('fundType').invalid &&
+                    (RegistrationForm.get('fundType').dirty ||
+                      RegistrationForm.get('fundType').touched)
                   "
                   class="alert alert-danger"
                 >
-                  <div *ngIf="RegistrationForm.get('fundtype').errors.required">
+                  <div *ngIf="RegistrationForm.get('fundType').errors.required">
                     Please fill this field
                   </div>
                 </div>
@@ -139,14 +139,14 @@
 
                 <div
                   *ngIf="
-                    RegistrationForm.get('risklevel').invalid &&
-                    (RegistrationForm.get('risklevel').dirty ||
-                      RegistrationForm.get('risklevel').touched)
+                    RegistrationForm.get('riskLevel').invalid &&
+                    (RegistrationForm.get('riskLevel').dirty ||
+                      RegistrationForm.get('riskLevel').touched)
                   "
                   class="alert alert-danger"
                 >
                   <div
-                    *ngIf="RegistrationForm.get('risklevel').errors.required"
+                    *ngIf="RegistrationForm.get('riskLevel').errors.required"
                   >
                     Please fill this field
                   </div>
@@ -154,11 +154,11 @@
                 <select
                   class="form-control"
                   id="risklevel"
-                  formControlName="risklevel"
+                  formControlName="riskLevel"
                 >
-                  <option value="Titanium">Titanium</option>
-                  <option value="Platinum">Platinum</option>
-                  <option value="Diamond">Diamond</option>
+                  <option value="TITANIUM">Titanium</option>
+                  <option value="PLATINUM">Platinum</option>
+                  <option value="DIAMOND">Diamond</option>
                 </select>
                 <br />
               </div>
@@ -197,27 +197,27 @@
                   <input
                     type="number"
                     id="amtinvested"
-                    name="amtinvested"
+                    name="amtInvested"
                     placeholder="Value"
                     class="form-control"
-                    formControlName="amtinvested"
+                    formControlName="amtInvested"
                   />
                   <div
                     *ngIf="
-                      RegistrationForm.get('amtinvested').invalid &&
-                      (RegistrationForm.get('amtinvested').dirty ||
-                        RegistrationForm.get('amtinvested').touched)
+                      RegistrationForm.get('amtInvested').invalid &&
+                      (RegistrationForm.get('amtInvested').dirty ||
+                        RegistrationForm.get('amtInvested').touched)
                     "
                     class="alert alert-danger"
                   >
                     <div
                       *ngIf="
-                        RegistrationForm.get('amtinvested').errors.required
+                        RegistrationForm.get('amtInvested').errors.required
                       "
                     >
                       Please fill this field
                     </div>
-                    <div *ngIf="RegistrationForm.get('amtinvested').errors.min">
+                    <div *ngIf="RegistrationForm.get('amtInvested').errors.min">
                       Min amount should be greater than 1000
                     </div>
                   </div>
@@ -234,15 +234,15 @@
 
                 <div
                   *ngIf="
-                    RegistrationForm.get('paymentpattern').invalid &&
-                    (RegistrationForm.get('paymentpattern').dirty ||
-                      RegistrationForm.get('paymentpattern').touched)
+                    RegistrationForm.get('paymentPattern').invalid &&
+                    (RegistrationForm.get('paymentPattern').dirty ||
+                      RegistrationForm.get('paymentPattern').touched)
                   "
                   class="alert alert-danger"
                 >
                   <div
                     *ngIf="
-                      RegistrationForm.get('paymentpattern').errors.required
+                      RegistrationForm.get('paymentPattern').errors.required
                     "
                   >
                     Please fill this field
@@ -251,10 +251,10 @@
                 <select
                   class="form-control"
                   id="paymentpattern"
-                  formControlName="paymentpattern"
+                  formControlName="paymentPattern"
                 >
-                  <option value="Monthly">Monthly</option>
-                  <option value="Quarterly">Quarterly</option>
+                  <option value="MONTHLY">Monthly</option>
+                  <option value="QUARTERLY">Quarterly</option>
                 </select>
                 <br />
               </div>
@@ -263,8 +263,8 @@
                 <button
                   type="button"
                   class="btn btn-outline-success"
-                  [disabled]="disableafterclick"
-                  (click)="invokeformcalculate()"
+                  [disabled]="disableAfterSubmit"
+                  (click)="calculateReturns()"
                 >
                   Calculate Returns
                 </button>
@@ -286,8 +286,8 @@
                   class="btn btn-primary"
                   data-toggle="modal"
                   data-target="#centralModalSuccess"
-                  [disabled]="disableafterclick"
-                  (click)="invokeformsubmit()"
+                  [disabled]="disableAfterSubmit"
+                  (click)="mutualFundFormSubmit()"
                 >
                   Submit
                 </button>
@@ -307,14 +307,14 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="Title">
-                        <Strong *ngIf="!statuscheck && !statuserror"
+                        <Strong *ngIf="!registrationSuccess && !registrationFailed"
                           >Please Wait !
                         </Strong>
                         <!--response from db is evaluated-->
-                        <Strong *ngIf="statuserror" style="color: tomato"
+                        <Strong *ngIf="registrationFailed" style="color: tomato"
                           >Failed !!!
                         </Strong>
-                        <Strong *ngIf="statuscheck" style="color: limegreen"
+                        <Strong *ngIf="registrationSuccess" style="color: limegreen"
                           >Success !!!
                         </Strong>
                       </h5>
@@ -329,11 +329,11 @@
                     </div>
                     <div class="modal-body">
                       <!--response from db is evaluated-->
-                      <strong *ngIf="statuserror" style="color: red"
+                      <strong *ngIf="registrationFailed" class="alert alert-danger" style="color: red"
                         ><span style="font-size: 50px">&#10005;</span>
                         {{ FailureStatement }}</strong
                       >
-                      <strong *ngIf="statuscheck" style="color: green"
+                      <strong *ngIf="registrationSuccess" style="color: green" class="alert alert-success"
                         ><span style="font-size: 50px">&#10004;</span>
                         {{ SuccessStatement }}</strong
                       >
