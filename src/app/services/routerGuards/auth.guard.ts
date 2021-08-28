@@ -22,9 +22,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // console.log(route.routeConfig.path)
-    // console.log('AuthGuard#canActivate called');
-    // console.log(this.userValid);
     if (this.userValid === true) {
       return true;
     }

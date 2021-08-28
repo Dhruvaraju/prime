@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BuyComponent } from './buy/buy.component';
-import { SellComponent } from './sell/sell.component';
-import { stocksService } from './../services/stocks/stocks.service';
+import {InternalServices} from '../services/investments/internal.service';
 
 @Component({
   selector: 'app-buynsell',
@@ -14,14 +12,14 @@ export class BuynsellComponent implements OnInit {
   displaySell: boolean = false;
   username: string = localStorage.getItem('username');
 
-  constructor(private transactionService: stocksService) {}
+  constructor(private productService: InternalServices) {}
 
   ngOnInit() {
     this.fetchPortfolio();
   }
 
   fetchPortfolio() {
-    this.transactionService.getStocksOwnedByUser(this.username).subscribe(
+    this.productService.productsOwnedByUser(this.username).subscribe(
       (res) => {
         this.stockList = res.filter(
           (product) => product.productType === 'STOCK'
@@ -32,28 +30,4 @@ export class BuynsellComponent implements OnInit {
       }
     );
   }
-
-  // scroll(el: HTMLElement, detail) {
-  //   if (detail === 'buy') {
-  //     this.displayBuy = true;
-  //     this.displaySell = false;
-  //   } else {
-  //     this.displayBuy = false;
-  //     this.displaySell = true;
-  //   }
-  //   setTimeout(function () {
-  //     el.scrollIntoView();
-  //   }, 100);
-  // }
-
-  // retriggerService($event) {
-  //   console.log($event);
-  //   this.ngOnInit();
-  // }
-
-  // scrollUp(pf: HTMLElement) {
-  //   setTimeout(function () {
-  //     pf.scrollIntoView();
-  //   }, 100);
-  // }
 }

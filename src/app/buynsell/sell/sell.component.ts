@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { stocksService } from './../../services/stocks/stocks.service';
+import { InternalServices } from '../../services/investments/internal.service';
 
 @Component({
   selector: 'app-sell',
@@ -18,24 +18,24 @@ export class SellComponent implements OnInit {
   successBanner: boolean = false; //Display success banner on transaction complete
   sellForm: FormGroup;
   userName: string = localStorage.getItem('username');
-  // @Output() returnEvent = new EventEmitter<string>();
-  // @Output() returnToPortfolio = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private stock: stocksService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private productService: InternalServices
+  ) {}
 
   ngOnInit() {
-    this.sellForm = this.fb.group({
+    this.sellForm = this.formBuilder.group({
       stocks: ['select-stock', Validators.required],
       quantity: ['', Validators.required],
       orderType: ['select', Validators.required],
       price: [''],
     });
-    this.stock.fetchStocks().subscribe((data) => (this.selectStocks = data));
     this.fetchPortfolio();
   }
 
   fetchPortfolio() {
-    this.stock.getStocksOwnedByUser(this.userName).subscribe(
+    this.productService.productsOwnedByUser(this.userName).subscribe(
       (res) => {
         this.stockList = res.filter(
           (product) => product.productType === 'STOCK'
@@ -46,10 +46,6 @@ export class SellComponent implements OnInit {
       }
     );
   }
-
-  // scrollToPortfolio() {
-  //   this.returnToPortfolio.emit();
-  // }
 
   onOrderTypeChange() {
     if (this.sellForm.get('orderType').value === 'limit') {
@@ -65,7 +61,7 @@ export class SellComponent implements OnInit {
 
   onSellOrderSubmit() {
     this.successBanner = false;
-    this.stockUnavailable= false;
+    this.stockUnavailable = false;
     this.systemUnavailable = false;
     if (
       this.sellForm.get('orderType').value === 'limit' &&
@@ -76,7 +72,7 @@ export class SellComponent implements OnInit {
     }
 
     let stockDetail = this.sellForm.get('stocks').value;
-    let stockTikker = stockDetail.slice(0, 3);
+    let stockTicker = stockDetail.slice(0, 3);
     let stockName = stockDetail.substring(
       stockDetail.lastIndexOf('.') + 1,
       stockDetail.lastIndexOf('-')
@@ -89,20 +85,18 @@ export class SellComponent implements OnInit {
     let sellOrderRequest = {
       userName: this.userName,
       productName: stockName,
-      productID: stockTikker,
+      productID: stockTicker,
       productType: 'STOCK',
       subcategory: 'STOCK',
       buyPrice: limitOrderPrice,
       marketPrice: currentMarketPrice,
       quantity: this.sellForm.get('quantity').value,
     };
-    this.stock.sellStockOrder(sellOrderRequest).subscribe(
+    this.productService.sellProduct(sellOrderRequest).subscribe(
       (res) => {
-        this.responseMessage = res.message;
-        if (this.responseMessage ==="Product Initiated For Sale") {
+        if (res.status === 'UPDATED') {
           this.successBanner = true;
           this.stockUnavailable = false;
-          // this.returnEvent.emit('sell-sucess');
         } else {
           this.stockUnavailable = true;
         }

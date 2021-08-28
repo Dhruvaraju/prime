@@ -12,7 +12,7 @@
               </h6>
 
               <!-- Sign In Form -->
-              <form [formGroup]="loginPage">
+              <form [formGroup]="loginPage" (ngSubmit)="onLoginFormSubmit()">
                 <div class="form-floating mb-3">
                   <input
                     type="email"
@@ -52,10 +52,15 @@
                   <small>Password required</small>
                 </div>
                 <div
-                  *ngIf="message && loginPage.get('password').valid"
+                  *ngIf="invalidCredentials && loginPage.get('password').valid"
                   class="alert alert-danger"
                 >
                   <small>Invalid username or password!</small>
+                </div>
+                <div *ngIf="serviceFailed">
+                  <p class="alert alert-info">
+                    System unavailable try after sometime
+                  </p>
                 </div>
                 <div class="row d-flex justify-content-center">
                   <div class="col text-center">
@@ -71,7 +76,6 @@
                       style="border-radius: 2em"
                       type="submit"
                       [disabled]="loginPage.invalid"
-                      (click)="onLogin()"
                     >
                       Sign In
                     </button>

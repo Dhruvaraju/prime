@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DashboardService } from '../services/dashboard/dashboard.service';
+
 
 @Component({
   selector: 'app-contact',
@@ -12,8 +12,7 @@ export class ContactComponent implements OnInit {
   successfulSubmission: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private contactService: DashboardService
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -33,14 +32,6 @@ export class ContactComponent implements OnInit {
       message: this.contactForm.get('message').value,
     };
 
-    this.contactService.addMessageFromContact(messageDetail).subscribe(
-      (res) => {
-        this.successfulSubmission = true;
-        this.contactForm.reset();
-      },
-      (error) => {
-        this.successfulSubmission = false;
-      }
-    );
+    
   }
 }

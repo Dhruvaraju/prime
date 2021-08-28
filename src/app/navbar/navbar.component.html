@@ -42,7 +42,7 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="/mutual fund">Mutual Fund</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="userType == 'Institution'">
                 <a class="nav-link" routerLink="/ipo">IPO</a>
               </li>
               <li class="nav-item">

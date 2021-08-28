@@ -19,14 +19,8 @@ import { IncomeComponent } from './income/income.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { formSubmitService } from './services/login&register.service';
-import { IporegistrationService } from './services/ipo/iporegistration.service';
-import { stocksService } from './services/stocks/stocks.service';
-import { ServiceShopService } from './services/serviceshop.service';
 import { FooterComponent } from './footer/footer.component';
-
 import { MutualFundComponent } from './mutual-fund/mutual-fund.component';
-import { MutualFundregistrationService } from './services/mutual-fund/mutualfundregistration.service';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { SupportComponent } from './support/support.component';
@@ -63,13 +57,7 @@ import { SupportComponent } from './support/support.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers:[
-    stocksService,
-    IporegistrationService,
-    formSubmitService,
-    ServiceShopService,
-  
-    MutualFundregistrationService
+  providers:[ 
   ],
 
   bootstrap: [AppComponent]

@@ -14,9 +14,9 @@
       </p>
     </div>
 
-    <!-- Registeration Form -->
+    <!-- RegistrationForm -->
     <div class="col-md-7 col-lg-6 ml-auto">
-      <form [formGroup]="registrationForm" *ngIf="!submitted">
+      <form [formGroup]="registrationForm" *ngIf="!userAdded">
         <div class="row">
           <div class="col-sm-6 form-group">
             <input
@@ -25,13 +25,13 @@
               id="FirstName"
               class="form-control mb-3"
               placeholder="FirstName"
-              formControlName="firstname"
+              formControlName="firstName"
             />
 
             <div
               *ngIf="
-                registrationForm.get('firstname').invalid &&
-                registrationForm.get('firstname').touched
+                registrationForm.get('firstName').invalid &&
+                registrationForm.get('firstName').touched
               "
               class="alert alert-danger"
             >
@@ -44,14 +44,14 @@
               name="LastName"
               id="LastName"
               class="form-control mb-3"
-              placeholder="Lastname"
-              formControlName="lastname"
+              placeholder="LastName"
+              formControlName="lastName"
             />
 
             <div
               *ngIf="
-                registrationForm.get('lastname').invalid &&
-                registrationForm.get('lastname').touched
+                registrationForm.get('lastName').invalid &&
+                registrationForm.get('lastName').touched
               "
               class="alert alert-danger"
             >
@@ -135,7 +135,7 @@
               id="confirm"
               class="form-control mb-3"
               placeholder="Confirm password"
-              formControlName="confirmpassword"
+              formControlName="confirmPassword"
               [class.is-invlaid]="registrationForm.errors?.mismatch"
             />
 
@@ -166,7 +166,7 @@
               "
               class="alert alert-danger"
             >
-              <small>Usertype is required</small>
+              <small>UserType is required</small>
             </div>
           </div>
           <div class="col-sm-6 form-group mb-3">
@@ -176,8 +176,8 @@
                 name="institutionName"
                 id="institutionName"
                 class="form-control"
-                placeholder="Enter organisation name here.."
-                formControlName="organisation"
+                placeholder="Enter organization name here.."
+                formControlName="organization"
               />
             </div>
           </div>
@@ -257,17 +257,17 @@
           <div class="col-sm-4 form-group">
             <input
               type="number"
-              name="postalcode"
+              name="postalCode"
               id="postalcode"
               class="form-control mb-3"
               placeholder="Enter zip code"
-              formControlName="postalcode"
+              formControlName="postalCode"
             />
 
             <div
               *ngIf="
-                registrationForm.get('postalcode').invalid &&
-                registrationForm.get('postalcode').touched
+                registrationForm.get('postalCode').invalid &&
+                registrationForm.get('postalCode').touched
               "
               class="alert alert-danger"
             >
@@ -310,7 +310,7 @@
             <small>Pan Number should not be greater than 10 characters</small>
           </div>
         </div>
-        <div *ngIf="alreadyexists">
+        <div *ngIf="userExists">
           <h5>User already exists</h5>
           <small class="alert alert-danger"
             >Try again with different username or email!</small
@@ -331,7 +331,7 @@
       </form>
       <div class="container">
         <div class="container-fluid">
-          <div *ngIf="submitted" class="text-center">
+          <div *ngIf="userAdded" class="text-center">
             <h3>Registration Complete</h3>
             <p>Successfully Registered</p>
 
