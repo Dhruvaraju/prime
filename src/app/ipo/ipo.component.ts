@@ -5,7 +5,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { IporegistrationService } from '../services/ipo/iporegistration.service';
+import { InternalServices } from '../services/investments/internal.service';
 
 @Component({
   selector: 'app-ipo',
@@ -15,61 +15,50 @@ import { IporegistrationService } from '../services/ipo/iporegistration.service'
 export class IpoComponent implements OnInit {
   SuccessStatement = '';
   FailureStatement = '';
-  showhiddenbutton: boolean = false;
-  disableafterclick: boolean = false;
-  statuscheck: boolean = false;
-  statuserror: boolean = false;
+  showIpoQuote: boolean = false;
+  disableAfterSubmit: boolean = false;
+  registrationSuccess: boolean = false;
+  registrationFailed: boolean = false;
   userName: string = localStorage.getItem('username');
   RegistrationForm: FormGroup;
 
   constructor(
     private builder: FormBuilder,
-    private _reg: IporegistrationService
+    private ipoService: InternalServices
   ) {}
   ngOnInit() {
     this.RegistrationForm = this.builder.group({
-      cpyname: new FormControl('', [
+      companyName: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50),
       ]),
-      marketvalue: new FormControl('', Validators.required),
-      marketcappercent: new FormControl('', Validators.required),
+      marketValue: new FormControl('', Validators.required),
+      mCapPercent: new FormControl('', Validators.required),
     });
   }
 
-  invokeformsubmit() {
-    let iporegdetail = {
-      availableForSale: this.RegistrationForm.get('marketcappercent').value,
-      closingDate: '',
-      companyName: this.RegistrationForm.get('cpyname').value,
-      description: '',
-      id: 0,
-      issueDate: '',
-      issuePrice: 0,
-      issueSize: 0,
-      lotSize: 0,
-      marketCap: this.RegistrationForm.get('marketvalue').value,
+  ipoFormSubmission() {
+    let ipoRequest = {
+      salePercentage: this.RegistrationForm.get('mCapPercent').value,
+      companyName: this.RegistrationForm.get('companyName').value,
+      marketCap: this.RegistrationForm.get('marketValue').value,
       userName: this.userName,
     };
 
-    this._reg.register(iporegdetail).subscribe(
-      (response) => {
-        console.log(response);
-        if (
-          response.message === 'ipo registered successfully' ||
-          response.status === 200
-        ) {
+    this.ipoService.registerIpo(ipoRequest).subscribe(
+      (res) => {
+        if (res.status === 'ADDED') {
           this.SuccessStatement =
             'Successfully registered!!! IPO services initiated, you will be informed once IPO quote is prepared';
           console.log('success');
-          this.calldisable();
-          this.statuscheck = true;
-          this.showhiddenbutton = true;
+          this.disableAfterSubmit = true;
+          this.registrationSuccess = true;
+          this.showIpoQuote = true;
         }
       },
       (error) => {
-        this.statuserror = true;
+        this.registrationFailed = true;
         this.FailureStatement =
           'System currently unavailable contact our banking representative to initiate the process';
         console.log(error);
@@ -78,9 +67,5 @@ export class IpoComponent implements OnInit {
   }
   scroll(el: HTMLElement) {
     el.scrollIntoView();
-  }
-
-  calldisable() {
-    this.disableafterclick = true;
   }
 }
