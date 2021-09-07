@@ -9,51 +9,121 @@
       />
     </div>
     <div class="col-lg-6">
-      <div class="container px-5 py-5 row justify-content-center">
-        <h3 class="font-weight-bold">Having trouble with our services?</h3>
-        <p class="text-center my-1">
-          We strive to provide seamless and uninterrupted services, kindly
-          provide us a chance to resolve it, By raising an issue, with the help
-          of following form.
-        </p>
-      </div>
-      <div class="container justify-content-center px-4">
-        <form [formGroup]="supportForm" (ngSubmit)="supportFormSubmit()">
-          <div class="form-floating mb-3">
-            <input
-              class="form-control"
-              id="phone"
-              type="text"
-              placeholder="Explain your issue in a single line"
-              formControlName="issueHeading"
-            />
-          </div>
-          <!-- Message input-->
-          <div class="form-floating mb-3">
-            <textarea
-              class="form-control"
-              id="message"
-              type="text"
-              placeholder="Describe your issue with information as mentioned below
+      <div *ngIf="displayRegister">
+        <div style="float: right">
+          <a (click)="viewTicketClick()" class="btn btn-sm btn-outline-info">
+            View Ticket Status</a
+          >
+        </div>
+        <div class="container px-5 py-5 row justify-content-center">
+          <h3 class="font-weight-bold">Having trouble with our services?</h3>
+          <p class="text-center my-1">
+            We strive to provide seamless and uninterrupted services, kindly
+            provide us a chance to resolve it, By raising an issue, with the
+            help of following form.
+          </p>
+        </div>
+        <div class="container justify-content-center px-4">
+          <form [formGroup]="supportForm" (ngSubmit)="supportFormSubmit()">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control"
+                id="phone"
+                type="text"
+                placeholder="Explain your issue in a single line"
+                formControlName="issueHeading"
+              />
+            </div>
+            <!-- Message input-->
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control"
+                id="message"
+                type="text"
+                placeholder="Describe your issue with information as mentioned below
                   Date occurred:
                   Error Message Received:
                   Any Additional Information:
                   "
-              style="height: 10rem"
-              formControlName="issueDescription"
-            ></textarea>
+                style="height: 10rem"
+                formControlName="issueDescription"
+              ></textarea>
+            </div>
+            <div class="">
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                id="submitButton"
+                type="submit"
+                [disabled]="!supportForm.valid"
+              >
+                Submit
+              </button>
+            </div>
+            <div class="py-2" *ngIf="ticketRegistered === 'SUCCESS'">
+              <p class="alert alert-info">
+                Ticket registered successfully, with ticket id
+                {{ registeredTicket }}
+              </p>
+            </div>
+            <div class="py-2" *ngIf="ticketRegistered === 'FAIL'">
+              <p class="alert alert-info">
+                Ticket registered failed, try after sometime.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Display Ticket Details section-->
+      <div *ngIf="displayTicketDetails">
+        <div style="float: right">
+          <a
+            (click)="displayRegisterClick()"
+            class="btn btn-sm btn-outline-info"
+          >
+            Register New ticket</a
+          >
+        </div>
+        <div
+          class="container py-2 row "
+          style="overflow-y: scroll; height:30rem;"
+          
+        >
+          <div class="card" *ngFor="let ticket of ticketList" style="margin-top:1rem;" >
+            <div class="card-body" style="width: 31rem;">
+              <div class="row">
+                <div class="col">
+                  <h6>{{ ticket.ticketId }}</h6>
+                </div>
+                <div class="col">
+                  {{ ticket.registeredDate }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <h6>Issue: </h6>
+                </div>
+                <div class="col">{{ ticket.issue }}</div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <h6>Current Status: </h6>
+                </div>
+                <div class="col">{{ ticket.ticketStatus }}</div>
+              </div>
+              <div class="py-2">
+                <div>
+                  <h6>Description: </h6>
+                </div>
+                <div >{{ ticket.description }}</div>
+              </div>
+              <div class="py-2" *ngIf="ticket.messageToUser">
+                <div><h6>Message to User:</h6></div>
+                <p> {{ ticket.messageToUser }}</p>
+              </div>
+              
+            </div>
           </div>
-          <div class="">
-            <button
-              class="btn btn-primary btn-lg btn-block"
-              id="submitButton"
-              type="submit"
-              disabled="true"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
