@@ -84,44 +84,64 @@
           >
         </div>
         <div
-          class="container py-2 row "
-          style="overflow-y: scroll; height:30rem;"
-          
+          class="container py-2 row"
+          style="overflow-y: scroll; height: 30rem"
+          *ngIf="ticketList.length > 0"
         >
-          <div class="card" *ngFor="let ticket of ticketList" style="margin-top:1rem;" >
-            <div class="card-body" style="width: 31rem;">
+          <div
+            class="card"
+            *ngFor="let ticket of ticketList"
+            style="
+              margin-top: 1rem;
+              height: max-content;
+              box-shadow: 5px 10px #888888;
+              background-color: rgb(150, 216, 216);
+            "
+          >
+            <div class="card-body" style="width: 31rem">
               <div class="row">
                 <div class="col">
-                  <h6>{{ ticket.ticketId }}</h6>
+                  <h3
+                    class="font-weight-bold"
+                    style="
+                      color: whitesmoke;
+                      text-shadow: 2px 2px #0c0c0c;
+                      stroke: black;
+                    "
+                  >
+                    {{ ticket.ticketId }}
+                  </h3>
                 </div>
                 <div class="col">
                   {{ ticket.registeredDate }}
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-2">
-                  <h6>Issue: </h6>
-                </div>
-                <div class="col">{{ ticket.issue }}</div>
-              </div>
-              <div class="row">
-                <div class="col-4">
-                  <h6>Current Status: </h6>
-                </div>
                 <div class="col">{{ ticket.ticketStatus }}</div>
               </div>
+              <div class="row">
+                <div class="col">{{ ticket.issue }}</div>
+              </div>
               <div class="py-2">
-                <div>
-                  <h6>Description: </h6>
+                <div class="lead" style="font-size: medium">
+                  {{ ticket.description }}
                 </div>
-                <div >{{ ticket.description }}</div>
               </div>
-              <div class="py-2" *ngIf="ticket.messageToUser">
-                <div><h6>Message to User:</h6></div>
-                <p> {{ ticket.messageToUser }}</p>
+              <div *ngIf="ticket.messageToUser">
+                <div>Message to User:</div>
+                <p class="lead" style="font-size: medium">
+                  {{ ticket.messageToUser }}
+                </p>
               </div>
-              
             </div>
+          </div>
+        </div>
+        <div *ngIf="ticketList.length === 0" class="py-2">
+          <img
+            class="img-fluid rounded mb-5 mb-lg-0"
+            src="../../assets/empty-cart.svg"
+            alt="..."
+          />
+          <div>
+            <h1 class="font-weight-bold text-center" style="text-shadow: 2px 2px #8d7cf0;">No Tickets Found</h1>
           </div>
         </div>
       </div>
