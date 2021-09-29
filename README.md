@@ -170,3 +170,4 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 
 #TODO how routing works
 #TODO Usage of HttpClient and HttpClientModule
+#fortesting
