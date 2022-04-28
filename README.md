@@ -22,9 +22,6 @@
   - [git stash apply](#git-stash-apply)
   - [git stash clear](#git-stash-clear)
   - [git fetch --all](#git-fetch---all)
-  - [App Hosting](#app-hosting)
-  - [Services hosting Details](#services-hosting-details)
-  - [Trello Board for UI construction](#trello-board-for-ui-construction)
 
 # Prime
 
@@ -153,20 +150,7 @@ node_modules/bootstrap/dist/js/bootstrap.js in the projects->architect->build->s
 
 - To track the remote branches
 
-## App Hosting
-
-- At present app is hosted in firebase
-- A continuos delivery is enabled with help of github actions
-- App hosting url: [prime-banc](https://prime-banc.web.app/), [prime-banc](https://prime-banc.firebaseapp.com/)
-
-## Services hosting Details
-
-- Services source code available at [Trading-services](https://github.com/revathi/trading-services)
-- Hosted at: https://ipotrading.herokuapp.com/
-
-## Trello Board for UI construction
-
-- https://trello.com/b/t9PT6XGw/pilot-fe-prime
+> Apps and services are no longer hosted.
 
 #TODO how routing works
 #TODO Usage of HttpClient and HttpClientModule
